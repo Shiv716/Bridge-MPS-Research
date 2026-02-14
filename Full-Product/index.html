@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridge – MPS Research & Oversight</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0a0f1a;--bg-card:#111827;--bg-hover:#1a2335;--bg-surface:#0d1424;--border:#1e293b;--border-a:#334155;--text:#e2e8f0;--text-s:#94a3b8;--text-m:#64748b;--accent:#3b82f6;--accent-h:#2563eb;--accent-g:rgba(59,130,246,.15);--green:#10b981;--green-bg:rgba(16,185,129,.1);--red:#ef4444;--red-bg:rgba(239,68,68,.1);--amber:#f59e0b;--amber-bg:rgba(245,158,11,.1);--purple:#8b5cf6;--sw:240px;--r:10px;--rs:6px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.app{display:flex;min-height:100vh}
+.sidebar{width:var(--sw);background:var(--bg-surface);border-right:1px solid var(--border);position:fixed;top:0;left:0;bottom:0;z-index:100;display:flex;flex-direction:column}
+.sidebar-header{padding:24px 20px;border-bottom:1px solid var(--border)}
+.logo{font-family:'Fraunces',serif;font-size:22px;font-weight:700;letter-spacing:-.5px;display:flex;align-items:center;gap:10px}
+.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),#6366f1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;font-family:'Fraunces',serif}
+.sidebar-nav{flex:1;padding:12px 10px}
+.nav-sl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-m);padding:8px 12px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--rs);color:var(--text-s);cursor:pointer;font-size:13.5px;transition:all .15s;user-select:none}
+.nav-item:hover{background:var(--bg-card);color:var(--text)}
+.nav-item.active{background:var(--accent-g);color:var(--accent);font-weight:500}
+.nav-icon{width:18px;height:18px;opacity:.7;flex-shrink:0}
+.nav-item.active .nav-icon{opacity:1}
+.sidebar-footer{padding:16px 20px;border-top:1px solid var(--border);font-size:11px;color:var(--text-m)}
+.main{margin-left:var(--sw);flex:1;min-height:100vh}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(10,15,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.topbar-title{font-size:14px;font-weight:500}
+.content{padding:28px 32px;max-width:1400px}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .2s}
+.card:hover{border-color:var(--border-a)}
+.card-h{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.card-t{font-size:14px;font-weight:600}
+.card-b{padding:22px}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.stat-l{font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.8px;color:var(--text-m);margin-bottom:8px}
+.stat-v{font-family:'Fraunces',serif;font-size:28px;font-weight:700;letter-spacing:-1px}
+.stat-c{font-size:12px;margin-top:4px;font-weight:500}
+.stat-c.pos{color:var(--green)}.stat-c.neg{color:var(--red)}
+.btn{padding:8px 16px;border-radius:var(--rs);font-size:13px;font-weight:500;font-family:inherit;border:none;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.btn-p{background:var(--accent);color:#fff}.btn-p:hover{background:var(--accent-h)}
+.btn-g{background:transparent;color:var(--text-s);border:1px solid var(--border)}.btn-g:hover{background:var(--bg-card);color:var(--text)}
+.btn-sm{padding:5px 10px;font-size:12px}
+.badge{display:inline-flex;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.3px}
+.b-blue{background:var(--accent-g);color:var(--accent)}.b-green{background:var(--green-bg);color:var(--green)}.b-amber{background:var(--amber-bg);color:var(--amber)}.b-red{background:var(--red-bg);color:var(--red)}.b-purple{background:rgba(139,92,246,.12);color:var(--purple)}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:10px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text-m);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text-s);white-space:nowrap}
+tr:hover td{background:rgba(255,255,255,.02)}tr:last-child td{border-bottom:none}
+td.nc{color:var(--text);font-weight:500}
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:flex-end}
+.fg{display:flex;flex-direction:column;gap:4px}
+.fl{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text-m)}
+select,input[type=text],input[type=number]{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:7px 12px;font-size:13px;color:var(--text);font-family:inherit;outline:none;min-width:140px;transition:border-color .15s}
+select:focus,input:focus{border-color:var(--accent)}select{cursor:pointer}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--border);margin-bottom:24px}
+.tab{padding:10px 18px;font-size:13px;font-weight:500;color:var(--text-m);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;user-select:none}
+.tab:hover{color:var(--text-s)}.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.insight-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:22px;cursor:pointer;transition:all .2s}
+.insight-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.im{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:12px;color:var(--text-m)}
+.it{font-size:16px;font-weight:600;margin-bottom:8px;line-height:1.4}
+.is{font-size:13.5px;color:var(--text-s);line-height:1.6}
+.ph{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(99,102,241,.05));border:1px solid var(--border);border-radius:var(--r);padding:32px;margin-bottom:24px}
+.pn{font-family:'Fraunces',serif;font-size:28px;font-weight:700;margin-bottom:4px}
+.pm{display:flex;gap:24px;flex-wrap:wrap}
+.pmi{display:flex;flex-direction:column;gap:2px}
+.pml{font-size:10.5px;color:var(--text-m);text-transform:uppercase;letter-spacing:.8px}
+.pmv{font-size:15px;font-weight:600}
+.slist,.clist{list-style:none;padding:0}
+.slist li,.clist li{padding:8px 0;padding-left:20px;position:relative;font-size:13.5px;color:var(--text-s);line-height:1.5}
+.slist li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.clist li::before{content:"–";position:absolute;left:0;color:var(--amber);font-weight:700}
+.article{font-size:14.5px;line-height:1.8;color:var(--text-s);max-width:720px}
+.article p{margin-bottom:16px}.article strong{color:var(--text);font-weight:600}
+.cc{position:relative;width:100%}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-m);cursor:pointer;margin-bottom:20px;transition:color .15s}.back:hover{color:var(--accent)}
+.ab{display:flex;height:8px;border-radius:4px;overflow:hidden;margin:8px 0}
+.al-eq{background:var(--accent)}.al-bo{background:var(--green)}.al-al{background:var(--purple)}.al-ca{background:var(--text-m)}
+.al{display:flex;gap:16px;margin-top:6px;font-size:11.5px;color:var(--text-m)}.al span{display:flex;align-items:center;gap:4px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.ph1{margin-bottom:24px}.ph1 h1{font-family:'Fraunces',serif;font-size:24px;font-weight:700;letter-spacing:-.5px;margin-bottom:4px}.ph1 p{color:var(--text-s);font-size:14px}
+.loading{display:flex;align-items:center;justify-content:center;padding:60px;color:var(--text-m);font-size:13px}
+.spinner{width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin-right:10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cr{cursor:pointer}.cr:hover td{color:var(--text)}
+.fi{animation:fi .3s ease-out}@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1024px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.sidebar{transform:translateX(-100%)}.main{margin-left:0}.g2,.g3,.g4{grid-template-columns:1fr}.content{padding:20px 16px}}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+<div class="sidebar-header"><div class="logo"><div class="logo-mark">B</div>Bridge</div></div>
+<nav class="sidebar-nav">
+<div class="nav-sl">Overview</div>
+<div class="nav-item active" data-page="dashboard" onclick="nav('dashboard')">
+<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+Dashboard</div>
+<div class="nav-sl" style="margin-top:8px">Research</div>
+<div class="nav-item" data-page="selection" onclick="nav('selection')">
+<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+MPS Selection</div>
+<div class="nav-item" data-page="analysis" onclick="nav('analysis')">
+<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+MPS Analysis</div>
+<div class="nav-item" data-page="insights" onclick="nav('insights')">
+<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+Insights</div>
+</nav>
+<div class="sidebar-footer">Bridge v1.0 · Independent MPS Research</div>
+</aside>
+<main class="main">
+<div class="topbar">
+<div class="topbar-title" id="tt">Dashboard</div>
+<div style="display:flex;gap:8px;align-items:center">
+<button class="btn btn-g btn-sm" onclick="nav('selection')">⌕ Search MPS</button>
+</div>
+</div>
+<div class="content" id="app"><div class="loading"><div class="spinner"></div>Loading...</div></div>
+</main>
+</div>
+<script>
+const $=id=>document.getElementById(id);let S={p:'dashboard',c:{},pr:{}},CH={};
+function nav(p,pr={}){S.p=p;S.pr=pr;document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));const e=document.querySelector(`.nav-item[data-page="${p}"]`);if(e)e.classList.add('active');render()}
+async function F(u){if(S.c[u])return S.c[u];try{const r=await fetch(u);const d=await r.json();S.c[u]=d;return d}catch(e){console.error(e);return null}}
+function DC(){Object.values(CH).forEach(c=>c.destroy&&c.destroy());CH={}}
+
+async function render(){
+const el=$('app'),tt=$('tt');DC();el.innerHTML='<div class="loading"><div class="spinner"></div>Loading...</div>';
+switch(S.p){
+case'dashboard':tt.textContent='Dashboard';await rDash(el);break;
+case'selection':tt.textContent='MPS Selection';await rSel(el);break;
+case'analysis':tt.textContent='MPS Analysis';await rAna(el);break;
+case'provider':tt.textContent='Provider Analysis';await rProv(el);break;
+case'mps':tt.textContent='MPS Detail';await rMPS(el);break;
+case'insights':tt.textContent='Insights';await rIns(el);break;
+case'insight':tt.textContent='Insight';await rInsD(el);break;
+default:tt.textContent='Dashboard';await rDash(el);
+}}
+
+// Dashboard
+async function rDash(el){
+const d=await F('/api/dashboard');if(!d){el.innerHTML='<p>Failed to load</p>';return}
+el.innerHTML=`<div class="fi"><div class="ph1"><h1>MPS Research Overview</h1><p>Independent research and oversight across the UK MPS market</p></div>
+<div class="grid g4" style="margin-bottom:28px">
+<div class="stat-card"><div class="stat-l">MPS Portfolios</div><div class="stat-v">${d.stats.total_mps}</div><div class="stat-c pos">Across ${d.stats.total_providers} providers</div></div>
+<div class="stat-card"><div class="stat-l">Platforms Covered</div><div class="stat-v">${d.stats.total_platforms}</div><div class="stat-c">Major UK platforms</div></div>
+<div class="stat-card"><div class="stat-l">Combined AUM</div><div class="stat-v">£${d.stats.market_aum_bn.toFixed(1)}bn</div><div class="stat-c pos">Provider universe</div></div>
+<div class="stat-card"><div class="stat-l">Research Articles</div><div class="stat-v">${d.stats.latest_insights}</div><div class="stat-c">Commentary & analysis</div></div>
+</div>
+<div class="grid g2" style="margin-bottom:28px">
+<div class="card"><div class="card-h"><span class="card-t">Provider Universe</span><button class="btn btn-g btn-sm" onclick="nav('analysis')">View All →</button></div>
+<div class="card-b" style="padding:0"><table><thead><tr><th>Provider</th><th>Style</th><th>AUM</th><th>Portfolios</th></tr></thead><tbody>
+${d.provider_overview.map(p=>`<tr class="cr" onclick="nav('provider',{id:'${pId(p.name)}'})"><td class="nc">${p.name}</td><td><span class="badge b-blue">${p.style}</span></td><td>£${p.aum_bn}bn</td><td>${p.portfolio_count}</td></tr>`).join('')}
+</tbody></table></div></div>
+<div class="card"><div class="card-h"><span class="card-t">Risk Distribution</span></div><div class="card-b"><div class="cc" style="height:220px"><canvas id="rc"></canvas></div></div></div>
+</div>
+<div class="card"><div class="card-h"><span class="card-t">Latest Insights</span><button class="btn btn-g btn-sm" onclick="nav('insights')">View All →</button></div>
+<div class="card-b"><div class="grid g3">
+${d.recent_insights.map(i=>`<div class="insight-card" onclick="nav('insight',{id:'${i.id}'})">
+<div class="im"><span class="badge ${catB(i.category)}">${i.category}</span><span>${i.date}</span><span>${i.read_time_minutes} min</span></div>
+<div class="it">${i.title}</div><div class="is">${i.summary.slice(0,120)}...</div></div>`).join('')}
+</div></div></div></div>`;
+const rd=d.risk_distribution,ctx=$('rc');if(ctx)CH.r=new Chart(ctx,{type:'bar',data:{labels:Object.keys(rd).map(r=>'Risk '+r),datasets:[{data:Object.values(rd),backgroundColor:'rgba(59,130,246,.5)',borderColor:'rgba(59,130,246,.8)',borderWidth:1,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{color:'#64748b',stepSize:1},grid:{color:'#1e293b'}},x:{ticks:{color:'#64748b'},grid:{display:false}}}}})
+}
+
+function pId(n){return n.toLowerCase().replace(/ investors/,'').replace(/ /g,'-')}
+function catB(c){return c==='Weekly Commentary'?'b-green':c==='Regulatory'?'b-amber':'b-blue'}
+function riskB(r){return r<=3?'b-green':r<=5?'b-blue':r<=7?'b-amber':'b-red'}
+
+// Selection
+async function rSel(el){
+const f=await F('/api/selection/filters'),d=await F('/api/selection/mps?risk_min=1&risk_max=10');
+if(!f||!d){el.innerHTML='<p>Failed to load</p>';return}
+el.innerHTML=`<div class="fi"><div class="ph1"><h1>MPS Selection</h1><p>Filter the MPS universe to find solutions relevant for your firm</p></div>
+<div class="filter-bar">
+<div class="fg"><span class="fl">Platform</span><select id="fp" onchange="flt()"><option value="">All</option>${f.platforms.map(p=>`<option>${p}</option>`).join('')}</select></div>
+<div class="fg"><span class="fl">Provider</span><select id="fv" onchange="flt()"><option value="">All</option>${f.providers.map(p=>`<option>${p}</option>`).join('')}</select></div>
+<div class="fg"><span class="fl">Risk Min</span><select id="fn" onchange="flt()">${[1,2,3,4,5,6,7,8,9,10].map(r=>`<option ${r===1?'selected':''}>${r}</option>`).join('')}</select></div>
+<div class="fg"><span class="fl">Risk Max</span><select id="fx" onchange="flt()">${[1,2,3,4,5,6,7,8,9,10].map(r=>`<option ${r===10?'selected':''}>${r}</option>`).join('')}</select></div>
+<div class="fg"><span class="fl">ESG Only</span><select id="fe" onchange="flt()"><option value="">No</option><option value="true">Yes</option></select></div>
+<div class="fg" style="align-self:flex-end"><button class="btn btn-g btn-sm" onclick="rflt()">Reset</button></div>
+</div>
+<div class="card"><div class="card-h"><span class="card-t" id="mc">${d.count} MPS Solutions</span></div>
+<div style="padding:0"><div class="table-wrap"><table><thead><tr><th>Portfolio</th><th>Provider</th><th>Risk</th><th>Allocation</th><th>OCF</th><th>1yr</th><th>3yr</th><th>Vol</th><th>Sharpe</th><th>Platforms</th></tr></thead>
+<tbody id="mt">${mRows(d.mps)}</tbody></table></div></div></div></div>`}
+
+function mRows(mps){return mps.map(m=>`<tr class="cr" onclick="nav('mps',{id:'${m.id}'})">
+<td class="nc">${m.name}</td><td>${m.provider}</td>
+<td><span class="badge ${riskB(m.risk_rating)}">${m.risk_rating} · ${m.risk_label}</span></td>
+<td><div class="ab" style="width:100px"><div class="al-eq" style="width:${m.asset_allocation.equity}%"></div><div class="al-bo" style="width:${m.asset_allocation.bonds}%"></div><div class="al-al" style="width:${m.asset_allocation.alternatives}%"></div></div></td>
+<td>${m.ocf.toFixed(2)}%</td>
+<td style="color:${m.return_1yr>=0?'var(--green)':'var(--red)'}">${m.return_1yr>=0?'+':''}${m.return_1yr}%</td>
+<td style="color:var(--green)">+${m.return_3yr}%</td>
+<td>${m.volatility}%</td><td>${m.sharpe_ratio}</td>
+<td style="font-size:11px;max-width:120px;overflow:hidden;text-overflow:ellipsis">${m.platforms.join(', ')}</td></tr>`).join('')}
+
+async function flt(){
+let u=`/api/selection/mps?risk_min=${$('fn').value}&risk_max=${$('fx').value}`;
+if($('fp').value)u+=`&platforms=${$('fp').value}`;
+if($('fv').value)u+=`&providers=${$('fv').value}`;
+if($('fe').value==='true')u+='&ethical_only=true';
+delete S.c[u];const d=await F(u);if(!d)return;
+$('mc').textContent=`${d.count} MPS Solutions`;$('mt').innerHTML=mRows(d.mps)}
+
+function rflt(){$('fp').value='';$('fv').value='';$('fn').value='1';$('fx').value='10';$('fe').value='';flt()}
+
+// Analysis - Provider List
+async function rAna(el){
+const d=await F('/api/providers');if(!d){el.innerHTML='<p>Failed</p>';return}
+el.innerHTML=`<div class="fi"><div class="ph1"><h1>MPS Analysis</h1><p>Structured analytical dashboards for each approved MPS provider</p></div>
+<div class="grid g2">${d.providers.map(p=>`<div class="card" style="cursor:pointer" onclick="nav('provider',{id:'${p.id}'})">
+<div class="card-b"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+<div><div style="font-size:18px;font-weight:700;font-family:'Fraunces',serif;margin-bottom:2px">${p.name}</div>
+<div style="font-size:13px;color:var(--text-s)">${p.full_name}</div></div>
+<span class="badge b-blue">${p.investment_style}</span></div>
+<div style="font-size:13px;color:var(--text-s);line-height:1.6;margin-bottom:16px">${p.description.slice(0,160)}...</div>
+<div style="display:flex;gap:20px;font-size:12px">
+<div><span style="color:var(--text-m)">AUM </span><strong>£${p.aum_bn}bn</strong></div>
+<div><span style="color:var(--text-m)">Portfolios </span><strong>${p.portfolio_count}</strong></div>
+<div><span style="color:var(--text-m)">Risk </span><strong>${p.risk_range}</strong></div>
+<div><span style="color:var(--text-m)">OCF </span><strong>${p.ocf_range}</strong></div>
+</div></div></div>`).join('')}</div></div>`}
+
+// Provider Detail
+async function rProv(el){
+const id=S.pr?.id;if(!id){nav('analysis');return}
+const d=await F(`/api/providers/${id}`);if(!d){el.innerHTML='<p>Not found</p>';return}
+const p=d.provider,pts=d.portfolios,a=d.analytics;
+el.innerHTML=`<div class="fi"><div class="back" onclick="nav('analysis')">← Back to Providers</div>
+<div class="ph"><div style="display:flex;justify-content:space-between;align-items:flex-start">
+<div><div class="pn">${p.name}</div><div style="color:var(--text-s);font-size:14px;margin-bottom:16px">${p.full_name} · ${p.investment_style}</div></div>
+<span class="badge b-green">${p.regulatory_status}</span></div>
+<p style="font-size:14px;color:var(--text-s);line-height:1.6;margin-bottom:20px;max-width:700px">${p.description}</p>
+<div class="pm">
+<div class="pmi"><span class="pml">AUM</span><span class="pmv">£${p.aum_bn}bn</span></div>
+<div class="pmi"><span class="pml">Established</span><span class="pmv">${p.established}</span></div>
+<div class="pmi"><span class="pml">HQ</span><span class="pmv">${p.headquarters}</span></div>
+<div class="pmi"><span class="pml">Avg OCF</span><span class="pmv">${a.avg_ocf}%</span></div>
+<div class="pmi"><span class="pml">Avg 1yr</span><span class="pmv" style="color:var(--green)">+${a.avg_return_1yr}%</span></div>
+<div class="pmi"><span class="pml">Platforms</span><span class="pmv">${a.platform_count}</span></div>
+</div></div>
+<div class="tabs"><div class="tab active" onclick="sTab(this,'ov')">Overview</div><div class="tab" onclick="sTab(this,'sc')">Strengths & Considerations</div></div>
+<div id="tc">
+<div class="grid g2" style="margin-bottom:24px">
+<div class="card"><div class="card-h"><span class="card-t">Asset Allocation</span></div><div class="card-b"><div class="cc" style="height:240px"><canvas id="ac"></canvas></div></div></div>
+<div class="card"><div class="card-h"><span class="card-t">Risk vs Return (3yr)</span></div><div class="card-b"><div class="cc" style="height:240px"><canvas id="rrc"></canvas></div></div></div>
+</div>
+<div class="card"><div class="card-h"><span class="card-t">Portfolio Range</span></div>
+<div style="padding:0"><table><thead><tr><th>Portfolio</th><th>Risk</th><th>Equity</th><th>Bonds</th><th>Alts</th><th>OCF</th><th>1yr</th><th>3yr</th><th>5yr</th><th>Vol</th><th>Sharpe</th></tr></thead>
+<tbody>${pts.map(m=>`<tr class="cr" onclick="nav('mps',{id:'${m.id}'})"><td class="nc">${m.name}</td><td><span class="badge ${riskB(m.risk_rating)}">${m.risk_rating}</span></td>
+<td>${m.asset_allocation.equity}%</td><td>${m.asset_allocation.bonds}%</td><td>${m.asset_allocation.alternatives}%</td>
+<td>${m.ocf.toFixed(2)}%</td><td style="color:var(--green)">+${m.return_1yr}%</td><td style="color:var(--green)">+${m.return_3yr}%</td><td style="color:var(--green)">+${m.return_5yr}%</td>
+<td>${m.volatility}%</td><td>${m.sharpe_ratio}</td></tr>`).join('')}</tbody></table></div></div>
+</div></div>`;
+setTimeout(()=>{
+const ac=$('ac');if(ac)CH.ac=new Chart(ac,{type:'bar',data:{labels:pts.map(p=>p.name.replace(d.provider.name+' ','').replace('Vanguard LifeStrategy ','LS ').replace('Passive ','')),datasets:[{label:'Equity',data:pts.map(p=>p.asset_allocation.equity),backgroundColor:'rgba(59,130,246,.7)'},{label:'Bonds',data:pts.map(p=>p.asset_allocation.bonds),backgroundColor:'rgba(16,185,129,.7)'},{label:'Alts',data:pts.map(p=>p.asset_allocation.alternatives),backgroundColor:'rgba(139,92,246,.7)'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{size:11}}}},scales:{x:{stacked:true,ticks:{color:'#64748b',font:{size:10}},grid:{display:false}},y:{stacked:true,ticks:{color:'#64748b'},grid:{color:'#1e293b'},max:100}}}});
+const rr=$('rrc');if(rr)CH.rr=new Chart(rr,{type:'scatter',data:{datasets:[{data:pts.map(p=>({x:p.volatility,y:p.return_3yr})),backgroundColor:'rgba(59,130,246,.8)',pointRadius:8,pointHoverRadius:10}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const pp=pts[ctx.dataIndex];return`${pp.name}: Vol ${pp.volatility}%, Ret ${pp.return_3yr}%`}}}},scales:{x:{title:{display:true,text:'Volatility (%)',color:'#64748b'},ticks:{color:'#64748b'},grid:{color:'#1e293b'}},y:{title:{display:true,text:'3yr Return (%)',color:'#64748b'},ticks:{color:'#64748b'},grid:{color:'#1e293b'}}}}});
+},100);
+S._provData=d}
+
+function sTab(el,tab){
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+const tc=$('tc'),d=S._provData;if(!d)return;const p=d.provider,pts=d.portfolios,a=d.analytics;
+if(tab==='sc'){
+tc.innerHTML=`<div class="grid g2"><div class="card"><div class="card-h"><span class="card-t">Strengths</span></div><div class="card-b"><ul class="slist">${p.strengths.map(s=>`<li>${s}</li>`).join('')}</ul></div></div>
+<div class="card"><div class="card-h"><span class="card-t">Considerations</span></div><div class="card-b"><ul class="clist">${p.considerations.map(c=>`<li>${c}</li>`).join('')}</ul></div></div></div>
+<div class="card" style="margin-top:20px"><div class="card-h"><span class="card-t">Key Personnel</span></div><div class="card-b" style="padding:0"><table><thead><tr><th>Name</th><th>Role</th></tr></thead><tbody>
+${p.key_personnel.map(k=>`<tr><td class="nc">${k.name}</td><td>${k.role}</td></tr>`).join('')}</tbody></table></div></div>`}
+else{nav('provider',S.pr)}}
+
+// MPS Detail
+async function rMPS(el){
+const id=S.pr?.id;if(!id){nav('selection');return}
+const d=await F(`/api/mps/${id}`);if(!d){el.innerHTML='<p>Not found</p>';return}
+const m=d.mps,p=d.provider,h=d.performance_history,pc=d.peer_comparison;
+const aa=m.asset_allocation,ga=m.geographic_allocation;
+el.innerHTML=`<div class="fi"><div class="back" onclick="nav('selection')">← Back to Selection</div>
+<div class="ph"><div style="display:flex;justify-content:space-between;align-items:flex-start">
+<div><div class="pn">${m.name}</div><div style="color:var(--text-s);font-size:14px;margin-bottom:16px">${m.provider} · <span class="badge ${riskB(m.risk_rating)}">Risk ${m.risk_rating} · ${m.risk_label}</span></div></div></div>
+<div class="pm">
+<div class="pmi"><span class="pml">OCF</span><span class="pmv">${m.ocf.toFixed(2)}%</span></div>
+<div class="pmi"><span class="pml">1yr Return</span><span class="pmv" style="color:var(--green)">+${m.return_1yr}%</span></div>
+<div class="pmi"><span class="pml">3yr Return</span><span class="pmv" style="color:var(--green)">+${m.return_3yr}%</span></div>
+<div class="pmi"><span class="pml">5yr Return</span><span class="pmv" style="color:var(--green)">+${m.return_5yr}%</span></div>
+<div class="pmi"><span class="pml">Volatility</span><span class="pmv">${m.volatility}%</span></div>
+<div class="pmi"><span class="pml">Sharpe</span><span class="pmv">${m.sharpe_ratio}</span></div>
+<div class="pmi"><span class="pml">Max Drawdown</span><span class="pmv" style="color:var(--red)">${m.max_drawdown}%</span></div>
+<div class="pmi"><span class="pml">Yield</span><span class="pmv">${m.income_yield}%</span></div>
+</div></div>
+<div class="grid g2" style="margin-bottom:24px">
+<div class="card"><div class="card-h"><span class="card-t">Performance History (36m)</span></div><div class="card-b"><div class="cc" style="height:260px"><canvas id="perf"></canvas></div></div></div>
+<div class="card"><div class="card-h"><span class="card-t">Asset Allocation</span></div><div class="card-b"><div class="cc" style="height:260px"><canvas id="aac"></canvas></div></div></div>
+</div>
+<div class="grid g2" style="margin-bottom:24px">
+<div class="card"><div class="card-h"><span class="card-t">Geographic Allocation</span></div><div class="card-b"><div class="cc" style="height:240px"><canvas id="geo"></canvas></div></div></div>
+<div class="card"><div class="card-h"><span class="card-t">Underlying Funds</span></div><div class="card-b" style="padding:0"><table><thead><tr><th>Fund</th><th>Weight</th><th>Type</th></tr></thead><tbody>
+${m.underlying_funds.map(f=>`<tr><td class="nc">${f.name}</td><td>${f.weight}%</td><td><span class="badge ${f.type==='Equity'?'b-blue':f.type==='Bond'?'b-green':'b-purple'}">${f.type}</span></td></tr>`).join('')}</tbody></table></div></div>
+</div>
+<div class="card" style="margin-bottom:24px"><div class="card-h"><span class="card-t">Peer Comparison (Risk ${m.risk_rating})</span></div>
+<div style="padding:0"><table><thead><tr><th>Portfolio</th><th>Provider</th><th>OCF</th><th>1yr</th><th>3yr</th><th>Vol</th><th>Sharpe</th></tr></thead><tbody>
+<tr style="background:var(--accent-g)"><td class="nc">${m.name}</td><td>${m.provider}</td><td>${m.ocf.toFixed(2)}%</td><td style="color:var(--green)">+${m.return_1yr}%</td><td style="color:var(--green)">+${m.return_3yr}%</td><td>${m.volatility}%</td><td>${m.sharpe_ratio}</td></tr>
+${pc.peers.map(pe=>`<tr><td class="nc">${pe.name}</td><td>${pe.provider}</td><td>${pe.ocf.toFixed(2)}%</td><td style="color:var(--green)">+${pe.return_1yr}%</td><td style="color:var(--green)">+${pe.return_3yr}%</td><td>${pe.volatility}%</td><td>${pe.sharpe_ratio}</td></tr>`).join('')}
+</tbody></table></div></div>
+<div class="card"><div class="card-h"><span class="card-t">Portfolio Details</span></div><div class="card-b">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;font-size:13px">
+<div><span style="color:var(--text-m)">Rebalancing:</span> ${m.rebalancing}</div>
+<div><span style="color:var(--text-m)">Min Investment:</span> £${m.min_investment.toLocaleString()}</div>
+<div><span style="color:var(--text-m)">Inception:</span> ${m.inception_date}</div>
+<div><span style="color:var(--text-m)">Benchmark:</span> ${m.benchmark}</div>
+<div><span style="color:var(--text-m)">ESG:</span> ${m.ethical?'Yes':'No'}</div>
+<div><span style="color:var(--text-m)">Decumulation:</span> ${m.decumulation_suitable?'Suitable':'Not recommended'}</div>
+<div><span style="color:var(--text-m)">Time Horizons:</span> ${m.time_horizons.join(', ')}</div>
+<div><span style="color:var(--text-m)">Platforms:</span> ${m.platforms.join(', ')}</div>
+<div><span style="color:var(--text-m)">YTD:</span> <span style="color:var(--green)">+${m.return_ytd}%</span></div>
+</div></div></div></div>`;
+setTimeout(()=>{
+const pf=$('perf');if(pf&&h.length)CH.pf=new Chart(pf,{type:'line',data:{labels:h.map(x=>x.date.slice(0,7)),datasets:[{label:'Value (rebased 100)',data:h.map(x=>x.value),borderColor:'rgba(59,130,246,1)',backgroundColor:'rgba(59,130,246,.1)',fill:true,tension:.3,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#64748b',maxTicksLimit:8},grid:{display:false}},y:{ticks:{color:'#64748b'},grid:{color:'#1e293b'}}}}});
+const ac=$('aac');if(ac)CH.aa=new Chart(ac,{type:'doughnut',data:{labels:['Equity','Bonds','Alternatives','Cash'],datasets:[{data:[aa.equity,aa.bonds,aa.alternatives,aa.cash||0],backgroundColor:['rgba(59,130,246,.8)','rgba(16,185,129,.8)','rgba(139,92,246,.8)','rgba(100,116,139,.8)'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{size:11}}}}}});
+if(ga){const gc=$('geo');if(gc)CH.geo=new Chart(gc,{type:'bar',data:{labels:Object.keys(ga).map(k=>k.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())),datasets:[{data:Object.values(ga),backgroundColor:'rgba(59,130,246,.5)',borderColor:'rgba(59,130,246,.8)',borderWidth:1,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#64748b'},grid:{color:'#1e293b'}},y:{ticks:{color:'#64748b'},grid:{display:false}}}}})}
+},100)}
+
+// Insights
+async function rIns(el){
+const d=await F('/api/insights');if(!d){el.innerHTML='<p>Failed</p>';return}
+el.innerHTML=`<div class="fi"><div class="ph1"><h1>Insights</h1><p>Weekly commentary, thematic analysis, and regulatory updates</p></div>
+<div class="filter-bar" style="margin-bottom:24px">
+<div class="fg"><span class="fl">Category</span><select id="ic" onchange="fIns()"><option value="">All</option>${d.categories.map(c=>`<option>${c}</option>`).join('')}</select></div>
+</div>
+<div class="grid g2" id="il">${insCards(d.insights)}</div></div>`}
+
+function insCards(ins){return ins.map(i=>`<div class="insight-card" onclick="nav('insight',{id:'${i.id}'})">
+<div class="im"><span class="badge ${catB(i.category)}">${i.category}</span><span>${i.date}</span><span>${i.read_time_minutes} min read</span></div>
+<div class="it">${i.title}</div><div class="is">${i.summary}</div></div>`).join('')}
+
+async function fIns(){const c=$('ic').value;let u='/api/insights';if(c)u+=`?category=${encodeURIComponent(c)}`;delete S.c[u];const d=await F(u);if(d)$('il').innerHTML=insCards(d.insights)}
+
+// Insight Detail
+async function rInsD(el){
+const id=S.pr?.id;if(!id){nav('insights');return}
+const d=await F(`/api/insights/${id}`);if(!d){el.innerHTML='<p>Not found</p>';return}
+const i=d.insight;
+el.innerHTML=`<div class="fi"><div class="back" onclick="nav('insights')">← Back to Insights</div>
+<div style="margin-bottom:24px"><div class="im"><span class="badge ${catB(i.category)}">${i.category}</span><span>${i.date}</span><span>${i.read_time_minutes} min read</span><span>By ${i.author}</span></div>
+<h1 style="font-family:'Fraunces',serif;font-size:26px;font-weight:700;letter-spacing:-.5px;line-height:1.3;margin-bottom:8px">${i.title}</h1>
+<p style="font-size:15px;color:var(--text-s);line-height:1.5">${i.summary}</p></div>
+<div class="article">${i.content.split('\n\n').map(p=>{
+if(p.startsWith('**')&&p.endsWith('**'))return`<h3 style="color:var(--text);font-size:16px;margin:20px 0 8px">${p.replace(/\*\*/g,'')}</h3>`;
+return`<p>${p.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</p>`}).join('')}</div>
+<div style="margin-top:24px;display:flex;gap:8px;flex-wrap:wrap">${i.tags.map(t=>`<span class="badge b-blue">${t}</span>`).join('')}</div></div>`}
+
+// Init
+render();
+</script>
+</body>
+</html>
