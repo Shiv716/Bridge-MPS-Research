@@ -16,7 +16,7 @@
 
 Bridge is a B2B SaaS platform for UK financial adviser firms that outsource client investments to Model Portfolio Service (MPS) providers.
 
-The UK MPS market is approximately **£150bn in assets** and continues to grow. Adviser firms need independent, specialist oversight of these portfolios — Bridge provides that in a structured, scalable format.
+The UK MPS market is approximately **£150bn in assets** and continues to grow. Adviser firms need independent, specialist oversight of these portfolios, Bridge provides that in a structured, scalable format.
 
 Bridge enables adviser firms to:
 
