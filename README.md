@@ -2,7 +2,7 @@
 
 **Independent MPS Research & Oversight Platform**
 
-Bridge is a B2B SaaS platform for UK financial adviser firms that outsource client investments to Model Portfolio Service (MPS) providers. It provides independent, specialist investment research and oversight in a structured, scalable format — enabling adviser firms to save time, improve portfolio selection and monitoring quality, and satisfy Consumer Duty and regulatory requirements.
+Bridge is a B2B SaaS platform for UK financial adviser firms that outsource client investments to Model Portfolio Service (MPS) providers. It provides independent, specialist investment research and oversight in a structured, scalable format, enabling adviser firms to save time, improve portfolio selection and monitoring quality, and satisfy Consumer Duty and regulatory requirements.
 
 ---
 
@@ -67,7 +67,7 @@ Research content for adviser firms:
 
 ## Target Users
 
-**Primary:** UK financial adviser firms that outsource to MPS providers — particularly centralised investment proposition teams and oversight/governance committees.
+**Primary:** UK financial adviser firms that outsource to MPS providers, particularly centralised investment proposition teams and oversight/governance committees.
 
 **Future:** Firms using Multi Asset Funds, firms managing investments in-house, asset managers and distribution teams.
 
