@@ -38,7 +38,7 @@ UK financial advisers increasingly outsource client investments to MPS providers
 - Advisers often rely on **provider-produced material** or basic data comparisons
 - There is **no standardised, specialist oversight layer** available at scale
 
-Bridge exists to close this gap — delivering institutional-grade analytical depth through software.
+Bridge exists to close this gap, delivering institutional-grade analytical depth through software.
 
 ---
 
