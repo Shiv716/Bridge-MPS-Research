@@ -1,0 +1,4163 @@
+{
+  "mps": [
+    {
+      "id": "quilter-ws-active-3",
+      "name": "Quilter WealthSelect Active Managed 3",
+      "provider": "Quilter Investors",
+      "risk_rating": 3,
+      "risk_label": "Risk 3",
+      "asset_allocation": {
+        "equity": 20.4,
+        "bonds": 52.0,
+        "alternatives": 14.5,
+        "cash": 13.1
+      },
+      "geographic_allocation": {
+        "asia_ex_japan": 1.15,
+        "emerging_markets": 1.65,
+        "europe_ex_uk": 3.21,
+        "global": 1.08,
+        "japan": 1.4,
+        "thematic": 1.47,
+        "uk": 4.94,
+        "us": 5.5
+      },
+      "fixed_income_breakdown": {
+        "euro_govt": 2.36,
+        "global_aggregate": 18.79,
+        "global_corporate": 5.84,
+        "global_govt": 9.19,
+        "uk_corporate": 6.2,
+        "uk_govt": 9.61
+      },
+      "ocf": 0.6,
+      "cost_breakdown": {
+        "dfm": 0.15,
+        "underlying": 0.45,
+        "all_in": 0.6
+      },
+      "return_1yr": 9.48,
+      "return_3yr": 7.46,
+      "return_5yr": 3.8,
+      "return_10yr": 4.39,
+      "return_ytd": 9.48,
+      "return_1m": 0.59,
+      "return_3m": 2.59,
+      "return_6m": 5.37,
+      "calendar_returns": {
+        "2016": 6.97,
+        "2017": 6.05,
+        "2018": -3.16,
+        "2019": 9.81,
+        "2020": 5.67,
+        "2021": 3.4,
+        "2022": -6.09,
+        "2023": 7.2,
+        "2024": 5.73,
+        "2025": 9.48,
+        "YTD": 9.48
+      },
+      "trailing_returns": {
+        "1M": 0.59,
+        "3M": 2.59,
+        "6M": 5.37,
+        "YTD": 9.48,
+        "1Y": 9.48,
+        "3Y": 7.46,
+        "5Y": 3.8,
+        "10Y": 4.39
+      },
+      "rebalancing": "Quarterly",
+      "min_investment": 0,
+      "platforms": [
+        "AJ Bell Investcentre",
+        "Fidelity Adviser Solutions",
+        "M&G Wealth",
+        "Morningstar Wealth",
+        "Parmenion",
+        "Quilter",
+        "Transact"
+      ],
+      "ethical": false,
+      "decumulation_suitable": true,
+      "time_horizons": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "underlying_funds": [
+        {
+          "name": "BlackRock LEAF",
+          "isin": "IE000MOL6BV3",
+          "weight": 13.13,
+          "type": "Cash",
+          "sub_type": "Cash"
+        },
+        {
+          "name": "Aviva Global Sovereign Bond",
+          "isin": "LU2255680576",
+          "weight": 9.19,
+          "type": "Fixed Income",
+          "sub_type": "Global Govt"
+        },
+        {
+          "name": "iShares UK Gilt All Stocks Index",
+          "isin": "GB00BN08ZS73",
+          "weight": 8.11,
+          "type": "Fixed Income",
+          "sub_type": "UK Govt"
+        },
+        {
+          "name": "Pimco Dynamic Bond",
+          "isin": "IE00B4W0NH34",
+          "weight": 5.92,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Corporate Bond",
+          "isin": "GB00BD9MP466",
+          "weight": 5.84,
+          "type": "Fixed Income",
+          "sub_type": "Global Corporate"
+        },
+        {
+          "name": "QI Absolute Return Bond",
+          "isin": "GB00BD2PF085",
+          "weight": 5.61,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI GEAR",
+          "isin": "GB00BG371T53",
+          "weight": 5.2,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Diversified Bond",
+          "isin": "GB00BD9MP573",
+          "weight": 5.08,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Sterling Diversified Bond",
+          "isin": "GB00B758PM41",
+          "weight": 4.45,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Dynamic Bond",
+          "isin": "GB00BNG58V62",
+          "weight": 3.34,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Investment Grade Corporate Bond",
+          "isin": "GB00B98VPX53",
+          "weight": 3.12,
+          "type": "Fixed Income",
+          "sub_type": "UK Corporate"
+        },
+        {
+          "name": "QI Sterling Corporate Bond",
+          "isin": "GB00BJ38GF06",
+          "weight": 3.08,
+          "type": "Fixed Income",
+          "sub_type": "UK Corporate"
+        },
+        {
+          "name": "Vanguard Euro Government Bond Index",
+          "isin": "IE00BK6S3N13",
+          "weight": 2.36,
+          "type": "Fixed Income",
+          "sub_type": "Euro Govt"
+        },
+        {
+          "name": "QI Absolute Return Equity",
+          "isin": "GB00BQKPNF25",
+          "weight": 2.04,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI North American Equity",
+          "isin": "GB00BG371S47",
+          "weight": 1.8,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Income",
+          "isin": "GB00BZ191K76",
+          "weight": 1.8,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "Trium ESG Emissions",
+          "isin": "IE00BKDV4072",
+          "weight": 1.63,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI UK Equity Large Cap Income",
+          "isin": "GB00B9947151",
+          "weight": 1.53,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "iShares Up To 10 Years Gilts Index",
+          "isin": "GB00BN091D72",
+          "weight": 1.5,
+          "type": "Fixed Income",
+          "sub_type": "UK Govt"
+        },
+        {
+          "name": "QI Japanese Equity",
+          "isin": "GB00B88BTC50",
+          "weight": 1.4,
+          "type": "Equity",
+          "sub_type": "Japan"
+        },
+        {
+          "name": "QI UK Equity Opportunities",
+          "isin": "GB00B7J9FJ04",
+          "weight": 1.36,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI UK Equity",
+          "isin": "GB00BFWK8976",
+          "weight": 1.31,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity",
+          "isin": "GB00B8L0QW80",
+          "weight": 1.29,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Global Equity Value",
+          "isin": "GB00B8SFP856",
+          "weight": 1.08,
+          "type": "Equity",
+          "sub_type": "Global"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Growth",
+          "isin": "GB00B98WPN88",
+          "weight": 0.96,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Income",
+          "isin": "GB00BD4HJ668",
+          "weight": 0.96,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Precious Metals Equity",
+          "isin": "GB00B98Y2S82",
+          "weight": 0.9,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI UK Equity Growth",
+          "isin": "GB00B98Y6K86",
+          "weight": 0.74,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI US Equity Small/Mid Cap ",
+          "isin": "GB00B98WR877",
+          "weight": 0.66,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "iShares North American Equity Index",
+          "isin": "GB00BN08ZH68",
+          "weight": 0.63,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Growth Fund",
+          "isin": "GB00B994K388",
+          "weight": 0.61,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Emerging Markets Equity Income",
+          "isin": "GB00BZ191L83",
+          "weight": 0.59,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Equity",
+          "isin": "GB00B8KPPJ41",
+          "weight": 0.53,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Emerging Markets Equity Growth",
+          "isin": "GB00B98XS329",
+          "weight": 0.53,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Large Cap Equity",
+          "isin": "GB00B98ZM814",
+          "weight": 0.5,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Emerging Markets Equity",
+          "isin": "GB00BZ191N08",
+          "weight": 0.37,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Natural Resources",
+          "isin": "GB00B7Y0MP39",
+          "weight": 0.3,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Timber",
+          "isin": "GB00BPLDZ184",
+          "weight": 0.27,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI China Equity",
+          "isin": "GB00B990Y346",
+          "weight": 0.16,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific",
+          "isin": "GB00BG371R30",
+          "weight": 0.12,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        }
+      ],
+      "inception_date": "2014-02-24"
+    },
+    {
+      "id": "quilter-ws-active-4",
+      "name": "Quilter WealthSelect Active Managed 4",
+      "provider": "Quilter Investors",
+      "risk_rating": 4,
+      "risk_label": "Risk 4",
+      "asset_allocation": {
+        "equity": 33.3,
+        "bonds": 42.8,
+        "alternatives": 15.8,
+        "cash": 8.1
+      },
+      "geographic_allocation": {
+        "asia_ex_japan": 1.89,
+        "emerging_markets": 2.7,
+        "europe_ex_uk": 5.24,
+        "global": 1.77,
+        "japan": 2.28,
+        "thematic": 2.39,
+        "uk": 8.07,
+        "us": 8.98
+      },
+      "fixed_income_breakdown": {
+        "euro_govt": 1.86,
+        "global_aggregate": 16.62,
+        "global_corporate": 4.61,
+        "global_govt": 7.24,
+        "uk_corporate": 4.89,
+        "uk_govt": 7.59
+      },
+      "ocf": 0.67,
+      "cost_breakdown": {
+        "dfm": 0.15,
+        "underlying": 0.52,
+        "all_in": 0.67
+      },
+      "return_1yr": 11.42,
+      "return_3yr": 8.5,
+      "return_5yr": 4.82,
+      "return_10yr": 5.27,
+      "return_ytd": 11.42,
+      "return_1m": 0.76,
+      "return_3m": 3.13,
+      "return_6m": 6.98,
+      "calendar_returns": {
+        "2016": 8.54,
+        "2017": 7.18,
+        "2018": -3.71,
+        "2019": 11.27,
+        "2020": 5.93,
+        "2021": 4.95,
+        "2022": -5.62,
+        "2023": 7.61,
+        "2024": 6.54,
+        "2025": 11.42,
+        "YTD": 11.42
+      },
+      "trailing_returns": {
+        "1M": 0.76,
+        "3M": 3.13,
+        "6M": 6.98,
+        "YTD": 11.42,
+        "1Y": 11.42,
+        "3Y": 8.5,
+        "5Y": 4.82,
+        "10Y": 5.27
+      },
+      "rebalancing": "Quarterly",
+      "min_investment": 0,
+      "platforms": [
+        "AJ Bell Investcentre",
+        "Fidelity Adviser Solutions",
+        "M&G Wealth",
+        "Morningstar Wealth",
+        "Parmenion",
+        "Quilter",
+        "Transact"
+      ],
+      "ethical": false,
+      "decumulation_suitable": true,
+      "time_horizons": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "underlying_funds": [
+        {
+          "name": "BlackRock LEAF",
+          "isin": "IE000MOL6BV3",
+          "weight": 8.08,
+          "type": "Cash",
+          "sub_type": "Cash"
+        },
+        {
+          "name": "Aviva Global Sovereign Bond",
+          "isin": "LU2255680576",
+          "weight": 7.24,
+          "type": "Fixed Income",
+          "sub_type": "Global Govt"
+        },
+        {
+          "name": "Pimco Dynamic Bond",
+          "isin": "IE00B4W0NH34",
+          "weight": 6.45,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "iShares UK Gilt All Stocks Index",
+          "isin": "GB00BN08ZS73",
+          "weight": 6.4,
+          "type": "Fixed Income",
+          "sub_type": "UK Govt"
+        },
+        {
+          "name": "QI Absolute Return Bond",
+          "isin": "GB00BD2PF085",
+          "weight": 6.12,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI GEAR",
+          "isin": "GB00BG371T53",
+          "weight": 5.67,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Corporate Bond",
+          "isin": "GB00BD9MP466",
+          "weight": 4.61,
+          "type": "Fixed Income",
+          "sub_type": "Global Corporate"
+        },
+        {
+          "name": "QI Diversified Bond",
+          "isin": "GB00BD9MP573",
+          "weight": 4.01,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Sterling Diversified Bond",
+          "isin": "GB00B758PM41",
+          "weight": 3.52,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI North American Equity",
+          "isin": "GB00BG371S47",
+          "weight": 2.94,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Income",
+          "isin": "GB00BZ191K76",
+          "weight": 2.94,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Dynamic Bond",
+          "isin": "GB00BNG58V62",
+          "weight": 2.64,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI UK Equity Large Cap Income",
+          "isin": "GB00B9947151",
+          "weight": 2.5,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Investment Grade Corporate Bond",
+          "isin": "GB00B98VPX53",
+          "weight": 2.46,
+          "type": "Fixed Income",
+          "sub_type": "UK Corporate"
+        },
+        {
+          "name": "QI Sterling Corporate Bond",
+          "isin": "GB00BJ38GF06",
+          "weight": 2.43,
+          "type": "Fixed Income",
+          "sub_type": "UK Corporate"
+        },
+        {
+          "name": "QI Japanese Equity",
+          "isin": "GB00B88BTC50",
+          "weight": 2.28,
+          "type": "Equity",
+          "sub_type": "Japan"
+        },
+        {
+          "name": "QI Absolute Return Equity",
+          "isin": "GB00BQKPNF25",
+          "weight": 2.22,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI UK Equity Opportunities",
+          "isin": "GB00B7J9FJ04",
+          "weight": 2.22,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI UK Equity",
+          "isin": "GB00BFWK8976",
+          "weight": 2.14,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity",
+          "isin": "GB00B8L0QW80",
+          "weight": 2.1,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "Vanguard Euro Government Bond Index",
+          "isin": "IE00BK6S3N13",
+          "weight": 1.86,
+          "type": "Fixed Income",
+          "sub_type": "Euro Govt"
+        },
+        {
+          "name": "Trium ESG Emissions",
+          "isin": "IE00BKDV4072",
+          "weight": 1.78,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Global Equity Value",
+          "isin": "GB00B8SFP856",
+          "weight": 1.77,
+          "type": "Equity",
+          "sub_type": "Global"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Growth",
+          "isin": "GB00B98WPN88",
+          "weight": 1.57,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Income",
+          "isin": "GB00BD4HJ668",
+          "weight": 1.57,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Precious Metals Equity",
+          "isin": "GB00B98Y2S82",
+          "weight": 1.46,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI UK Equity Growth",
+          "isin": "GB00B98Y6K86",
+          "weight": 1.21,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "iShares Up To 10 Years Gilts Index",
+          "isin": "GB00BN091D72",
+          "weight": 1.19,
+          "type": "Fixed Income",
+          "sub_type": "UK Govt"
+        },
+        {
+          "name": "QI US Equity Small/Mid Cap ",
+          "isin": "GB00B98WR877",
+          "weight": 1.08,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "iShares North American Equity Index",
+          "isin": "GB00BN08ZH68",
+          "weight": 1.03,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Growth Fund",
+          "isin": "GB00B994K388",
+          "weight": 0.99,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Emerging Markets Equity Income",
+          "isin": "GB00BZ191L83",
+          "weight": 0.97,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Equity",
+          "isin": "GB00B8KPPJ41",
+          "weight": 0.88,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Emerging Markets Equity Growth",
+          "isin": "GB00B98XS329",
+          "weight": 0.86,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Large Cap Equity",
+          "isin": "GB00B98ZM814",
+          "weight": 0.82,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Emerging Markets Equity",
+          "isin": "GB00BZ191N08",
+          "weight": 0.61,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Natural Resources",
+          "isin": "GB00B7Y0MP39",
+          "weight": 0.49,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Timber",
+          "isin": "GB00BPLDZ184",
+          "weight": 0.44,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI China Equity",
+          "isin": "GB00B990Y346",
+          "weight": 0.26,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific",
+          "isin": "GB00BG371R30",
+          "weight": 0.19,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        }
+      ],
+      "inception_date": "2014-02-24"
+    },
+    {
+      "id": "quilter-ws-active-5",
+      "name": "Quilter WealthSelect Active Managed 5",
+      "provider": "Quilter Investors",
+      "risk_rating": 5,
+      "risk_label": "Risk 5",
+      "asset_allocation": {
+        "equity": 45.5,
+        "bonds": 34.1,
+        "alternatives": 17.8,
+        "cash": 2.6
+      },
+      "geographic_allocation": {
+        "asia_ex_japan": 2.6,
+        "emerging_markets": 3.65,
+        "europe_ex_uk": 7.17,
+        "global": 2.42,
+        "japan": 3.11,
+        "thematic": 3.27,
+        "uk": 11.02,
+        "us": 12.25
+      },
+      "fixed_income_breakdown": {
+        "euro_govt": 1.38,
+        "global_aggregate": 14.75,
+        "global_corporate": 3.4,
+        "global_govt": 5.35,
+        "uk_corporate": 3.61,
+        "uk_govt": 5.61
+      },
+      "ocf": 0.73,
+      "cost_breakdown": {
+        "dfm": 0.15,
+        "underlying": 0.58,
+        "all_in": 0.73
+      },
+      "return_1yr": 13.33,
+      "return_3yr": 9.55,
+      "return_5yr": 5.83,
+      "return_10yr": 6.11,
+      "return_ytd": 13.33,
+      "return_1m": 0.93,
+      "return_3m": 3.65,
+      "return_6m": 8.56,
+      "calendar_returns": {
+        "2016": 9.94,
+        "2017": 8.31,
+        "2018": -4.49,
+        "2019": 12.92,
+        "2020": 6.2,
+        "2021": 6.49,
+        "2022": -5.2,
+        "2023": 8.08,
+        "2024": 7.34,
+        "2025": 13.33,
+        "YTD": 13.33
+      },
+      "trailing_returns": {
+        "1M": 0.93,
+        "3M": 3.65,
+        "6M": 8.56,
+        "YTD": 13.33,
+        "1Y": 13.33,
+        "3Y": 9.55,
+        "5Y": 5.83,
+        "10Y": 6.11
+      },
+      "rebalancing": "Quarterly",
+      "min_investment": 0,
+      "platforms": [
+        "AJ Bell Investcentre",
+        "Fidelity Adviser Solutions",
+        "M&G Wealth",
+        "Morningstar Wealth",
+        "Parmenion",
+        "Quilter",
+        "Transact"
+      ],
+      "ethical": false,
+      "decumulation_suitable": true,
+      "time_horizons": [
+        "medium",
+        "long"
+      ],
+      "underlying_funds": [
+        {
+          "name": "Pimco Dynamic Bond",
+          "isin": "IE00B4W0NH34",
+          "weight": 7.24,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Absolute Return Bond",
+          "isin": "GB00BD2PF085",
+          "weight": 6.88,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI GEAR",
+          "isin": "GB00BG371T53",
+          "weight": 6.38,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "Aviva Global Sovereign Bond",
+          "isin": "LU2255680576",
+          "weight": 5.35,
+          "type": "Fixed Income",
+          "sub_type": "Global Govt"
+        },
+        {
+          "name": "iShares UK Gilt All Stocks Index",
+          "isin": "GB00BN08ZS73",
+          "weight": 4.73,
+          "type": "Fixed Income",
+          "sub_type": "UK Govt"
+        },
+        {
+          "name": "QI North American Equity",
+          "isin": "GB00BG371S47",
+          "weight": 4.01,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Income",
+          "isin": "GB00BZ191K76",
+          "weight": 4.01,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI UK Equity Large Cap Income",
+          "isin": "GB00B9947151",
+          "weight": 3.42,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Corporate Bond",
+          "isin": "GB00BD9MP466",
+          "weight": 3.4,
+          "type": "Fixed Income",
+          "sub_type": "Global Corporate"
+        },
+        {
+          "name": "QI Japanese Equity",
+          "isin": "GB00B88BTC50",
+          "weight": 3.11,
+          "type": "Equity",
+          "sub_type": "Japan"
+        },
+        {
+          "name": "QI UK Equity Opportunities",
+          "isin": "GB00B7J9FJ04",
+          "weight": 3.03,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Diversified Bond",
+          "isin": "GB00BD9MP573",
+          "weight": 2.96,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI UK Equity",
+          "isin": "GB00BFWK8976",
+          "weight": 2.92,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity",
+          "isin": "GB00B8L0QW80",
+          "weight": 2.87,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "BlackRock LEAF",
+          "isin": "IE000MOL6BV3",
+          "weight": 2.65,
+          "type": "Cash",
+          "sub_type": "Cash"
+        },
+        {
+          "name": "QI Sterling Diversified Bond",
+          "isin": "GB00B758PM41",
+          "weight": 2.6,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Absolute Return Equity",
+          "isin": "GB00BQKPNF25",
+          "weight": 2.5,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Global Equity Value",
+          "isin": "GB00B8SFP856",
+          "weight": 2.42,
+          "type": "Equity",
+          "sub_type": "Global"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Growth",
+          "isin": "GB00B98WPN88",
+          "weight": 2.15,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Income",
+          "isin": "GB00BD4HJ668",
+          "weight": 2.15,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "Trium ESG Emissions",
+          "isin": "IE00BKDV4072",
+          "weight": 2,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Precious Metals Equity",
+          "isin": "GB00B98Y2S82",
+          "weight": 2,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Dynamic Bond",
+          "isin": "GB00BNG58V62",
+          "weight": 1.95,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Investment Grade Corporate Bond",
+          "isin": "GB00B98VPX53",
+          "weight": 1.82,
+          "type": "Fixed Income",
+          "sub_type": "UK Corporate"
+        },
+        {
+          "name": "QI Sterling Corporate Bond",
+          "isin": "GB00BJ38GF06",
+          "weight": 1.79,
+          "type": "Fixed Income",
+          "sub_type": "UK Corporate"
+        },
+        {
+          "name": "QI UK Equity Growth",
+          "isin": "GB00B98Y6K86",
+          "weight": 1.65,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI US Equity Small/Mid Cap ",
+          "isin": "GB00B98WR877",
+          "weight": 1.47,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "iShares North American Equity Index",
+          "isin": "GB00BN08ZH68",
+          "weight": 1.41,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "Vanguard Euro Government Bond Index",
+          "isin": "IE00BK6S3N13",
+          "weight": 1.38,
+          "type": "Fixed Income",
+          "sub_type": "Euro Govt"
+        },
+        {
+          "name": "QI US Equity Growth Fund",
+          "isin": "GB00B994K388",
+          "weight": 1.35,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Emerging Markets Equity Income",
+          "isin": "GB00BZ191L83",
+          "weight": 1.31,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Equity",
+          "isin": "GB00B8KPPJ41",
+          "weight": 1.21,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Emerging Markets Equity Growth",
+          "isin": "GB00B98XS329",
+          "weight": 1.17,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Large Cap Equity",
+          "isin": "GB00B98ZM814",
+          "weight": 1.13,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "iShares Up To 10 Years Gilts Index",
+          "isin": "GB00BN091D72",
+          "weight": 0.88,
+          "type": "Fixed Income",
+          "sub_type": "UK Govt"
+        },
+        {
+          "name": "QI Emerging Markets Equity",
+          "isin": "GB00BZ191N08",
+          "weight": 0.82,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Natural Resources",
+          "isin": "GB00B7Y0MP39",
+          "weight": 0.67,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Timber",
+          "isin": "GB00BPLDZ184",
+          "weight": 0.6,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI China Equity",
+          "isin": "GB00B990Y346",
+          "weight": 0.35,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific",
+          "isin": "GB00BG371R30",
+          "weight": 0.26,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        }
+      ],
+      "inception_date": "2014-02-24"
+    },
+    {
+      "id": "quilter-ws-active-6",
+      "name": "Quilter WealthSelect Active Managed 6",
+      "provider": "Quilter Investors",
+      "risk_rating": 6,
+      "risk_label": "Risk 6",
+      "asset_allocation": {
+        "equity": 57.2,
+        "bonds": 24.7,
+        "alternatives": 17.8,
+        "cash": 0.3
+      },
+      "geographic_allocation": {
+        "asia_ex_japan": 3.25,
+        "emerging_markets": 4.61,
+        "europe_ex_uk": 9,
+        "global": 3.04,
+        "japan": 3.91,
+        "thematic": 4.1,
+        "uk": 13.86,
+        "us": 15.42
+      },
+      "fixed_income_breakdown": {
+        "euro_govt": 0.9,
+        "global_aggregate": 12.13,
+        "global_corporate": 2.21,
+        "global_govt": 3.48,
+        "uk_corporate": 2.35,
+        "uk_govt": 3.65
+      },
+      "ocf": 0.78,
+      "cost_breakdown": {
+        "dfm": 0.15,
+        "underlying": 0.63,
+        "all_in": 0.78
+      },
+      "return_1yr": 15.1,
+      "return_3yr": 10.53,
+      "return_5yr": 6.88,
+      "return_10yr": 6.92,
+      "return_ytd": 15.1,
+      "return_1m": 1.08,
+      "return_3m": 4.12,
+      "return_6m": 10.01,
+      "calendar_returns": {
+        "2016": 11.4,
+        "2017": 9.3,
+        "2018": -4.99,
+        "2019": 13.97,
+        "2020": 6.19,
+        "2021": 7.98,
+        "2022": -4.38,
+        "2023": 8.52,
+        "2024": 8.11,
+        "2025": 15.1,
+        "YTD": 15.1
+      },
+      "trailing_returns": {
+        "1M": 1.08,
+        "3M": 4.12,
+        "6M": 10.01,
+        "YTD": 15.1,
+        "1Y": 15.1,
+        "3Y": 10.53,
+        "5Y": 6.88,
+        "10Y": 6.92
+      },
+      "rebalancing": "Quarterly",
+      "min_investment": 0,
+      "platforms": [
+        "AJ Bell Investcentre",
+        "Fidelity Adviser Solutions",
+        "M&G Wealth",
+        "Morningstar Wealth",
+        "Parmenion",
+        "Quilter",
+        "Transact"
+      ],
+      "ethical": false,
+      "decumulation_suitable": false,
+      "time_horizons": [
+        "medium",
+        "long"
+      ],
+      "underlying_funds": [
+        {
+          "name": "Pimco Dynamic Bond",
+          "isin": "IE00B4W0NH34",
+          "weight": 7.24,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Absolute Return Bond",
+          "isin": "GB00BD2PF085",
+          "weight": 6.88,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI GEAR",
+          "isin": "GB00BG371T53",
+          "weight": 6.38,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI North American Equity",
+          "isin": "GB00BG371S47",
+          "weight": 5.05,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Income",
+          "isin": "GB00BZ191K76",
+          "weight": 5.05,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI UK Equity Large Cap Income",
+          "isin": "GB00B9947151",
+          "weight": 4.3,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Japanese Equity",
+          "isin": "GB00B88BTC50",
+          "weight": 3.91,
+          "type": "Equity",
+          "sub_type": "Japan"
+        },
+        {
+          "name": "QI UK Equity Opportunities",
+          "isin": "GB00B7J9FJ04",
+          "weight": 3.81,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI UK Equity",
+          "isin": "GB00BFWK8976",
+          "weight": 3.67,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity",
+          "isin": "GB00B8L0QW80",
+          "weight": 3.6,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "Aviva Global Sovereign Bond",
+          "isin": "LU2255680576",
+          "weight": 3.48,
+          "type": "Fixed Income",
+          "sub_type": "Global Govt"
+        },
+        {
+          "name": "iShares UK Gilt All Stocks Index",
+          "isin": "GB00BN08ZS73",
+          "weight": 3.08,
+          "type": "Fixed Income",
+          "sub_type": "UK Govt"
+        },
+        {
+          "name": "QI Global Equity Value",
+          "isin": "GB00B8SFP856",
+          "weight": 3.04,
+          "type": "Equity",
+          "sub_type": "Global"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Growth",
+          "isin": "GB00B98WPN88",
+          "weight": 2.7,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Income",
+          "isin": "GB00BD4HJ668",
+          "weight": 2.7,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Precious Metals Equity",
+          "isin": "GB00B98Y2S82",
+          "weight": 2.51,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Absolute Return Equity",
+          "isin": "GB00BQKPNF25",
+          "weight": 2.5,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Corporate Bond",
+          "isin": "GB00BD9MP466",
+          "weight": 2.21,
+          "type": "Fixed Income",
+          "sub_type": "Global Corporate"
+        },
+        {
+          "name": "QI UK Equity Growth",
+          "isin": "GB00B98Y6K86",
+          "weight": 2.08,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "Trium ESG Emissions",
+          "isin": "IE00BKDV4072",
+          "weight": 2,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Diversified Bond",
+          "isin": "GB00BD9MP573",
+          "weight": 1.93,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI US Equity Small/Mid Cap ",
+          "isin": "GB00B98WR877",
+          "weight": 1.85,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "iShares North American Equity Index",
+          "isin": "GB00BN08ZH68",
+          "weight": 1.77,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Growth Fund",
+          "isin": "GB00B994K388",
+          "weight": 1.7,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Sterling Diversified Bond",
+          "isin": "GB00B758PM41",
+          "weight": 1.69,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Emerging Markets Equity Income",
+          "isin": "GB00BZ191L83",
+          "weight": 1.66,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Equity",
+          "isin": "GB00B8KPPJ41",
+          "weight": 1.51,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Emerging Markets Equity Growth",
+          "isin": "GB00B98XS329",
+          "weight": 1.47,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Large Cap Equity",
+          "isin": "GB00B98ZM814",
+          "weight": 1.41,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Dynamic Bond",
+          "isin": "GB00BNG58V62",
+          "weight": 1.27,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Investment Grade Corporate Bond",
+          "isin": "GB00B98VPX53",
+          "weight": 1.18,
+          "type": "Fixed Income",
+          "sub_type": "UK Corporate"
+        },
+        {
+          "name": "QI Sterling Corporate Bond",
+          "isin": "GB00BJ38GF06",
+          "weight": 1.17,
+          "type": "Fixed Income",
+          "sub_type": "UK Corporate"
+        },
+        {
+          "name": "QI Emerging Markets Equity",
+          "isin": "GB00BZ191N08",
+          "weight": 1.04,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "Vanguard Euro Government Bond Index",
+          "isin": "IE00BK6S3N13",
+          "weight": 0.9,
+          "type": "Fixed Income",
+          "sub_type": "Euro Govt"
+        },
+        {
+          "name": "QI Natural Resources",
+          "isin": "GB00B7Y0MP39",
+          "weight": 0.84,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Timber",
+          "isin": "GB00BPLDZ184",
+          "weight": 0.75,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "iShares Up To 10 Years Gilts Index",
+          "isin": "GB00BN091D72",
+          "weight": 0.57,
+          "type": "Fixed Income",
+          "sub_type": "UK Govt"
+        },
+        {
+          "name": "QI China Equity",
+          "isin": "GB00B990Y346",
+          "weight": 0.44,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "BlackRock LEAF",
+          "isin": "IE000MOL6BV3",
+          "weight": 0.33,
+          "type": "Cash",
+          "sub_type": "Cash"
+        },
+        {
+          "name": "QI Asia Pacific",
+          "isin": "GB00BG371R30",
+          "weight": 0.33,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        }
+      ],
+      "inception_date": "2014-02-24"
+    },
+    {
+      "id": "quilter-ws-active-7",
+      "name": "Quilter WealthSelect Active Managed 7",
+      "provider": "Quilter Investors",
+      "risk_rating": 7,
+      "risk_label": "Risk 7",
+      "asset_allocation": {
+        "equity": 68.7,
+        "bonds": 14.3,
+        "alternatives": 17.0,
+        "cash": 0
+      },
+      "geographic_allocation": {
+        "asia_ex_japan": 3.91,
+        "emerging_markets": 5.52,
+        "europe_ex_uk": 10.83,
+        "global": 3.65,
+        "japan": 4.7,
+        "thematic": 4.94,
+        "uk": 16.65,
+        "us": 18.51
+      },
+      "fixed_income_breakdown": {
+        "euro_govt": 0.37,
+        "global_aggregate": 9,
+        "global_corporate": 0.93,
+        "global_govt": 1.45,
+        "uk_corporate": 0.98,
+        "uk_govt": 1.53
+      },
+      "ocf": 0.81,
+      "cost_breakdown": {
+        "dfm": 0.15,
+        "underlying": 0.66,
+        "all_in": 0.81
+      },
+      "return_1yr": 16.77,
+      "return_3yr": 11.5,
+      "return_5yr": 7.89,
+      "return_10yr": 7.75,
+      "return_ytd": 16.77,
+      "return_1m": 1.22,
+      "return_3m": 4.55,
+      "return_6m": 11.4,
+      "calendar_returns": {
+        "2016": 12.86,
+        "2017": 10.41,
+        "2018": -5.55,
+        "2019": 15.45,
+        "2020": 6.21,
+        "2021": 9.55,
+        "2022": -3.73,
+        "2023": 9.02,
+        "2024": 8.89,
+        "2025": 16.77,
+        "YTD": 16.77
+      },
+      "trailing_returns": {
+        "1M": 1.22,
+        "3M": 4.55,
+        "6M": 11.4,
+        "YTD": 16.77,
+        "1Y": 16.77,
+        "3Y": 11.5,
+        "5Y": 7.89,
+        "10Y": 7.75
+      },
+      "rebalancing": "Quarterly",
+      "min_investment": 0,
+      "platforms": [
+        "AJ Bell Investcentre",
+        "Fidelity Adviser Solutions",
+        "M&G Wealth",
+        "Morningstar Wealth",
+        "Parmenion",
+        "Quilter",
+        "Transact"
+      ],
+      "ethical": false,
+      "decumulation_suitable": false,
+      "time_horizons": [
+        "long"
+      ],
+      "underlying_funds": [
+        {
+          "name": "Pimco Dynamic Bond",
+          "isin": "IE00B4W0NH34",
+          "weight": 6.95,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Absolute Return Bond",
+          "isin": "GB00BD2PF085",
+          "weight": 6.59,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI GEAR",
+          "isin": "GB00BG371T53",
+          "weight": 6.12,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI North American Equity",
+          "isin": "GB00BG371S47",
+          "weight": 6.06,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Income",
+          "isin": "GB00BZ191K76",
+          "weight": 6.06,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI UK Equity Large Cap Income",
+          "isin": "GB00B9947151",
+          "weight": 5.16,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Japanese Equity",
+          "isin": "GB00B88BTC50",
+          "weight": 4.7,
+          "type": "Equity",
+          "sub_type": "Japan"
+        },
+        {
+          "name": "QI UK Equity Opportunities",
+          "isin": "GB00B7J9FJ04",
+          "weight": 4.58,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI UK Equity",
+          "isin": "GB00BFWK8976",
+          "weight": 4.41,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity",
+          "isin": "GB00B8L0QW80",
+          "weight": 4.33,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Global Equity Value",
+          "isin": "GB00B8SFP856",
+          "weight": 3.65,
+          "type": "Equity",
+          "sub_type": "Global"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Growth",
+          "isin": "GB00B98WPN88",
+          "weight": 3.25,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Income",
+          "isin": "GB00BD4HJ668",
+          "weight": 3.25,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Precious Metals Equity",
+          "isin": "GB00B98Y2S82",
+          "weight": 3.02,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI UK Equity Growth",
+          "isin": "GB00B98Y6K86",
+          "weight": 2.5,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Absolute Return Equity",
+          "isin": "GB00BQKPNF25",
+          "weight": 2.4,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI US Equity Small/Mid Cap ",
+          "isin": "GB00B98WR877",
+          "weight": 2.22,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "iShares North American Equity Index",
+          "isin": "GB00BN08ZH68",
+          "weight": 2.13,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Growth Fund",
+          "isin": "GB00B994K388",
+          "weight": 2.04,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Emerging Markets Equity Income",
+          "isin": "GB00BZ191L83",
+          "weight": 1.99,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "Trium ESG Emissions",
+          "isin": "IE00BKDV4072",
+          "weight": 1.92,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Equity",
+          "isin": "GB00B8KPPJ41",
+          "weight": 1.82,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Emerging Markets Equity Growth",
+          "isin": "GB00B98XS329",
+          "weight": 1.77,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Large Cap Equity",
+          "isin": "GB00B98ZM814",
+          "weight": 1.7,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "Aviva Global Sovereign Bond",
+          "isin": "LU2255680576",
+          "weight": 1.45,
+          "type": "Fixed Income",
+          "sub_type": "Global Govt"
+        },
+        {
+          "name": "iShares UK Gilt All Stocks Index",
+          "isin": "GB00BN08ZS73",
+          "weight": 1.29,
+          "type": "Fixed Income",
+          "sub_type": "UK Govt"
+        },
+        {
+          "name": "QI Emerging Markets Equity",
+          "isin": "GB00BZ191N08",
+          "weight": 1.24,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Natural Resources",
+          "isin": "GB00B7Y0MP39",
+          "weight": 1.01,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Corporate Bond",
+          "isin": "GB00BD9MP466",
+          "weight": 0.93,
+          "type": "Fixed Income",
+          "sub_type": "Global Corporate"
+        },
+        {
+          "name": "QI Timber",
+          "isin": "GB00BPLDZ184",
+          "weight": 0.91,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Diversified Bond",
+          "isin": "GB00BD9MP573",
+          "weight": 0.81,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Sterling Diversified Bond",
+          "isin": "GB00B758PM41",
+          "weight": 0.71,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Dynamic Bond",
+          "isin": "GB00BNG58V62",
+          "weight": 0.53,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI China Equity",
+          "isin": "GB00B990Y346",
+          "weight": 0.52,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Sterling Corporate Bond",
+          "isin": "GB00BJ38GF06",
+          "weight": 0.49,
+          "type": "Fixed Income",
+          "sub_type": "UK Corporate"
+        },
+        {
+          "name": "QI Investment Grade Corporate Bond",
+          "isin": "GB00B98VPX53",
+          "weight": 0.49,
+          "type": "Fixed Income",
+          "sub_type": "UK Corporate"
+        },
+        {
+          "name": "QI Asia Pacific",
+          "isin": "GB00BG371R30",
+          "weight": 0.39,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "Vanguard Euro Government Bond Index",
+          "isin": "IE00BK6S3N13",
+          "weight": 0.37,
+          "type": "Fixed Income",
+          "sub_type": "Euro Govt"
+        },
+        {
+          "name": "iShares Up To 10 Years Gilts Index",
+          "isin": "GB00BN091D72",
+          "weight": 0.24,
+          "type": "Fixed Income",
+          "sub_type": "UK Govt"
+        }
+      ],
+      "inception_date": "2014-02-24"
+    },
+    {
+      "id": "quilter-ws-active-8",
+      "name": "Quilter WealthSelect Active Managed 8",
+      "provider": "Quilter Investors",
+      "risk_rating": 8,
+      "risk_label": "Risk 8",
+      "asset_allocation": {
+        "equity": 80.7,
+        "bonds": 5.6,
+        "alternatives": 13.7,
+        "cash": 0
+      },
+      "geographic_allocation": {
+        "asia_ex_japan": 4.58,
+        "emerging_markets": 6.5,
+        "europe_ex_uk": 12.7,
+        "global": 4.29,
+        "japan": 5.52,
+        "thematic": 5.8,
+        "uk": 19.57,
+        "us": 21.76
+      },
+      "fixed_income_breakdown": {
+        "global_aggregate": 5.59
+      },
+      "ocf": 0.83,
+      "cost_breakdown": {
+        "dfm": 0.15,
+        "underlying": 0.68,
+        "all_in": 0.83
+      },
+      "return_1yr": 18.38,
+      "return_3yr": 12.48,
+      "return_5yr": 8.88,
+      "return_10yr": 8.64,
+      "return_ytd": 18.38,
+      "return_1m": 1.33,
+      "return_3m": 4.97,
+      "return_6m": 12.78,
+      "calendar_returns": {
+        "2016": 14.23,
+        "2017": 11.63,
+        "2018": -6.37,
+        "2019": 17.55,
+        "2020": 6.66,
+        "2021": 11.01,
+        "2022": -3.16,
+        "2023": 9.51,
+        "2024": 9.77,
+        "2025": 18.38,
+        "YTD": 18.38
+      },
+      "trailing_returns": {
+        "1M": 1.33,
+        "3M": 4.97,
+        "6M": 12.78,
+        "YTD": 18.38,
+        "1Y": 18.38,
+        "3Y": 12.48,
+        "5Y": 8.88,
+        "10Y": 8.64
+      },
+      "rebalancing": "Quarterly",
+      "min_investment": 0,
+      "platforms": [
+        "AJ Bell Investcentre",
+        "Fidelity Adviser Solutions",
+        "M&G Wealth",
+        "Morningstar Wealth",
+        "Parmenion",
+        "Quilter",
+        "Transact"
+      ],
+      "ethical": false,
+      "decumulation_suitable": false,
+      "time_horizons": [
+        "long"
+      ],
+      "underlying_funds": [
+        {
+          "name": "QI North American Equity",
+          "isin": "GB00BG371S47",
+          "weight": 7.13,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Income",
+          "isin": "GB00BZ191K76",
+          "weight": 7.13,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI UK Equity Large Cap Income",
+          "isin": "GB00B9947151",
+          "weight": 6.08,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "Pimco Dynamic Bond",
+          "isin": "IE00B4W0NH34",
+          "weight": 5.59,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Japanese Equity",
+          "isin": "GB00B88BTC50",
+          "weight": 5.52,
+          "type": "Equity",
+          "sub_type": "Japan"
+        },
+        {
+          "name": "QI UK Equity Opportunities",
+          "isin": "GB00B7J9FJ04",
+          "weight": 5.38,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Absolute Return Bond",
+          "isin": "GB00BD2PF085",
+          "weight": 5.3,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI UK Equity",
+          "isin": "GB00BFWK8976",
+          "weight": 5.18,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity",
+          "isin": "GB00B8L0QW80",
+          "weight": 5.08,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI GEAR",
+          "isin": "GB00BG371T53",
+          "weight": 4.92,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Global Equity Value",
+          "isin": "GB00B8SFP856",
+          "weight": 4.29,
+          "type": "Equity",
+          "sub_type": "Global"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Growth",
+          "isin": "GB00B98WPN88",
+          "weight": 3.81,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Income",
+          "isin": "GB00BD4HJ668",
+          "weight": 3.81,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Precious Metals Equity",
+          "isin": "GB00B98Y2S82",
+          "weight": 3.55,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI UK Equity Growth",
+          "isin": "GB00B98Y6K86",
+          "weight": 2.93,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI US Equity Small/Mid Cap ",
+          "isin": "GB00B98WR877",
+          "weight": 2.61,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "iShares North American Equity Index",
+          "isin": "GB00BN08ZH68",
+          "weight": 2.5,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Growth Fund",
+          "isin": "GB00B994K388",
+          "weight": 2.39,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Emerging Markets Equity Income",
+          "isin": "GB00BZ191L83",
+          "weight": 2.34,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Equity",
+          "isin": "GB00B8KPPJ41",
+          "weight": 2.13,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Emerging Markets Equity Growth",
+          "isin": "GB00B98XS329",
+          "weight": 2.08,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Large Cap Equity",
+          "isin": "GB00B98ZM814",
+          "weight": 1.99,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Absolute Return Equity",
+          "isin": "GB00BQKPNF25",
+          "weight": 1.93,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "Trium ESG Emissions",
+          "isin": "IE00BKDV4072",
+          "weight": 1.54,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Emerging Markets Equity",
+          "isin": "GB00BZ191N08",
+          "weight": 1.46,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Natural Resources",
+          "isin": "GB00B7Y0MP39",
+          "weight": 1.19,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Timber",
+          "isin": "GB00BPLDZ184",
+          "weight": 1.06,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI China Equity",
+          "isin": "GB00B990Y346",
+          "weight": 0.62,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Asia Pacific",
+          "isin": "GB00BG371R30",
+          "weight": 0.46,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        }
+      ],
+      "inception_date": "2014-02-24"
+    },
+    {
+      "id": "quilter-ws-active-9",
+      "name": "Quilter WealthSelect Active Managed 9",
+      "provider": "Quilter Investors",
+      "risk_rating": 9,
+      "risk_label": "Risk 9",
+      "asset_allocation": {
+        "equity": 91.1,
+        "bonds": 2.6,
+        "alternatives": 6.3,
+        "cash": 0
+      },
+      "geographic_allocation": {
+        "asia_ex_japan": 7.72,
+        "emerging_markets": 7.5,
+        "europe_ex_uk": 15.2,
+        "global": 5.86,
+        "japan": 6.2,
+        "thematic": 5.53,
+        "uk": 13.58,
+        "us": 29.5
+      },
+      "fixed_income_breakdown": {
+        "global_aggregate": 2.59
+      },
+      "ocf": 0.81,
+      "cost_breakdown": {
+        "dfm": 0.15,
+        "underlying": 0.66,
+        "all_in": 0.81
+      },
+      "return_1yr": 18.09,
+      "return_3yr": 12.74,
+      "return_5yr": 9.46,
+      "return_10yr": 9.89,
+      "return_ytd": 18.09,
+      "return_1m": 1.17,
+      "return_3m": 4.96,
+      "return_6m": 13.64,
+      "calendar_returns": {
+        "2016": 19.23,
+        "2017": 13.81,
+        "2018": -6.7,
+        "2019": 18.49,
+        "2020": 8.98,
+        "2021": 12.69,
+        "2022": -2.7,
+        "2023": 9.77,
+        "2024": 10.56,
+        "2025": 18.09,
+        "YTD": 18.09
+      },
+      "trailing_returns": {
+        "1M": 1.17,
+        "3M": 4.96,
+        "6M": 13.64,
+        "YTD": 18.09,
+        "1Y": 18.09,
+        "3Y": 12.74,
+        "5Y": 9.46,
+        "10Y": 9.89
+      },
+      "rebalancing": "Quarterly",
+      "min_investment": 0,
+      "platforms": [
+        "AJ Bell Investcentre",
+        "Fidelity Adviser Solutions",
+        "M&G Wealth",
+        "Morningstar Wealth",
+        "Parmenion",
+        "Quilter",
+        "Transact"
+      ],
+      "ethical": false,
+      "decumulation_suitable": false,
+      "time_horizons": [
+        "long"
+      ],
+      "underlying_funds": [
+        {
+          "name": "QI North American Equity",
+          "isin": "GB00BG371S47",
+          "weight": 9.66,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Income",
+          "isin": "GB00BZ191K76",
+          "weight": 9.66,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Japanese Equity",
+          "isin": "GB00B88BTC50",
+          "weight": 6.2,
+          "type": "Equity",
+          "sub_type": "Japan"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity",
+          "isin": "GB00B8L0QW80",
+          "weight": 6.08,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Global Equity Value",
+          "isin": "GB00B8SFP856",
+          "weight": 5.86,
+          "type": "Equity",
+          "sub_type": "Global"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Growth",
+          "isin": "GB00B98WPN88",
+          "weight": 4.56,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Income",
+          "isin": "GB00BD4HJ668",
+          "weight": 4.56,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI UK Equity Large Cap Income",
+          "isin": "GB00B9947151",
+          "weight": 4.21,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI UK Equity Opportunities",
+          "isin": "GB00B7J9FJ04",
+          "weight": 3.73,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI UK Equity",
+          "isin": "GB00BFWK8976",
+          "weight": 3.6,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Equity",
+          "isin": "GB00B8KPPJ41",
+          "weight": 3.59,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI US Equity Small/Mid Cap ",
+          "isin": "GB00B98WR877",
+          "weight": 3.54,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "iShares North American Equity Index",
+          "isin": "GB00BN08ZH68",
+          "weight": 3.39,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Large Cap Equity",
+          "isin": "GB00B98ZM814",
+          "weight": 3.36,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI US Equity Growth Fund",
+          "isin": "GB00B994K388",
+          "weight": 3.25,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Precious Metals Equity",
+          "isin": "GB00B98Y2S82",
+          "weight": 2.76,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Emerging Markets Equity Income",
+          "isin": "GB00BZ191L83",
+          "weight": 2.7,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "Pimco Dynamic Bond",
+          "isin": "IE00B4W0NH34",
+          "weight": 2.59,
+          "type": "Fixed Income",
+          "sub_type": "Global Aggregate"
+        },
+        {
+          "name": "QI Absolute Return Bond",
+          "isin": "GB00BD2PF085",
+          "weight": 2.45,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Emerging Markets Equity Growth",
+          "isin": "GB00B98XS329",
+          "weight": 2.4,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI GEAR",
+          "isin": "GB00BG371T53",
+          "weight": 2.27,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI UK Equity Growth",
+          "isin": "GB00B98Y6K86",
+          "weight": 2.04,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Emerging Markets Equity",
+          "isin": "GB00BZ191N08",
+          "weight": 1.69,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Natural Resources",
+          "isin": "GB00B7Y0MP39",
+          "weight": 1.47,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Timber",
+          "isin": "GB00BPLDZ184",
+          "weight": 1.3,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Absolute Return Equity",
+          "isin": "GB00BQKPNF25",
+          "weight": 0.89,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI Asia Pacific",
+          "isin": "GB00BG371R30",
+          "weight": 0.77,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "Trium ESG Emissions",
+          "isin": "IE00BKDV4072",
+          "weight": 0.71,
+          "type": "Alternative",
+          "sub_type": "Alternative"
+        },
+        {
+          "name": "QI China Equity",
+          "isin": "GB00B990Y346",
+          "weight": 0.71,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        }
+      ],
+      "inception_date": "2014-02-24"
+    },
+    {
+      "id": "quilter-ws-active-10",
+      "name": "Quilter WealthSelect Active Managed 10",
+      "provider": "Quilter Investors",
+      "risk_rating": 10,
+      "risk_label": "Risk 10",
+      "asset_allocation": {
+        "equity": 100.0,
+        "bonds": 0,
+        "alternatives": 0,
+        "cash": 0
+      },
+      "geographic_allocation": {
+        "asia_ex_japan": 11.33,
+        "emerging_markets": 8.37,
+        "europe_ex_uk": 17.6,
+        "global": 7.57,
+        "japan": 6.78,
+        "thematic": 4.95,
+        "uk": 5.55,
+        "us": 37.85
+      },
+      "fixed_income_breakdown": {},
+      "ocf": 0.79,
+      "cost_breakdown": {
+        "dfm": 0.15,
+        "underlying": 0.64,
+        "all_in": 0.79
+      },
+      "return_1yr": 17.2,
+      "return_3yr": 12.79,
+      "return_5yr": 9.67,
+      "return_10yr": 10.83,
+      "return_ytd": 17.2,
+      "return_1m": 0.96,
+      "return_3m": 4.86,
+      "return_6m": 14.33,
+      "calendar_returns": {
+        "2016": 24.45,
+        "2017": 15.14,
+        "2018": -6.89,
+        "2019": 19.45,
+        "2020": 10.62,
+        "2021": 13.33,
+        "2022": -2.42,
+        "2023": 10.11,
+        "2024": 11.19,
+        "2025": 17.2,
+        "YTD": 17.2
+      },
+      "trailing_returns": {
+        "1M": 0.96,
+        "3M": 4.86,
+        "6M": 14.33,
+        "YTD": 17.2,
+        "1Y": 17.2,
+        "3Y": 12.79,
+        "5Y": 9.67,
+        "10Y": 10.83
+      },
+      "rebalancing": "Quarterly",
+      "min_investment": 0,
+      "platforms": [
+        "AJ Bell Investcentre",
+        "Fidelity Adviser Solutions",
+        "M&G Wealth",
+        "Morningstar Wealth",
+        "Parmenion",
+        "Quilter",
+        "Transact"
+      ],
+      "ethical": false,
+      "decumulation_suitable": false,
+      "time_horizons": [
+        "long"
+      ],
+      "underlying_funds": [
+        {
+          "name": "QI North American Equity",
+          "isin": "GB00BG371S47",
+          "weight": 12.4,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Income",
+          "isin": "GB00BZ191K76",
+          "weight": 12.4,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Global Equity Value",
+          "isin": "GB00B8SFP856",
+          "weight": 7.57,
+          "type": "Equity",
+          "sub_type": "Global"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity",
+          "isin": "GB00B8L0QW80",
+          "weight": 7.04,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Japanese Equity",
+          "isin": "GB00B88BTC50",
+          "weight": 6.78,
+          "type": "Equity",
+          "sub_type": "Japan"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Growth",
+          "isin": "GB00B98WPN88",
+          "weight": 5.28,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Europe (ex UK) Equity Income",
+          "isin": "GB00BD4HJ668",
+          "weight": 5.28,
+          "type": "Equity",
+          "sub_type": "Europe ex UK"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Equity",
+          "isin": "GB00B8KPPJ41",
+          "weight": 5.27,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI Asia Pacific (ex Japan) Large Cap Equity",
+          "isin": "GB00B98ZM814",
+          "weight": 4.93,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI US Equity Small/Mid Cap ",
+          "isin": "GB00B98WR877",
+          "weight": 4.54,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "iShares North American Equity Index",
+          "isin": "GB00BN08ZH68",
+          "weight": 4.35,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI US Equity Growth Fund",
+          "isin": "GB00B994K388",
+          "weight": 4.16,
+          "type": "Equity",
+          "sub_type": "US"
+        },
+        {
+          "name": "QI Emerging Markets Equity Income",
+          "isin": "GB00BZ191L83",
+          "weight": 3.01,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Emerging Markets Equity Growth",
+          "isin": "GB00B98XS329",
+          "weight": 2.68,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Emerging Markets Equity",
+          "isin": "GB00BZ191N08",
+          "weight": 1.88,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        },
+        {
+          "name": "QI Natural Resources",
+          "isin": "GB00B7Y0MP39",
+          "weight": 1.75,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI UK Equity Large Cap Income",
+          "isin": "GB00B9947151",
+          "weight": 1.72,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Precious Metals Equity",
+          "isin": "GB00B98Y2S82",
+          "weight": 1.66,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI Timber",
+          "isin": "GB00BPLDZ184",
+          "weight": 1.54,
+          "type": "Equity",
+          "sub_type": "Thematic"
+        },
+        {
+          "name": "QI UK Equity Opportunities",
+          "isin": "GB00B7J9FJ04",
+          "weight": 1.53,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI UK Equity",
+          "isin": "GB00BFWK8976",
+          "weight": 1.47,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI Asia Pacific",
+          "isin": "GB00BG371R30",
+          "weight": 1.13,
+          "type": "Equity",
+          "sub_type": "Asia ex Japan"
+        },
+        {
+          "name": "QI UK Equity Growth",
+          "isin": "GB00B98Y6K86",
+          "weight": 0.83,
+          "type": "Equity",
+          "sub_type": "UK"
+        },
+        {
+          "name": "QI China Equity",
+          "isin": "GB00B990Y346",
+          "weight": 0.8,
+          "type": "Equity",
+          "sub_type": "Emerging Markets"
+        }
+      ],
+      "inception_date": "2014-02-24"
+    }
+  ],
+  "providers": {
+    "Quilter Investors": {
+      "id": "quilter",
+      "name": "Quilter Investors",
+      "full_name": "Quilter WealthSelect Managed Active",
+      "description": "Quilter WealthSelect Managed Active is an actively managed MPS range offering 8 risk-graded portfolios (3-10) with broad multi-asset diversification across equity, fixed income, alternatives and cash. Managed by Quilter Investors with a DFM fee of 0.15% across all models.",
+      "aum_bn": 25.4,
+      "established": 2014,
+      "headquarters": "London",
+      "investment_style": "Active",
+      "key_personnel": [
+        {
+          "name": "Quilter Investors",
+          "role": "Multi-Asset Investment Management"
+        }
+      ],
+      "strengths": [
+        "Broad range of 8 risk-graded portfolios covering risk levels 3 to 10",
+        "Competitive DFM fee of 0.15% across all models",
+        "Wide platform availability across 7 major UK adviser platforms",
+        "Comprehensive quarterly rebalancing with documented rationale",
+        "Mapped to multiple risk rating providers (Dynamic Planner, Synaptic, EV, Finametrica)"
+      ],
+      "considerations": [
+        "All-in costs increase with risk level (0.60% to 0.83%)",
+        "Active approach introduces manager selection risk",
+        "No unitised fund equivalents available",
+        "Alternatives allocation has varied significantly over time"
+      ],
+      "regulatory_status": "FCA Authorised",
+      "website": "https://www.quilter.com"
+    }
+  },
+  "platforms": [
+    "AJ Bell Investcentre",
+    "Fidelity Adviser Solutions",
+    "M&G Wealth",
+    "Morningstar Wealth",
+    "Parmenion",
+    "Quilter",
+    "Transact"
+  ],
+  "styles": [
+    "Active"
+  ],
+  "insights": [],
+  "performance": {},
+  "historical": {
+    "portfolio_7": {
+      "asset_allocation": [
+        {
+          "Date": "2015-01-06",
+          "Equity": 70.85,
+          "Fixed Income": 12.5,
+          "Alternative": 16.15,
+          "Cash": 0.5
+        },
+        {
+          "Date": "2015-04-09",
+          "Equity": 67.9,
+          "Fixed Income": 6.44,
+          "Alternative": 17.1,
+          "Cash": 8.56
+        },
+        {
+          "Date": "2015-07-03",
+          "Equity": 67.9,
+          "Fixed Income": 6.44,
+          "Alternative": 17.1,
+          "Cash": 8.56
+        },
+        {
+          "Date": "2015-10-14",
+          "Equity": 67.9,
+          "Fixed Income": 7.34,
+          "Alternative": 19.26,
+          "Cash": 5.5
+        },
+        {
+          "Date": "2016-01-06",
+          "Equity": 65.5,
+          "Fixed Income": 7.840000000000001,
+          "Alternative": 19.5,
+          "Cash": 7.16
+        },
+        {
+          "Date": "2016-04-11",
+          "Equity": 64.82,
+          "Fixed Income": 8.43,
+          "Alternative": 18.400000000000002,
+          "Cash": 8.35
+        },
+        {
+          "Date": "2016-06-29",
+          "Equity": 61.75000000000001,
+          "Fixed Income": 8.959999999999999,
+          "Alternative": 19.56,
+          "Cash": 9.729999999999999
+        },
+        {
+          "Date": "2016-10-17",
+          "Equity": 65.4,
+          "Fixed Income": 5.59,
+          "Alternative": 14.1,
+          "Cash": 14.91
+        },
+        {
+          "Date": "2017-01-06",
+          "Equity": 65.4,
+          "Fixed Income": 5.59,
+          "Alternative": 14.1,
+          "Cash": 14.91
+        },
+        {
+          "Date": "2017-04-12",
+          "Equity": 67.68,
+          "Fixed Income": 5.35,
+          "Alternative": 13.969999999999999,
+          "Cash": 13
+        },
+        {
+          "Date": "2017-06-15",
+          "Equity": 68.25,
+          "Fixed Income": 5.05,
+          "Alternative": 14,
+          "Cash": 12.7
+        },
+        {
+          "Date": "2017-09-06",
+          "Equity": 68.25,
+          "Fixed Income": 4.9,
+          "Alternative": 14,
+          "Cash": 12.85
+        },
+        {
+          "Date": "2017-12-07",
+          "Equity": 68.25,
+          "Fixed Income": 4.9,
+          "Alternative": 14,
+          "Cash": 12.85
+        },
+        {
+          "Date": "2018-03-08",
+          "Equity": 67.75,
+          "Fixed Income": 4.9,
+          "Alternative": 14.5,
+          "Cash": 12.85
+        },
+        {
+          "Date": "2018-06-08",
+          "Equity": 67.75,
+          "Fixed Income": 4.9,
+          "Alternative": 14.5,
+          "Cash": 12.85
+        },
+        {
+          "Date": "2018-09-14",
+          "Equity": 67.75,
+          "Fixed Income": 9.65,
+          "Alternative": 9.5,
+          "Cash": 13.1
+        },
+        {
+          "Date": "2018-12-07",
+          "Equity": 66.59,
+          "Fixed Income": 10.18,
+          "Alternative": 14,
+          "Cash": 9.23
+        },
+        {
+          "Date": "2019-03-07",
+          "Equity": 71.4,
+          "Fixed Income": 8.48,
+          "Alternative": 14,
+          "Cash": 6.12
+        },
+        {
+          "Date": "2019-06-27",
+          "Equity": 72.10000000000001,
+          "Fixed Income": 7.859999999999999,
+          "Alternative": 14.03,
+          "Cash": 6.010000000000001
+        },
+        {
+          "Date": "2019-09-24",
+          "Equity": 70.25999999999999,
+          "Fixed Income": 9.42,
+          "Alternative": 14.030000000000001,
+          "Cash": 6.29
+        },
+        {
+          "Date": "2019-12-04",
+          "Equity": 70.56,
+          "Fixed Income": 9.35,
+          "Alternative": 13.860000000000001,
+          "Cash": 6.2299999999999995
+        },
+        {
+          "Date": "2019-12-17",
+          "Equity": 71.48,
+          "Fixed Income": 9.370000000000001,
+          "Alternative": 13.91,
+          "Cash": 5.24
+        },
+        {
+          "Date": "2020-03-09",
+          "Equity": 70.6,
+          "Fixed Income": 9.77,
+          "Alternative": 14.23,
+          "Cash": 5.3999999999999995
+        },
+        {
+          "Date": "2020-06-08",
+          "Equity": 71.75,
+          "Fixed Income": 9.41,
+          "Alternative": 13.74,
+          "Cash": 5.1
+        },
+        {
+          "Date": "2020-09-07",
+          "Equity": 68.75,
+          "Fixed Income": 10.850000000000001,
+          "Alternative": 15.3,
+          "Cash": 5.1
+        },
+        {
+          "Date": "2020-12-08",
+          "Equity": 68.51,
+          "Fixed Income": 10.27,
+          "Alternative": 16.419999999999998,
+          "Cash": 4.8
+        },
+        {
+          "Date": "2021-03-03",
+          "Equity": 68.5,
+          "Fixed Income": 10.37,
+          "Alternative": 16.33,
+          "Cash": 4.8
+        },
+        {
+          "Date": "2021-06-09",
+          "Equity": 68.24,
+          "Fixed Income": 11.07,
+          "Alternative": 15.84,
+          "Cash": 4.85
+        },
+        {
+          "Date": "2021-09-15",
+          "Equity": 68.24,
+          "Fixed Income": 10.71,
+          "Alternative": 16.1,
+          "Cash": 4.95
+        },
+        {
+          "Date": "2021-12-08",
+          "Equity": 68.01,
+          "Fixed Income": 10.469999999999999,
+          "Alternative": 16.32,
+          "Cash": 5.2
+        },
+        {
+          "Date": "2022-03-04",
+          "Equity": 66.5,
+          "Fixed Income": 11.04,
+          "Alternative": 17.46,
+          "Cash": 5
+        },
+        {
+          "Date": "2022-06-15",
+          "Equity": 66.09,
+          "Fixed Income": 12.71,
+          "Alternative": 17.39,
+          "Cash": 3.81
+        },
+        {
+          "Date": "2022-09-09",
+          "Equity": 66.1,
+          "Fixed Income": 12.71,
+          "Alternative": 17.38,
+          "Cash": 3.81
+        },
+        {
+          "Date": "2022-10-21",
+          "Equity": 66.1,
+          "Fixed Income": 13.06,
+          "Alternative": 17.38,
+          "Cash": 3.46
+        },
+        {
+          "Date": "2022-12-06",
+          "Equity": 64.67999999999999,
+          "Fixed Income": 13.370000000000001,
+          "Alternative": 18,
+          "Cash": 3.9499999999999997
+        },
+        {
+          "Date": "2023-03-08",
+          "Equity": 64.67999999999999,
+          "Fixed Income": 13.370000000000001,
+          "Alternative": 18,
+          "Cash": 3.9499999999999997
+        },
+        {
+          "Date": "2023-06-08",
+          "Equity": 65.27000000000001,
+          "Fixed Income": 17.17,
+          "Alternative": 15.470000000000002,
+          "Cash": 2.09
+        },
+        {
+          "Date": "2023-09-14",
+          "Equity": 65.25,
+          "Fixed Income": 17.5,
+          "Alternative": 14.809999999999999,
+          "Cash": 2.44
+        },
+        {
+          "Date": "2023-11-27",
+          "Equity": 65.27,
+          "Fixed Income": 17.66,
+          "Alternative": 14.63,
+          "Cash": 2.44
+        },
+        {
+          "Date": "2024-03-05",
+          "Equity": 65.61,
+          "Fixed Income": 17.66,
+          "Alternative": 14.61,
+          "Cash": 2.12
+        },
+        {
+          "Date": "2024-04-23",
+          "Equity": 65.61,
+          "Fixed Income": 17.66,
+          "Alternative": 14.61,
+          "Cash": 2.12
+        },
+        {
+          "Date": "2024-06-03",
+          "Equity": 67.96,
+          "Fixed Income": 15.29,
+          "Alternative": 15.189999999999998,
+          "Cash": 1.56
+        },
+        {
+          "Date": "2024-09-05",
+          "Equity": 67.95,
+          "Fixed Income": 14.219999999999999,
+          "Alternative": 16.65,
+          "Cash": 1.18
+        },
+        {
+          "Date": "2024-12-04",
+          "Equity": 68.49,
+          "Fixed Income": 15.69,
+          "Alternative": 14.83,
+          "Cash": 0.99
+        },
+        {
+          "Date": "2025-01-14",
+          "Equity": 68.49,
+          "Fixed Income": 15.69,
+          "Alternative": 14.83,
+          "Cash": 0.99
+        },
+        {
+          "Date": "2025-03-06",
+          "Equity": 68.47,
+          "Fixed Income": 14.88,
+          "Alternative": 15.82,
+          "Cash": 0.83
+        },
+        {
+          "Date": "2025-06-05",
+          "Equity": 68.69999999999999,
+          "Fixed Income": 15.150000000000002,
+          "Alternative": 15.42,
+          "Cash": 0.73
+        }
+      ],
+      "equity_region": [
+        {
+          "Date": "2015-01-06",
+          "UK Equity": 24.71,
+          "US Equity": 5.9399999999999995,
+          "Europe ex UK Equity": 7.49,
+          "Japan Equity": 3.02,
+          "Asia ex Japan Equity": 8.48,
+          "EM Equity": 10.86,
+          "Global Equity": 10.35
+        },
+        {
+          "Date": "2015-04-09",
+          "UK Equity": 26.689999999999998,
+          "US Equity": 5.949999999999999,
+          "Europe ex UK Equity": 6.72,
+          "Japan Equity": 2.77,
+          "Asia ex Japan Equity": 8.68,
+          "EM Equity": 8.69,
+          "Global Equity": 8.4
+        },
+        {
+          "Date": "2015-07-03",
+          "UK Equity": 26.689999999999998,
+          "US Equity": 5.949999999999999,
+          "Europe ex UK Equity": 6.72,
+          "Japan Equity": 2.77,
+          "Asia ex Japan Equity": 8.68,
+          "EM Equity": 8.69,
+          "Global Equity": 8.4
+        },
+        {
+          "Date": "2015-10-14",
+          "UK Equity": 26.81,
+          "US Equity": 5.4,
+          "Europe ex UK Equity": 7,
+          "Japan Equity": 2.77,
+          "Asia ex Japan Equity": 8.72,
+          "EM Equity": 8.8,
+          "Global Equity": 8.4
+        },
+        {
+          "Date": "2016-01-06",
+          "UK Equity": 26.759999999999998,
+          "US Equity": 6.220000000000001,
+          "Europe ex UK Equity": 6.8,
+          "Japan Equity": 2.66,
+          "Asia ex Japan Equity": 8.16,
+          "EM Equity": 7.4,
+          "Global Equity": 7.5
+        },
+        {
+          "Date": "2016-04-11",
+          "UK Equity": 26.060000000000002,
+          "US Equity": 5.550000000000001,
+          "Europe ex UK Equity": 6.49,
+          "Japan Equity": 2.6,
+          "Asia ex Japan Equity": 8.12,
+          "EM Equity": 6.94,
+          "Global Equity": 9.06
+        },
+        {
+          "Date": "2016-06-29",
+          "UK Equity": 23.490000000000002,
+          "US Equity": 8.77,
+          "Europe ex UK Equity": 5.89,
+          "Japan Equity": 2.86,
+          "Asia ex Japan Equity": 8.5,
+          "EM Equity": 5.79,
+          "Global Equity": 6.45
+        },
+        {
+          "Date": "2016-10-17",
+          "UK Equity": 21.200000000000003,
+          "US Equity": 9.32,
+          "Europe ex UK Equity": 5.92,
+          "Japan Equity": 2.92,
+          "Asia ex Japan Equity": 8.5,
+          "EM Equity": 5.9399999999999995,
+          "Global Equity": 11.6
+        },
+        {
+          "Date": "2017-01-06",
+          "UK Equity": 21.09,
+          "US Equity": 8.44,
+          "Europe ex UK Equity": 6.68,
+          "Japan Equity": 2.92,
+          "Asia ex Japan Equity": 8.71,
+          "EM Equity": 5.96,
+          "Global Equity": 11.6
+        },
+        {
+          "Date": "2017-04-12",
+          "UK Equity": 21,
+          "US Equity": 8.209999999999999,
+          "Europe ex UK Equity": 8.76,
+          "Japan Equity": 3.04,
+          "Asia ex Japan Equity": 9.3,
+          "EM Equity": 6.35,
+          "Global Equity": 11.02
+        },
+        {
+          "Date": "2017-06-15",
+          "UK Equity": 17.349999999999998,
+          "US Equity": 10.62,
+          "Europe ex UK Equity": 9.44,
+          "Japan Equity": 3.62,
+          "Asia ex Japan Equity": 9.74,
+          "EM Equity": 5.84,
+          "Global Equity": 11.64
+        },
+        {
+          "Date": "2017-09-06",
+          "UK Equity": 17.240000000000002,
+          "US Equity": 10.739999999999998,
+          "Europe ex UK Equity": 9.42,
+          "Japan Equity": 3.63,
+          "Asia ex Japan Equity": 9.739999999999998,
+          "EM Equity": 5.84,
+          "Global Equity": 11.64
+        },
+        {
+          "Date": "2017-12-07",
+          "UK Equity": 17.36,
+          "US Equity": 10.6,
+          "Europe ex UK Equity": 9.39,
+          "Japan Equity": 3.7,
+          "Asia ex Japan Equity": 9.739999999999998,
+          "EM Equity": 5.82,
+          "Global Equity": 11.64
+        },
+        {
+          "Date": "2018-03-08",
+          "UK Equity": 17.3,
+          "US Equity": 10.66,
+          "Europe ex UK Equity": 9.479999999999999,
+          "Japan Equity": 3.73,
+          "Asia ex Japan Equity": 9.739999999999998,
+          "EM Equity": 5.7,
+          "Global Equity": 11.14
+        },
+        {
+          "Date": "2018-06-08",
+          "UK Equity": 15.36,
+          "US Equity": 13.44,
+          "Europe ex UK Equity": 7.38,
+          "Japan Equity": 4.52,
+          "Asia ex Japan Equity": 9.6,
+          "EM Equity": 6.01,
+          "Global Equity": 11.440000000000001
+        },
+        {
+          "Date": "2018-09-14",
+          "UK Equity": 15.479999999999999,
+          "US Equity": 13.31,
+          "Europe ex UK Equity": 7.39,
+          "Japan Equity": 4.53,
+          "Asia ex Japan Equity": 9.6,
+          "EM Equity": 6,
+          "Global Equity": 11.440000000000001
+        },
+        {
+          "Date": "2018-12-07",
+          "UK Equity": 17.05,
+          "US Equity": 10.409999999999998,
+          "Europe ex UK Equity": 7.32,
+          "Japan Equity": 4.39,
+          "Asia ex Japan Equity": 9.44,
+          "EM Equity": 5.99,
+          "Global Equity": 11.99
+        },
+        {
+          "Date": "2019-03-07",
+          "UK Equity": 19,
+          "US Equity": 11.120000000000001,
+          "Europe ex UK Equity": 7.8100000000000005,
+          "Japan Equity": 4.7,
+          "Asia ex Japan Equity": 10.129999999999999,
+          "EM Equity": 6.15,
+          "Global Equity": 12.490000000000002
+        },
+        {
+          "Date": "2019-06-27",
+          "UK Equity": 16.05,
+          "US Equity": 13.599999999999998,
+          "Europe ex UK Equity": 8.05,
+          "Japan Equity": 5.08,
+          "Asia ex Japan Equity": 10.56,
+          "EM Equity": 5.47,
+          "Global Equity": 13.290000000000001
+        },
+        {
+          "Date": "2019-09-24",
+          "UK Equity": 19.5,
+          "US Equity": 12.74,
+          "Europe ex UK Equity": 5.6,
+          "Japan Equity": 4.39,
+          "Asia ex Japan Equity": 8.76,
+          "EM Equity": 7.34,
+          "Global Equity": 11.93
+        },
+        {
+          "Date": "2019-12-04",
+          "UK Equity": 20.31,
+          "US Equity": 12.879999999999999,
+          "Europe ex UK Equity": 5.76,
+          "Japan Equity": 4.38,
+          "Asia ex Japan Equity": 8.68,
+          "EM Equity": 7.31,
+          "Global Equity": 11.24
+        },
+        {
+          "Date": "2019-12-17",
+          "UK Equity": 22.560000000000002,
+          "US Equity": 10.25,
+          "Europe ex UK Equity": 5.76,
+          "Japan Equity": 4.8,
+          "Asia ex Japan Equity": 9.53,
+          "EM Equity": 7.35,
+          "Global Equity": 11.23
+        },
+        {
+          "Date": "2020-03-09",
+          "UK Equity": 21.13,
+          "US Equity": 10.42,
+          "Europe ex UK Equity": 5.7,
+          "Japan Equity": 4.52,
+          "Asia ex Japan Equity": 9.68,
+          "EM Equity": 7.51,
+          "Global Equity": 11.64
+        },
+        {
+          "Date": "2020-06-08",
+          "UK Equity": 21.410000000000004,
+          "US Equity": 10.98,
+          "Europe ex UK Equity": 6.4399999999999995,
+          "Japan Equity": 4.75,
+          "Asia ex Japan Equity": 9.65,
+          "EM Equity": 7.5,
+          "Global Equity": 11.020000000000001
+        },
+        {
+          "Date": "2020-09-07",
+          "UK Equity": 21.47,
+          "US Equity": 9.8,
+          "Europe ex UK Equity": 6.44,
+          "Japan Equity": 4.23,
+          "Asia ex Japan Equity": 8.47,
+          "EM Equity": 7.5,
+          "Global Equity": 10.84
+        },
+        {
+          "Date": "2020-12-08",
+          "UK Equity": 22.8,
+          "US Equity": 10.25,
+          "Europe ex UK Equity": 7.239999999999999,
+          "Japan Equity": 4.2,
+          "Asia ex Japan Equity": 7.7700000000000005,
+          "EM Equity": 7.08,
+          "Global Equity": 9.17
+        },
+        {
+          "Date": "2021-03-03",
+          "UK Equity": 23.040000000000003,
+          "US Equity": 11.010000000000002,
+          "Europe ex UK Equity": 7.26,
+          "Japan Equity": 3.52,
+          "Asia ex Japan Equity": 7.53,
+          "EM Equity": 7.280000000000001,
+          "Global Equity": 8.86
+        },
+        {
+          "Date": "2021-06-09",
+          "UK Equity": 22.47,
+          "US Equity": 11.42,
+          "Europe ex UK Equity": 7.379999999999999,
+          "Japan Equity": 3.55,
+          "Asia ex Japan Equity": 7.6,
+          "EM Equity": 6.93,
+          "Global Equity": 8.89
+        },
+        {
+          "Date": "2021-09-15",
+          "UK Equity": 22.310000000000002,
+          "US Equity": 12.709999999999999,
+          "Europe ex UK Equity": 7.69,
+          "Japan Equity": 3.69,
+          "Asia ex Japan Equity": 7.04,
+          "EM Equity": 6.199999999999999,
+          "Global Equity": 8.6
+        },
+        {
+          "Date": "2021-12-08",
+          "UK Equity": 20.69,
+          "US Equity": 13.36,
+          "Europe ex UK Equity": 8.25,
+          "Japan Equity": 3.89,
+          "Asia ex Japan Equity": 7.22,
+          "EM Equity": 5.88,
+          "Global Equity": 8.72
+        },
+        {
+          "Date": "2022-03-04",
+          "UK Equity": 19.17,
+          "US Equity": 13.530000000000001,
+          "Europe ex UK Equity": 9.23,
+          "Japan Equity": 3.97,
+          "Asia ex Japan Equity": 6.62,
+          "EM Equity": 5.18,
+          "Global Equity": 8.799999999999999
+        },
+        {
+          "Date": "2022-06-15",
+          "UK Equity": 18.55,
+          "US Equity": 14.46,
+          "Europe ex UK Equity": 9.33,
+          "Japan Equity": 4.07,
+          "Asia ex Japan Equity": 6.4399999999999995,
+          "EM Equity": 4.49,
+          "Global Equity": 8.75
+        },
+        {
+          "Date": "2022-09-09",
+          "UK Equity": 18.55,
+          "US Equity": 14.219999999999999,
+          "Europe ex UK Equity": 9.2,
+          "Japan Equity": 3.99,
+          "Asia ex Japan Equity": 6.13,
+          "EM Equity": 4.36,
+          "Global Equity": 9.649999999999999
+        },
+        {
+          "Date": "2022-10-21",
+          "UK Equity": 18.55,
+          "US Equity": 14.219999999999999,
+          "Europe ex UK Equity": 9.2,
+          "Japan Equity": 3.99,
+          "Asia ex Japan Equity": 6.13,
+          "EM Equity": 4.36,
+          "Global Equity": 9.649999999999999
+        },
+        {
+          "Date": "2022-12-06",
+          "UK Equity": 19.75,
+          "US Equity": 12.69,
+          "Europe ex UK Equity": 8.87,
+          "Japan Equity": 3.78,
+          "Asia ex Japan Equity": 5.84,
+          "EM Equity": 4.1,
+          "Global Equity": 9.649999999999999
+        },
+        {
+          "Date": "2023-03-08",
+          "UK Equity": 19.75,
+          "US Equity": 12.69,
+          "Europe ex UK Equity": 8.87,
+          "Japan Equity": 3.78,
+          "Asia ex Japan Equity": 5.84,
+          "EM Equity": 4.1,
+          "Global Equity": 9.649999999999999
+        },
+        {
+          "Date": "2023-06-08",
+          "UK Equity": 20.05,
+          "US Equity": 13.530000000000003,
+          "Europe ex UK Equity": 8.53,
+          "Japan Equity": 3.93,
+          "Asia ex Japan Equity": 5.550000000000001,
+          "EM Equity": 4.03,
+          "Global Equity": 9.649999999999999
+        },
+        {
+          "Date": "2023-09-14",
+          "UK Equity": 20.130000000000003,
+          "US Equity": 13.339999999999998,
+          "Europe ex UK Equity": 8.700000000000001,
+          "Japan Equity": 3.93,
+          "Asia ex Japan Equity": 5.540000000000001,
+          "EM Equity": 3.9599999999999995,
+          "Global Equity": 9.649999999999999
+        },
+        {
+          "Date": "2023-11-27",
+          "UK Equity": 19.72,
+          "US Equity": 14.19,
+          "Europe ex UK Equity": 8.5,
+          "Japan Equity": 3.93,
+          "Asia ex Japan Equity": 5.109999999999999,
+          "EM Equity": 4.03,
+          "Global Equity": 9.79
+        },
+        {
+          "Date": "2024-03-05",
+          "UK Equity": 19.36,
+          "US Equity": 14.36,
+          "Europe ex UK Equity": 8.93,
+          "Japan Equity": 3.96,
+          "Asia ex Japan Equity": 5.15,
+          "EM Equity": 3.9999999999999996,
+          "Global Equity": 9.85
+        },
+        {
+          "Date": "2024-04-23",
+          "UK Equity": 19.36,
+          "US Equity": 14.36,
+          "Europe ex UK Equity": 8.93,
+          "Japan Equity": 3.96,
+          "Asia ex Japan Equity": 5.15,
+          "EM Equity": 3.9999999999999996,
+          "Global Equity": 9.85
+        },
+        {
+          "Date": "2024-06-03",
+          "UK Equity": 18.49,
+          "US Equity": 16.04,
+          "Europe ex UK Equity": 10.19,
+          "Japan Equity": 4.12,
+          "Asia ex Japan Equity": 4.47,
+          "EM Equity": 4.46,
+          "Global Equity": 10.190000000000001
+        },
+        {
+          "Date": "2024-09-05",
+          "UK Equity": 18.52,
+          "US Equity": 16.61,
+          "Europe ex UK Equity": 10.059999999999999,
+          "Japan Equity": 4.11,
+          "Asia ex Japan Equity": 4.76,
+          "EM Equity": 4.38,
+          "Global Equity": 9.510000000000002
+        },
+        {
+          "Date": "2024-12-04",
+          "UK Equity": 17.54,
+          "US Equity": 17.95,
+          "Europe ex UK Equity": 10.02,
+          "Japan Equity": 4.14,
+          "Asia ex Japan Equity": 4.6499999999999995,
+          "EM Equity": 4.6000000000000005,
+          "Global Equity": 9.59
+        },
+        {
+          "Date": "2025-01-14",
+          "UK Equity": 17.54,
+          "US Equity": 17.95,
+          "Europe ex UK Equity": 10.02,
+          "Japan Equity": 4.14,
+          "Asia ex Japan Equity": 4.6499999999999995,
+          "EM Equity": 4.6000000000000005,
+          "Global Equity": 9.59
+        },
+        {
+          "Date": "2025-03-06",
+          "UK Equity": 17.189999999999998,
+          "US Equity": 18.069999999999997,
+          "Europe ex UK Equity": 9.95,
+          "Japan Equity": 4.34,
+          "Asia ex Japan Equity": 4.53,
+          "EM Equity": 4.81,
+          "Global Equity": 9.579999999999998
+        },
+        {
+          "Date": "2025-06-05",
+          "UK Equity": 17.24,
+          "US Equity": 18.109999999999996,
+          "Europe ex UK Equity": 9.64,
+          "Japan Equity": 4.67,
+          "Asia ex Japan Equity": 4.16,
+          "EM Equity": 5.25,
+          "Global Equity": 9.63
+        }
+      ],
+      "fixed_income": [
+        {
+          "Date": "2015-01-06",
+          "UK Gilts": 3.9,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 3.64,
+          "High Yield": 0.91,
+          "Global Agg Bond": 3.14,
+          "EMD Blend": 0.91
+        },
+        {
+          "Date": "2015-04-09",
+          "UK Gilts": 1.4,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.24,
+          "High Yield": null,
+          "Global Agg Bond": 2.1,
+          "EMD Blend": 0.7
+        },
+        {
+          "Date": "2015-07-03",
+          "UK Gilts": 1.4,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.24,
+          "High Yield": null,
+          "Global Agg Bond": 2.1,
+          "EMD Blend": 0.7
+        },
+        {
+          "Date": "2015-10-14",
+          "UK Gilts": 2,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.4,
+          "High Yield": 0.5,
+          "Global Agg Bond": 1.94,
+          "EMD Blend": 0.5
+        },
+        {
+          "Date": "2016-01-06",
+          "UK Gilts": 2.2,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.86,
+          "High Yield": 0.5,
+          "Global Agg Bond": 1.78,
+          "EMD Blend": 0.5
+        },
+        {
+          "Date": "2016-04-11",
+          "UK Gilts": 2.22,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 3.65,
+          "High Yield": null,
+          "Global Agg Bond": 1.97,
+          "EMD Blend": 0.59
+        },
+        {
+          "Date": "2016-06-29",
+          "UK Gilts": 3.33,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 3.93,
+          "High Yield": null,
+          "Global Agg Bond": 1.2,
+          "EMD Blend": 0.5
+        },
+        {
+          "Date": "2016-10-17",
+          "UK Gilts": 1.95,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.8899999999999997,
+          "High Yield": null,
+          "Global Agg Bond": 0.75,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2017-01-06",
+          "UK Gilts": 1.95,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.8899999999999997,
+          "High Yield": null,
+          "Global Agg Bond": 0.75,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2017-04-12",
+          "UK Gilts": 1.9,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.69,
+          "High Yield": null,
+          "Global Agg Bond": 0.76,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2017-06-15",
+          "UK Gilts": 1.8,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.45,
+          "High Yield": null,
+          "Global Agg Bond": 0.8,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2017-09-06",
+          "UK Gilts": 1.8,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.4,
+          "High Yield": null,
+          "Global Agg Bond": 0.7,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2017-12-07",
+          "UK Gilts": 1.8,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.4,
+          "High Yield": null,
+          "Global Agg Bond": 0.7,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2018-03-08",
+          "UK Gilts": 1.8,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.4,
+          "High Yield": null,
+          "Global Agg Bond": 0.7,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2018-06-08",
+          "UK Gilts": 1.8,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.4,
+          "High Yield": null,
+          "Global Agg Bond": 0.7,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2018-09-14",
+          "UK Gilts": 1.8,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.4,
+          "High Yield": null,
+          "Global Agg Bond": 5.45,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2018-12-07",
+          "UK Gilts": 1.82,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 2.33,
+          "High Yield": null,
+          "Global Agg Bond": 6.03,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2019-03-07",
+          "UK Gilts": 1.2,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.54,
+          "High Yield": null,
+          "Global Agg Bond": 5.74,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2019-06-27",
+          "UK Gilts": 0.95,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.1,
+          "High Yield": null,
+          "Global Agg Bond": 5.81,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2019-09-24",
+          "UK Gilts": 1.65,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.7999999999999998,
+          "High Yield": null,
+          "Global Agg Bond": 5.97,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2019-12-04",
+          "UK Gilts": 1.59,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.7799999999999998,
+          "High Yield": null,
+          "Global Agg Bond": 5.9799999999999995,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2019-12-17",
+          "UK Gilts": 1.59,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.7799999999999998,
+          "High Yield": null,
+          "Global Agg Bond": 6,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2020-03-09",
+          "UK Gilts": 1.71,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.88,
+          "High Yield": null,
+          "Global Agg Bond": 6.180000000000001,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2020-06-08",
+          "UK Gilts": 1.65,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.73,
+          "High Yield": null,
+          "Global Agg Bond": 6.03,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2020-09-07",
+          "UK Gilts": 1.62,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.75,
+          "High Yield": null,
+          "Global Agg Bond": 7.48,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2020-12-08",
+          "UK Gilts": 1.54,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.65,
+          "High Yield": null,
+          "Global Agg Bond": 7.08,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2021-03-03",
+          "UK Gilts": 1.54,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.6400000000000001,
+          "High Yield": null,
+          "Global Agg Bond": 7.1899999999999995,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2021-06-09",
+          "UK Gilts": 1.63,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.7200000000000002,
+          "High Yield": null,
+          "Global Agg Bond": 7.72,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2021-09-15",
+          "UK Gilts": 1.63,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.6800000000000002,
+          "High Yield": null,
+          "Global Agg Bond": 7.4,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2021-12-08",
+          "UK Gilts": 1.5,
+          "EUR Govt": null,
+          "Global Govt": null,
+          "UK Corporate": 1.7,
+          "High Yield": null,
+          "Global Agg Bond": 7.27,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2022-03-04",
+          "UK Gilts": 1,
+          "EUR Govt": null,
+          "Global Govt": 0.5,
+          "UK Corporate": 1.7,
+          "High Yield": null,
+          "Global Agg Bond": 7.84,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2022-06-15",
+          "UK Gilts": 1.3,
+          "EUR Govt": null,
+          "Global Govt": 1.02,
+          "UK Corporate": 2.23,
+          "High Yield": null,
+          "Global Agg Bond": 8.16,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2022-09-09",
+          "UK Gilts": 1.28,
+          "EUR Govt": null,
+          "Global Govt": 1.04,
+          "UK Corporate": 2.23,
+          "High Yield": null,
+          "Global Agg Bond": 8.16,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2022-10-21",
+          "UK Gilts": 1.28,
+          "EUR Govt": null,
+          "Global Govt": 1.3900000000000001,
+          "UK Corporate": 2.23,
+          "High Yield": null,
+          "Global Agg Bond": 8.16,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2022-12-06",
+          "UK Gilts": 1.38,
+          "EUR Govt": null,
+          "Global Govt": 1.4300000000000002,
+          "UK Corporate": 2.41,
+          "High Yield": null,
+          "Global Agg Bond": 8.15,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2023-03-08",
+          "UK Gilts": 1.38,
+          "EUR Govt": null,
+          "Global Govt": 1.4300000000000002,
+          "UK Corporate": 2.41,
+          "High Yield": null,
+          "Global Agg Bond": 8.15,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2023-06-08",
+          "UK Gilts": 2.45,
+          "EUR Govt": null,
+          "Global Govt": 2.4499999999999997,
+          "UK Corporate": 4.37,
+          "High Yield": null,
+          "Global Agg Bond": 7.9,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2023-09-14",
+          "UK Gilts": 2.57,
+          "EUR Govt": null,
+          "Global Govt": 2.57,
+          "UK Corporate": 4.45,
+          "High Yield": null,
+          "Global Agg Bond": 7.91,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2023-11-27",
+          "UK Gilts": 2.73,
+          "EUR Govt": null,
+          "Global Govt": 2.73,
+          "UK Corporate": 4.45,
+          "High Yield": null,
+          "Global Agg Bond": 7.75,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2024-03-05",
+          "UK Gilts": 2.73,
+          "EUR Govt": null,
+          "Global Govt": 2.73,
+          "UK Corporate": 4.45,
+          "High Yield": null,
+          "Global Agg Bond": 7.75,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2024-04-23",
+          "UK Gilts": 2.73,
+          "EUR Govt": null,
+          "Global Govt": 2.73,
+          "UK Corporate": 4.45,
+          "High Yield": null,
+          "Global Agg Bond": 7.75,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2024-06-03",
+          "UK Gilts": 2.22,
+          "EUR Govt": null,
+          "Global Govt": 2.32,
+          "UK Corporate": 3.1799999999999997,
+          "High Yield": null,
+          "Global Agg Bond": 7.569999999999999,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2024-09-05",
+          "UK Gilts": 1.8,
+          "EUR Govt": null,
+          "Global Govt": 1.89,
+          "UK Corporate": 2.59,
+          "High Yield": null,
+          "Global Agg Bond": 7.94,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2024-12-04",
+          "UK Gilts": 1.73,
+          "EUR Govt": null,
+          "Global Govt": 1.77,
+          "UK Corporate": 2.44,
+          "High Yield": null,
+          "Global Agg Bond": 9.75,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2025-01-14",
+          "UK Gilts": 1.73,
+          "EUR Govt": null,
+          "Global Govt": 1.77,
+          "UK Corporate": 2.44,
+          "High Yield": null,
+          "Global Agg Bond": 9.75,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2025-03-06",
+          "UK Gilts": 1.51,
+          "EUR Govt": null,
+          "Global Govt": 1.26,
+          "UK Corporate": 2.12,
+          "High Yield": null,
+          "Global Agg Bond": 9.99,
+          "EMD Blend": null
+        },
+        {
+          "Date": "2025-06-05",
+          "UK Gilts": 1.35,
+          "EUR Govt": 0.4,
+          "Global Govt": 1.53,
+          "UK Corporate": 1.99,
+          "High Yield": null,
+          "Global Agg Bond": 9.88,
+          "EMD Blend": null
+        }
+      ]
+    }
+  },
+  "benchmarks": {
+    "trailing": [
+      {
+        "Model": "EAA Fund GBP Allocation 0-20 Equity",
+        "1M": 0.06,
+        "3M": 1.81,
+        "6M": 3.8,
+        "YTD": 6.78,
+        "1Y": 6.78,
+        "3Y": 5.84,
+        "5Y": 1.67,
+        "10Y": 2.97
+      },
+      {
+        "Model": "EAA Model GBP Allocation 20-40 Equity",
+        "1M": 0.31,
+        "3M": 2.23,
+        "6M": 5.12,
+        "YTD": 8.89,
+        "1Y": 8.43,
+        "3Y": 6.88,
+        "5Y": 2.77,
+        "10Y": 4.01
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 40-60 Equity",
+        "1M": 0.43,
+        "3M": 2.69,
+        "6M": 6.76,
+        "YTD": 10.29,
+        "1Y": 10.29,
+        "3Y": 8.14,
+        "5Y": 3.99,
+        "10Y": 4.7
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 60-80 Equity",
+        "1M": 0.47,
+        "3M": 3.36,
+        "6M": 8.65,
+        "YTD": 11.49,
+        "1Y": 11.49,
+        "3Y": 9.52,
+        "5Y": 5.54,
+        "10Y": 6.25
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 80+ Equity",
+        "1M": 0.49,
+        "3M": 3.59,
+        "6M": 10.28,
+        "YTD": 12.43,
+        "1Y": 12.43,
+        "3Y": 10.88,
+        "5Y": 6.86,
+        "10Y": 7.51
+      }
+    ],
+    "calendar": [
+      {
+        "Model": "EAA Fund GBP Allocation 0-20 Equity",
+        "2016": 7.41,
+        "2017": 4.74,
+        "2018": -2.76,
+        "2019": 8.38,
+        "2020": 4.04,
+        "2021": 2.34,
+        "2022": -10.49,
+        "2023": 7.08,
+        "2024": 3.7,
+        "2025": 6.78,
+        "YTD": 6.78
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 20-40 Equity",
+        "2016": 9.52,
+        "2017": 5.68,
+        "2018": -4.12,
+        "2019": 10.4,
+        "2020": 3.98,
+        "2021": 5.03,
+        "2022": -10.56,
+        "2023": 7.31,
+        "2024": 4.99,
+        "2025": 8.35,
+        "YTD": 8.35
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 40-60 Equity",
+        "2016": 10.56,
+        "2017": 7.08,
+        "2018": -5.5,
+        "2019": 12.39,
+        "2020": 3.54,
+        "2021": 7.56,
+        "2022": -10.62,
+        "2023": 7.52,
+        "2024": 6.65,
+        "2025": 10.29,
+        "YTD": 10.29
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 60-80 Equity",
+        "2016": 12.41,
+        "2017": 9.94,
+        "2018": -6.47,
+        "2019": 15.58,
+        "2020": 4.86,
+        "2021": 11.08,
+        "2022": -10.28,
+        "2023": 8.28,
+        "2024": 8.83,
+        "2025": 11.49,
+        "YTD": 11.49
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 80+ Equity",
+        "2016": 14.16,
+        "2017": 12.07,
+        "2018": -7.51,
+        "2019": 17.69,
+        "2020": 6.26,
+        "2021": 13.37,
+        "2022": -9.83,
+        "2023": 9.3,
+        "2024": 10.93,
+        "2025": 12.43,
+        "YTD": 12.43
+      }
+    ]
+  },
+  "cost_table": [
+    {
+      "model": "Quilter WealthSelect Active Managed 3",
+      "dfm": 0.15,
+      "underlying": 0.45,
+      "all_in": 0.6
+    },
+    {
+      "model": "Quilter WealthSelect Active Managed 4",
+      "dfm": 0.15,
+      "underlying": 0.52,
+      "all_in": 0.67
+    },
+    {
+      "model": "Quilter WealthSelect Active Managed 5",
+      "dfm": 0.15,
+      "underlying": 0.58,
+      "all_in": 0.73
+    },
+    {
+      "model": "Quilter WealthSelect Active Managed 6",
+      "dfm": 0.15,
+      "underlying": 0.63,
+      "all_in": 0.78
+    },
+    {
+      "model": "Quilter WealthSelect Active Managed 7",
+      "dfm": 0.15,
+      "underlying": 0.66,
+      "all_in": 0.81
+    },
+    {
+      "model": "Quilter WealthSelect Active Managed 8",
+      "dfm": 0.15,
+      "underlying": 0.68,
+      "all_in": 0.83
+    },
+    {
+      "model": "Quilter WealthSelect Active Managed 9",
+      "dfm": 0.15,
+      "underlying": 0.66,
+      "all_in": 0.81
+    },
+    {
+      "model": "Quilter WealthSelect Active Managed 10",
+      "dfm": 0.15,
+      "underlying": 0.64,
+      "all_in": 0.79
+    }
+  ]
+}
