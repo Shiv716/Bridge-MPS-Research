@@ -48,12 +48,21 @@ async def get_filter_options():
     all_mps = get_all_mps()
     risk_ratings = sorted(set(m["risk_rating"] for m in all_mps))
     providers = sorted(set(m["provider"] for m in all_mps))
+    # Collect unique fund selection styles from provider data
+    all_providers = get_providers()
+    styles = sorted(set(p.get("investment_style", "") for p in all_providers.values() if p.get("investment_style")))
+    # Collect unique risk rating providers
+    rrp = set()
+    for prov in all_providers.values():
+        for r in prov.get("risk_rating_providers", []):
+            rrp.add(r)
     return {
         "platforms": get_platforms(),
         "providers": providers,
-        "investment_styles": get_investment_styles(),
+        "investment_styles": styles,
         "risk_ratings": risk_ratings,
         "risk_range": {"min": min(risk_ratings), "max": max(risk_ratings)} if risk_ratings else {},
+        "risk_rating_providers": sorted(rrp),
     }
 
 
@@ -256,6 +265,48 @@ async def get_dashboard():
 @app.get("/api/health")
 async def health():
     return {"status": "healthy", "version": "1.0.0", "platform": "Bridge"}
+
+
+# ─── Feedback ──────────────────────────────────────────────────────────
+
+FEEDBACK_EMAIL = os.environ.get("FEEDBACK_EMAIL", "feedback@bridge.example.com")
+SMTP_HOST = os.environ.get("SMTP_HOST", "")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
+SMTP_USER = os.environ.get("SMTP_USER", "")
+SMTP_PASS = os.environ.get("SMTP_PASS", "")
+
+@app.post("/api/feedback")
+async def submit_feedback(body: dict):
+    subject = body.get("subject", "").strip()
+    message = body.get("message", "").strip()
+    if not subject or not message:
+        raise HTTPException(400, "Subject and message are required")
+
+    # If SMTP is configured, send email
+    if SMTP_HOST and SMTP_USER:
+        import smtplib
+        from email.mime.text import MIMEText
+        try:
+            msg = MIMEText(message, "plain")
+            msg["Subject"] = f"[Bridge Feedback] {subject}"
+            msg["From"] = SMTP_USER
+            msg["To"] = FEEDBACK_EMAIL
+            with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+                server.starttls()
+                server.login(SMTP_USER, SMTP_PASS)
+                server.send_message(msg)
+        except Exception as e:
+            print(f"SMTP error: {e}")
+            raise HTTPException(500, "Failed to send email. Please try again later.")
+    else:
+        # Log to console if SMTP not configured
+        print(f"\n--- FEEDBACK ---")
+        print(f"Subject: {subject}")
+        print(f"Message: {message}")
+        print(f"(Configure SMTP_HOST, SMTP_USER, SMTP_PASS env vars to send via email)")
+        print(f"----------------\n")
+
+    return {"status": "ok", "message": "Feedback received"}
 
 
 # ─── Serve Frontend ───────────────────────────────────────────────────

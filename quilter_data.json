@@ -2658,32 +2658,32 @@
       "id": "quilter",
       "name": "Quilter Investors",
       "full_name": "Quilter WealthSelect Managed Active",
-      "description": "Quilter WealthSelect Managed Active is an actively managed MPS range offering 8 risk-graded portfolios (3-10) with broad multi-asset diversification across equity, fixed income, alternatives and cash. Managed by Quilter Investors with a DFM fee of 0.15% across all models.",
-      "aum_bn": 25.4,
-      "established": 2014,
-      "headquarters": "London",
       "investment_style": "Active",
-      "key_personnel": [
-        {
-          "name": "Quilter Investors",
-          "role": "Multi-Asset Investment Management"
-        }
-      ],
-      "strengths": [
-        "Broad range of 8 risk-graded portfolios covering risk levels 3 to 10",
-        "Competitive DFM fee of 0.15% across all models",
-        "Wide platform availability across 7 major UK adviser platforms",
-        "Comprehensive quarterly rebalancing with documented rationale",
-        "Mapped to multiple risk rating providers (Dynamic Planner, Synaptic, EV, Finametrica)"
-      ],
-      "considerations": [
-        "All-in costs increase with risk level (0.60% to 0.83%)",
-        "Active approach introduces manager selection risk",
-        "No unitised fund equivalents available",
-        "Alternatives allocation has varied significantly over time"
-      ],
-      "regulatory_status": "FCA Authorised",
-      "website": "https://www.quilter.com"
+      "description": "",
+      "aum_bn": 0,
+      "established": "",
+      "headquarters": "",
+      "key_personnel": [],
+      "strengths": [],
+      "considerations": [],
+      "regulatory_status": "",
+      "website": "",
+      "risk_rating_providers": [],
+      "investment_process": {
+        "investment_team": "",
+        "strategic_aa": "",
+        "tactical_aa": "",
+        "fund_selection": "",
+        "rebalancing": ""
+      },
+      "adviser_support": {
+        "onboarding": "",
+        "ongoing_communication": ""
+      },
+      "quarterly_review": {
+        "aa_changes": "",
+        "fund_changes": ""
+      }
     }
   },
   "platforms": [
