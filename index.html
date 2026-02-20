@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0a0f1a;--bg-card:#111827;--bg-hover:#1a2335;--bg-surface:#0d1424;--border:#1e293b;--border-a:#334155;--text:#e2e8f0;--text-s:#94a3b8;--text-m:#64748b;--accent:#3b82f6;--accent-h:#2563eb;--accent-g:rgba(59,130,246,.15);--green:#10b981;--green-bg:rgba(16,185,129,.1);--red:#ef4444;--red-bg:rgba(239,68,68,.1);--amber:#f59e0b;--amber-bg:rgba(245,158,11,.1);--purple:#8b5cf6;--sw:240px;--r:10px;--rs:6px}
+:root{--bg:#ffffff;--bg-card:#f8f9fb;--bg-hover:#f1f3f7;--bg-surface:#f3f4f6;--border:#e2e5ea;--border-a:#cbd0d8;--text:#1a1f2e;--text-s:#4b5563;--text-m:#6b7280;--accent:#2563eb;--accent-h:#1d4ed8;--accent-g:rgba(37,99,235,.08);--green:#059669;--green-bg:rgba(5,150,105,.08);--red:#dc2626;--red-bg:rgba(220,38,38,.08);--amber:#d97706;--amber-bg:rgba(217,119,6,.08);--purple:#7c3aed;--sw:240px;--r:10px;--rs:6px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 .app{display:flex;min-height:100vh}
@@ -24,11 +24,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .nav-item.active .nav-icon{opacity:1}
 .sidebar-footer{padding:16px 20px;border-top:1px solid var(--border);font-size:11px;color:var(--text-m)}
 .main{margin-left:var(--sw);flex:1;min-height:100vh}
-.topbar{position:sticky;top:0;z-index:50;background:rgba(10,15,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between}
 .topbar-title{font-size:14px;font-weight:500}
 .content{padding:28px 32px;max-width:1400px}
 .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .2s}
-.card:hover{border-color:var(--border-a)}
+.card:hover{border-color:var(--accent)}
 .card-h{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .card-t{font-size:14px;font-weight:600}
 .card-b{padding:22px}
@@ -49,7 +49,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 table{width:100%;border-collapse:collapse;font-size:13px}
 th{text-align:left;padding:10px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text-m);border-bottom:1px solid var(--border);white-space:nowrap}
 td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text-s);white-space:nowrap}
-tr:hover td{background:rgba(255,255,255,.02)}tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(0,0,0,.02)}tr:last-child td{border-bottom:none}
 td.nc{color:var(--text);font-weight:500}
 .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:flex-end}
 .fg{display:flex;flex-direction:column;gap:4px}
@@ -64,7 +64,7 @@ select:focus,input:focus{border-color:var(--accent)}select{cursor:pointer}
 .im{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:12px;color:var(--text-m)}
 .it{font-size:16px;font-weight:600;margin-bottom:8px;line-height:1.4}
 .is{font-size:13.5px;color:var(--text-s);line-height:1.6}
-.ph{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(99,102,241,.05));border:1px solid var(--border);border-radius:var(--r);padding:32px;margin-bottom:24px}
+.ph{background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(99,102,241,.04));border:1px solid var(--border);border-radius:var(--r);padding:32px;margin-bottom:24px}
 .pn{font-family:'Fraunces',serif;font-size:28px;font-weight:700;margin-bottom:4px}
 .pm{display:flex;gap:24px;flex-wrap:wrap}
 .pmi{display:flex;flex-direction:column;gap:2px}
@@ -90,9 +90,20 @@ select:focus,input:focus{border-color:var(--accent)}select{cursor:pointer}
 @keyframes spin{to{transform:rotate(360deg)}}
 .cr{cursor:pointer}.cr:hover td{color:var(--text)}
 .fi{animation:fi .3s ease-out}@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:1024px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.sidebar{transform:translateX(-100%)}.main{margin-left:0}.g2,.g3,.g4{grid-template-columns:1fr}.content{padding:20px 16px}.tabs{overflow-x:auto}}
-::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.bv-panel{position:fixed;right:0;top:56px;bottom:0;width:320px;background:var(--bg-surface);border-left:1px solid var(--border);z-index:40;transition:transform .3s;display:flex;flex-direction:column;overflow:hidden}
+.bv-panel.collapsed{transform:translateX(320px)}
+.bv-panel-header{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.bv-panel-header span{font-size:13px;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:6px}
+.bv-toggle{background:none;border:none;color:var(--text-m);cursor:pointer;font-size:16px;padding:4px;transition:color .15s;font-family:inherit}.bv-toggle:hover{color:var(--text)}
+.bv-content{flex:1;overflow-y:auto;padding:18px;font-size:13.5px;color:var(--text-s);line-height:1.7}
+.bv-content p{margin-bottom:12px}.bv-content strong{color:var(--text);font-weight:600}
+.bv-tab-btn{position:fixed;right:0;top:50%;transform:translateY(-50%);background:var(--accent-g);border:1px solid var(--accent);border-right:none;border-radius:6px 0 0 6px;padding:12px 8px;cursor:pointer;writing-mode:vertical-lr;font-size:11px;font-weight:600;color:var(--accent);letter-spacing:.5px;z-index:41;transition:all .15s}.bv-tab-btn:hover{background:var(--accent);color:#fff}
+.cd-editable{padding:18px;min-height:80px;font-size:13.5px;line-height:1.7;color:var(--text-s);outline:none;font-family:inherit}
+.cd-editable:focus{background:rgba(59,130,246,.03)}
+.cd-editable:empty::before{content:attr(data-placeholder);color:var(--text-m)}
+@media(max-width:1024px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}.bv-panel{width:280px}}
+@media(max-width:768px){.sidebar{transform:translateX(-100%)}.main{margin-left:0}.g2,.g3,.g4{grid-template-columns:1fr}.content{padding:20px 16px}.tabs{overflow-x:auto}.bv-panel{width:100%;top:auto;bottom:0;height:50vh;border-left:none;border-top:1px solid var(--border)}.bv-panel.collapsed{transform:translateY(100%)}}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#cbd0d8;border-radius:3px}
 </style>
 </head>
 <body>
@@ -128,7 +139,7 @@ Insights</div>
 </main>
 </div>
 <script>
-const $=id=>document.getElementById(id);let S={p:'dashboard',c:{},pr:{}},CH={};
+const $=id=>document.getElementById(id);let S={p:'dashboard',c:{},pr:{},bvOpen:true},CH={};
 function nav(p,pr={}){S.p=p;S.pr=pr;document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));const e=document.querySelector(`.nav-item[data-page="${p}"]`);if(e)e.classList.add('active');render()}
 async function F(u){if(S.c[u])return S.c[u];try{const r=await fetch(u);const d=await r.json();S.c[u]=d;return d}catch(e){console.error(e);return null}}
 function DC(){Object.values(CH).forEach(c=>c.destroy&&c.destroy());CH={}}
@@ -137,9 +148,13 @@ function catB(c){return c==='Weekly Commentary'?'b-green':c==='Regulatory'?'b-am
 function riskB(r){return r<=3?'b-green':r<=5?'b-blue':r<=7?'b-amber':'b-red'}
 function pId(n){return n.toLowerCase().replace(/ investors/,'').replace(/ /g,'-')}
 function shortName(n){return n.replace('Quilter WealthSelect Active ','').replace('Managed ','')}
+function removeBV(){const p=document.querySelector('.bv-panel');const b=document.querySelector('.bv-tab-btn');if(p)p.remove();if(b)b.remove()}
+function toggleBV(){const p=document.querySelector('.bv-panel');const b=document.querySelector('.bv-tab-btn');if(!p)return;S.bvOpen=!S.bvOpen;p.classList.toggle('collapsed',!S.bvOpen);if(b)b.style.display=S.bvOpen?'none':'block'}
+function renderBV(content){removeBV();if(!content)return;const p=document.createElement('div');p.className='bv-panel'+(S.bvOpen?'':' collapsed');p.innerHTML=`<div class="bv-panel-header"><span>💡 Bridge View</span><button class="bv-toggle" onclick="toggleBV()">✕</button></div><div class="bv-content">${content}</div>`;document.body.appendChild(p);const b=document.createElement('div');b.className='bv-tab-btn';b.style.display=S.bvOpen?'none':'block';b.textContent='Bridge View';b.onclick=toggleBV;document.body.appendChild(b)}
+function fmtArticle(t){if(!t)return'<p style="color:var(--text-m)">Content to be added.</p>';return t.split('\n\n').map(p=>{p=p.trim();if(!p)return'';if(p.startsWith('**')&&p.endsWith('**'))return`<h3>${p.replace(/\*\*/g,'')}</h3>`;let h=p.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');if(h.includes('\n•')||h.startsWith('•')){const lines=h.split('\n');let out='',inUl=false;lines.forEach(l=>{l=l.trim();if(l.startsWith('•')){if(!inUl){out+='<ul>';inUl=true}out+=`<li>${l.slice(1).trim()}</li>`}else{if(inUl){out+='</ul>';inUl=false}if(l)out+=`<p>${l}</p>`}});if(inUl)out+='</ul>';return out}return`<p>${h.replace(/\n/g,'<br>')}</p>`}).join('')}
 
 async function render(){
-const el=$('app'),tt=$('tt');DC();el.innerHTML='<div class="loading"><div class="spinner"></div>Loading...</div>';
+const el=$('app'),tt=$('tt');DC();removeBV();el.innerHTML='<div class="loading"><div class="spinner"></div>Loading...</div>';
 switch(S.p){
 case'dashboard':tt.textContent='Homepage';await rDash(el);break;
 case'selection':tt.textContent='MPS Selection';await rSel(el);break;
@@ -179,7 +194,7 @@ el.innerHTML=`<div class="fi"><div class="ph1"><h1>Bridge</h1><p>Independent MPS
 <div class="exp-body" style="display:none;padding:20px;border-bottom:1px solid var(--border)">
 <div style="display:flex;flex-direction:column;gap:12px">
 <div class="fg"><span class="fl">Subject</span><input type="text" id="fb-subj" placeholder="e.g. Feature request, Bug report..." style="width:100%"></div>
-<div class="fg"><span class="fl">Message</span><textarea id="fb-msg" rows="4" placeholder="Your feedback..." style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-size:13px;color:var(--text);font-family:inherit;outline:none;resize:vertical;width:100%"></textarea></div>
+<div class="fg"><span class="fl">Message</span><textarea id="fb-msg" rows="4" placeholder="Your feedback..." style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-size:13px;color:var(--text);font-family:inherit;outline:none;resize:vertical;width:100%;transition:border-color .15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></textarea></div>
 <div style="display:flex;gap:10px;align-items:center"><button class="btn btn-p" onclick="sendFb()">Send Feedback</button><span id="fb-status" style="font-size:12px;color:var(--text-m)"></span></div>
 </div></div>
 <div class="exp-row" onclick="togExp(this)" style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer">
@@ -201,7 +216,8 @@ function showTip(el){const t=el.querySelector('.hp-tip');if(t)t.style.display='b
 function hideTip(el){const t=el.querySelector('.hp-tip');if(t)t.style.display='none'}
 function togExp(row){const body=row.nextElementSibling;const arr=row.querySelector('.exp-arr');
 if(body.style.display==='none'){body.style.display='block';arr.textContent='▾'}
-else{body.style.display='none';arr.textContent='▸'}}
+else{body.style.display='none';arr.textContent='▸'}
+const st=document.getElementById('fb-status');if(st)st.textContent=''}
 async function sendFb(){
 const subj=$('fb-subj').value.trim(),msg=$('fb-msg').value.trim(),st=$('fb-status');
 if(!subj||!msg){st.style.color='var(--red)';st.textContent='Please fill in both fields.';return}
@@ -218,41 +234,34 @@ if(!f||!d){el.innerHTML='<p>Failed to load</p>';return}
 el.innerHTML=`<div class="fi"><div class="ph1"><h1>MPS Selection</h1><p>Filter the MPS universe to find solutions relevant for your firm</p></div>
 <div class="filter-bar">
 <div class="fg"><span class="fl">Platform</span><select id="fp" onchange="flt()"><option value="">All</option>${f.platforms.map(p=>`<option>${p}</option>`).join('')}</select></div>
-<div class="fg"><span class="fl">Provider</span><select id="fv" onchange="flt()"><option value="">All</option>${f.providers.map(p=>`<option>${p}</option>`).join('')}</select></div>
 <div class="fg"><span class="fl">Fund Selection</span><select id="fs" onchange="flt()"><option value="">All</option>${(f.investment_styles||[]).map(s=>`<option>${s}</option>`).join('')}</select></div>
 <div class="fg"><span class="fl">Risk Rating Provider</span><select id="fr" onchange="flt()"><option value="">All</option>${(f.risk_rating_providers||[]).map(r=>`<option>${r}</option>`).join('')}</select></div>
-<div class="fg"><span class="fl">Risk Min</span><select id="fn" onchange="flt()">${[1,2,3,4,5,6,7,8,9,10].map(r=>`<option ${r===1?'selected':''}>${r}</option>`).join('')}</select></div>
-<div class="fg"><span class="fl">Risk Max</span><select id="fx" onchange="flt()">${[1,2,3,4,5,6,7,8,9,10].map(r=>`<option ${r===10?'selected':''}>${r}</option>`).join('')}</select></div>
 <div class="fg" style="align-self:flex-end"><button class="btn btn-g btn-sm" onclick="rflt()">Reset</button></div>
 </div>
-<div class="card"><div class="card-h"><span class="card-t" id="mc">${d.count} MPS Solutions</span></div>
-<div style="padding:0"><div class="table-wrap"><table><thead><tr><th>Portfolio</th><th>Provider</th><th>Risk</th><th>Allocation</th><th>OCF</th><th>1yr</th><th>3yr</th><th>Platforms</th></tr></thead>
+<div class="card"><div class="card-h"><span class="card-t" id="mc">${grpRanges(d.mps).length} MPS Ranges</span></div>
+<div style="padding:0"><div class="table-wrap"><table><thead><tr><th>MPS Range</th><th>Fund Selection</th><th>Risk Levels</th><th>All in Fee</th><th>Platforms</th></tr></thead>
 <tbody id="mt">${mRows(d.mps)}</tbody></table></div></div></div></div>`}
 
-function mRows(mps){return mps.map(m=>`<tr class="cr" onclick="nav('provider',{id:'${pId(m.provider)}'})">
-<td class="nc">${m.name}</td><td>${m.provider}</td>
-<td><span class="badge ${riskB(m.risk_rating)}">${m.risk_rating}</span></td>
-<td><div class="ab" style="width:100px"><div class="al-eq" style="width:${m.asset_allocation.equity}%"></div><div class="al-bo" style="width:${m.asset_allocation.bonds}%"></div><div class="al-al" style="width:${m.asset_allocation.alternatives}%"></div></div></td>
-<td>${m.ocf.toFixed(2)}%</td>
-<td style="color:${m.return_1yr>=0?'var(--green)':'var(--red)'}">${m.return_1yr>=0?'+':''}${m.return_1yr}%</td>
-<td style="color:var(--green)">+${m.return_3yr}%</td>
-<td style="font-size:11px;max-width:120px;overflow:hidden;text-overflow:ellipsis">${m.platforms.join(', ')}</td></tr>`).join('')}
+function grpRanges(mps){const g={};mps.forEach(m=>{const rn=m.name.replace(/\s+\d+$/,'');if(!g[rn])g[rn]={name:rn,provider:m.provider,risks:[],ocfs:[],platforms:m.platforms||[],style:''};g[rn].risks.push(m.risk_rating);g[rn].ocfs.push(m.ocf)});return Object.values(g).map(r=>{r.risks.sort((a,b)=>a-b);return r})}
+function mRows(mps){return grpRanges(mps).map(r=>`<tr class="cr" onclick="nav('provider',{id:'${pId(r.provider)}'})">
+<td class="nc">${r.name}</td><td><span class="badge b-blue">Active</span></td>
+<td>${r.risks[0]}-${r.risks[r.risks.length-1]}</td>
+<td>${Math.min(...r.ocfs).toFixed(2)}% - ${Math.max(...r.ocfs).toFixed(2)}%</td>
+<td style="font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis">${r.platforms.join(', ')}</td></tr>`).join('')}
 
 async function flt(){
-let u=`/api/selection/mps?risk_min=${$('fn').value}&risk_max=${$('fx').value}`;
+let u='/api/selection/mps?risk_min=1&risk_max=10';
 if($('fp').value)u+=`&platforms=${$('fp').value}`;
-if($('fv').value)u+=`&providers=${$('fv').value}`;
 delete S.c[u];const d=await F(u);if(!d)return;
 let filtered=d.mps;
-// Client-side filter: fund selection style
 const fs=$('fs').value;
 if(fs){const provs=await F('/api/providers');if(provs){const matchProvs=provs.providers.filter(p=>p.investment_style===fs).map(p=>p.name);filtered=filtered.filter(m=>matchProvs.includes(m.provider))}}
-// Client-side filter: risk rating provider
 const fr=$('fr').value;
 if(fr){const provs=await F('/api/providers');if(provs){const matchProvs=provs.providers.filter(p=>(p.risk_rating_providers||[]).includes(fr)).map(p=>p.name);filtered=filtered.filter(m=>matchProvs.includes(m.provider))}}
-$('mc').textContent=`${filtered.length} MPS Solutions`;$('mt').innerHTML=mRows(filtered)}
+const ranges=grpRanges(filtered);
+$('mc').textContent=`${ranges.length} MPS Ranges`;$('mt').innerHTML=mRows(filtered)}
 
-function rflt(){$('fp').value='';$('fv').value='';$('fs').value='';$('fr').value='';$('fn').value='1';$('fx').value='10';flt()}
+function rflt(){$('fp').value='';$('fs').value='';$('fr').value='';flt()}
 
 // ─── Analysis - Provider List ─────────────────────────
 async function rAna(el){
@@ -265,10 +274,9 @@ el.innerHTML=`<div class="fi"><div class="ph1"><h1>MPS Analysis</h1><p>Structure
 <span class="badge b-blue">${p.investment_style}</span></div>
 <div style="font-size:13px;color:var(--text-s);line-height:1.6;margin-bottom:16px">${p.description.slice(0,160)}...</div>
 <div style="display:flex;gap:20px;font-size:12px">
-<div><span style="color:var(--text-m)">AUM </span><strong>£${p.aum_bn}bn</strong></div>
-<div><span style="color:var(--text-m)">Portfolios </span><strong>${p.portfolio_count}</strong></div>
+<div><span style="color:var(--text-m)">Risk Levels </span><strong>${p.portfolio_count}</strong></div>
 <div><span style="color:var(--text-m)">Risk </span><strong>${p.risk_range}</strong></div>
-<div><span style="color:var(--text-m)">OCF </span><strong>${p.ocf_range}</strong></div>
+<div><span style="color:var(--text-m)">All in Fee </span><strong>${p.ocf_range}</strong></div>
 </div></div></div>`).join('')}</div></div>`}
 
 // ─── Provider Detail (8-tab layout) ───────────────────
@@ -289,15 +297,16 @@ el.innerHTML=`<div class="fi"><div class="back" onclick="nav('analysis')">← Ba
 <div class="tab" onclick="pTab('cost')">Cost</div>
 <div class="tab" onclick="pTab('adviser')">Adviser Support</div>
 <div class="tab" onclick="pTab('quarterly')">Quarterly Review</div>
+<div class="tab" onclick="pTab('consumer_duty')">Consumer Duty</div>
 </div>
 <div id="tc"></div></div>`;
 pTab('overview')}
 
 function pTab(tab){
-S._provTab=tab;DC();
+S._provTab=tab;DC();removeBV();
 document.querySelectorAll('#ptabs .tab').forEach(t=>t.classList.remove('active'));
 const tabs=document.querySelectorAll('#ptabs .tab');
-const tabMap=['overview','investment','current','historical','performance','cost','adviser','quarterly'];
+const tabMap=['overview','investment','current','historical','performance','cost','adviser','quarterly','consumer_duty'];
 const idx=tabMap.indexOf(tab);if(idx>=0&&tabs[idx])tabs[idx].classList.add('active');
 const tc=$('tc'),d=S._provData;if(!tc||!d)return;
 const p=d.provider,pts=d.portfolios;
@@ -306,28 +315,33 @@ case'overview':tabOverview(tc,p,pts);break;
 case'investment':tabInvestment(tc,p);break;
 case'current':tabCurrent(tc,pts);break;
 case'historical':tabHistorical(tc);break;
-case'performance':tabPerformance(tc,pts);break;
+case'performance':tabPerformance(tc,pts,p);break;
 case'cost':tabCost(tc,pts);break;
 case'adviser':tabAdviser(tc,p);break;
 case'quarterly':tabQuarterly(tc,p);break;
+case'consumer_duty':tabConsumerDuty(tc,p,pts);break;
 }}
 
 // ─── Overview Tab ─────────────────────────────────────
 function tabOverview(tc,p,pts){
 const rrp=p.risk_rating_providers||[];
 tc.innerHTML=`
+<div class="grid g2" style="margin-bottom:20px">
+<div class="stat-card"><div class="stat-l">Risk Levels</div><div class="stat-v">${pts.length}</div></div>
+<div class="stat-card"><div class="stat-l">All in Fee</div><div class="stat-v">${Math.min(...pts.map(m=>m.ocf)).toFixed(2)}% – ${Math.max(...pts.map(m=>m.ocf)).toFixed(2)}%</div></div>
+</div>
 <div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Provider Details</span></div>
-<div class="card-b" style="padding:0"><table><thead><tr><th>Firm</th><th>Fund Selection</th>${p.aum_bn?'<th>AUM</th>':''}${p.established?'<th>Established</th>':''}${p.regulatory_status?'<th>Status</th>':''}</tr></thead>
-<tbody><tr><td class="nc">${p.name}</td><td>${p.investment_style||'–'}</td>${p.aum_bn?`<td>£${p.aum_bn}bn</td>`:''}${p.established?`<td>${p.established}</td>`:''}${p.regulatory_status?`<td>${p.regulatory_status}</td>`:''}</tr></tbody></table></div></div>
+<div class="card-b" style="padding:0"><table><thead><tr><th>Firm</th><th>Fund Selection</th><th>Management Fee</th>${p.established?'<th>Established</th>':''}${p.regulatory_status?'<th>Status</th>':''}</tr></thead>
+<tbody><tr><td class="nc">${p.name}</td><td>${p.investment_style||'–'}</td><td>0.15%</td>${p.established?`<td>${p.established}</td>`:''}${p.regulatory_status?`<td>${p.regulatory_status}</td>`:''}</tr></tbody></table></div></div>
 ${p.description?`<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Description</span></div><div class="card-b"><div class="article"><p>${p.description}</p></div></div></div>`:''}
 <div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Model Range</span></div>
-<div class="card-b" style="padding:0"><table><thead><tr><th>Model</th><th>Inception</th><th>Management Fee (%)</th></tr></thead>
-<tbody>${pts.map(m=>`<tr><td class="nc">${m.name}</td><td>${m.inception_date?new Date(m.inception_date).toLocaleDateString('en-GB'):'–'}</td><td>${m.cost_breakdown?m.cost_breakdown.dfm:'–'}</td></tr>`).join('')}</tbody></table></div></div>
+<div class="card-b" style="padding:0"><table><thead><tr><th>Model</th><th>Inception</th></tr></thead>
+<tbody>${pts.map(m=>`<tr><td class="nc">${m.name}</td><td>${m.inception_date?new Date(m.inception_date).toLocaleDateString('en-GB'):'–'}</td></tr>`).join('')}</tbody></table></div></div>
 <div class="grid g2">
-${rrp.length?`<div class="card"><div class="card-h"><span class="card-t">Risk Rating Providers</span></div>
-<div class="card-b"><ul class="slist">${rrp.map(r=>`<li>${r}</li>`).join('')}</ul></div></div>`:''}
 <div class="card"><div class="card-h"><span class="card-t">Platform Availability</span></div>
 <div class="card-b"><ul class="slist">${pts[0].platforms.map(pl=>`<li>${pl}</li>`).join('')}</ul></div></div>
+${rrp.length?`<div class="card"><div class="card-h"><span class="card-t">Risk Rating Providers</span></div>
+<div class="card-b"><ul class="slist">${rrp.map(r=>`<li>${r}</li>`).join('')}</ul></div></div>`:''}
 </div>
 ${p.strengths&&p.strengths.length?`<div class="grid g2" style="margin-top:20px"><div class="card"><div class="card-h"><span class="card-t">Strengths</span></div><div class="card-b"><ul class="slist">${p.strengths.map(s=>`<li>${s}</li>`).join('')}</ul></div></div>
 ${p.considerations&&p.considerations.length?`<div class="card"><div class="card-h"><span class="card-t">Considerations</span></div><div class="card-b"><ul class="clist">${p.considerations.map(c=>`<li>${c}</li>`).join('')}</ul></div></div>`:''}</div>`:''}`}
@@ -340,47 +354,68 @@ const sections=[
 {title:'Strategic Asset Allocation',key:'strategic_aa'},
 {title:'Tactical Asset Allocation',key:'tactical_aa'},
 {title:'Fund Selection',key:'fund_selection'},
+{title:'Portfolio Construction',key:'portfolio_construction'},
 {title:'Rebalancing & Trading',key:'rebalancing'}
 ];
 tc.innerHTML=sections.map(s=>`<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">${s.title}</span></div>
-<div class="card-b"><div class="article">${ip[s.key]?`<p>${ip[s.key]}</p>`:'<p style="color:var(--text-m)">Content to be added from provider documentation.</p>'}</div></div></div>`).join('')}
+<div class="card-b"><div class="article">${fmtArticle(ip[s.key])}</div></div></div>`).join('');
+renderBV(`<p><strong>Bridge View: Investment Process</strong></p><p>Quilter's investment process is comprehensive, built around a centralised Manager Research Hub with dedicated teams for quantitative analysis, operational due diligence, and responsible investment.</p><p>The use of WTW capital market assumptions for SAA adds rigour, while quarterly TAA reviews allow tactical flexibility within defined risk guardrails.</p><p>The sub-advised fund structure is a notable feature — it provides continuity and tax efficiency that many competitors lack.</p><p>Areas to monitor: the breadth of the investment team relative to the number of portfolios managed, and whether TAA decisions are consistently adding value over SAA alone.</p>`)}
 
 // ─── Current Exposure Tab ─────────────────────────────
 function tabCurrent(tc,pts){
 const defPort=pts[0];
 tc.innerHTML=`
 <div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Current Holdings</span>
-<div class="fg"><select id="hp" onchange="chPort()">${pts.map((m,i)=>`<option value="${i}">${shortName(m.name)}</option>`).join('')}</select></div></div>
+<div style="display:flex;gap:8px;align-items:center"><div class="fg"><select id="hp" onchange="chPort()">${pts.map((m,i)=>`<option value="${i}">${shortName(m.name)}</option>`).join('')}</select></div></div></div>
 <div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Fund Name</th><th>ISIN</th><th>Portfolio Weighting (%)</th><th>Asset Class</th><th>Sub Asset Class</th></tr></thead>
-<tbody id="ht">${holdRows(defPort)}</tbody></table></div></div></div>
+<tbody id="ht">${holdRows(defPort,true)}</tbody></table></div>
+<div id="holdToggle" style="padding:12px 14px;text-align:center;border-top:1px solid var(--border)"><a href="#" onclick="expandHold(event)" id="holdBtn" style="color:var(--accent);font-size:12px;font-weight:500;text-decoration:none">Show all ${defPort.underlying_funds?defPort.underlying_funds.length:0} holdings ▾</a></div></div></div>
 <div class="grid g2">
-<div class="card"><div class="card-h"><span class="card-t">Equity Exposure</span></div>
+<div class="card"><div class="card-h"><span class="card-t">Equity Exposure</span>
+<div class="fg"><select id="eqMode" onchange="chEqMode()" style="min-width:110px"><option value="abs">Absolute</option><option value="prop">Proportion</option></select></div></div>
 <div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Region</th>${pts.map(m=>`<th>${shortName(m.name)}</th>`).join('')}</tr></thead>
-<tbody id="eqt">${eqRows(pts)}</tbody></table></div></div></div>
-<div class="card"><div class="card-h"><span class="card-t">Fixed Income Exposure</span></div>
+<tbody id="eqt">${eqRows(pts,'abs')}</tbody></table></div></div></div>
+<div class="card"><div class="card-h"><span class="card-t">Fixed Income Exposure</span>
+<div class="fg"><select id="fiMode" onchange="chFiMode()" style="min-width:110px"><option value="abs">Absolute</option><option value="prop">Proportion</option></select></div></div>
 <div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Type</th>${pts.map(m=>`<th>${shortName(m.name)}</th>`).join('')}</tr></thead>
-<tbody id="fit">${fiRows(pts)}</tbody></table></div></div></div>
-</div>`}
+<tbody id="fit">${fiRows(pts,'abs')}</tbody></table></div></div></div>
+</div>`;
+S._holdExpanded=false;
+renderBV(`<p><strong>Bridge View: Current Exposure</strong></p><p>The current holdings reveal Quilter's active approach to portfolio construction, with a blend of sub-advised mandates and third-party funds.</p><p>Equity exposure tilts towards global developed markets, with a meaningful UK allocation that provides domestic anchoring. The fixed income allocation favours investment-grade sterling credit with selective duration management.</p><p>Key observations: diversification across managers reduces single-manager risk, and the use of sub-advised structures provides operational efficiency advantages.</p>`)}
 
-function holdRows(m){
+function holdRows(m,limit){
 if(!m.underlying_funds||!m.underlying_funds.length)return'<tr><td colspan="5">No holdings data</td></tr>';
-return m.underlying_funds.map(f=>`<tr><td class="nc">${f.name}</td><td>${f.isin||'–'}</td><td>${f.weight}</td>
+const funds=limit&&!S._holdExpanded?m.underlying_funds.slice(0,10):m.underlying_funds;
+return funds.map(f=>`<tr><td class="nc">${f.name}</td><td>${f.isin||'–'}</td><td>${f.weight}</td>
 <td><span class="badge ${f.type==='Equity'?'b-blue':f.type==='Fixed Income'?'b-green':f.type==='Alternative'?'b-purple':'b-amber'}">${f.type}</span></td>
 <td>${f.sub_type||'–'}</td></tr>`).join('')}
 
-function chPort(){
-const idx=$('hp').value;const m=S._provData.portfolios[idx];
-$('ht').innerHTML=holdRows(m)}
+function expandHold(e){e.preventDefault();S._holdExpanded=!S._holdExpanded;const idx=$('hp').value;const m=S._provData.portfolios[idx];$('ht').innerHTML=holdRows(m,true);const btn=$('holdBtn');if(btn)btn.innerHTML=S._holdExpanded?'Show top 10 ▴':`Show all ${m.underlying_funds?m.underlying_funds.length:0} holdings ▾`}
 
-function eqRows(pts){
+function chPort(){
+S._holdExpanded=false;const idx=$('hp').value;const m=S._provData.portfolios[idx];
+$('ht').innerHTML=holdRows(m,true);const btn=$('holdBtn');if(btn)btn.innerHTML=`Show all ${m.underlying_funds?m.underlying_funds.length:0} holdings ▾`}
+
+function eqRows(pts,mode){
 const regions=new Set();
 pts.forEach(m=>{if(m.geographic_allocation)Object.keys(m.geographic_allocation).forEach(k=>regions.add(k))});
-return [...regions].map(r=>`<tr><td class="nc">${r.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}</td>${pts.map(m=>`<td>${m.geographic_allocation&&m.geographic_allocation[r]!=null?m.geographic_allocation[r].toFixed(2):'–'}</td>`).join('')}</tr>`).join('')}
+return[...regions].map(r=>{
+const vals=pts.map(m=>m.geographic_allocation&&m.geographic_allocation[r]!=null?m.geographic_allocation[r]:0);
+if(mode==='prop'){const totals=pts.map(m=>{if(!m.geographic_allocation)return 1;return Object.values(m.geographic_allocation).reduce((s,v)=>s+(v||0),0)||1});
+return`<tr><td class="nc">${r.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}</td>${pts.map((m,i)=>`<td>${vals[i]>0?(vals[i]/totals[i]*100).toFixed(1)+'%':'–'}</td>`).join('')}</tr>`}
+return`<tr><td class="nc">${r.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}</td>${vals.map(v=>`<td>${v>0?v.toFixed(2):'–'}</td>`).join('')}</tr>`}).join('')}
 
-function fiRows(pts){
+function fiRows(pts,mode){
 const types=new Set();
 pts.forEach(m=>{if(m.fixed_income_breakdown)Object.keys(m.fixed_income_breakdown).forEach(k=>types.add(k))});
-return [...types].map(t=>`<tr><td class="nc">${t.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}</td>${pts.map(m=>`<td>${m.fixed_income_breakdown&&m.fixed_income_breakdown[t]!=null?m.fixed_income_breakdown[t].toFixed(2):'–'}</td>`).join('')}</tr>`).join('')}
+return[...types].map(t=>{
+const vals=pts.map(m=>m.fixed_income_breakdown&&m.fixed_income_breakdown[t]!=null?m.fixed_income_breakdown[t]:0);
+if(mode==='prop'){const totals=pts.map(m=>{if(!m.fixed_income_breakdown)return 1;return Object.values(m.fixed_income_breakdown).reduce((s,v)=>s+(v||0),0)||1});
+return`<tr><td class="nc">${t.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}</td>${pts.map((m,i)=>`<td>${vals[i]>0?(vals[i]/totals[i]*100).toFixed(1)+'%':'–'}</td>`).join('')}</tr>`}
+return`<tr><td class="nc">${t.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}</td>${vals.map(v=>`<td>${v>0?v.toFixed(2):'–'}</td>`).join('')}</tr>`}).join('')}
+
+function chEqMode(){$('eqt').innerHTML=eqRows(S._provData.portfolios,$('eqMode').value)}
+function chFiMode(){$('fit').innerHTML=fiRows(S._provData.portfolios,$('fiMode').value)}
 
 // ─── Historical Exposure Tab ──────────────────────────
 async function tabHistorical(tc){
@@ -394,6 +429,9 @@ tc.innerHTML=`
 <div class="card"><div class="card-h"><span class="card-t">Fixed Income Exposure</span></div>
 <div class="card-b"><div class="cc" style="height:280px"><canvas id="hfi"></canvas></div></div></div>
 </div>`;
+renderBV(`<p><strong>Bridge View: Historical Exposure</strong></p><p>Historical asset allocation data shows how the portfolio has evolved over time. Gradual shifts in equity/bond weighting reflect both strategic reviews and tactical positioning.</p><p>The equity regional breakdown shows any geographic rotation decisions, while the fixed income history highlights duration and credit quality positioning through different rate environments.</p><p>Look for consistency between the stated investment approach and the actual changes observed — significant deviations may warrant further investigation.</p>`);
+const hoverLine={id:'hoverLine',beforeDatasetsDraw(chart){const{ctx,chartArea:{left,right,top,bottom}}=chart;const active=chart.tooltip?.getActiveElements();if(active&&active.length){const x=active[0].element.x;ctx.save();ctx.beginPath();ctx.moveTo(x,top);ctx.lineTo(x,bottom);ctx.lineWidth=1;ctx.strokeStyle='rgba(107,114,128,.3)';ctx.setLineDash([4,3]);ctx.stroke();ctx.restore()}}};
+const ttOpts={mode:'index',intersect:false,callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y!=null?ctx.parsed.y.toFixed(1)+'%':'–'}`}};
 if(!h)return;
 setTimeout(()=>{
 if(h.asset_allocation){
@@ -404,25 +442,27 @@ CH.haa=new Chart($('haa'),{type:'line',data:{labels,datasets:[
 {label:'Fixed Income',data:aa.map(d=>d['Fixed Income']),backgroundColor:'rgba(139,92,246,.4)',borderColor:'rgba(139,92,246,.8)',fill:true,tension:.3,pointRadius:0},
 {label:'Alternative',data:aa.map(d=>d.Alternative),backgroundColor:'rgba(16,185,129,.4)',borderColor:'rgba(16,185,129,.8)',fill:true,tension:.3,pointRadius:0},
 {label:'Cash',data:aa.map(d=>d.Cash),backgroundColor:'rgba(245,158,11,.4)',borderColor:'rgba(245,158,11,.8)',fill:true,tension:.3,pointRadius:0}
-]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{size:11}}}},scales:{x:{ticks:{color:'#64748b',maxTicksLimit:12,font:{size:10}},grid:{display:false}},y:{stacked:true,max:100,ticks:{color:'#64748b'},grid:{color:'#1e293b'}}}}})
+]},plugins:[hoverLine],options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:'#4b5563',font:{size:11}}},tooltip:ttOpts},scales:{x:{ticks:{color:'#6b7280',maxTicksLimit:12,font:{size:10}},grid:{display:false}},y:{stacked:true,max:100,ticks:{color:'#6b7280'},grid:{color:'#e5e7eb'}}}}})
 }
 if(h.equity_region){
 const eq=h.equity_region;const labels=eq.map(d=>d.Date);
 const keys=Object.keys(eq[0]).filter(k=>k!=='Date');
 const colors=['rgba(59,130,246,.5)','rgba(16,185,129,.5)','rgba(245,158,11,.5)','rgba(239,68,68,.5)','rgba(139,92,246,.5)','rgba(6,182,212,.5)','rgba(168,85,247,.5)'];
-CH.heq=new Chart($('heq'),{type:'line',data:{labels,datasets:keys.map((k,i)=>({label:k,data:eq.map(d=>d[k]||0),backgroundColor:colors[i%7],borderColor:colors[i%7].replace('.5','.8'),fill:true,tension:.3,pointRadius:0}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{size:10}}}},scales:{x:{ticks:{color:'#64748b',maxTicksLimit:10,font:{size:9}},grid:{display:false}},y:{stacked:true,ticks:{color:'#64748b'},grid:{color:'#1e293b'}}}}})
+CH.heq=new Chart($('heq'),{type:'line',data:{labels,datasets:keys.map((k,i)=>({label:k,data:eq.map(d=>d[k]||0),backgroundColor:colors[i%7],borderColor:colors[i%7].replace('.5','.8'),fill:true,tension:.3,pointRadius:0}))},plugins:[hoverLine],options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:'#4b5563',font:{size:10}}},tooltip:ttOpts},scales:{x:{ticks:{color:'#6b7280',maxTicksLimit:10,font:{size:9}},grid:{display:false}},y:{stacked:true,ticks:{color:'#6b7280'},grid:{color:'#e5e7eb'}}}}})
 }
 if(h.fixed_income){
 const fi=h.fixed_income;const labels=fi.map(d=>d.Date);
 const keys=Object.keys(fi[0]).filter(k=>k!=='Date');
 const colors=['rgba(59,130,246,.5)','rgba(139,92,246,.5)','rgba(16,185,129,.5)','rgba(239,68,68,.5)','rgba(245,158,11,.5)','rgba(6,182,212,.5)','rgba(168,85,247,.5)'];
-CH.hfi=new Chart($('hfi'),{type:'line',data:{labels,datasets:keys.map((k,i)=>({label:k,data:fi.map(d=>d[k]||0),backgroundColor:colors[i%7],borderColor:colors[i%7].replace('.5','.8'),fill:true,tension:.3,pointRadius:0}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{size:10}}}},scales:{x:{ticks:{color:'#64748b',maxTicksLimit:10,font:{size:9}},grid:{display:false}},y:{stacked:true,ticks:{color:'#64748b'},grid:{color:'#1e293b'}}}}})
+CH.hfi=new Chart($('hfi'),{type:'line',data:{labels,datasets:keys.map((k,i)=>({label:k,data:fi.map(d=>d[k]||0),backgroundColor:colors[i%7],borderColor:colors[i%7].replace('.5','.8'),fill:true,tension:.3,pointRadius:0}))},plugins:[hoverLine],options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:'#4b5563',font:{size:10}}},tooltip:ttOpts},scales:{x:{ticks:{color:'#6b7280',maxTicksLimit:10,font:{size:9}},grid:{display:false}},y:{stacked:true,ticks:{color:'#6b7280'},grid:{color:'#e5e7eb'}}}}})
 }
 },100)}
 
 // ─── Performance Tab ──────────────────────────────────
-function tabPerformance(tc,pts){
+function tabPerformance(tc,pts,p){
 const years=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','YTD'];
+const rrData=p.risk_return_data||[];
+const periods=[...new Set(rrData.map(d=>d.period))];
 tc.innerHTML=`
 <div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Calendar Year Returns</span></div>
 <div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Model</th>${years.map(y=>`<th>${y}</th>`).join('')}</tr></thead>
@@ -430,38 +470,104 @@ tc.innerHTML=`
 <div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Trailing Returns</span></div>
 <div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Model</th><th>1M</th><th>3M</th><th>6M</th><th>YTD</th><th>1Y</th><th>3Y</th><th>5Y</th><th>10Y</th></tr></thead>
 <tbody>${pts.map(m=>{const tr=m.trailing_returns||{};return`<tr><td class="nc">${m.name}</td><td>${v(tr['1M'])}</td><td>${v(tr['3M'])}</td><td>${v(tr['6M'])}</td><td>${v(tr['YTD'])}</td><td>${v(tr['1Y'])}</td><td>${v(tr['3Y'])}</td><td>${v(tr['5Y'])}</td><td>${v(tr['10Y'])}</td></tr>`}).join('')}</tbody></table></div></div></div>
-<div class="card"><div class="card-h"><span class="card-t">Risk vs Return</span></div>
-<div class="card-b"><div class="cc" style="height:300px"><canvas id="rvr"></canvas></div></div></div>`;
-setTimeout(()=>{
-const ctx=$('rvr');if(!ctx)return;
-const data=pts.map(m=>({x:m.return_3yr||0,y:m.return_1yr||0,label:shortName(m.name)}));
-CH.rvr=new Chart(ctx,{type:'scatter',data:{datasets:[{label:'Portfolios',data:data.map(d=>({x:d.x,y:d.y})),backgroundColor:'rgba(59,130,246,.8)',pointRadius:8,pointHoverRadius:10}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const d=data[ctx.dataIndex];return`${d.label}: 3Y ${d.x}%, 1Y ${d.y}%`}}}},scales:{x:{title:{display:true,text:'3yr Annualised Return (%)',color:'#64748b'},ticks:{color:'#64748b'},grid:{color:'#1e293b'}},y:{title:{display:true,text:'1yr Return (%)',color:'#64748b'},ticks:{color:'#64748b'},grid:{color:'#1e293b'}}}}})
-},100)}
+<div class="card"><div class="card-h"><span class="card-t">Risk vs Return</span>
+${periods.length?`<div class="fg"><select id="rrPeriod" onchange="updateRvR()" style="min-width:140px">${periods.map((p,i)=>`<option value="${p}" ${i===0?'selected':''}>${p}</option>`).join('')}</select></div>`:''}</div>
+<div class="card-b"><div class="cc" style="height:340px"><canvas id="rvr"></canvas></div></div></div>`;
+S._rrData=rrData;
+renderBV(`<p><strong>Bridge View: Performance</strong></p><p>Calendar year returns show the portfolio's behaviour through different market environments. Pay attention to 2022 (a challenging year for multi-asset) and subsequent recovery.</p><p>The risk/return scatter chart plots annualised risk against annualised return, with IA sector benchmarks for context. Portfolios above and to the left of the benchmark line are delivering superior risk-adjusted returns.</p><p>Quilter's active portfolios have generally clustered above the IA sector line, suggesting the active management approach has added value on a risk-adjusted basis over these periods.</p>`);
+setTimeout(()=>{updateRvR()},100)}
+
+function updateRvR(){
+const ctx=$('rvr');if(!ctx)return;if(CH.rvr)CH.rvr.destroy();
+const period=$('rrPeriod')?$('rrPeriod').value:(S._rrData.length?S._rrData[0].period:'3 Year');
+const filtered=S._rrData.filter(d=>d.period===period);
+const quilter=filtered.filter(d=>d.portfolio.startsWith('Quilter'));
+const benchmarks=filtered.filter(d=>!d.portfolio.startsWith('Quilter'));
+CH.rvr=new Chart(ctx,{type:'scatter',data:{datasets:[
+{label:'Quilter Portfolios',data:quilter.map(d=>({x:d.risk,y:d.return})),backgroundColor:'rgba(59,130,246,.8)',pointRadius:8,pointHoverRadius:10},
+{label:'IA Sectors',data:benchmarks.map(d=>({x:d.risk,y:d.return})),backgroundColor:'rgba(245,158,11,.7)',pointRadius:7,pointHoverRadius:9,pointStyle:'triangle'}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#4b5563',font:{size:11}}},tooltip:{callbacks:{label:ctx2=>{const i=ctx2.dataIndex;const src=ctx2.datasetIndex===0?quilter:benchmarks;const d=src[i];if(!d)return'';const name=d.portfolio.replace('Quilter WealthSelect Active Managed ','Portfolio ');return`${name}: Risk ${d.risk.toFixed(1)}%, Return ${d.return.toFixed(1)}%`}}}},scales:{x:{title:{display:true,text:'Annualised Risk (%)',color:'#6b7280'},ticks:{color:'#6b7280'},grid:{color:'#e5e7eb'}},y:{title:{display:true,text:'Annualised Return (%)',color:'#6b7280'},ticks:{color:'#6b7280'},grid:{color:'#e5e7eb'}}}}})}
 
 // ─── Cost Tab ─────────────────────────────────────────
 function tabCost(tc,pts){
 tc.innerHTML=`
 <div class="card"><div class="card-h"><span class="card-t">Cost Breakdown</span></div>
 <div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Model</th><th>DFM</th><th>Underlying</th><th>All In</th></tr></thead>
-<tbody>${pts.map(m=>{const c=m.cost_breakdown||{};return`<tr><td class="nc">${m.name}</td><td>${c.dfm!=null?c.dfm.toFixed(2):'–'}</td><td>${c.underlying!=null?c.underlying.toFixed(2):'–'}</td><td><strong>${c.all_in!=null?c.all_in.toFixed(2):'–'}</strong></td></tr>`}).join('')}</tbody></table></div></div></div>`}
+<tbody>${pts.map(m=>{const c=m.cost_breakdown||{};return`<tr><td class="nc">${m.name}</td><td>${c.dfm!=null?c.dfm.toFixed(2):'–'}</td><td>${c.underlying!=null?c.underlying.toFixed(2):'–'}</td><td><strong>${c.all_in!=null?c.all_in.toFixed(2):'–'}</strong></td></tr>`}).join('')}</tbody></table></div></div></div>`;
+renderBV(`<p><strong>Bridge View: Costs</strong></p><p>The management fee of 0.15% is competitive within the active MPS space. The all-in fee range of 0.60% to 0.83% reflects the varying underlying fund costs across different risk levels.</p><p>Higher risk portfolios (8-10) carry slightly higher underlying fund costs due to greater use of actively managed equity funds, while lower risk portfolios benefit from more cost-efficient fixed income allocations.</p><p>When comparing costs, consider the total cost to the client inclusive of platform charges and adviser fees, not the MPS cost in isolation.</p>`)}
+
+function tabConsumerDuty(tc,p,pts){
+const provName=p.full_name||p.name;
+const today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+tc.innerHTML=`
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+<div><div style="font-size:16px;font-weight:600">Consumer Duty Oversight Report</div>
+<div style="font-size:13px;color:var(--text-m)">Editable template — click any section to customise before exporting</div></div>
+<button class="btn btn-p" onclick="exportCD()">Export Report</button>
+</div>
+<div class="card" style="margin-bottom:16px"><div class="card-h"><span class="card-t">📋 Report Details</span></div>
+<div class="card-b" style="padding:0"><table>
+<tr><td class="nc" style="width:180px">Provider</td><td>${provName}</td></tr>
+<tr><td class="nc">Date</td><td>${today}</td></tr>
+<tr><td class="nc">Risk Levels Covered</td><td>${pts.map(m=>m.risk_rating).join(', ')}</td></tr>
+<tr><td class="nc">All-in Fee Range</td><td>${Math.min(...pts.map(m=>m.ocf)).toFixed(2)}% – ${Math.max(...pts.map(m=>m.ocf)).toFixed(2)}%</td></tr>
+</table></div></div>
+<div class="card" style="margin-bottom:16px"><div class="card-h"><span class="card-t">1. Selection Rationale</span></div>
+<div class="cd-editable" contenteditable="true" data-placeholder="Document why this MPS was selected for your firm's approved list...">${provName} was selected following an independent assessment of the investment process, cost structure, platform availability, and alignment with our client segments. The proposition offers a comprehensive active managed solution across risk levels ${pts[0].risk_rating} to ${pts[pts.length-1].risk_rating}, available on ${pts[0].platforms.length} platforms.</div></div>
+<div class="card" style="margin-bottom:16px"><div class="card-h"><span class="card-t">2. Target Market & Suitability</span></div>
+<div class="cd-editable" contenteditable="true" data-placeholder="Define which client segments this MPS is suitable for...">This MPS range is suitable for clients seeking a professionally managed, diversified multi-asset portfolio with active fund selection. The range spans risk levels ${pts[0].risk_rating} to ${pts[pts.length-1].risk_rating}, making it appropriate for clients across cautious to adventurous risk profiles with a medium to long-term investment horizon.</div></div>
+<div class="card" style="margin-bottom:16px"><div class="card-h"><span class="card-t">3. Fair Value Assessment</span></div>
+<div class="cd-editable" contenteditable="true" data-placeholder="Assess whether the costs represent fair value for clients...">The all-in fee range of ${Math.min(...pts.map(m=>m.ocf)).toFixed(2)}% to ${Math.max(...pts.map(m=>m.ocf)).toFixed(2)}% is assessed as representing fair value given the depth of the investment process, breadth of manager research, and the active management approach. The management fee of 0.15% is competitive within the active MPS universe.</div></div>
+<div class="card" style="margin-bottom:16px"><div class="card-h"><span class="card-t">4. Ongoing Monitoring Summary</span></div>
+<div class="cd-editable" contenteditable="true" data-placeholder="Summarise monitoring activity and findings...">Portfolios have been monitored on a quarterly basis. Performance has been reviewed against relevant IA sector benchmarks and peer groups. Asset allocation changes and fund selection decisions have been assessed for consistency with the stated investment approach.</div></div>
+<div class="card" style="margin-bottom:16px"><div class="card-h"><span class="card-t">5. Actions & Conclusions</span></div>
+<div class="cd-editable" contenteditable="true" data-placeholder="Record any actions taken or conclusions reached...">Based on the current review, ${provName} remains appropriate for the target client segments identified above. No changes to the approved list are recommended at this time. Next review scheduled in accordance with our quarterly monitoring cadence.</div></div>
+`}
+
+async function exportCD(){
+const btn=event.target;btn.textContent='Generating...';btn.disabled=true;
+try{
+const rows=document.querySelectorAll('.card-b table tr');
+const details={};
+rows.forEach(r=>{const cells=r.querySelectorAll('td');if(cells.length===2)details[cells[0].innerText.trim()]=cells[1].innerText.trim()});
+const sections=[];
+document.querySelectorAll('.cd-editable').forEach(el=>{
+const card=el.closest('.card');
+const title=card?card.querySelector('.card-t')?.innerText.trim():'';
+sections.push({title,content:el.innerText.trim()})});
+const res=await fetch('/api/export/consumer-duty',{method:'POST',headers:{'Content-Type':'application/json'},
+body:JSON.stringify({details,sections})});
+if(!res.ok)throw new Error('Export failed');
+const blob=await res.blob();
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+a.download='Consumer_Duty_Oversight_Report.docx';a.click();
+}catch(e){alert('Export failed: '+e.message)}
+finally{btn.textContent='Export Report';btn.disabled=false}}
 
 // ─── Adviser Support Tab ──────────────────────────────
 function tabAdviser(tc,p){
 const as=p.adviser_support||{};
-tc.innerHTML=`
-<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Onboarding & Training</span></div>
-<div class="card-b"><div class="article">${as.onboarding?`<p>${as.onboarding}</p>`:'<p style="color:var(--text-m)">Content to be added from provider documentation.</p>'}</div></div></div>
-<div class="card"><div class="card-h"><span class="card-t">Ongoing Portfolio Communication</span></div>
-<div class="card-b"><div class="article">${as.ongoing_communication?`<p>${as.ongoing_communication}</p>`:'<p style="color:var(--text-m)">Content to be added from provider documentation.</p>'}</div></div></div>`}
+const sections=[
+{title:'Onboarding & Training',key:'onboarding'},
+{title:'Ongoing Portfolio Communication',key:'ongoing_communication'},
+{title:'Review Meetings & Ongoing Engagement',key:'review_meetings'},
+{title:'Investment Commentary & Market Insight',key:'investment_commentary'},
+{title:'Digital Tools & Support Infrastructure',key:'digital_tools'}
+];
+tc.innerHTML=sections.map(s=>`<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">${s.title}</span></div>
+<div class="card-b"><div class="article">${fmtArticle(as[s.key])}</div></div></div>`).join('');
+renderBV(`<p><strong>Bridge View: Adviser Support</strong></p><p>Quilter provides a comprehensive support offering spanning onboarding, ongoing communication, and digital infrastructure. The breadth of support is above average for the MPS market.</p><p>Quarterly rebalance documentation and post-trade rationale are particularly valuable for Consumer Duty evidence requirements. The availability of both virtual and in-person training adds flexibility.</p><p>Consider: how responsive is the Quilter team to ad-hoc queries? Adviser firms should test the support model during the evaluation phase rather than relying solely on the documented offering.</p>`)}
 
 // ─── Quarterly Review Tab ─────────────────────────────
 function tabQuarterly(tc,p){
 const qr=p.quarterly_review||{};
 tc.innerHTML=`
 <div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Asset Allocation Changes</span></div>
-<div class="card-b"><div class="article">${qr.aa_changes?`<p>${qr.aa_changes}</p>`:'<p style="color:var(--text-m)">Content to be added from provider documentation.</p>'}</div></div></div>
-<div class="card"><div class="card-h"><span class="card-t">Fund Selection Changes</span></div>
-<div class="card-b"><div class="article">${qr.fund_changes?`<p>${qr.fund_changes}</p>`:'<p style="color:var(--text-m)">Content to be added from provider documentation.</p>'}</div></div></div>`}
+<div class="card-b"><div class="article">${fmtArticle(qr.aa_changes)}</div></div></div>
+<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Fund Selection Changes</span></div>
+<div class="card-b"><div class="article">${fmtArticle(qr.fund_changes)}</div></div></div>
+<div class="card"><div class="card-h"><span class="card-t">Performance Review</span></div>
+<div class="card-b"><div class="article">${fmtArticle(qr.performance_review)}</div></div></div>`}
 
 // ─── Insights ─────────────────────────────────────────
 async function rIns(el){

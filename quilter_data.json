@@ -2668,22 +2668,250 @@
       "considerations": [],
       "regulatory_status": "",
       "website": "",
-      "risk_rating_providers": [],
+      "risk_rating_providers": [
+        "Dynamic Planner",
+        "EV",
+        "Finametrica",
+        "Synaptic"
+      ],
       "investment_process": {
-        "investment_team": "",
-        "strategic_aa": "",
-        "tactical_aa": "",
-        "fund_selection": "",
-        "rebalancing": ""
+        "investment_team": "The WealthSelect portfolios are managed by the Portfolio Management Team at Quilter Investors. This team is responsible for implementing strategic and tactical asset allocation, fund selection, and portfolio construction.\n\n<strong>Core Responsibilities:</strong>\n<ul>\n<li>Day-to-day management of portfolios, including rebalancing, trade execution, and tactical positioning (for non-passive models).</li>\n<li>Translating capital market assumptions into risk-profiled investment solutions.</li>\n<li>Working closely with the Manager Research, Operational Due Diligence, and Responsible Investment teams to ensure alignment between strategy and fund implementation.</li>\n</ul>\n\nThe portfolio managers have discretion to build portfolios in line with internal constraints and objectives, subject to governance review.\n\n<strong>Manager Research Hub</strong>\n\nQuilter operates a centralised Manager Research Hub that provides independent fund selection input. It consists of three teams:\n\n<strong>1. Manager Research Team</strong>\n<ul>\n<li>Conducts deep quantitative and qualitative due diligence on fund managers.</li>\n<li>Evaluates alpha drivers, style consistency, fund structure, and risk metrics.</li>\n<li>Meets regularly with fund houses and continually monitors holdings to ensure the original rationale for selection remains valid.</li>\n</ul>\n\n<strong>2. Operational Due Diligence Team</strong>\n<ul>\n<li>Reviews fund managers' operational infrastructure including governance and compliance, systems and controls, and financial stability and resource sufficiency.</li>\n<li>Aims to mitigate non-investment risks before and after funds are added.</li>\n</ul>\n\n<strong>3. Responsible Investment Team</strong>\n<ul>\n<li>Ensures ESG integration across fund selection, monitoring, and stewardship.</li>\n<li>Applies a tiered framework for ESG assessment (e.g. Tier 1 basic ESG policies, Tier 2 active ESG integration).</li>\n<li>Works in conjunction with the other two teams to ensure sustainability objectives are considered for applicable portfolios.</li>\n</ul>",
+        "strategic_aa": "<ul>\n<li>Developed using capital market assumptions from WTW (Willis Towers Watson), which underpin a proprietary in-house model.</li>\n<li>SAA is designed to optimise long-term return potential across different risk profiles while maintaining suitability.</li>\n<li>Reviewed quarterly with a full annual refresh based on updated WTW assumptions.</li>\n</ul>",
+        "tactical_aa": "<ul>\n<li>TAA allows deviations from SAA within the constraints of each portfolio's risk profile.</li>\n<li>Adjustments may include: risk-on/risk-off tilts, regional or sector rotations, factor shifts (e.g. value vs growth).</li>\n<li>Decision-making considers: market valuations, technical signals, economic and geopolitical trends, ESG risk and sustainable investment themes (where relevant).</li>\n</ul>",
+        "fund_selection": "Fund selection is led by a three-team \"Manager Research Hub\":\n\n<strong>1. Manager Research Team:</strong> Conducts quantitative and qualitative research, interviews managers, and screens funds for repeatability, alpha sources, liquidity, transparency, and cost.\n\n<strong>2. Operational Due Diligence Team:</strong> Assesses managers' operational robustness including governance, technology, compliance, HR, and ESG practices.\n\n<strong>3. Responsible Investment Team:</strong> Works across the above teams to integrate ESG and stewardship factors throughout the selection and monitoring process.\n\n<strong>Key features:</strong>\n<ul>\n<li><strong>Sub-advised mandates:</strong> Where appropriate, Quilter creates UK-domiciled sub-advised funds managed by external managers (e.g. AllianceBernstein). This allows continuity even if the underlying manager changes, reduces capital gains in GIAs, and avoids disruption.</li>\n</ul>",
+        "portfolio_construction": "<ul>\n<li>Brings together SAA, TAA (if applicable), and selected managers.</li>\n<li>Construction is carried out by the Portfolio Management Team, who have discretion but must adhere to internal risk constraints, client objectives, and portfolio guidelines.</li>\n</ul>\n\n<strong>Risk controls include:</strong>\n<ul>\n<li>Diversification by asset class, geography, and manager.</li>\n<li>Drift tolerances and equity caps.</li>\n<li>Stress testing to assess portfolio behaviour in different scenarios.</li>\n</ul>\n\n<strong>Portfolio construction ensures:</strong>\n<ul>\n<li>Each fund's interaction within the portfolio is assessed.</li>\n<li>Portfolios deliver risk-adjusted returns that are repeatable and robust, not just reliant on individual manager outperformance.</li>\n</ul>",
+        "rebalancing": "<ul>\n<li>Rebalancing is generally quarterly, but may occur more frequently if market conditions require.</li>\n<li>Execution is overseen by the Implementation and Trading Team, ensuring timely and efficient portfolio changes across platforms.</li>\n</ul>"
       },
       "adviser_support": {
-        "onboarding": "",
-        "ongoing_communication": ""
+        "onboarding": "Quilter offers tailored onboarding support for firms adopting the WealthSelect portfolios. This includes:\n<ul>\n<li>Initial platform and proposition training, led by Business Development and Investment Specialists.</li>\n<li>Guidance on risk mapping, portfolio selection and documentation required to align portfolios with suitability assessments.</li>\n<li>Training sessions for advisers, paraplanners, and support teams, available both virtually and in person.</li>\n<li>Assistance with back-book migration, with resources and processes to help transition legacy assets into the WealthSelect solution.</li>\n</ul>\n\nThe Quilter team is also equipped to support bespoke training needs for larger firms and those using co-branded or white-labelled options.",
+        "ongoing_communication": "Quilter ensures a high degree of transparency through regular and structured communications around portfolio performance, positioning, and changes.\n\n<strong>Portfolio Updates & Rationale</strong>\n<ul>\n<li>Quarterly portfolio rebalances are accompanied by detailed documentation outlining the rationale for asset allocation shifts, fund additions/removals, and macroeconomic views driving changes.</li>\n<li>Post-rebalance summaries help advisers explain updates to clients and meet governance documentation requirements.</li>\n</ul>\n\n<strong>Factsheets & Performance Materials</strong>\n<ul>\n<li>Monthly and quarterly model portfolio factsheets are available for every risk level and strategy (Active, Blended, Passive, Responsible, Sustainable).</li>\n<li>Each factsheet includes asset allocation breakdowns, performance (net of fund charges, gross of MPS fee), volatility and benchmark comparisons.</li>\n<li>Available via the Quilter platform and dedicated adviser portals.</li>\n</ul>",
+        "review_meetings": "Quilter maintains a strong adviser-facing presence, offering:\n<ul>\n<li><strong>Quarterly client review support</strong> \u2013 providing materials and data for use in client meetings.</li>\n<li><strong>Portfolio deep-dives</strong> \u2013 bespoke sessions with the investment team or specialists to support due diligence or client-facing queries.</li>\n<li><strong>Business development partnership</strong> \u2013 strategic support to help adviser firms align investment strategies with their business objectives.</li>\n</ul>",
+        "investment_commentary": "To keep advisers informed and equipped to have better conversations with clients, Quilter provides:\n<ul>\n<li><strong>Regular investment updates:</strong> CIO commentary, thought pieces, and response notes during periods of volatility.</li>\n<li><strong>Webinars and events:</strong> Quarterly investment webinars to review performance and positioning. Regional adviser forums and training events.</li>\n<li><strong>Fund manager interviews</strong> and research insights curated by the Manager Research Hub.</li>\n</ul>",
+        "digital_tools": "Advisers can access WealthSelect portfolios, performance data, and reporting tools via:\n<ul>\n<li>The Quilter platform</li>\n<li>Morningstar MPS Comparator (for comparative metrics)</li>\n<li>Adviser portals with custom branding (for larger firms)</li>\n</ul>\n\nIn addition, the Quilter support team provides:\n<ul>\n<li>Technical support on platform and investment queries.</li>\n<li>Email and phone-based adviser servicing, supported by Investment Specialists and Business Development Managers.</li>\n</ul>"
       },
       "quarterly_review": {
-        "aa_changes": "",
-        "fund_changes": ""
-      }
+        "aa_changes": "During the quarter, portfolio positioning remained broadly stable, with changes focused on incremental adjustments rather than wholesale shifts in risk.\n\nThe investment team made modest tilts within growth assets, reflecting evolving views on regional equity opportunities and valuation dispersion across markets. Exposure to defensive assets was maintained at appropriate levels for the strategy's risk profile, continuing to support portfolio resilience during periods of market volatility.\n\nOverall, asset allocation decisions during the quarter were evolutionary rather than directional, with the primary objective being to maintain consistency with the long-term strategic framework while allowing for selective tactical flexibility.",
+        "fund_changes": "During the quarter, a small number of fund changes were implemented within the portfolio, driven by ongoing manager monitoring and conviction assessment rather than short-term market movements.\n\nWithin Global Equity, the JPM Global Focus Fund was reduced and ultimately removed, with capital reallocated to the iShares MSCI World ETF. This change reflected a reassessment of conviction following a period of sustained relative underperformance and increasing concentration risk within the portfolio. The replacement improved diversification across regions and sectors while reducing reliance on a narrower set of stock-specific outcomes.\n\nIn UK Equity, exposure to the Fidelity UK Opportunities Fund was increased at the expense of a passive UK equity holding. This reflected stronger conviction in the manager's stock selection capability and an improved outlook for active management within the UK market, where valuation dispersion remains elevated.\n\nWithin Fixed Income, the Invesco Sterling Bond Fund was replaced by the Royal London Short Duration Credit Fund. This adjustment reduced interest rate sensitivity while maintaining exposure to high-quality sterling credit, aligning the portfolio more closely with the team's cautious stance on duration risk.\n\nFrom a cost perspective, these changes resulted in only a marginal increase in the ongoing charges figure, which was considered proportionate given the expected improvement in diversification, risk control, and potential for active value add. Overall portfolio costs remain competitive relative to peer strategies within the same risk category.",
+        "performance_review": "Portfolio performance over the quarter was influenced primarily by fund selection decisions, rather than asset allocation effects.\n\nAttribution analysis indicates that relative performance versus peers was driven by manager selection within key asset classes, with positive contributions coming from funds that demonstrated strong stock selection and effective risk management. Conversely, areas of relative underperformance were linked to specific managers where style headwinds or security selection detracted from returns.\n\nImportantly, this attribution analysis isolates fund selection effects only, stripping out the impact of asset allocation decisions. This allows advisers to clearly assess whether value added during the quarter was derived from manager choice rather than market positioning.\n\nFrom a governance perspective, this approach supports transparent assessment of the investment process, helping advisers evidence whether active fund selection continues to add value over time."
+      },
+      "risk_return_data": [
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 3",
+          "risk": 3.23,
+          "return": 6.91
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 4",
+          "risk": 3.74,
+          "return": 7.98
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 5",
+          "risk": 4.35,
+          "return": 9.05
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 6",
+          "risk": 5.04,
+          "return": 10.03
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 7",
+          "risk": 5.78,
+          "return": 10.99
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 8",
+          "risk": 6.56,
+          "return": 11.94
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 9",
+          "risk": 7.38,
+          "return": 12.13
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 10",
+          "risk": 8.24,
+          "return": 12.11
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Mixed Investment 0-35% Shares",
+          "risk": 4.1,
+          "return": 5.57
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Mixed Investment 20-60% Shares",
+          "risk": 4.87,
+          "return": 7.19
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Mixed Investment 40-85% Shares",
+          "risk": 6.3,
+          "return": 8.89
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Flexible Investment",
+          "risk": 6.5,
+          "return": 8.89
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 3",
+          "risk": 4.24,
+          "return": 4.0
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 4",
+          "risk": 4.75,
+          "return": 5.07
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 5",
+          "risk": 5.34,
+          "return": 6.12
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 6",
+          "risk": 5.94,
+          "return": 7.21
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 7",
+          "risk": 6.59,
+          "return": 8.26
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 8",
+          "risk": 7.32,
+          "return": 9.29
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 9",
+          "risk": 8.01,
+          "return": 9.83
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 10",
+          "risk": 8.69,
+          "return": 10.0
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Mixed Investment 0-35% Shares",
+          "risk": 5.14,
+          "return": 2.23
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Mixed Investment 20-60% Shares",
+          "risk": 6.0,
+          "return": 4.1
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Mixed Investment 40-85% Shares",
+          "risk": 7.47,
+          "return": 5.99
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Flexible Investment",
+          "risk": 7.4,
+          "return": 6.24
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 3",
+          "risk": 5.0,
+          "return": 3.99
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 4",
+          "risk": 5.44,
+          "return": 5.33
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 5",
+          "risk": 6.11,
+          "return": 6.41
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 6",
+          "risk": 6.84,
+          "return": 7.44
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 7",
+          "risk": 7.59,
+          "return": 8.44
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 8",
+          "risk": 8.44,
+          "return": 9.29
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 9",
+          "risk": 8.81,
+          "return": 10.27
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 10",
+          "risk": 9.18,
+          "return": 10.77
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Mixed Investment 0-35% Shares",
+          "risk": 5.52,
+          "return": 2.97
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Mixed Investment 20-60% Shares",
+          "risk": 6.31,
+          "return": 4.56
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Mixed Investment 40-85% Shares",
+          "risk": 7.63,
+          "return": 5.89
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Flexible Investment",
+          "risk": 7.51,
+          "return": 6.21
+        }
+      ]
     }
   },
   "platforms": [

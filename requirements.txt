@@ -2,3 +2,5 @@ fastapi
 uvicorn
 pydantic
 openpyxl
+python-docx
+python-dotenv
