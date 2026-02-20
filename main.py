@@ -269,12 +269,8 @@ async def health():
 
 # ─── Feedback ──────────────────────────────────────────────────────────
 
-
-FEEDBACK_EMAIL = os.environ.get("FEEDBACK_EMAIL", "")
-SMTP_HOST = os.environ.get("SMTP_HOST", "")
-SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
-SMTP_USER = os.environ.get("SMTP_USER", "")
-SMTP_PASS = os.environ.get("SMTP_PASS", "")
+FEEDBACK_EMAIL = os.environ.get("FEEDBACK_EMAIL", "feedback@bridge.example.com")
+RESEND_API_KEY = os.environ.get("RESEND_API_KEY", "")
 
 @app.post("/api/feedback")
 async def submit_feedback(body: dict):
@@ -283,32 +279,36 @@ async def submit_feedback(body: dict):
     if not subject or not message:
         raise HTTPException(400, "Subject and message are required")
 
-    # If SMTP is configured, send email
-    if SMTP_HOST and SMTP_USER:
-        import smtplib
-        from email.mime.text import MIMEText
+    if RESEND_API_KEY:
+        import httpx
         try:
-            msg = MIMEText(message, "plain")
-            msg["Subject"] = f"[Bridge Feedback] {subject}"
-            msg["From"] = SMTP_USER
-            msg["To"] = FEEDBACK_EMAIL
-            with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-                server.starttls()
-                server.login(SMTP_USER, SMTP_PASS)
-                server.send_message(msg)
+            async with httpx.AsyncClient() as client:
+                r = await client.post(
+                    "https://api.resend.com/emails",
+                    headers={"Authorization": f"Bearer {RESEND_API_KEY}"},
+                    json={
+                        "from": "Bridge Feedback <onboarding@resend.dev>",
+                        "to": [FEEDBACK_EMAIL],
+                        "subject": f"[Bridge Feedback] {subject}",
+                        "text": message,
+                    },
+                )
+                if r.status_code not in (200, 201):
+                    print(f"Resend error: {r.text}")
+                    raise HTTPException(500, "Failed to send feedback.")
+        except HTTPException:
+            raise
         except Exception as e:
-            print(f"SMTP error: {e}")
-            raise HTTPException(500, "Failed to send email. Please try again later.")
+            print(f"Resend error: {e}")
+            raise HTTPException(500, "Failed to send feedback.")
     else:
-        # Log to console if SMTP not configured
         print(f"\n--- FEEDBACK ---")
         print(f"Subject: {subject}")
         print(f"Message: {message}")
-        print(f"(Configure SMTP_HOST, SMTP_USER, SMTP_PASS env vars to send via email)")
+        print(f"(Set RESEND_API_KEY env var to send via email)")
         print(f"----------------\n")
 
     return {"status": "ok", "message": "Feedback received"}
-
 
 # ─── Consumer Duty Export ────────────────────────────────────────────
 
