@@ -605,6 +605,29 @@ async def export_consumer_duty(data: dict):
 
 # ─── Serve Frontend ───────────────────────────────────────────────────
 
+from fastapi.responses import FileResponse
+
+@app.get("/favicon.ico")
+async def favicon():
+    path = os.path.join(os.path.dirname(__file__), "favicon.ico")
+    if os.path.exists(path):
+        return FileResponse(path, media_type="image/x-icon")
+    raise HTTPException(404)
+
+@app.get("/favicon-32x32.png")
+async def favicon_png():
+    path = os.path.join(os.path.dirname(__file__), "favicon-32x32.png")
+    if os.path.exists(path):
+        return FileResponse(path, media_type="image/png")
+    raise HTTPException(404)
+
+@app.get("/apple-touch-icon.png")
+async def apple_touch_icon():
+    path = os.path.join(os.path.dirname(__file__), "apple-touch-icon.png")
+    if os.path.exists(path):
+        return FileResponse(path, media_type="image/png")
+    raise HTTPException(404)
+
 @app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
     html_path = os.path.join(os.path.dirname(__file__), "index.html")
