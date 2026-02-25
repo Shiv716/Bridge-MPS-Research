@@ -93,7 +93,7 @@ select:focus,input:focus{border-color:var(--accent)}select{cursor:pointer}
 @keyframes spin{to{transform:rotate(360deg)}}
 .cr{cursor:pointer}.cr:hover td{color:var(--text)}
 .fi{animation:fi .3s ease-out}@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.bv-inline{background:linear-gradient(135deg,rgba(37,99,235,.04),rgba(99,102,241,.03));border:1px solid rgba(37,99,235,.15);border-radius:var(--r);padding:20px 22px;margin-top:20px}
+.bv-inline{background:linear-gradient(135deg,rgba(37,99,235,.04),rgba(99,102,241,.03));border:1px solid rgba(37,99,235,.15);border-radius:var(--r);padding:20px 22px;margin-bottom:20px}
 .bv-inline-header{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13px;font-weight:600;color:var(--accent)}
 .bv-inline-content{font-size:13.5px;color:var(--text-s);line-height:1.7}
 .bv-inline-content p{margin-bottom:10px}.bv-inline-content strong{color:var(--text);font-weight:600}
@@ -263,7 +263,7 @@ function pId(n){return n.toLowerCase().replace(/ investors/,'').replace(/ /g,'-'
 function shortName(n){return n.replace('Quilter WealthSelect Active ','').replace('Managed ','')}
 function removeBV(){const el=document.getElementById('bv-inline');if(el)el.remove()}
 function toggleBV(){}
-function renderBV(content){removeBV();if(!content)return;const tc=$('tc');if(!tc)return;const div=document.createElement('div');div.id='bv-inline';div.className='bv-inline';div.innerHTML=`<div class="bv-inline-header">💡 Bridge View</div><div class="bv-inline-content">${content}</div>`;tc.appendChild(div)}
+function renderBV(content){removeBV();if(!content)return;const tc=$('tc');if(!tc)return;const div=document.createElement('div');div.id='bv-inline';div.className='bv-inline';div.innerHTML=`<div class="bv-inline-header">💡 Bridge View</div><div class="bv-inline-content">${content}</div>`;tc.prepend(div)}
 function fmtArticle(t){if(!t)return'<p style="color:var(--text-m)">Content to be added.</p>';return t.split('\n\n').map(p=>{p=p.trim();if(!p)return'';if(p.startsWith('**')&&p.endsWith('**'))return`<h3>${p.replace(/\*\*/g,'')}</h3>`;let h=p.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');if(h.includes('\n•')||h.startsWith('•')){const lines=h.split('\n');let out='',inUl=false;lines.forEach(l=>{l=l.trim();if(l.startsWith('•')){if(!inUl){out+='<ul>';inUl=true}out+=`<li>${l.slice(1).trim()}</li>`}else{if(inUl){out+='</ul>';inUl=false}if(l)out+=`<p>${l}</p>`}});if(inUl)out+='</ul>';return out}return`<p>${h.replace(/\n/g,'<br>')}</p>`}).join('')}
 
 async function render(){
@@ -477,7 +477,7 @@ ${rrp.length?`<div class="card"><div class="card-h"><span class="card-t">Risk Ra
 ${p.strengths&&p.strengths.length?`<div class="grid g2" style="margin-top:20px"><div class="card"><div class="card-h"><span class="card-t">Strengths</span></div><div class="card-b"><ul class="slist">${p.strengths.map(s=>`<li>${s}</li>`).join('')}</ul></div></div>
 ${p.considerations&&p.considerations.length?`<div class="card"><div class="card-h"><span class="card-t">Considerations</span></div><div class="card-b"><ul class="clist">${p.considerations.map(c=>`<li>${c}</li>`).join('')}</ul></div></div>`:''}</div>`:''}
 <div class="card" style="margin-top:20px"><div class="card-h"><span class="card-t">💬 Have a Question?</span></div>
-<div class="card-b"><p style="font-size:13.5px;color:var(--text-s);margin-bottom:14px">Ask the Bridge Research team about this MPS provider — we typically respond within 1 business day.</p>
+<div class="card-b"><p style="font-size:13.5px;color:var(--text-s);margin-bottom:14px">Ask the Bridge Research team about this MPS provider, we typically respond within 1 business day.</p>
 <div class="msg-form" id="askForm">
 <input type="text" id="askSubj" placeholder="Subject, e.g. 'Question about rebalancing approach'">
 <textarea id="askMsg" placeholder="Your question..."></textarea>
