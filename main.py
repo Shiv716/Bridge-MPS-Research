@@ -108,11 +108,34 @@ async def demo_request(body: dict):
     name = body.get("name", "")
     email = body.get("email", "")
     firm = body.get("firm", "")
-    print(f"\n--- DEMO REQUEST ---")
-    print(f"Name: {name}")
-    print(f"Email: {email}")
-    print(f"Firm: {firm}")
-    print(f"--------------------\n")
+
+    email_subject = f"[Bridge] Demo Request from {name}"
+    email_body = f"Name: {name}\nEmail: {email}\nFirm: {firm}"
+
+    if RESEND_API_KEY:
+        import httpx
+        try:
+            async with httpx.AsyncClient() as client:
+                r = await client.post(
+                    "https://api.resend.com/emails",
+                    headers={"Authorization": f"Bearer {RESEND_API_KEY}"},
+                    json={
+                        "from": "Bridge Demo <onboarding@resend.dev>",
+                        "to": [FEEDBACK_EMAIL],
+                        "subject": email_subject,
+                        "text": email_body,
+                    },
+                )
+                if r.status_code not in (200, 201):
+                    print(f"Resend error: {r.text}")
+        except Exception as e:
+            print(f"Resend error: {e}")
+    else:
+        print(f"\n--- DEMO REQUEST ---")
+        print(f"Name: {name}\nEmail: {email}\nFirm: {firm}")
+        print(f"(Set RESEND_API_KEY to send via email)")
+        print(f"--------------------\n")
+
     return {"status": "ok"}
 
 
