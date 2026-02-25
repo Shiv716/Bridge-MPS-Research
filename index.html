@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bridge – MPS Research & Oversight</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 :root{--bg:#ffffff;--bg-card:#f8f9fb;--bg-hover:#f1f3f7;--bg-surface:#f3f4f6;--border:#e2e5ea;--border-a:#cbd0d8;--text:#1a1f2e;--text-s:#4b5563;--text-m:#6b7280;--accent:#2563eb;--accent-h:#1d4ed8;--accent-g:rgba(37,99,235,.08);--green:#059669;--green-bg:rgba(5,150,105,.08);--red:#dc2626;--red-bg:rgba(220,38,38,.08);--amber:#d97706;--amber-bg:rgba(217,119,6,.08);--purple:#7c3aed;--sw:240px;--r:10px;--rs:6px}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 .app{display:flex;min-height:100vh}
 .sidebar{width:var(--sw);background:#0d1424;border-right:1px solid #1e293b;position:fixed;top:0;left:0;bottom:0;z-index:100;display:flex;flex-direction:column}
 .sidebar-header{padding:24px 20px;border-bottom:1px solid #1e293b}
@@ -24,7 +24,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .nav-item.active .nav-icon{opacity:1}
 .sidebar-footer{padding:16px 20px;border-top:1px solid #1e293b;font-size:11px;color:#64748b}
 .main{margin-left:var(--sw);flex:1;min-height:100vh}
-.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.topbar{position:sticky;top:0;z-index:50;background:var(--bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between}
 .topbar-title{font-size:14px;font-weight:500}
 .content{padding:28px 32px;max-width:1400px}
 .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .2s}
@@ -90,24 +90,76 @@ select:focus,input:focus{border-color:var(--accent)}select{cursor:pointer}
 @keyframes spin{to{transform:rotate(360deg)}}
 .cr{cursor:pointer}.cr:hover td{color:var(--text)}
 .fi{animation:fi .3s ease-out}@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.bv-panel{position:fixed;right:0;top:56px;bottom:0;width:320px;background:var(--bg-surface);border-left:1px solid var(--border);z-index:40;transition:transform .3s;display:flex;flex-direction:column;overflow:hidden}
-.bv-panel.collapsed{transform:translateX(320px)}
-.bv-panel-header{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.bv-panel-header span{font-size:13px;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:6px}
-.bv-toggle{background:none;border:none;color:var(--text-m);cursor:pointer;font-size:16px;padding:4px;transition:color .15s;font-family:inherit}.bv-toggle:hover{color:var(--text)}
-.bv-content{flex:1;overflow-y:auto;padding:18px;font-size:13.5px;color:var(--text-s);line-height:1.7}
-.bv-content p{margin-bottom:12px}.bv-content strong{color:var(--text);font-weight:600}
-.bv-tab-btn{position:fixed;right:0;top:50%;transform:translateY(-50%);background:var(--accent-g);border:1px solid var(--accent);border-right:none;border-radius:6px 0 0 6px;padding:12px 8px;cursor:pointer;writing-mode:vertical-lr;font-size:11px;font-weight:600;color:var(--accent);letter-spacing:.5px;z-index:41;transition:all .15s}.bv-tab-btn:hover{background:var(--accent);color:#fff}
+.bv-inline{background:linear-gradient(135deg,rgba(37,99,235,.04),rgba(99,102,241,.03));border:1px solid rgba(37,99,235,.15);border-radius:var(--r);padding:20px 22px;margin-top:20px}
+.bv-inline-header{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13px;font-weight:600;color:var(--accent)}
+.bv-inline-content{font-size:13.5px;color:var(--text-s);line-height:1.7}
+.bv-inline-content p{margin-bottom:10px}.bv-inline-content strong{color:var(--text);font-weight:600}
+.bv-inline-content p:last-child{margin-bottom:0}
 .cd-editable{padding:18px;min-height:80px;font-size:13.5px;line-height:1.7;color:var(--text-s);outline:none;font-family:inherit}
 .cd-editable:focus{background:rgba(59,130,246,.03)}
 .cd-editable:empty::before{content:attr(data-placeholder);color:var(--text-m)}
-@media(max-width:1024px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}.bv-panel{width:280px}}
-@media(max-width:768px){.sidebar{transform:translateX(-100%)}.main{margin-left:0}.g2,.g3,.g4{grid-template-columns:1fr}.content{padding:20px 16px}.tabs{overflow-x:auto}.bv-panel{width:100%;top:auto;bottom:0;height:50vh;border-left:none;border-top:1px solid var(--border)}.bv-panel.collapsed{transform:translateY(100%)}}
+.ms-wrap{position:relative;display:inline-block;min-width:160px}
+.ms-btn{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:7px 28px 7px 12px;font-size:13px;color:var(--text);cursor:pointer;width:100%;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:inherit;transition:border-color .15s;appearance:none}
+.ms-btn:focus{border-color:var(--accent);outline:none}
+.ms-btn::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-m);font-size:11px;pointer-events:none}
+.ms-dd{display:none;position:absolute;top:100%;left:0;min-width:100%;max-height:220px;overflow-y:auto;background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:60;margin-top:2px}
+.ms-dd.open{display:block}
+.ms-opt{display:flex;align-items:center;gap:8px;padding:7px 12px;font-size:12.5px;color:var(--text-s);cursor:pointer;transition:background .1s}
+.ms-opt:hover{background:var(--bg-hover)}
+.ms-opt input{accent-color:var(--accent);margin:0}
+@media(max-width:1024px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.sidebar{transform:translateX(-100%)}.main{margin-left:0}.g2,.g3,.g4{grid-template-columns:1fr}.content{padding:20px 16px}.tabs{overflow-x:auto}}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#cbd0d8;border-radius:3px}
+.login-overlay{position:fixed;inset:0;background:var(--bg);z-index:200;display:flex;align-items:center;justify-content:center}
+.login-box{width:380px;padding:40px;text-align:center}
+.login-box .logo{justify-content:center;font-size:28px;margin-bottom:8px;color:var(--text)}
+.login-box .logo .logo-mark{width:34px;height:28px}
+.login-sub{color:var(--text-m);font-size:14px;margin-bottom:32px}
+.login-field{width:100%;margin-bottom:14px;padding:10px 14px;border:1px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;color:var(--text);background:var(--bg-card);outline:none;transition:border-color .15s}
+.login-field:focus{border-color:var(--accent)}
+.login-btn{width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:var(--rs);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s}
+.login-btn:hover{background:var(--accent-h)}
+.login-err{color:var(--red);font-size:12.5px;margin-top:10px;min-height:18px}
+.login-hint{color:var(--text-m);font-size:11.5px;margin-top:20px;line-height:1.5}
+.user-pill{display:flex;align-items:center;gap:8px;padding:5px 10px;border-radius:20px;background:var(--bg-card);border:1px solid var(--border);font-size:12px;color:var(--text-s);cursor:pointer;transition:all .15s}
+.user-pill:hover{border-color:var(--accent);color:var(--text)}
+.user-avatar{width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+.msg-form{display:flex;flex-direction:column;gap:12px}
+.msg-form input,.msg-form textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:9px 12px;font-size:13px;color:var(--text);font-family:inherit;outline:none;transition:border-color .15s;width:100%}
+.msg-form input:focus,.msg-form textarea:focus{border-color:var(--accent)}
+.msg-form textarea{resize:vertical;min-height:80px}
+.sub-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid var(--border);font-family:inherit}
+.sub-btn.subscribed{background:var(--green-bg);color:var(--green);border-color:var(--green)}
+.sub-btn.unsubscribed{background:var(--bg-card);color:var(--text-s)}
+.sub-btn:hover{border-color:var(--accent)}
+.toggle{position:relative;display:inline-block;width:44px;height:24px;cursor:pointer;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0;position:absolute}
+.toggle .track{position:absolute;inset:0;background:var(--border);border-radius:12px;transition:background .2s}
+.toggle input:checked+.track{background:var(--accent)}
+.toggle .knob{position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.toggle input:checked~.knob{left:22px}
+.toggle-sm{width:36px;height:20px}
+.toggle-sm .knob{width:16px;height:16px}
+.toggle-sm input:checked~.knob{left:18px}
+.toggle-green input:checked+.track{background:var(--green)}
+.msg-item{padding:14px 18px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s}
+.msg-item:hover{background:var(--bg-hover)}
+.msg-item:last-child{border-bottom:none}
 </style>
 </head>
 <body>
-<div class="app">
+<div class="login-overlay" id="loginOverlay">
+<div class="login-box">
+<div class="logo"><svg class="logo-mark" viewBox="0 0 40 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 0L38 18L34 22L20 8L6 22L2 18L20 0Z" fill="url(#lg1)"/><path d="M20 10L35 25L31 29L20 18L9 29L5 25L20 10Z" fill="url(#lg2)"/><defs><linearGradient id="lg1" x1="8" y1="4" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#3b82f6"/></linearGradient><linearGradient id="lg2" x1="8" y1="14" x2="34" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs></svg>Bridge</div>
+<div class="login-sub">Independent MPS Research & Oversight</div>
+<input class="login-field" type="email" id="loginEmail" placeholder="Email address" autocomplete="email">
+<input class="login-field" type="password" id="loginPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+<button class="login-btn" onclick="doLogin()">Sign In</button>
+<div class="login-err" id="loginErr"></div>
+<div class="login-hint">Demo: demo@bridge.co.uk / Bridge2026!</div>
+</div>
+</div>
+<div class="app" id="appShell" style="display:none">
 <aside class="sidebar">
 <div class="sidebar-header"><div class="logo"><svg class="logo-mark" viewBox="0 0 40 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 0L38 18L34 22L20 8L6 22L2 18L20 0Z" fill="url(#g1)"/><path d="M20 10L35 25L31 29L20 18L9 29L5 25L20 10Z" fill="url(#g2)"/><defs><linearGradient id="g1" x1="8" y1="4" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#3b82f6"/></linearGradient><linearGradient id="g2" x1="8" y1="14" x2="34" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs></svg>Bridge</div></div>
 <nav class="sidebar-nav">
@@ -125,6 +177,13 @@ MPS Selection</div>
 <div class="nav-item" data-page="insights" onclick="nav('insights')">
 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
 Insights</div>
+<div class="nav-sl" style="margin-top:8px">Account</div>
+<div class="nav-item" data-page="messages" onclick="nav('messages')">
+<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+Messages</div>
+<div class="nav-item" data-page="account" onclick="nav('account')">
+<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+Preferences</div>
 </nav>
 <div class="sidebar-footer">Bridge v1.0 · Independent MPS Research</div>
 </aside>
@@ -133,13 +192,64 @@ Insights</div>
 <div class="topbar-title" id="tt">Homepage</div>
 <div style="display:flex;gap:8px;align-items:center">
 <button class="btn btn-g btn-sm" onclick="nav('selection')">⌕ Search MPS</button>
+<div class="user-pill" id="userPill" onclick="toggleUserMenu()">
+<div class="user-avatar" id="userAvatar"></div>
+<span id="userName"></span>
+<span style="font-size:10px;color:var(--text-m)">▾</span>
+</div>
 </div>
 </div>
 <div class="content" id="app"><div class="loading"><div class="spinner"></div>Loading...</div></div>
 </main>
 </div>
 <script>
-const $=id=>document.getElementById(id);let S={p:'dashboard',c:{},pr:{},bvOpen:true},CH={};
+const $=id=>document.getElementById(id);let S={p:'dashboard',c:{},pr:{},bvOpen:true,user:null},CH={};
+
+// ─── Auth ────────────────────────────────────────────
+async function checkAuth(){
+try{const r=await fetch('/api/auth/me');const d=await r.json();
+if(d.authenticated){S.user=d.user;showApp();return true}}catch(e){}
+showLogin();return false}
+
+function showLogin(){$('loginOverlay').style.display='flex';$('appShell').style.display='none'}
+function showApp(){$('loginOverlay').style.display='none';$('appShell').style.display='flex';
+$('userAvatar').textContent=S.user.name.split(' ').map(w=>w[0]).join('');
+$('userName').textContent=S.user.name;
+// Load and apply preferences
+fetch('/api/preferences').then(r=>r.json()).then(d=>{if(d.preferences?.display?.dark_mode)savePrefApplyDark(true)}).catch(()=>{});
+render()}
+
+async function doLogin(){
+const email=$('loginEmail').value.trim(),pass=$('loginPass').value;
+$('loginErr').textContent='';
+if(!email||!pass){$('loginErr').textContent='Please enter email and password';return}
+try{const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})});
+if(r.ok){const d=await r.json();S.user=d.user;showApp()}
+else{const d=await r.json();$('loginErr').textContent=d.detail||'Login failed'}}
+catch(e){$('loginErr').textContent='Connection error'}}
+
+async function doLogout(){
+try{await fetch('/api/auth/logout',{method:'POST'})}catch(e){}
+S.user=null;S.c={};showLogin()}
+
+function toggleUserMenu(){
+const existing=document.getElementById('userMenu');
+if(existing){existing.remove();return}
+const pill=$('userPill');const rect=pill.getBoundingClientRect();
+const menu=document.createElement('div');menu.id='userMenu';
+menu.style.cssText=`position:fixed;top:${rect.bottom+4}px;right:${window.innerWidth-rect.right}px;background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);box-shadow:0 4px 12px rgba(0,0,0,.1);z-index:200;min-width:180px;overflow:hidden`;
+menu.innerHTML=`<div style="padding:12px 16px;border-bottom:1px solid var(--border)"><div style="font-size:13px;font-weight:600">${S.user.name}</div><div style="font-size:11px;color:var(--text-m)">${S.user.firm}</div></div>
+<div style="padding:4px"><div style="padding:8px 12px;font-size:13px;cursor:pointer;border-radius:4px;color:var(--text-s)" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background=''" onclick="document.getElementById('userMenu').remove();nav('account')">Preferences</div>
+<div style="padding:8px 12px;font-size:13px;cursor:pointer;border-radius:4px;color:var(--text-s)" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background=''" onclick="document.getElementById('userMenu').remove();nav('messages')">Messages</div>
+<div style="padding:8px 12px;font-size:13px;cursor:pointer;border-radius:4px;color:var(--red)" onmouseover="this.style.background='var(--red-bg)'" onmouseout="this.style.background=''" onclick="document.getElementById('userMenu').remove();doLogout()">Sign Out</div></div>`;
+document.body.appendChild(menu);
+setTimeout(()=>{const close=e=>{if(!menu.contains(e.target)&&!pill.contains(e.target)){menu.remove();document.removeEventListener('click',close)}};document.addEventListener('click',close)},0)}
+
+function savePrefApplyDark(dark){
+const root=document.documentElement;
+if(dark){root.style.setProperty('--bg','#0f1117');root.style.setProperty('--bg-card','#1a1d2e');root.style.setProperty('--bg-hover','#242736');root.style.setProperty('--bg-surface','#1a1d2e');root.style.setProperty('--border','#2a2d3e');root.style.setProperty('--border-a','#3a3d4e');root.style.setProperty('--text','#e2e8f0');root.style.setProperty('--text-s','#94a3b8');root.style.setProperty('--text-m','#64748b')}
+else{root.style.setProperty('--bg','#ffffff');root.style.setProperty('--bg-card','#f8f9fb');root.style.setProperty('--bg-hover','#f1f3f7');root.style.setProperty('--bg-surface','#f3f4f6');root.style.setProperty('--border','#e2e5ea');root.style.setProperty('--border-a','#cbd0d8');root.style.setProperty('--text','#1a1f2e');root.style.setProperty('--text-s','#4b5563');root.style.setProperty('--text-m','#6b7280')}}
+
 function nav(p,pr={}){S.p=p;S.pr=pr;document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));const e=document.querySelector(`.nav-item[data-page="${p}"]`);if(e)e.classList.add('active');render()}
 async function F(u){if(S.c[u])return S.c[u];try{const r=await fetch(u);const d=await r.json();S.c[u]=d;return d}catch(e){console.error(e);return null}}
 function DC(){Object.values(CH).forEach(c=>c.destroy&&c.destroy());CH={}}
@@ -148,9 +258,9 @@ function catB(c){return c==='Weekly Commentary'?'b-green':c==='Regulatory'?'b-am
 function riskB(r){return r<=3?'b-green':r<=5?'b-blue':r<=7?'b-amber':'b-red'}
 function pId(n){return n.toLowerCase().replace(/ investors/,'').replace(/ /g,'-')}
 function shortName(n){return n.replace('Quilter WealthSelect Active ','').replace('Managed ','')}
-function removeBV(){const p=document.querySelector('.bv-panel');const b=document.querySelector('.bv-tab-btn');if(p)p.remove();if(b)b.remove()}
-function toggleBV(){const p=document.querySelector('.bv-panel');const b=document.querySelector('.bv-tab-btn');if(!p)return;S.bvOpen=!S.bvOpen;p.classList.toggle('collapsed',!S.bvOpen);if(b)b.style.display=S.bvOpen?'none':'block'}
-function renderBV(content){removeBV();if(!content)return;const p=document.createElement('div');p.className='bv-panel'+(S.bvOpen?'':' collapsed');p.innerHTML=`<div class="bv-panel-header"><span>💡 Bridge View</span><button class="bv-toggle" onclick="toggleBV()">✕</button></div><div class="bv-content">${content}</div>`;document.body.appendChild(p);const b=document.createElement('div');b.className='bv-tab-btn';b.style.display=S.bvOpen?'none':'block';b.textContent='Bridge View';b.onclick=toggleBV;document.body.appendChild(b)}
+function removeBV(){const el=document.getElementById('bv-inline');if(el)el.remove()}
+function toggleBV(){}
+function renderBV(content){removeBV();if(!content)return;const tc=$('tc');if(!tc)return;const div=document.createElement('div');div.id='bv-inline';div.className='bv-inline';div.innerHTML=`<div class="bv-inline-header">💡 Bridge View</div><div class="bv-inline-content">${content}</div>`;tc.appendChild(div)}
 function fmtArticle(t){if(!t)return'<p style="color:var(--text-m)">Content to be added.</p>';return t.split('\n\n').map(p=>{p=p.trim();if(!p)return'';if(p.startsWith('**')&&p.endsWith('**'))return`<h3>${p.replace(/\*\*/g,'')}</h3>`;let h=p.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');if(h.includes('\n•')||h.startsWith('•')){const lines=h.split('\n');let out='',inUl=false;lines.forEach(l=>{l=l.trim();if(l.startsWith('•')){if(!inUl){out+='<ul>';inUl=true}out+=`<li>${l.slice(1).trim()}</li>`}else{if(inUl){out+='</ul>';inUl=false}if(l)out+=`<p>${l}</p>`}});if(inUl)out+='</ul>';return out}return`<p>${h.replace(/\n/g,'<br>')}</p>`}).join('')}
 
 async function render(){
@@ -162,6 +272,8 @@ case'analysis':tt.textContent='MPS Analysis';await rAna(el);break;
 case'provider':tt.textContent='MPS Analysis';await rProv(el);break;
 case'insights':tt.textContent='Insights';await rIns(el);break;
 case'insight':tt.textContent='Insight';await rInsD(el);break;
+case'messages':tt.textContent='Messages';await rMsg(el);break;
+case'account':tt.textContent='Preferences';await rAcct(el);break;
 default:tt.textContent='Homepage';await rDash(el);
 }}
 
@@ -186,6 +298,7 @@ el.innerHTML=`<div class="fi"><div class="ph1"><h1>Bridge</h1><p>Independent MPS
 <div style="font-size:13px;color:var(--text-s);line-height:1.5">Filter the MPS universe by risk profiling tool, platform availability and investment style.</div>
 </div></div>
 </div>
+<div id="hp-subs"></div>
 <div id="hp-ins"></div>
 <div style="border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
 <div class="exp-row" onclick="togExp(this)" style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;border-bottom:1px solid var(--border)">
@@ -210,7 +323,12 @@ const hpi=document.getElementById('hp-ins');if(hpi)hpi.innerHTML=`
 ${ins.insights.slice(0,3).map(i=>`<div class="insight-card" onclick="nav('insight',{id:'${i.id}'})">
 <div class="im"><span class="badge ${catB(i.category)}">${i.category}</span><span>${i.date}</span><span>${i.read_time_minutes} min</span></div>
 <div class="it">${i.title}</div><div class="is">${i.summary.slice(0,120)}...</div></div>`).join('')}
-</div></div></div>`}}
+</div></div></div>`}
+// Subscribed MPS ranges widget
+try{const sr=await fetch('/api/subscriptions');if(sr.ok){const sd=await sr.json();
+const hps=document.getElementById('hp-subs');if(hps&&sd.subscriptions.length){hps.innerHTML=`
+<div class="card" style="margin-bottom:28px"><div class="card-h"><span class="card-t">📌 Your Subscribed MPS Ranges</span><button class="btn btn-g btn-sm" onclick="nav('account')">Manage →</button></div>
+<div class="card-b"><div style="display:flex;gap:10px;flex-wrap:wrap">${sd.subscriptions.map(s=>`<div style="padding:10px 16px;background:var(--accent-g);border:1px solid rgba(37,99,235,.15);border-radius:var(--rs);cursor:pointer;transition:all .15s" onclick="nav('provider',{id:'${s.provider_id}'})" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(37,99,235,.15)'"><div style="font-size:13px;font-weight:600;color:var(--accent)">${s.provider_name}</div><div style="font-size:11px;color:var(--text-m);margin-top:2px">Subscribed · Click to view</div></div>`).join('')}</div></div></div>`}}}catch(e){}}
 
 function showTip(el){const t=el.querySelector('.hp-tip');if(t)t.style.display='block'}
 function hideTip(el){const t=el.querySelector('.hp-tip');if(t)t.style.display='none'}
@@ -233,9 +351,9 @@ const f=await F('/api/selection/filters'),d=await F('/api/selection/mps?risk_min
 if(!f||!d){el.innerHTML='<p>Failed to load</p>';return}
 el.innerHTML=`<div class="fi"><div class="ph1"><h1>MPS Selection</h1><p>Filter the MPS universe to find solutions relevant for your firm</p></div>
 <div class="filter-bar">
-<div class="fg"><span class="fl">Platform</span><select id="fp" onchange="flt()"><option value="">All</option>${f.platforms.map(p=>`<option>${p}</option>`).join('')}</select></div>
+<div class="fg"><span class="fl">Platform</span><div class="ms-wrap" id="ms-plat"><button class="ms-btn" onclick="togMS('ms-plat')">All Platforms</button><div class="ms-dd">${f.platforms.map(p=>`<label class="ms-opt"><input type="checkbox" value="${p}" onchange="updMS('ms-plat');flt()"> ${p}</label>`).join('')}</div></div></div>
 <div class="fg"><span class="fl">Fund Selection</span><select id="fs" onchange="flt()"><option value="">All</option>${(f.investment_styles||[]).map(s=>`<option>${s}</option>`).join('')}</select></div>
-<div class="fg"><span class="fl">Risk Rating Provider</span><select id="fr" onchange="flt()"><option value="">All</option>${(f.risk_rating_providers||[]).map(r=>`<option>${r}</option>`).join('')}</select></div>
+<div class="fg"><span class="fl">Risk Rating Provider</span><div class="ms-wrap" id="ms-rrp"><button class="ms-btn" onclick="togMS('ms-rrp')">All Providers</button><div class="ms-dd">${(f.risk_rating_providers||[]).map(r=>`<label class="ms-opt"><input type="checkbox" value="${r}" onchange="updMS('ms-rrp');flt()"> ${r}</label>`).join('')}</div></div></div>
 <div class="fg" style="align-self:flex-end"><button class="btn btn-g btn-sm" onclick="rflt()">Reset</button></div>
 </div>
 <div class="card"><div class="card-h"><span class="card-t" id="mc">${grpRanges(d.mps).length} MPS Ranges</span></div>
@@ -251,17 +369,23 @@ function mRows(mps){return grpRanges(mps).map(r=>`<tr class="cr" onclick="nav('p
 
 async function flt(){
 let u='/api/selection/mps?risk_min=1&risk_max=10';
-if($('fp').value)u+=`&platforms=${$('fp').value}`;
+const selPlats=getMS('ms-plat');
+if(selPlats.length)u+=`&platforms=${selPlats.join(',')}`;
 delete S.c[u];const d=await F(u);if(!d)return;
 let filtered=d.mps;
 const fs=$('fs').value;
 if(fs){const provs=await F('/api/providers');if(provs){const matchProvs=provs.providers.filter(p=>p.investment_style===fs).map(p=>p.name);filtered=filtered.filter(m=>matchProvs.includes(m.provider))}}
-const fr=$('fr').value;
-if(fr){const provs=await F('/api/providers');if(provs){const matchProvs=provs.providers.filter(p=>(p.risk_rating_providers||[]).includes(fr)).map(p=>p.name);filtered=filtered.filter(m=>matchProvs.includes(m.provider))}}
+const selRRP=getMS('ms-rrp');
+if(selRRP.length){const provs=await F('/api/providers');if(provs){const matchProvs=provs.providers.filter(p=>(p.risk_rating_providers||[]).some(r=>selRRP.includes(r))).map(p=>p.name);filtered=filtered.filter(m=>matchProvs.includes(m.provider))}}
 const ranges=grpRanges(filtered);
 $('mc').textContent=`${ranges.length} MPS Ranges`;$('mt').innerHTML=mRows(filtered)}
 
-function rflt(){$('fp').value='';$('fs').value='';$('fr').value='';flt()}
+function rflt(){$('fs').value='';clearMS('ms-plat');clearMS('ms-rrp');flt()}
+
+function togMS(id){const wrap=document.getElementById(id);if(!wrap)return;const dd=wrap.querySelector('.ms-dd');dd.classList.toggle('open');if(dd.classList.contains('open')){const close=e=>{if(!wrap.contains(e.target)){dd.classList.remove('open');document.removeEventListener('click',close)}};setTimeout(()=>document.addEventListener('click',close),0)}}
+function getMS(id){const wrap=document.getElementById(id);if(!wrap)return[];return[...wrap.querySelectorAll('input:checked')].map(i=>i.value)}
+function updMS(id){const wrap=document.getElementById(id);if(!wrap)return;const sel=getMS(id);const btn=wrap.querySelector('.ms-btn');const label=id==='ms-plat'?'Platforms':'Providers';btn.textContent=sel.length?`${sel.length} ${label} selected`:`All ${label}`}
+function clearMS(id){const wrap=document.getElementById(id);if(!wrap)return;wrap.querySelectorAll('input').forEach(i=>i.checked=false);updMS(id)}
 
 // ─── Analysis - Provider List ─────────────────────────
 async function rAna(el){
@@ -286,8 +410,9 @@ const d=await F(`/api/providers/${id}`);if(!d){el.innerHTML='<p>Not found</p>';r
 const p=d.provider,pts=d.portfolios;
 S._provData=d;S._provTab='overview';
 el.innerHTML=`<div class="fi"><div class="back" onclick="nav('analysis')">← Back to Providers</div>
-<div class="ph"><div class="pn">${p.full_name||p.name}</div>
+<div class="ph"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div class="pn">${p.full_name||p.name}</div>
 <div style="color:var(--text-s);font-size:14px;margin-bottom:8px">${p.name} · ${p.investment_style}</div></div>
+<button class="sub-btn unsubscribed" id="subBtn" onclick="togSub('${p.id}','${(p.full_name||p.name).replace(/'/g,"\\'")}')">🔔 Subscribe</button></div></div>
 <div class="tabs" id="ptabs">
 <div class="tab active" onclick="pTab('overview')">Overview</div>
 <div class="tab" onclick="pTab('investment')">Investment Process</div>
@@ -300,6 +425,9 @@ el.innerHTML=`<div class="fi"><div class="back" onclick="nav('analysis')">← Ba
 <div class="tab" onclick="pTab('consumer_duty')">Consumer Duty</div>
 </div>
 <div id="tc"></div></div>`;
+// Check subscription state
+try{const sr=await fetch(`/api/subscriptions/check/${p.id}`);if(sr.ok){const sd=await sr.json();
+const btn=$('subBtn');if(btn&&sd.subscribed){btn.className='sub-btn subscribed';btn.innerHTML='✓ Subscribed'}}}catch(e){}
 pTab('overview')}
 
 function pTab(tab){
@@ -344,7 +472,14 @@ ${rrp.length?`<div class="card"><div class="card-h"><span class="card-t">Risk Ra
 <div class="card-b"><ul class="slist">${rrp.map(r=>`<li>${r}</li>`).join('')}</ul></div></div>`:''}
 </div>
 ${p.strengths&&p.strengths.length?`<div class="grid g2" style="margin-top:20px"><div class="card"><div class="card-h"><span class="card-t">Strengths</span></div><div class="card-b"><ul class="slist">${p.strengths.map(s=>`<li>${s}</li>`).join('')}</ul></div></div>
-${p.considerations&&p.considerations.length?`<div class="card"><div class="card-h"><span class="card-t">Considerations</span></div><div class="card-b"><ul class="clist">${p.considerations.map(c=>`<li>${c}</li>`).join('')}</ul></div></div>`:''}</div>`:''}`}
+${p.considerations&&p.considerations.length?`<div class="card"><div class="card-h"><span class="card-t">Considerations</span></div><div class="card-b"><ul class="clist">${p.considerations.map(c=>`<li>${c}</li>`).join('')}</ul></div></div>`:''}</div>`:''}
+<div class="card" style="margin-top:20px"><div class="card-h"><span class="card-t">💬 Have a Question?</span></div>
+<div class="card-b"><p style="font-size:13.5px;color:var(--text-s);margin-bottom:14px">Ask the Bridge Research team about this MPS provider, we typically respond within 1 business day.</p>
+<div class="msg-form" id="askForm">
+<input type="text" id="askSubj" placeholder="Subject, e.g. 'Question about rebalancing approach'">
+<textarea id="askMsg" placeholder="Your question..."></textarea>
+<div style="display:flex;gap:10px;align-items:center"><button class="btn btn-p" onclick="sendAsk()">Send Question</button><span id="askStatus" style="font-size:12px;color:var(--text-m)"></span></div>
+</div></div></div>`}
 
 // ─── Investment Process Tab ───────────────────────────
 function tabInvestment(tc,p){
@@ -366,7 +501,7 @@ function tabCurrent(tc,pts){
 const defPort=pts[0];
 tc.innerHTML=`
 <div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Current Holdings</span>
-<div style="display:flex;gap:8px;align-items:center"><div class="fg"><select id="hp" onchange="chPort()">${pts.map((m,i)=>`<option value="${i}">${shortName(m.name)}</option>`).join('')}</select></div></div></div>
+<div style="display:flex;gap:8px;align-items:center"><span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text-m)">Risk Level</span><div class="fg"><select id="hp" onchange="chPort()">${pts.map((m,i)=>`<option value="${i}">${shortName(m.name)}</option>`).join('')}</select></div></div></div>
 <div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Fund Name</th><th>ISIN</th><th>Portfolio Weighting (%)</th><th>Asset Class</th><th>Sub Asset Class</th></tr></thead>
 <tbody id="ht">${holdRows(defPort,true)}</tbody></table></div>
 <div id="holdToggle" style="padding:12px 14px;text-align:center;border-top:1px solid var(--border)"><a href="#" onclick="expandHold(event)" id="holdBtn" style="color:var(--accent);font-size:12px;font-weight:500;text-decoration:none">Show all ${defPort.underlying_funds?defPort.underlying_funds.length:0} holdings ▾</a></div></div></div>
@@ -386,9 +521,9 @@ renderBV(`<p><strong>Bridge View: Current Exposure</strong></p><p>The current ho
 function holdRows(m,limit){
 if(!m.underlying_funds||!m.underlying_funds.length)return'<tr><td colspan="5">No holdings data</td></tr>';
 const funds=limit&&!S._holdExpanded?m.underlying_funds.slice(0,10):m.underlying_funds;
-return funds.map(f=>`<tr><td class="nc">${f.name}</td><td>${f.isin||'–'}</td><td>${f.weight}</td>
+return funds.map(f=>{const subBadge=f.sub_type?`<span class="badge ${f.type==='Equity'?'b-blue':f.type==='Fixed Income'?'b-green':f.type==='Alternative'?'b-purple':'b-amber'}" style="opacity:.7">${f.sub_type}</span>`:'–';return`<tr><td class="nc">${f.name}</td><td>${f.isin||'–'}</td><td>${f.weight}</td>
 <td><span class="badge ${f.type==='Equity'?'b-blue':f.type==='Fixed Income'?'b-green':f.type==='Alternative'?'b-purple':'b-amber'}">${f.type}</span></td>
-<td>${f.sub_type||'–'}</td></tr>`).join('')}
+<td>${subBadge}</td></tr>`}).join('')}
 
 function expandHold(e){e.preventDefault();S._holdExpanded=!S._holdExpanded;const idx=$('hp').value;const m=S._provData.portfolios[idx];$('ht').innerHTML=holdRows(m,true);const btn=$('holdBtn');if(btn)btn.innerHTML=S._holdExpanded?'Show top 10 ▴':`Show all ${m.underlying_funds?m.underlying_funds.length:0} holdings ▾`}
 
@@ -421,12 +556,13 @@ function chFiMode(){$('fit').innerHTML=fiRows(S._provData.portfolios,$('fiMode')
 async function tabHistorical(tc){
 const h=await F('/api/historical/portfolio_7');
 tc.innerHTML=`
-<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Asset Allocation</span></div>
+<div style="margin-bottom:16px;padding:12px 16px;background:var(--accent-g);border-radius:var(--rs);font-size:13px;color:var(--accent);font-weight:500">📊 Showing historical data for <strong>Risk Level 7</strong> (Balanced)</div>
+<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Asset Allocation – Risk Level 7</span></div>
 <div class="card-b"><div class="cc" style="height:320px"><canvas id="haa"></canvas></div></div></div>
 <div class="grid g2">
-<div class="card"><div class="card-h"><span class="card-t">Equity Exposure</span></div>
+<div class="card"><div class="card-h"><span class="card-t">Equity Exposure – Risk Level 7</span></div>
 <div class="card-b"><div class="cc" style="height:280px"><canvas id="heq"></canvas></div></div></div>
-<div class="card"><div class="card-h"><span class="card-t">Fixed Income Exposure</span></div>
+<div class="card"><div class="card-h"><span class="card-t">Fixed Income Exposure – Risk Level 7</span></div>
 <div class="card-b"><div class="cc" style="height:280px"><canvas id="hfi"></canvas></div></div></div>
 </div>`;
 renderBV(`<p><strong>Bridge View: Historical Exposure</strong></p><p>Historical asset allocation data shows how the portfolio has evolved over time. Gradual shifts in equity/bond weighting reflect both strategic reviews and tactical positioning.</p><p>The equity regional breakdown shows any geographic rotation decisions, while the fixed income history highlights duration and credit quality positioning through different rate environments.</p><p>Look for consistency between the stated investment approach and the actual changes observed — significant deviations may warrant further investigation.</p>`);
@@ -460,19 +596,19 @@ CH.hfi=new Chart($('hfi'),{type:'line',data:{labels,datasets:keys.map((k,i)=>({l
 
 // ─── Performance Tab ──────────────────────────────────
 function tabPerformance(tc,pts,p){
-const years=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','YTD'];
+const years=['YTD','2025','2024','2023','2022','2021','2020','2019','2018','2017','2016'];
 const rrData=p.risk_return_data||[];
 const periods=[...new Set(rrData.map(d=>d.period))];
 tc.innerHTML=`
-<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Calendar Year Returns</span></div>
+<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Calendar Year Returns (%)</span></div>
 <div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Model</th>${years.map(y=>`<th>${y}</th>`).join('')}</tr></thead>
-<tbody>${pts.map(m=>{const cr=m.calendar_returns||{};return`<tr><td class="nc">${m.name}</td>${years.map(y=>{const val=cr[y];return`<td style="color:${val!=null&&val<0?'var(--red)':'var(--text-s)'}">${val!=null?val:'–'}</td>`}).join('')}</tr>`}).join('')}</tbody></table></div></div></div>
-<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Trailing Returns</span></div>
+<tbody>${pts.map(m=>{const cr=m.calendar_returns||{};return`<tr><td class="nc">${m.name}</td>${years.map(y=>{const val=cr[y];return`<td style="color:${val!=null&&val<0?'var(--red)':'var(--text-s)'}">${val!=null?val+'%':'–'}</td>`}).join('')}</tr>`}).join('')}</tbody></table></div></div></div>
+<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Trailing Returns (%)</span></div>
 <div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Model</th><th>1M</th><th>3M</th><th>6M</th><th>YTD</th><th>1Y</th><th>3Y</th><th>5Y</th><th>10Y</th></tr></thead>
 <tbody>${pts.map(m=>{const tr=m.trailing_returns||{};return`<tr><td class="nc">${m.name}</td><td>${v(tr['1M'])}</td><td>${v(tr['3M'])}</td><td>${v(tr['6M'])}</td><td>${v(tr['YTD'])}</td><td>${v(tr['1Y'])}</td><td>${v(tr['3Y'])}</td><td>${v(tr['5Y'])}</td><td>${v(tr['10Y'])}</td></tr>`}).join('')}</tbody></table></div></div></div>
 <div class="card"><div class="card-h"><span class="card-t">Risk vs Return</span>
 ${periods.length?`<div class="fg"><select id="rrPeriod" onchange="updateRvR()" style="min-width:140px">${periods.map((p,i)=>`<option value="${p}" ${i===0?'selected':''}>${p}</option>`).join('')}</select></div>`:''}</div>
-<div class="card-b"><div class="cc" style="height:340px"><canvas id="rvr"></canvas></div></div></div>`;
+<div class="card-b"><div id="rrDateRange" style="font-size:12px;color:var(--text-m);margin-bottom:8px;font-weight:500"></div><div class="cc" style="height:340px"><canvas id="rvr"></canvas></div></div></div>`;
 S._rrData=rrData;
 renderBV(`<p><strong>Bridge View: Performance</strong></p><p>Calendar year returns show the portfolio's behaviour through different market environments. Pay attention to 2022 (a challenging year for multi-asset) and subsequent recovery.</p><p>The risk/return scatter chart plots annualised risk against annualised return, with IA sector benchmarks for context. Portfolios above and to the left of the benchmark line are delivering superior risk-adjusted returns.</p><p>Quilter's active portfolios have generally clustered above the IA sector line, suggesting the active management approach has added value on a risk-adjusted basis over these periods.</p>`);
 setTimeout(()=>{updateRvR()},100)}
@@ -483,6 +619,8 @@ const period=$('rrPeriod')?$('rrPeriod').value:(S._rrData.length?S._rrData[0].pe
 const filtered=S._rrData.filter(d=>d.period===period);
 const quilter=filtered.filter(d=>d.portfolio.startsWith('Quilter'));
 const benchmarks=filtered.filter(d=>!d.portfolio.startsWith('Quilter'));
+// Show date range
+const drEl=$('rrDateRange');if(drEl){const now=new Date();const end='31/12/'+now.getFullYear();let start='';const match=period.match(/(\d+)/);if(match){const yrs=parseInt(match[1]);start='31/12/'+(now.getFullYear()-yrs)}else if(period.toLowerCase().includes('inception')){start='24/02/2014'}else{start='31/12/'+(now.getFullYear()-3)}drEl.textContent=`Period: ${start} – ${end}`}
 CH.rvr=new Chart(ctx,{type:'scatter',data:{datasets:[
 {label:'Quilter Portfolios',data:quilter.map(d=>({x:d.risk,y:d.return})),backgroundColor:'rgba(59,130,246,.8)',pointRadius:8,pointHoverRadius:10},
 {label:'IA Sectors',data:benchmarks.map(d=>({x:d.risk,y:d.return})),backgroundColor:'rgba(245,158,11,.7)',pointRadius:7,pointHoverRadius:9,pointStyle:'triangle'}
@@ -547,6 +685,7 @@ finally{btn.textContent='Export Report';btn.disabled=false}}
 // ─── Adviser Support Tab ──────────────────────────────
 function tabAdviser(tc,p){
 const as=p.adviser_support||{};
+const websiteUrl=p.website||'';
 const sections=[
 {title:'Onboarding & Training',key:'onboarding'},
 {title:'Ongoing Portfolio Communication',key:'ongoing_communication'},
@@ -554,7 +693,8 @@ const sections=[
 {title:'Investment Commentary & Market Insight',key:'investment_commentary'},
 {title:'Digital Tools & Support Infrastructure',key:'digital_tools'}
 ];
-tc.innerHTML=sections.map(s=>`<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">${s.title}</span></div>
+tc.innerHTML=`${websiteUrl?`<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Provider Website</span></div>
+<div class="card-b"><a href="${websiteUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:14px;font-weight:500;text-decoration:none">🔗 ${p.full_name||p.name} <span style="font-size:12px;color:var(--text-m)">↗ Opens in new tab</span></a></div></div>`:''}`+sections.map(s=>`<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">${s.title}</span></div>
 <div class="card-b"><div class="article">${fmtArticle(as[s.key])}</div></div></div>`).join('');
 renderBV(`<p><strong>Bridge View: Adviser Support</strong></p><p>Quilter provides a comprehensive support offering spanning onboarding, ongoing communication, and digital infrastructure. The breadth of support is above average for the MPS market.</p><p>Quarterly rebalance documentation and post-trade rationale are particularly valuable for Consumer Duty evidence requirements. The availability of both virtual and in-person training adds flexibility.</p><p>Consider: how responsive is the Quilter team to ad-hoc queries? Adviser firms should test the support model during the evaluation phase rather than relying solely on the documented offering.</p>`)}
 
@@ -572,17 +712,25 @@ tc.innerHTML=`
 // ─── Insights ─────────────────────────────────────────
 async function rIns(el){
 const d=await F('/api/insights');if(!d){el.innerHTML='<p>Failed</p>';return}
+const pinned=d.insights.filter(i=>i.pinned);
+const regular=d.insights.filter(i=>!i.pinned);
 el.innerHTML=`<div class="fi"><div class="ph1"><h1>Insights</h1><p>Expert insights from Buckingham Research — market theme analysis and ad-hoc thought pieces</p></div>
+${pinned.length?`<div class="card" style="margin-bottom:24px;border-color:rgba(37,99,235,.25)"><div class="card-h" style="background:var(--accent-g)"><span class="card-t" style="display:flex;align-items:center;gap:8px">📰 Latest Weekly Market Update</span><span style="font-size:12px;color:var(--text-m)">Updated ${pinned[0].date}</span></div>
+<div class="card-b" style="cursor:pointer" onclick="nav('insight',{id:'${pinned[0].id}'})">
+<div class="it" style="margin-bottom:6px">${pinned[0].title}</div>
+<div class="is">${pinned[0].summary}</div>
+<div style="margin-top:10px;font-size:12px;color:var(--accent);font-weight:500">Read full update →</div>
+</div></div>`:''}
 <div class="filter-bar" style="margin-bottom:24px">
 <div class="fg"><span class="fl">Category</span><select id="ic" onchange="fIns()"><option value="">All</option>${d.categories.map(c=>`<option>${c}</option>`).join('')}</select></div>
 </div>
-<div class="grid g2" id="il">${insCards(d.insights)}</div></div>`}
+<div class="grid g2" id="il">${insCards(regular)}</div></div>`}
 
 function insCards(ins){return ins.map(i=>`<div class="insight-card" onclick="nav('insight',{id:'${i.id}'})">
 <div class="im"><span class="badge ${catB(i.category)}">${i.category}</span><span>${i.date}</span><span>${i.read_time_minutes} min read</span></div>
 <div class="it">${i.title}</div><div class="is">${i.summary}</div></div>`).join('')}
 
-async function fIns(){const c=$('ic').value;let u='/api/insights';if(c)u+=`?category=${encodeURIComponent(c)}`;delete S.c[u];const d=await F(u);if(d)$('il').innerHTML=insCards(d.insights)}
+async function fIns(){const c=$('ic').value;let u='/api/insights';if(c)u+=`?category=${encodeURIComponent(c)}`;delete S.c[u];const d=await F(u);if(d){const regular=d.insights.filter(i=>!i.pinned);$('il').innerHTML=insCards(regular)}}
 
 // ─── Insight Detail ───────────────────────────────────
 async function rInsD(el){
@@ -598,8 +746,126 @@ if(p.startsWith('**')&&p.endsWith('**'))return`<h3>${p.replace(/\*\*/g,'')}</h3>
 return`<p>${p.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</p>`}).join('')}</div>
 <div style="margin-top:24px;display:flex;gap:8px;flex-wrap:wrap">${i.tags.map(t=>`<span class="badge b-blue">${t}</span>`).join('')}</div></div>`}
 
+// ─── Messaging Page ──────────────────────────────────
+async function rMsg(el){
+let d;try{const r=await fetch('/api/messages');d=await r.json()}catch(e){el.innerHTML='<p>Failed to load</p>';return}
+el.innerHTML=`<div class="fi"><div class="ph1"><h1>Messages</h1><p>Your conversations with the Bridge Research team</p></div>
+<div class="card" style="margin-bottom:24px"><div class="card-h"><span class="card-t">New Message</span></div>
+<div class="card-b"><div class="msg-form">
+<input type="text" id="msgSubj" placeholder="Subject">
+<textarea id="msgBody" placeholder="Your message to Bridge Research..."></textarea>
+<div style="display:flex;gap:10px;align-items:center"><button class="btn btn-p" onclick="sendMsg()">Send Message</button><span id="msgStatus" style="font-size:12px;color:var(--text-m)"></span></div>
+</div></div></div>
+<div class="card"><div class="card-h"><span class="card-t">Message History</span><span style="font-size:12px;color:var(--text-m)">${d.count} message${d.count!==1?'s':''}</span></div>
+${d.messages.length?d.messages.map(m=>`<div class="msg-item">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+<span style="font-size:13px;font-weight:600">${m.subject}</span>
+<span style="font-size:11px;color:var(--text-m)">${new Date(m.created_at*1000).toLocaleDateString('en-GB')}</span></div>
+<div style="font-size:12.5px;color:var(--text-s);line-height:1.5">${m.body.slice(0,120)}${m.body.length>120?'...':''}</div>
+${m.provider_name?`<div style="margin-top:4px"><span class="badge b-blue" style="font-size:10px">${m.provider_name}</span></div>`:''}
+<div style="margin-top:6px"><span class="badge ${m.reply?'b-green':'b-amber'}" style="font-size:10px">${m.reply?'Replied':'Awaiting reply'}</span></div>
+</div>`).join(''):`<div style="padding:40px;text-align:center;color:var(--text-m);font-size:13px">No messages yet</div>`}
+</div></div>`}
+
+async function sendMsg(){
+const subj=$('msgSubj').value.trim(),body=$('msgBody').value.trim(),st=$('msgStatus');
+if(!subj||!body){st.style.color='var(--red)';st.textContent='Please fill in both fields';return}
+st.style.color='var(--text-m)';st.textContent='Sending...';
+try{const r=await fetch('/api/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({subject:subj,message:body})});
+if(r.ok){st.style.color='var(--green)';st.textContent='Message sent';$('msgSubj').value='';$('msgBody').value='';setTimeout(()=>nav('messages'),1000)}
+else{const d=await r.json();st.style.color='var(--red)';st.textContent=d.detail||'Failed'}}
+catch(e){st.style.color='var(--red)';st.textContent='Failed to send'}}
+
+async function sendAsk(){
+const subj=$('askSubj').value.trim(),body=$('askMsg').value.trim(),st=$('askStatus');
+if(!subj||!body){st.style.color='var(--red)';st.textContent='Please fill in both fields';return}
+const p=S._provData?.provider;
+st.style.color='var(--text-m)';st.textContent='Sending...';
+try{const r=await fetch('/api/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({subject:subj,message:body,provider_id:p?.id,provider_name:p?.full_name||p?.name})});
+if(r.ok){st.style.color='var(--green)';st.textContent='Question sent — we\'ll reply within 1 business day';$('askSubj').value='';$('askMsg').value=''}
+else{const d=await r.json();st.style.color='var(--red)';st.textContent=d.detail||'Failed'}}
+catch(e){st.style.color='var(--red)';st.textContent='Failed to send'}}
+
+// ─── Account / Preferences Page ──────────────────────
+async function rAcct(el){
+let subs=[];try{const r=await fetch('/api/subscriptions');if(r.ok){const d=await r.json();subs=d.subscriptions}}catch(e){}
+let prefs={display:{default_risk_level:7,dark_mode:false},notifications:{frequency:'instant'},subscription_alerts:{}};
+try{const r=await fetch('/api/preferences');if(r.ok){const d=await r.json();prefs=d.preferences}}catch(e){}
+el.innerHTML=`<div class="fi"><div class="ph1"><h1>Preferences</h1><p>Manage your account settings, display options, notifications and MPS subscriptions</p></div>
+
+<div class="card" style="margin-bottom:24px"><div class="card-h"><span class="card-t">Account Details</span></div>
+<div class="card-b" style="padding:0"><table>
+<tr><td class="nc" style="width:160px">Name</td><td>${S.user.name}</td></tr>
+<tr><td class="nc">Email</td><td>${S.user.email}</td></tr>
+<tr><td class="nc">Firm</td><td>${S.user.firm}</td></tr>
+<tr><td class="nc">Role</td><td style="text-transform:capitalize">${S.user.role}</td></tr>
+</table></div></div>
+
+<div class="card" style="margin-bottom:24px"><div class="card-h"><span class="card-t">Display Preferences</span></div>
+<div class="card-b">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div><div style="font-size:13.5px;font-weight:500">Default Risk Level</div><div style="font-size:12px;color:var(--text-m)">Pre-select this risk level when viewing provider dashboards</div></div>
+<select id="prefRisk" onchange="savePref()" style="min-width:80px">${[3,4,5,6,7,8,9,10].map(r=>`<option value="${r}" ${prefs.display.default_risk_level===r?'selected':''}>${r}</option>`).join('')}</select>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div><div style="font-size:13.5px;font-weight:500">Dark Mode</div><div style="font-size:12px;color:var(--text-m)">Switch to a dark colour scheme</div></div>
+<label class="toggle">
+<input type="checkbox" id="prefDark" ${prefs.display.dark_mode?'checked':''} onchange="savePref()">
+<span class="track"></span>
+<span class="knob"></span>
+</label>
+</div>
+</div></div></div>
+
+<div class="card" style="margin-bottom:24px"><div class="card-h"><span class="card-t">Notification Settings</span></div>
+<div class="card-b">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div><div style="font-size:13.5px;font-weight:500">Email Notification Frequency</div><div style="font-size:12px;color:var(--text-m)">How often you receive email alerts for subscribed MPS updates</div></div>
+<select id="prefFreq" onchange="savePref()" style="min-width:120px">
+<option value="instant" ${prefs.notifications.frequency==='instant'?'selected':''}>Instant</option>
+<option value="daily" ${prefs.notifications.frequency==='daily'?'selected':''}>Daily Digest</option>
+<option value="weekly" ${prefs.notifications.frequency==='weekly'?'selected':''}>Weekly Digest</option>
+</select>
+</div>
+</div></div>
+
+<div class="card"><div class="card-h"><span class="card-t">MPS Subscriptions</span><span style="font-size:12px;color:var(--text-m)">${subs.length} active</span></div>
+${subs.length?`<div class="card-b" style="padding:0"><table><thead><tr><th>MPS Range</th><th>Subscribed</th><th>Email Alerts</th><th></th></tr></thead>
+<tbody>${subs.map(s=>{const alertOn=prefs.subscription_alerts[s.provider_id]!==false;return`<tr><td class="nc" style="cursor:pointer" onclick="nav('provider',{id:'${s.provider_id}'})">${s.provider_name}</td>
+<td>${new Date(s.created_at*1000).toLocaleDateString('en-GB')}</td>
+<td><label class="toggle toggle-sm toggle-green">
+<input type="checkbox" ${alertOn?'checked':''} onchange="togSubAlert('${s.provider_id}',this.checked)">
+<span class="track"></span>
+<span class="knob"></span>
+</label></td>
+<td><button class="btn btn-g btn-sm" onclick="unsubProv('${s.provider_id}')">Unsubscribe</button></td></tr>`}).join('')}</tbody></table></div>`
+:`<div class="card-b"><p style="color:var(--text-m);font-size:13px">No active subscriptions. Subscribe to MPS ranges from the MPS Analysis dashboards to receive email alerts when data is updated.</p></div>`}
+</div></div>`}
+
+async function savePref(){
+const body={display:{default_risk_level:parseInt($('prefRisk').value),dark_mode:$('prefDark').checked},notifications:{frequency:$('prefFreq').value}};
+try{await fetch('/api/preferences',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})}catch(e){}
+savePrefApplyDark(body.display.dark_mode)}
+
+async function togSubAlert(providerId,enabled){
+try{await fetch('/api/preferences/subscription-alert',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({provider_id:providerId,enabled})})}catch(e){}}
+
+// ─── Subscription Toggle ─────────────────────────────
+async function togSub(providerId,providerName){
+const btn=$('subBtn');if(!btn)return;
+const isSub=btn.classList.contains('subscribed');
+try{if(isSub){const r=await fetch(`/api/subscriptions/${providerId}`,{method:'DELETE'});
+if(r.ok){btn.className='sub-btn unsubscribed';btn.innerHTML='🔔 Subscribe'}}
+else{const r=await fetch('/api/subscriptions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({provider_id:providerId,provider_name:providerName})});
+if(r.ok){btn.className='sub-btn subscribed';btn.innerHTML='✓ Subscribed'}}}catch(e){}}
+
+async function unsubProv(providerId){
+try{const r=await fetch(`/api/subscriptions/${providerId}`,{method:'DELETE'});
+if(r.ok)nav('account')}catch(e){}}
+
 // Init
-render();
+checkAuth();
 </script>
 </body>
 </html>

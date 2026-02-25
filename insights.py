@@ -6,6 +6,18 @@ Thought pieces and thematic analysis from Buckingham Research
 
 INSIGHTS = [
     {
+        "id": "weekly-market-update",
+        "title": "Weekly Market Update",
+        "category": "Weekly Commentary",
+        "date": "2026-02-24",
+        "author": "Bridge Research",
+        "summary": "Our latest weekly market commentary covering key moves across equities, fixed income and currencies, with implications for multi-asset portfolios.",
+        "content": "**Equity Markets**\n\nGlobal equities continued their upward trend this week, with the MSCI World index rising 0.8%. US markets led the way, supported by stronger-than-expected earnings from the technology sector. European equities were more muted, with the STOXX 600 broadly flat as investors digested mixed economic data from the region.\n\nUK equities outperformed modestly, with the FTSE 100 gaining 0.5%, helped by strength in energy and mining stocks as commodity prices firmed.\n\n**Fixed Income**\n\nGovernment bond yields edged higher across developed markets. US 10-year Treasury yields rose approximately 8 basis points to 4.35%, reflecting continued resilience in economic data and reduced expectations for near-term rate cuts.\n\nUK gilt yields followed a similar trajectory, with 10-year yields rising to 4.52%. Sterling investment-grade credit spreads remained tight, with limited new issuance providing a supportive technical backdrop.\n\n**Currencies & Commodities**\n\nSterling was broadly stable against the US dollar and euro. Gold prices held above $2,900/oz as geopolitical uncertainty continued to support safe-haven demand.\n\n**Implications for Multi-Asset Portfolios**\n\nThe continued divergence between US and international equity markets reinforces the importance of geographic allocation as a key driver of MPS performance dispersion. Advisers should be mindful that recent outperformance of globally-biased portfolios is partly a function of this trend rather than necessarily reflecting superior stock or fund selection.\n\nFixed income allocations remain challenged by rising yields, though the income generation from current yield levels provides a buffer against further price declines.",
+        "tags": ["weekly-update", "market-commentary", "equities", "fixed-income", "currencies"],
+        "read_time_minutes": 4,
+        "pinned": True,
+    },
+    {
         "id": "insight-001",
         "title": "MPS Selection: A Flawed Formula?",
         "category": "Thematic Analysis",

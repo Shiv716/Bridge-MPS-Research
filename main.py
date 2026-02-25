@@ -4,7 +4,7 @@ Bridge – API Server
 B2B SaaS platform for UK financial adviser firms
 """
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from typing import Optional
@@ -22,6 +22,10 @@ from insights import (
     get_all_insights, get_insight_by_id, get_insights_by_category,
     get_insight_categories, search_insights,
 )
+from auth import authenticate, create_session, get_session, destroy_session
+from messaging import send_message, get_messages, get_message_by_id
+from subscriptions import subscribe, unsubscribe, get_subscriptions, is_subscribed
+from preferences import get_preferences, update_preferences, set_subscription_alert
 
 app = FastAPI(
     title="Bridge",
@@ -41,6 +45,188 @@ def safe_avg(values):
     """Average that handles None values."""
     clean = [v for v in values if v is not None]
     return round(sum(clean) / len(clean), 2) if clean else 0
+
+
+def get_current_user(request: Request) -> Optional[dict]:
+    """Extract user from session token in cookie or header."""
+    token = request.cookies.get("bridge_session") or request.headers.get("X-Session-Token")
+    if not token:
+        return None
+    return get_session(token)
+
+
+def require_auth(request: Request) -> dict:
+    """Dependency: require authenticated user."""
+    user = get_current_user(request)
+    if not user:
+        raise HTTPException(401, "Not authenticated")
+    return user
+
+
+# ─── Auth ──────────────────────────────────────────────────────────────
+
+@app.post("/api/auth/login")
+async def login(body: dict):
+    email = body.get("email", "").strip()
+    password = body.get("password", "")
+    if not email or not password:
+        raise HTTPException(400, "Email and password required")
+    user = authenticate(email, password)
+    if not user:
+        raise HTTPException(401, "Invalid credentials")
+    token = create_session(user)
+    from fastapi.responses import JSONResponse
+    resp = JSONResponse({"status": "ok", "user": user})
+    resp.set_cookie("bridge_session", token, httponly=True, samesite="lax", max_age=86400)
+    return resp
+
+
+@app.post("/api/auth/logout")
+async def logout(request: Request):
+    token = request.cookies.get("bridge_session") or request.headers.get("X-Session-Token")
+    if token:
+        destroy_session(token)
+    from fastapi.responses import JSONResponse
+    resp = JSONResponse({"status": "ok"})
+    resp.delete_cookie("bridge_session")
+    return resp
+
+
+@app.get("/api/auth/me")
+async def get_me(request: Request):
+    user = get_current_user(request)
+    if not user:
+        return {"authenticated": False}
+    subs = get_subscriptions(user["id"])
+    return {"authenticated": True, "user": user, "subscriptions": subs}
+
+
+# ─── Messaging ─────────────────────────────────────────────────────────
+
+@app.post("/api/messages")
+async def create_message(body: dict, user: dict = Depends(require_auth)):
+    subject = body.get("subject", "").strip()
+    message_body = body.get("message", "").strip()
+    provider_id = body.get("provider_id")
+    provider_name = body.get("provider_name")
+    if not subject or not message_body:
+        raise HTTPException(400, "Subject and message are required")
+    msg = send_message(
+        user_id=user["id"],
+        user_name=user["name"],
+        user_firm=user["firm"],
+        subject=subject,
+        body=message_body,
+        provider_id=provider_id,
+        provider_name=provider_name,
+    )
+
+    # Send email notification to Bridge team
+    email_subject = f"[Bridge Message] {subject}"
+    if provider_name:
+        email_subject += f" — re: {provider_name}"
+    email_body = (
+        f"From: {user['name']} ({user['email']})\n"
+        f"Firm: {user['firm']}\n"
+        f"Provider: {provider_name or 'General'}\n\n"
+        f"{message_body}"
+    )
+
+    if RESEND_API_KEY:
+        import httpx
+        try:
+            async with httpx.AsyncClient() as client:
+                r = await client.post(
+                    "https://api.resend.com/emails",
+                    headers={"Authorization": f"Bearer {RESEND_API_KEY}"},
+                    json={
+                        "from": "Bridge Messages <onboarding@resend.dev>",
+                        "to": [FEEDBACK_EMAIL],
+                        "subject": email_subject,
+                        "text": email_body,
+                    },
+                )
+                if r.status_code not in (200, 201):
+                    print(f"Resend error: {r.text}")
+        except Exception as e:
+            print(f"Resend error: {e}")
+    else:
+        print(f"\n--- MESSAGE ---")
+        print(f"Subject: {email_subject}")
+        print(f"{email_body}")
+        print(f"(Set RESEND_API_KEY to send via email)")
+        print(f"---------------\n")
+
+    return {"status": "ok", "message": msg}
+
+
+@app.get("/api/messages")
+async def list_messages(user: dict = Depends(require_auth)):
+    msgs = get_messages(user["id"])
+    return {"count": len(msgs), "messages": msgs}
+
+
+@app.get("/api/messages/{message_id}")
+async def get_message_detail(message_id: str, user: dict = Depends(require_auth)):
+    msg = get_message_by_id(message_id, user["id"])
+    if not msg:
+        raise HTTPException(404, "Message not found")
+    return {"message": msg}
+
+
+# ─── Subscriptions ─────────────────────────────────────────────────────
+
+@app.post("/api/subscriptions")
+async def create_subscription(body: dict, user: dict = Depends(require_auth)):
+    provider_id = body.get("provider_id", "").strip()
+    provider_name = body.get("provider_name", "").strip()
+    if not provider_id:
+        raise HTTPException(400, "Provider ID required")
+    sub = subscribe(user["id"], provider_id, provider_name, user_email=user.get("email", ""))
+    return {"status": "ok", "subscription": sub}
+
+
+@app.delete("/api/subscriptions/{provider_id}")
+async def remove_subscription(provider_id: str, user: dict = Depends(require_auth)):
+    success = unsubscribe(user["id"], provider_id)
+    if not success:
+        raise HTTPException(404, "Subscription not found")
+    return {"status": "ok"}
+
+
+@app.get("/api/subscriptions")
+async def list_subscriptions(user: dict = Depends(require_auth)):
+    subs = get_subscriptions(user["id"])
+    return {"count": len(subs), "subscriptions": subs}
+
+
+@app.get("/api/subscriptions/check/{provider_id}")
+async def check_subscription(provider_id: str, user: dict = Depends(require_auth)):
+    return {"subscribed": is_subscribed(user["id"], provider_id)}
+
+
+# ─── Preferences ───────────────────────────────────────────────────────
+
+@app.get("/api/preferences")
+async def get_user_preferences(user: dict = Depends(require_auth)):
+    prefs = get_preferences(user["id"])
+    return {"preferences": prefs}
+
+
+@app.put("/api/preferences")
+async def update_user_preferences(body: dict, user: dict = Depends(require_auth)):
+    prefs = update_preferences(user["id"], body)
+    return {"status": "ok", "preferences": prefs}
+
+
+@app.put("/api/preferences/subscription-alert")
+async def toggle_subscription_alert(body: dict, user: dict = Depends(require_auth)):
+    provider_id = body.get("provider_id", "").strip()
+    enabled = body.get("enabled", True)
+    if not provider_id:
+        raise HTTPException(400, "Provider ID required")
+    prefs = set_subscription_alert(user["id"], provider_id, enabled)
+    return {"status": "ok", "preferences": prefs}
 
 
 # ─── Selection Module ──────────────────────────────────────────────────
