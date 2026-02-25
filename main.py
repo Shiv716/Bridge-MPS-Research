@@ -101,6 +101,21 @@ async def get_me(request: Request):
     return {"authenticated": True, "user": user, "subscriptions": subs}
 
 
+# ─── Demo Request ─────────────────────────────────────────────────────────
+
+@app.post("/api/demo-request")
+async def demo_request(body: dict):
+    name = body.get("name", "")
+    email = body.get("email", "")
+    firm = body.get("firm", "")
+    print(f"\n--- DEMO REQUEST ---")
+    print(f"Name: {name}")
+    print(f"Email: {email}")
+    print(f"Firm: {firm}")
+    print(f"--------------------\n")
+    return {"status": "ok"}
+
+
 # ─── Messaging ─────────────────────────────────────────────────────────
 
 @app.post("/api/messages")
