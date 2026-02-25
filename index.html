@@ -192,7 +192,7 @@ async function submitDemo(){
   if(!name||!email){st.style.color='#ef4444';st.textContent='Please fill in your name and email.';return}
   st.style.color='#94a3b8';st.textContent='Submitting...';
   try{
-    const r=await fetch('https://bridge-mps-research.onrender.com',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,firm})});
+    const r=await fetch('https://bridge-mps-research.onrender.com/api/demo-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,firm})});
     if(r.ok){st.style.color='#2563eb';st.textContent='Thank you. We\'ll be in touch shortly.';document.getElementById('demoName').value='';document.getElementById('demoEmail').value='';document.getElementById('demoFirm').value=''}
     else{st.style.color='#ef4444';st.textContent='Something went wrong. Please try again.'}
   }catch(e){st.style.color='#ef4444';st.textContent='Connection error. Please try again.'}
