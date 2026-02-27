@@ -108,9 +108,17 @@ async def demo_request(body: dict):
     name = body.get("name", "")
     email = body.get("email", "")
     firm = body.get("firm", "")
+    persona = body.get("persona", "Not selected")
+    tier = body.get("tier", "Not selected")
 
     email_subject = f"[Bridge] Demo Request from {name}"
-    email_body = f"Name: {name}\nEmail: {email}\nFirm: {firm}"
+    email_body = (
+        f"Name: {name}\n"
+        f"Email: {email}\n"
+        f"Firm: {firm}\n"
+        f"I am: {persona}\n"
+        f"Firm size: {tier}"
+    )
 
     if RESEND_API_KEY:
         import httpx
@@ -132,12 +140,11 @@ async def demo_request(body: dict):
             print(f"Resend error: {e}")
     else:
         print(f"\n--- DEMO REQUEST ---")
-        print(f"Name: {name}\nEmail: {email}\nFirm: {firm}")
+        print(email_body)
         print(f"(Set RESEND_API_KEY to send via email)")
         print(f"--------------------\n")
 
     return {"status": "ok"}
-
 
 # ─── Messaging ─────────────────────────────────────────────────────────
 
