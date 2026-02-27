@@ -34,7 +34,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .hero h1 em{font-style:italic;font-weight:400;color:var(--accent-l)}
 .hero-sub{font-size:clamp(16px,1.8vw,19px);color:var(--text-m);line-height:1.7;max-width:520px;margin-bottom:48px;font-weight:300;letter-spacing:.1px;opacity:0;animation:fadeUp .8s .6s forwards}
 .hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;transition:all .25s;letter-spacing:.3px;opacity:0;animation:fadeUp .8s .8s forwards}
-.hero-cta:hover{background:#2563eb;transform:translateY(-2px);box-shadow:0 8px 30px rgba(59,130,246,.25)}
+.hero-cta:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 8px 30px rgba(59,130,246,.25)}
 .hero-cta svg{width:16px;height:16px;transition:transform .2s}
 .hero-cta:hover svg{transform:translateX(3px)}
 .scroll-line{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--border),transparent);opacity:0;animation:fadeIn 1s 1.2s forwards}
@@ -57,6 +57,45 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .pillar-num{font-family:'Fraunces',serif;font-size:32px;font-weight:300;color:var(--accent-l);margin-bottom:16px;letter-spacing:-1px}
 .pillar h3{font-size:15px;font-weight:600;margin-bottom:10px;letter-spacing:.2px}
 .pillar p{font-size:13.5px;color:var(--text-d);line-height:1.65;font-weight:300}
+
+/* ─── I Am Section ─── */
+.iam-section{padding:120px 40px;max-width:1000px;margin:0 auto}
+.iam-section h2{font-family:'Fraunces',serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.2;letter-spacing:-1px;margin-bottom:16px}
+.iam-section>p.iam-sub{font-size:16px;color:var(--text-d);margin-bottom:48px;font-weight:300}
+.iam-options{display:flex;flex-direction:column;gap:8px;margin-bottom:40px}
+.iam-opt{display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .25s;background:var(--bg);font-size:14.5px;font-weight:400;color:var(--text-m);letter-spacing:.1px}
+.iam-opt:hover{border-color:rgba(37,99,235,.3);color:var(--text)}
+.iam-opt.active{border-color:var(--accent);background:var(--accent-g);color:var(--text);font-weight:500}
+.iam-opt .iam-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);transition:all .25s;flex-shrink:0;position:relative}
+.iam-opt.active .iam-dot{border-color:var(--accent);background:var(--accent)}
+.iam-opt.active .iam-dot::after{content:'';position:absolute;top:4px;left:4px;width:6px;height:6px;border-radius:50%;background:#fff}
+.iam-result{display:none;animation:slideIn .4s ease}
+.iam-result.show{display:block}
+@keyframes slideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.iam-result-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:20px}
+.iam-cards{display:flex;flex-direction:column;gap:16px}
+.iam-card{display:flex;gap:20px;padding:24px;border:1px solid var(--border);border-radius:10px;background:var(--bg-s)}
+.iam-card-num{font-family:'Fraunces',serif;font-size:28px;font-weight:300;color:var(--accent-l);line-height:1;flex-shrink:0;width:28px}
+.iam-card h4{font-size:14px;font-weight:600;margin-bottom:6px;letter-spacing:.1px;color:var(--text)}
+.iam-card p{font-size:13.5px;color:var(--text-d);line-height:1.6;font-weight:300}
+
+/* ─── Pricing Section ─── */
+.pricing-section{padding:120px 40px;max-width:1000px;margin:0 auto}
+.pricing-section h2{font-family:'Fraunces',serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.2;letter-spacing:-1px;margin-bottom:16px}
+.pricing-section>p.pricing-sub{font-size:16px;color:var(--text-d);margin-bottom:48px;font-weight:300}
+.pricing-header{display:grid;grid-template-columns:1fr 1fr 1fr;padding:0 24px 12px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-d)}
+.pricing-header span:nth-child(2){text-align:center}
+.pricing-header span:nth-child(3){text-align:right}
+.pricing-tiers{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+.pricing-tier{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:18px 24px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .25s;background:var(--bg)}
+.pricing-tier:hover{border-color:rgba(37,99,235,.3)}
+.pricing-tier.active{border-color:var(--accent);background:var(--accent-g)}
+.pricing-tier-advisers{font-size:14.5px;font-weight:500;color:var(--text)}
+.pricing-tier-advisers span{font-size:12px;font-weight:400;color:var(--text-d);margin-left:4px}
+.pricing-tier-price{font-family:'Fraunces',serif;font-size:24px;font-weight:400;color:var(--text);text-align:center;letter-spacing:-.5px}
+.pricing-tier-price .vat{font-family:'Inter',sans-serif;font-size:12px;font-weight:400;color:var(--text-d);margin-left:4px}
+.pricing-tier-logins{font-size:13px;font-weight:500;color:var(--accent);text-align:right;letter-spacing:.2px}
+.pricing-note{font-size:13px;color:var(--text-d);margin-top:20px;font-weight:300;line-height:1.6}
 
 /* CTA */
 .cta-section{padding:120px 40px;text-align:center;position:relative}
@@ -83,15 +122,22 @@ footer a:hover{color:var(--text)}
 .modal-field:focus{border-color:var(--accent)}
 .modal-field::placeholder{color:var(--text-d)}
 .modal-btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:6px;padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s;letter-spacing:.3px;margin-top:4px}
-.modal-btn:hover{background:#2563eb}
+.modal-btn:hover{background:#1d4ed8}
 .modal-status{font-size:12px;text-align:center;margin-top:12px;min-height:18px}
 
 @media(max-width:768px){
 nav{padding:16px 24px}
-.nav-links{gap:20px}
+.nav-links{gap:16px}
 .hero{padding:100px 24px 60px}
 .about{padding:80px 24px}
 .pillars{grid-template-columns:1fr}
+.iam-section{padding:80px 24px}
+.iam-card{flex-direction:column;gap:12px}
+.pricing-section{padding:80px 24px}
+.pricing-tier{grid-template-columns:1fr;gap:8px;text-align:left}
+.pricing-tier-price{text-align:left}
+.pricing-tier-logins{text-align:left}
+.pricing-header{display:none}
 .cta-section{padding:80px 24px}
 footer{flex-direction:column;gap:12px;text-align:center;padding:32px 24px}
 }
@@ -106,10 +152,13 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:32px 24px}
 </a>
 <div class="nav-links">
 <a href="#about">About</a>
+<a href="#iam">For You</a>
+<a href="#pricing">Pricing</a>
 <a href="#" class="nav-cta" onclick="openDemo(event)">Request Demo</a>
 </div>
 </nav>
 
+<!-- Hero -->
 <section class="hero">
 <div class="hero-badge"><span class="dot"></span> Independent MPS Research</div>
 <h1>See through the <em>noise</em></h1>
@@ -123,6 +172,7 @@ Request a Demo
 
 <div class="divider"></div>
 
+<!-- About -->
 <section class="about" id="about">
 <div class="section-label">About</div>
 <h2>Built for advisers who want to understand, not just compare.</h2>
@@ -131,7 +181,6 @@ Request a Demo
 <p style="margin-top:20px">Bridge provides <strong>structured, independent analysis</strong> of managed portfolio services — going beyond surface-level rankings to examine the decisions, allocations, and processes that drive client outcomes.</p>
 <p style="margin-top:20px">Designed to support <strong>Consumer Duty obligations</strong> with ongoing oversight and evidence-ready reporting.</p>
 </div>
-
 <div class="pillars">
 <div class="pillar">
 <div class="pillar-num">01</div>
@@ -153,6 +202,76 @@ Request a Demo
 
 <div class="divider"></div>
 
+<!-- I Am Section -->
+<section class="iam-section" id="iam">
+<div class="section-label">For You</div>
+<h2>I am…</h2>
+<p class="iam-sub">Select your situation to see how Bridge fits your firm.</p>
+
+<div class="iam-options">
+<div class="iam-opt" onclick="selectIam(0)"><span class="iam-dot"></span>Setting up my own firm</div>
+<div class="iam-opt" onclick="selectIam(1)"><span class="iam-dot"></span>A smaller business with a few advisers juggling CIP oversight</div>
+<div class="iam-opt" onclick="selectIam(2)"><span class="iam-dot"></span>A larger business with a robust process already in place</div>
+<div class="iam-opt" onclick="selectIam(3)"><span class="iam-dot"></span>An IFA network</div>
+</div>
+
+<div class="iam-result" id="iamResult">
+<div class="iam-result-label">How Bridge helps you</div>
+<div class="iam-cards" id="iamCards"></div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Pricing -->
+<section class="pricing-section" id="pricing">
+<div class="section-label">Pricing</div>
+<h2>How much will it cost me?</h2>
+<p class="pricing-sub">Select your firm size. Every plan includes unlimited logins.</p>
+
+<div class="pricing-header">
+<span>Firm Adviser Count</span>
+<span>Monthly Price</span>
+<span>Logins</span>
+</div>
+<div class="pricing-tiers">
+<div class="pricing-tier" onclick="selectTier(this)">
+<div class="pricing-tier-advisers">1 <span>adviser</span></div>
+<div class="pricing-tier-price">£100<span class="vat">+ VAT</span></div>
+<div class="pricing-tier-logins">Unlimited!</div>
+</div>
+<div class="pricing-tier" onclick="selectTier(this)">
+<div class="pricing-tier-advisers">2–5 <span>advisers</span></div>
+<div class="pricing-tier-price">£200<span class="vat">+ VAT</span></div>
+<div class="pricing-tier-logins">Unlimited!</div>
+</div>
+<div class="pricing-tier" onclick="selectTier(this)">
+<div class="pricing-tier-advisers">6–10 <span>advisers</span></div>
+<div class="pricing-tier-price">£300<span class="vat">+ VAT</span></div>
+<div class="pricing-tier-logins">Unlimited!</div>
+</div>
+<div class="pricing-tier" onclick="selectTier(this)">
+<div class="pricing-tier-advisers">11–25 <span>advisers</span></div>
+<div class="pricing-tier-price">£400<span class="vat">+ VAT</span></div>
+<div class="pricing-tier-logins">Unlimited!</div>
+</div>
+<div class="pricing-tier" onclick="selectTier(this)">
+<div class="pricing-tier-advisers">26–50 <span>advisers</span></div>
+<div class="pricing-tier-price">£500<span class="vat">+ VAT</span></div>
+<div class="pricing-tier-logins">Unlimited!</div>
+</div>
+<div class="pricing-tier" onclick="selectTier(this)">
+<div class="pricing-tier-advisers">50+ <span>advisers</span></div>
+<div class="pricing-tier-price" style="font-size:20px">POA</div>
+<div class="pricing-tier-logins">Unlimited!</div>
+</div>
+</div>
+<p class="pricing-note">All plans include full platform access, structured reporting, and ongoing monitoring dashboards. No per-user fees — just one simple price for your firm.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
 <section class="cta-section" id="demo">
 <h2>Interested?</h2>
 <p>We'll walk you through the platform.</p>
@@ -179,7 +298,57 @@ Request a Demo
 </div>
 
 <script>
-// Demo modal
+// ─── I Am Data ───
+const iamData = [
+  [
+    {title:"Built-in CIP foundation", desc:"Start with a structured, research-backed shortlist of MPS, funds and solutions so you're not building your investment proposition from scratch."},
+    {title:"Instant governance framework", desc:"Access ready-made selection and monitoring reports that align to Consumer Duty and demonstrate clear oversight from day one."},
+    {title:"Credible investment capability", desc:"Present clients with institutional-quality analysis, dashboards and insights — without hiring a full-time investment analyst."}
+  ],
+  [
+    {title:"Outsourced investment research", desc:"Delegate the heavy lifting of researching, comparing and monitoring MPS and other solutions so you can focus on clients and growth."},
+    {title:"Ongoing monitoring without the admin burden", desc:"Automated dashboards and structured reports help you evidence oversight without building spreadsheets or manual packs."},
+    {title:"Confidence in committee-level decisions", desc:"Even without a formal investment committee, you can operate with the discipline and structure of a much larger firm."}
+  ],
+  [
+    {title:"Strengthen existing governance", desc:"Independent research and structured monitoring feed directly into your existing investment committee process."},
+    {title:"Save internal resource", desc:"Reduce your time spent gathering, formatting and reconciling data — freeing your team to focus on higher-value decisions."},
+    {title:"Independent challenge and validation", desc:"Use Bridge as a second line of analytical support to test assumptions, compare providers and evidence value for money."}
+  ],
+  [
+    {title:"Centralised oversight across the network", desc:"Create consistency in how panels, MPS solutions and funds are assessed and monitored."},
+    {title:"Scalable governance framework", desc:"Provide AR firms with structured research and monitoring tools that elevate standards across the network."},
+    {title:"Demonstrable Consumer Duty support", desc:"Equip your ARs with exportable reports and documented oversight to strengthen supervisory and regulatory positioning."}
+  ]
+];
+
+function selectIam(idx){
+  document.querySelectorAll('.iam-opt').forEach((el,i)=>{
+    el.classList.toggle('active',i===idx);
+  });
+  const cards=document.getElementById('iamCards');
+  const result=document.getElementById('iamResult');
+  cards.innerHTML=iamData[idx].map((c,i)=>`
+    <div class="iam-card">
+      <div class="iam-card-num">${i+1}</div>
+      <div>
+        <h4>${c.title}</h4>
+        <p>${c.desc}</p>
+      </div>
+    </div>
+  `).join('');
+  result.classList.remove('show');
+  void result.offsetWidth;
+  result.classList.add('show');
+}
+
+// ─── Pricing ───
+function selectTier(el){
+  document.querySelectorAll('.pricing-tier').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ─── Demo Modal ───
 function openDemo(e){ e.preventDefault(); document.getElementById('demoModal').classList.add('open') }
 function closeDemo(){ document.getElementById('demoModal').classList.remove('open'); document.getElementById('demoStatus').textContent='' }
 document.getElementById('demoModal').addEventListener('click', function(e){ if(e.target===this) closeDemo() });
@@ -190,15 +359,22 @@ async function submitDemo(){
   const firm=document.getElementById('demoFirm').value.trim();
   const st=document.getElementById('demoStatus');
   if(!name||!email){st.style.color='#ef4444';st.textContent='Please fill in your name and email.';return}
+
+  const iamLabels=['Setting up my own firm','Smaller business juggling CIP oversight','Larger business with robust process','IFA network'];
+  const activeIam=document.querySelector('.iam-opt.active');
+  const persona=activeIam?iamLabels[[...document.querySelectorAll('.iam-opt')].indexOf(activeIam)]:'Not selected';
+  const activeTier=document.querySelector('.pricing-tier.active .pricing-tier-advisers');
+  const tier=activeTier?activeTier.textContent.trim():'Not selected';
+
   st.style.color='#94a3b8';st.textContent='Submitting...';
   try{
-    const r=await fetch('https://bridge-mps-research.onrender.com/api/demo-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,firm})});
+    const r=await fetch('https://bridge-mps-research.onrender.com/api/demo-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,firm,persona,tier})});
     if(r.ok){st.style.color='#2563eb';st.textContent='Thank you. We\'ll be in touch shortly.';document.getElementById('demoName').value='';document.getElementById('demoEmail').value='';document.getElementById('demoFirm').value=''}
     else{st.style.color='#ef4444';st.textContent='Something went wrong. Please try again.'}
   }catch(e){st.style.color='#ef4444';st.textContent='Connection error. Please try again.'}
 }
 
-// Smooth scroll
+// ─── Smooth Scroll ───
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',function(e){
     const t=document.querySelector(this.getAttribute('href'));
@@ -206,3 +382,5 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 </script>
+</body>
+</html>
