@@ -673,6 +673,20 @@ async def apple_touch_icon():
         return FileResponse(path, media_type="image/png")
     raise HTTPException(404)
 
+@app.get("/bridge-logo-nav.png")
+async def logo_nav():
+    path = os.path.join(os.path.dirname(__file__), "bridge-logo-nav.png")
+    if os.path.exists(path):
+        return FileResponse(path, media_type="image/png")
+    raise HTTPException(404)
+
+@app.get("/bridge-logo-dark.png")
+async def logo_dark():
+    path = os.path.join(os.path.dirname(__file__), "bridge-logo-dark.png")
+    if os.path.exists(path):
+        return FileResponse(path, media_type="image/png")
+    raise HTTPException(404)
+
 @app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
     html_path = os.path.join(os.path.dirname(__file__), "index.html")
