@@ -827,7 +827,13 @@ el.innerHTML=`<div class="fi"><div class="ph1"><h1>Preferences</h1><p>Manage you
 <select id="prefFreq" onchange="savePref()" style="min-width:120px">
 <option value="instant" ${prefs.notifications.frequency==='instant'?'selected':''}>Instant</option>
 <option value="daily" ${prefs.notifications.frequency==='daily'?'selected':''}>Daily Digest</option>
-<option value="weekly" ${prefs.notifications.frequency==='weekly'?'selected':''}>Weegth?`<div class="card-b" style="padding:0"><table><thead><tr><th>MPS Range</th><th>Subscribed</th><th>Email Alerts</th><th></th></tr></thead>
+<option value="weekly" ${prefs.notifications.frequency==='weekly'?'selected':''}>Weekly Digest</option>
+</select>
+</div>
+</div></div>
+
+<div class="card"><div class="card-h"><span class="card-t">MPS Subscriptions</span><span style="font-size:12px;color:var(--text-m)">${subs.length} active</span></div>
+${subs.length?`<div class="card-b" style="padding:0"><table><thead><tr><th>MPS Range</th><th>Subscribed</th><th>Email Alerts</th><th></th></tr></thead>
 <tbody>${subs.map(s=>{const alertOn=prefs.subscription_alerts[s.provider_id]!==false;return`<tr><td class="nc" style="cursor:pointer" onclick="nav('provider',{id:'${s.provider_id}'})">${s.provider_name}</td>
 <td>${new Date(s.created_at*1000).toLocaleDateString('en-GB')}</td>
 <td><label class="toggle toggle-sm toggle-green">
