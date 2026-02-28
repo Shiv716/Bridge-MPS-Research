@@ -21,6 +21,7 @@ def _load_provider_data():
     all_historical = {}
     all_benchmarks = {"trailing": [], "calendar": []}
     all_cost_tables = []
+    all_current_aa = []
 
     for filename in sorted(os.listdir(DATA_DIR)):
         if filename.endswith("_data.json"):
@@ -38,6 +39,7 @@ def _load_provider_data():
             all_benchmarks["trailing"].extend(data.get("benchmarks", {}).get("trailing", []))
             all_benchmarks["calendar"].extend(data.get("benchmarks", {}).get("calendar", []))
             all_cost_tables.extend(data.get("cost_table", []))
+            all_current_aa.extend(data.get("current_asset_allocation", []))
 
             print(f"  Loaded {filename}: {len(data.get('mps', []))} portfolios")
 
@@ -49,6 +51,7 @@ def _load_provider_data():
         "historical": all_historical,
         "benchmarks": all_benchmarks,
         "cost_table": all_cost_tables,
+        "current_asset_allocation": all_current_aa,
     }
 
 
@@ -62,6 +65,7 @@ INVESTMENT_STYLES = _DATA["styles"]
 HISTORICAL = _DATA["historical"]
 BENCHMARKS = _DATA["benchmarks"]
 COST_TABLE = _DATA["cost_table"]
+CURRENT_AA = _DATA["current_asset_allocation"]
 
 print(f"Bridge: {len(MPS_UNIVERSE)} portfolios, {len(PROVIDERS)} providers, {len(PLATFORMS)} platforms")
 
@@ -99,6 +103,9 @@ def get_benchmarks() -> dict:
 
 def get_cost_table() -> list[dict]:
     return COST_TABLE
+
+def get_current_asset_allocation() -> list[dict]:
+    return CURRENT_AA
 
 def get_performance_history(mps_id: str, months: int = 36) -> list[dict]:
     """Generate performance history from return data.

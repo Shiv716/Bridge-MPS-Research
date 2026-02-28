@@ -508,6 +508,9 @@ tc.innerHTML=`
 <div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Fund Name</th><th>ISIN</th><th>Portfolio Weighting (%)</th><th>Asset Class</th><th>Sub Asset Class</th></tr></thead>
 <tbody id="ht">${holdRows(defPort,true)}</tbody></table></div>
 <div id="holdToggle" style="padding:12px 14px;text-align:center;border-top:1px solid var(--border)"><a href="#" onclick="expandHold(event)" id="holdBtn" style="color:var(--accent);font-size:12px;font-weight:500;text-decoration:none">Show all ${defPort.underlying_funds?defPort.underlying_funds.length:0} holdings ▾</a></div></div></div>
+<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Asset Allocation</span></div>
+<div class="card-b" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Asset Class</th>${pts.map(m=>`<th>${shortName(m.name)}</th>`).join('')}</tr></thead>
+<tbody id="aat">${aaRows(pts)}</tbody></table></div></div></div>
 <div class="grid g2">
 <div class="card"><div class="card-h"><span class="card-t">Equity Exposure</span>
 <div class="fg"><select id="eqMode" onchange="chEqMode()" style="min-width:110px"><option value="abs">Absolute</option><option value="prop">Proportion</option></select></div></div>
@@ -554,6 +557,17 @@ return`<tr><td class="nc">${t.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase
 
 function chEqMode(){$('eqt').innerHTML=eqRows(S._provData.portfolios,$('eqMode').value)}
 function chFiMode(){$('fit').innerHTML=fiRows(S._provData.portfolios,$('fiMode').value)}
+
+function aaRows(pts){
+const classes=['Equity','Fixed Income','Alternative','Cash'];
+const colors={'Equity':'b-blue','Fixed Income':'b-green','Alternative':'b-purple','Cash':'b-amber'};
+return classes.map(ac=>{
+const vals=pts.map(m=>{
+if(!m.underlying_funds)return 0;
+return m.underlying_funds.filter(f=>f.type===ac).reduce((s,f)=>s+(f.weight||0),0)});
+const total=vals.reduce((s,v)=>s+v,0);
+if(total===0)return'';
+return`<tr><td class="nc"><span class="badge ${colors[ac]||'b-blue'}">${ac}</span></td>${vals.map(v=>`<td>${v>0?v.toFixed(1)+'%':'–'}</td>`).join('')}</tr>`}).join('')}
 
 // ─── Historical Exposure Tab ──────────────────────────
 async function tabHistorical(tc){

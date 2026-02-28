@@ -17,6 +17,7 @@ from mps_data import (
     get_mps_by_id, get_platforms, get_investment_styles,
     get_performance_history, filter_mps, get_historical, get_benchmarks,
     get_cost_table,
+    get_current_asset_allocation,
 )
 from insights import (
     get_all_insights, get_insight_by_id, get_insights_by_category,
@@ -429,6 +430,11 @@ async def get_benchmark_data():
 @app.get("/api/costs")
 async def get_costs():
     return {"costs": get_cost_table()}
+
+
+@app.get("/api/current-asset-allocation")
+async def get_current_aa():
+    return {"asset_allocation": get_current_asset_allocation()}
 
 
 # ─── Insights Module ──────────────────────────────────────────────────

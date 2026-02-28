@@ -74,6 +74,7 @@ def build_quilter(input_dir):
     holdings = load("Quilter_WS_Active_Current_Holdings.xlsx")
     eq_exp = load("Quilter_WS_Active_Current_Equity___Fixed_Income_Exposure.xlsx", "Equity")
     fi_exp = load("Quilter_WS_Active_Current_Equity___Fixed_Income_Exposure.xlsx", "Fixed Income")
+    current_aa = load("Quilter_WealthSelect_Active_-_Current_Asset_Allocation.xlsx")
 
     # Separate Quilter rows from EAA benchmarks
     cal = [r for r in cal_all if r["Model"].startswith("Quilter")]
@@ -229,6 +230,19 @@ def build_quilter(input_dir):
         models.append(model)
 
     # Assemble final output
+    # Build current asset allocation cross-portfolio table
+    aa_classes = ["Equity", "Fixed Income", "Alternative", "Cash"]
+    current_aa_table = []
+    for ac in aa_classes:
+        row = {"asset_class": ac}
+        for t in trail:
+            name = t["Model"]
+            num = name.replace("Quilter WealthSelect Active Managed ", "")
+            port_aa = [h for h in current_aa if h.get("Model") == f"Managed Active Portfolio {num}"]
+            total = sum((h.get("Portfolio Weighting (%)") or 0) for h in port_aa if h.get("Asset Class") == ac)
+            row[f"portfolio_{num}"] = round(total, 2)
+        current_aa_table.append(row)
+
     output = {
         "mps": models,
         "providers": {"Quilter Investors": provider},
@@ -248,6 +262,7 @@ def build_quilter(input_dir):
             "calendar": clean(benchmarks_cal),
         },
         "cost_table": [{"model": m["name"], **m["cost_breakdown"]} for m in models],
+        "current_asset_allocation": current_aa_table,
     }
 
     return output, models
