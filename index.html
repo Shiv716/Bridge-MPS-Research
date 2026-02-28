@@ -15,9 +15,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 
 /* Nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
-.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.nav-logo svg{width:28px;height:24px}
-.nav-logo span{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--text);letter-spacing:-.3px}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{color:var(--text-m);text-decoration:none;font-size:14px;font-weight:400;transition:color .2s;letter-spacing:.2px}
 .nav-links a:hover{color:var(--text)}
@@ -83,18 +81,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .pricing-section{padding:120px 40px;max-width:1000px;margin:0 auto}
 .pricing-section h2{font-family:'Fraunces',serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.2;letter-spacing:-1px;margin-bottom:16px}
 .pricing-section>p.pricing-sub{font-size:16px;color:var(--text-d);margin-bottom:48px;font-weight:300}
-.pricing-header{display:grid;grid-template-columns:1fr 1fr 1fr;padding:0 24px 12px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-d)}
-.pricing-header span:nth-child(2){text-align:center}
-.pricing-header span:nth-child(3){text-align:right}
-.pricing-tiers{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
-.pricing-tier{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:18px 24px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .25s;background:var(--bg)}
-.pricing-tier:hover{border-color:rgba(37,99,235,.3)}
-.pricing-tier.active{border-color:var(--accent);background:var(--accent-g)}
-.pricing-tier-advisers{font-size:14.5px;font-weight:500;color:var(--text)}
-.pricing-tier-advisers span{font-size:12px;font-weight:400;color:var(--text-d);margin-left:4px}
-.pricing-tier-price{font-family:'Fraunces',serif;font-size:24px;font-weight:400;color:var(--text);text-align:center;letter-spacing:-.5px}
-.pricing-tier-price .vat{font-family:'Inter',sans-serif;font-size:12px;font-weight:400;color:var(--text-d);margin-left:4px}
-.pricing-tier-logins{font-size:13px;font-weight:500;color:var(--accent);text-align:right;letter-spacing:.2px}
+.pricing-options{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
+.pricing-opt{padding:12px 22px;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .25s;background:var(--bg);font-size:14px;font-weight:500;color:var(--text-m)}
+.pricing-opt:hover{border-color:rgba(37,99,235,.3);color:var(--text)}
+.pricing-opt.active{border-color:var(--accent);background:var(--accent-g);color:var(--text)}
+.pricing-reveal{display:none;animation:slideIn .4s ease}
+.pricing-reveal.show{display:flex;align-items:center;gap:32px;padding:32px;border:1px solid var(--border);border-radius:12px;background:var(--bg-s)}
+.pricing-reveal-price{font-family:'Fraunces',serif;font-size:clamp(36px,5vw,52px);font-weight:300;color:var(--text);letter-spacing:-1px}
+.pricing-reveal-price .vat{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:var(--text-d);margin-left:6px}
+.pricing-reveal-details{display:flex;flex-direction:column;gap:6px}
+.pricing-reveal-details .pr-label{font-size:13px;color:var(--text-d);font-weight:300}
+.pricing-reveal-details .pr-logins{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:.2px}
 .pricing-note{font-size:13px;color:var(--text-d);margin-top:20px;font-weight:300;line-height:1.6}
 
 /* CTA */
@@ -134,10 +131,7 @@ nav{padding:16px 24px}
 .iam-section{padding:80px 24px}
 .iam-card{flex-direction:column;gap:12px}
 .pricing-section{padding:80px 24px}
-.pricing-tier{grid-template-columns:1fr;gap:8px;text-align:left}
-.pricing-tier-price{text-align:left}
-.pricing-tier-logins{text-align:left}
-.pricing-header{display:none}
+.pricing-reveal.show{flex-direction:column;align-items:flex-start;gap:16px}
 .cta-section{padding:80px 24px}
 footer{flex-direction:column;gap:12px;text-align:center;padding:32px 24px}
 }
@@ -147,8 +141,7 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:32px 24px}
 
 <nav>
 <a href="#" class="nav-logo">
-<svg viewBox="0 0 40 34" fill="none"><path d="M20 0L38 18L34 22L20 8L6 22L2 18L20 0Z" fill="url(#ng1)"/><path d="M20 10L35 25L31 29L20 18L9 29L5 25L20 10Z" fill="url(#ng2)"/><defs><linearGradient id="ng1" x1="8" y1="4" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#3b82f6"/></linearGradient><linearGradient id="ng2" x1="8" y1="14" x2="34" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs></svg>
-<span>Bridge</span>
+<img src="bridge-logo-nav.png" alt="Bridge" style="height:32px;width:auto">
 </a>
 <div class="nav-links">
 <a href="#about">About</a>
@@ -227,45 +220,25 @@ Request a Demo
 <section class="pricing-section" id="pricing">
 <div class="section-label">Pricing</div>
 <h2>How much will it cost me?</h2>
-<p class="pricing-sub">Select your firm size. Every plan includes unlimited logins.</p>
+<p class="pricing-sub">Select your firm size.</p>
 
-<div class="pricing-header">
-<span>Firm Adviser Count</span>
-<span>Monthly Price</span>
-<span>Logins</span>
+<div class="pricing-options">
+<div class="pricing-opt" onclick="selectPrice(0)">1 adviser</div>
+<div class="pricing-opt" onclick="selectPrice(1)">2–5 advisers</div>
+<div class="pricing-opt" onclick="selectPrice(2)">6–10 advisers</div>
+<div class="pricing-opt" onclick="selectPrice(3)">11–25 advisers</div>
+<div class="pricing-opt" onclick="selectPrice(4)">26–50 advisers</div>
+<div class="pricing-opt" onclick="selectPrice(5)">50+ advisers</div>
 </div>
-<div class="pricing-tiers">
-<div class="pricing-tier" onclick="selectTier(this)">
-<div class="pricing-tier-advisers">1 <span>adviser</span></div>
-<div class="pricing-tier-price">£100<span class="vat">+ VAT</span></div>
-<div class="pricing-tier-logins">Unlimited!</div>
-</div>
-<div class="pricing-tier" onclick="selectTier(this)">
-<div class="pricing-tier-advisers">2–5 <span>advisers</span></div>
-<div class="pricing-tier-price">£200<span class="vat">+ VAT</span></div>
-<div class="pricing-tier-logins">Unlimited!</div>
-</div>
-<div class="pricing-tier" onclick="selectTier(this)">
-<div class="pricing-tier-advisers">6–10 <span>advisers</span></div>
-<div class="pricing-tier-price">£300<span class="vat">+ VAT</span></div>
-<div class="pricing-tier-logins">Unlimited!</div>
-</div>
-<div class="pricing-tier" onclick="selectTier(this)">
-<div class="pricing-tier-advisers">11–25 <span>advisers</span></div>
-<div class="pricing-tier-price">£400<span class="vat">+ VAT</span></div>
-<div class="pricing-tier-logins">Unlimited!</div>
-</div>
-<div class="pricing-tier" onclick="selectTier(this)">
-<div class="pricing-tier-advisers">26–50 <span>advisers</span></div>
-<div class="pricing-tier-price">£500<span class="vat">+ VAT</span></div>
-<div class="pricing-tier-logins">Unlimited!</div>
-</div>
-<div class="pricing-tier" onclick="selectTier(this)">
-<div class="pricing-tier-advisers">50+ <span>advisers</span></div>
-<div class="pricing-tier-price" style="font-size:20px">POA</div>
-<div class="pricing-tier-logins">Unlimited!</div>
+
+<div class="pricing-reveal" id="pricingReveal">
+<div class="pricing-reveal-price" id="pricingPrice"></div>
+<div class="pricing-reveal-details">
+<div class="pr-label" id="pricingLabel"></div>
+<div class="pr-logins">Unlimited logins</div>
 </div>
 </div>
+
 <p class="pricing-note">All plans include full platform access, structured reporting, and ongoing monitoring dashboards. No per-user fees — just one simple price for your firm.</p>
 </section>
 
@@ -343,9 +316,23 @@ function selectIam(idx){
 }
 
 // ─── Pricing ───
-function selectTier(el){
-  document.querySelectorAll('.pricing-tier').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
+const priceData=[
+  {price:'£100',vat:'+ VAT /mo',label:'1 adviser'},
+  {price:'£200',vat:'+ VAT /mo',label:'2–5 advisers'},
+  {price:'£300',vat:'+ VAT /mo',label:'6–10 advisers'},
+  {price:'£400',vat:'+ VAT /mo',label:'11–25 advisers'},
+  {price:'£500',vat:'+ VAT /mo',label:'26–50 advisers'},
+  {price:'POA',vat:'',label:'50+ advisers'}
+];
+function selectPrice(idx){
+  document.querySelectorAll('.pricing-opt').forEach((el,i)=>el.classList.toggle('active',i===idx));
+  const d=priceData[idx];
+  document.getElementById('pricingPrice').innerHTML=d.price+(d.vat?'<span class="vat">'+d.vat+'</span>':'');
+  document.getElementById('pricingLabel').textContent=d.label;
+  const reveal=document.getElementById('pricingReveal');
+  reveal.classList.remove('show');
+  void reveal.offsetWidth;
+  reveal.classList.add('show');
 }
 
 // ─── Demo Modal ───
@@ -363,7 +350,7 @@ async function submitDemo(){
   const iamLabels=['Setting up my own firm','Smaller business juggling CIP oversight','Larger business with robust process','IFA network'];
   const activeIam=document.querySelector('.iam-opt.active');
   const persona=activeIam?iamLabels[[...document.querySelectorAll('.iam-opt')].indexOf(activeIam)]:'Not selected';
-  const activeTier=document.querySelector('.pricing-tier.active .pricing-tier-advisers');
+  const activeTier=document.querySelector('.pricing-opt.active');
   const tier=activeTier?activeTier.textContent.trim():'Not selected';
 
   st.style.color='#94a3b8';st.textContent='Submitting...';
