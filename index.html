@@ -213,7 +213,7 @@ try{const r=await fetch('/api/auth/me');const d=await r.json();
 if(d.authenticated){S.user=d.user;showApp();return true}}catch(e){}
 showLogin();return false}
 
-function showLogin(){$('loginOverlay').style.display='flex';$('appShell').style.display='none'}
+function showLogin(){$('loginOverlay').style.display='flex';$('appShell').style.display='none';$('loginEmail').value='';$('loginPass').value='';$('loginErr').textContent=''}
 function showApp(){$('loginOverlay').style.display='none';$('appShell').style.display='flex';
 $('userAvatar').textContent=S.user.name.split(' ').map(w=>w[0]).join('');
 $('userName').textContent=S.user.name;
@@ -249,8 +249,9 @@ setTimeout(()=>{const close=e=>{if(!menu.contains(e.target)&&!pill.contains(e.ta
 
 function savePrefApplyDark(dark){
 const root=document.documentElement;
-if(dark){root.style.setProperty('--bg','#0f1117');root.style.setProperty('--bg-card','#1a1d2e');root.style.setProperty('--bg-hover','#242736');root.style.setProperty('--bg-surface','#1a1d2e');root.style.setProperty('--border','#2a2d3e');root.style.setProperty('--border-a','#3a3d4e');root.style.setProperty('--text','#e2e8f0');root.style.setProperty('--text-s','#94a3b8');root.style.setProperty('--text-m','#64748b')}
-else{root.style.setProperty('--bg','#ffffff');root.style.setProperty('--bg-card','#f8f9fb');root.style.setProperty('--bg-hover','#f1f3f7');root.style.setProperty('--bg-surface','#f3f4f6');root.style.setProperty('--border','#e2e5ea');root.style.setProperty('--border-a','#cbd0d8');root.style.setProperty('--text','#1a1f2e');root.style.setProperty('--text-s','#4b5563');root.style.setProperty('--text-m','#6b7280')}}
+const loginLogo=document.querySelector('.login-box .logo img');
+if(dark){root.style.setProperty('--bg','#0f1117');root.style.setProperty('--bg-card','#1a1d2e');root.style.setProperty('--bg-hover','#242736');root.style.setProperty('--bg-surface','#1a1d2e');root.style.setProperty('--border','#2a2d3e');root.style.setProperty('--border-a','#3a3d4e');root.style.setProperty('--text','#e2e8f0');root.style.setProperty('--text-s','#94a3b8');root.style.setProperty('--text-m','#64748b');if(loginLogo)loginLogo.src='bridge-logo-dark.png'}
+else{root.style.setProperty('--bg','#ffffff');root.style.setProperty('--bg-card','#f8f9fb');root.style.setProperty('--bg-hover','#f1f3f7');root.style.setProperty('--bg-surface','#f3f4f6');root.style.setProperty('--border','#e2e5ea');root.style.setProperty('--border-a','#cbd0d8');root.style.setProperty('--text','#1a1f2e');root.style.setProperty('--text-s','#4b5563');root.style.setProperty('--text-m','#6b7280');if(loginLogo)loginLogo.src='bridge-logo-nav.png'}}
 
 function nav(p,pr={}){S.p=p;S.pr=pr;document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));const e=document.querySelector(`.nav-item[data-page="${p}"]`);if(e)e.classList.add('active');render()}
 async function F(u){if(S.c[u])return S.c[u];try{const r=await fetch(u);const d=await r.json();S.c[u]=d;return d}catch(e){console.error(e);return null}}
