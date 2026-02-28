@@ -18,6 +18,7 @@ from mps_data import (
     get_performance_history, filter_mps, get_historical, get_benchmarks,
     get_cost_table,
     get_current_asset_allocation,
+    get_risk_return,
 )
 from insights import (
     get_all_insights, get_insight_by_id, get_insights_by_category,
@@ -353,9 +354,26 @@ async def get_provider_detail(provider_id: str):
 
     portfolios = get_mps_by_provider(provider["name"])
 
+    # Build risk/return data for this provider
+    rr_raw = get_risk_return()
+    risk_return_data = []
+    for r in rr_raw:
+        portfolio = r.get("Portfolio", "")
+        period = r.get("Time Period", "")
+        risk_val = r.get("Risk (Annualised)", 0)
+        ret_val = r.get("Return (Annualised)", 0)
+        if portfolio and period:
+            risk_return_data.append({
+                "portfolio": portfolio,
+                "period": period,
+                "risk": round(risk_val, 2) if risk_val else 0,
+                "return": round(ret_val, 2) if ret_val else 0,
+            })
+
     return {
         "provider": provider,
         "portfolios": portfolios,
+        "risk_return_data": risk_return_data,
         "analytics": {
             "avg_ocf": safe_avg([p["ocf"] for p in portfolios]),
             "avg_return_1yr": safe_avg([p.get("return_1yr") for p in portfolios]),
@@ -435,6 +453,11 @@ async def get_costs():
 @app.get("/api/current-asset-allocation")
 async def get_current_aa():
     return {"asset_allocation": get_current_asset_allocation()}
+
+
+@app.get("/api/risk-return")
+async def get_risk_return_data():
+    return {"risk_return": get_risk_return()}
 
 
 # ─── Insights Module ──────────────────────────────────────────────────

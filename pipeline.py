@@ -75,6 +75,22 @@ def build_quilter(input_dir):
     eq_exp = load("Quilter_WS_Active_Current_Equity___Fixed_Income_Exposure.xlsx", "Equity")
     fi_exp = load("Quilter_WS_Active_Current_Equity___Fixed_Income_Exposure.xlsx", "Fixed Income")
     current_aa = load("Quilter_WealthSelect_Active_-_Current_Asset_Allocation.xlsx")
+    additional = load("Additional_Content_for_Bridge.xlsx", "Text")
+    risk_return = load("Additional_Content_for_Bridge.xlsx", "Risk Return")
+
+    # Parse additional content into lookup
+    content = {}
+    for r in additional:
+        sec = r.get("Section", "")
+        sub = r.get("Sub Section", "")
+        txt = r.get("Content", "")
+        if sec not in content:
+            content[sec] = {}
+        content[sec][sub] = txt
+
+    ip = content.get("Investment Process", {})
+    adv = content.get("Adviser Support", {})
+    qr = content.get("Quarterly Review", {})
 
     # Separate Quilter rows from EAA benchmarks
     cal = [r for r in cal_all if r["Model"].startswith("Quilter")]
@@ -119,19 +135,24 @@ def build_quilter(input_dir):
         "website": "",
         "risk_rating_providers": [],
         "investment_process": {
-            "investment_team": "",
-            "strategic_aa": "",
-            "tactical_aa": "",
-            "fund_selection": "",
-            "rebalancing": ""
+            "investment_team": ip.get("Investment Team", ""),
+            "strategic_aa": ip.get("Strategic Asset Allocation", ""),
+            "tactical_aa": ip.get("Tactical Asset Allocation", ""),
+            "fund_selection": ip.get("Fund Selection", ""),
+            "portfolio_construction": ip.get("Portfolio Construction", ""),
+            "rebalancing": ip.get("Rebalancing & Trading", "")
         },
         "adviser_support": {
-            "onboarding": "",
-            "ongoing_communication": ""
+            "onboarding": adv.get("Onboarding & Training", ""),
+            "ongoing_communication": adv.get("Ongoing Portfolio Communication", ""),
+            "review_meetings": adv.get("Review Meetings & Ongoing Engagement", ""),
+            "investment_commentary": adv.get("Investment Commentary & Market Insight", ""),
+            "digital_tools": adv.get("Digital Tools & Support Infrastructure", "")
         },
         "quarterly_review": {
-            "aa_changes": "",
-            "fund_changes": ""
+            "aa_changes": qr.get("Asset Allocation Changes", ""),
+            "fund_changes": qr.get("Fund Selection Changes", ""),
+            "performance_review": qr.get("Performance Review", "")
         }
     }
 
@@ -263,6 +284,7 @@ def build_quilter(input_dir):
         },
         "cost_table": [{"model": m["name"], **m["cost_breakdown"]} for m in models],
         "current_asset_allocation": current_aa_table,
+        "risk_return": clean(risk_return),
     }
 
     return output, models

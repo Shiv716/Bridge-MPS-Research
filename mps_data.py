@@ -22,6 +22,7 @@ def _load_provider_data():
     all_benchmarks = {"trailing": [], "calendar": []}
     all_cost_tables = []
     all_current_aa = []
+    all_risk_return = []
 
     for filename in sorted(os.listdir(DATA_DIR)):
         if filename.endswith("_data.json"):
@@ -40,6 +41,7 @@ def _load_provider_data():
             all_benchmarks["calendar"].extend(data.get("benchmarks", {}).get("calendar", []))
             all_cost_tables.extend(data.get("cost_table", []))
             all_current_aa.extend(data.get("current_asset_allocation", []))
+            all_risk_return.extend(data.get("risk_return", []))
 
             print(f"  Loaded {filename}: {len(data.get('mps', []))} portfolios")
 
@@ -52,6 +54,7 @@ def _load_provider_data():
         "benchmarks": all_benchmarks,
         "cost_table": all_cost_tables,
         "current_asset_allocation": all_current_aa,
+        "risk_return": all_risk_return,
     }
 
 
@@ -66,6 +69,7 @@ HISTORICAL = _DATA["historical"]
 BENCHMARKS = _DATA["benchmarks"]
 COST_TABLE = _DATA["cost_table"]
 CURRENT_AA = _DATA["current_asset_allocation"]
+RISK_RETURN = _DATA["risk_return"]
 
 print(f"Bridge: {len(MPS_UNIVERSE)} portfolios, {len(PROVIDERS)} providers, {len(PLATFORMS)} platforms")
 
@@ -106,6 +110,9 @@ def get_cost_table() -> list[dict]:
 
 def get_current_asset_allocation() -> list[dict]:
     return CURRENT_AA
+
+def get_risk_return() -> list[dict]:
+    return RISK_RETURN
 
 def get_performance_history(mps_id: str, months: int = 36) -> list[dict]:
     """Generate performance history from return data.
