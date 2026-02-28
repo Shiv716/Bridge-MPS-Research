@@ -92,6 +92,21 @@ def build_quilter(input_dir):
     adv = content.get("Adviser Support", {})
     qr = content.get("Quarterly Review", {})
 
+    # Build risk/return data for provider
+    rr_data = []
+    for r in risk_return:
+        portfolio = r.get("Portfolio", "")
+        period = r.get("Time Period", "")
+        risk_val = r.get("Risk (Annualised)", 0)
+        ret_val = r.get("Return (Annualised)", 0)
+        if portfolio and period:
+            rr_data.append({
+                "period": period,
+                "portfolio": portfolio,
+                "risk": round(risk_val, 2) if risk_val else 0,
+                "return": round(ret_val, 2) if ret_val else 0,
+            })
+
     # Separate Quilter rows from EAA benchmarks
     cal = [r for r in cal_all if r["Model"].startswith("Quilter")]
     trail = [r for r in trail_all if r["Model"].startswith("Quilter")]
@@ -132,8 +147,8 @@ def build_quilter(input_dir):
         "strengths": [],
         "considerations": [],
         "regulatory_status": "",
-        "website": "",
-        "risk_rating_providers": [],
+        "website": "https://www.quilter.com/investments/wealthselect-managed-portfolios/",
+        "risk_rating_providers": ["Dynamic Planner", "EV", "Finametrica", "Synaptic"],
         "investment_process": {
             "investment_team": ip.get("Investment Team", ""),
             "strategic_aa": ip.get("Strategic Asset Allocation", ""),
@@ -153,7 +168,8 @@ def build_quilter(input_dir):
             "aa_changes": qr.get("Asset Allocation Changes", ""),
             "fund_changes": qr.get("Fund Selection Changes", ""),
             "performance_review": qr.get("Performance Review", "")
-        }
+        },
+        "risk_return_data": rr_data,
     }
 
     # Build MPS models
@@ -284,7 +300,6 @@ def build_quilter(input_dir):
         },
         "cost_table": [{"model": m["name"], **m["cost_breakdown"]} for m in models],
         "current_asset_allocation": current_aa_table,
-        "risk_return": clean(risk_return),
     }
 
     return output, models

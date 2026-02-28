@@ -2667,8 +2667,13 @@
       "strengths": [],
       "considerations": [],
       "regulatory_status": "",
-      "website": "",
-      "risk_rating_providers": [],
+      "website": "https://www.quilter.com/investments/wealthselect-managed-portfolios/",
+      "risk_rating_providers": [
+        "Dynamic Planner",
+        "EV",
+        "Finametrica",
+        "Synaptic"
+      ],
       "investment_process": {
         "investment_team": "The WealthSelect portfolios are managed by the Portfolio Management Team at Quilter Investors. This team is responsible for implementing strategic and tactical asset allocation, fund selection, and portfolio construction.\n\nCore Responsibilities:\n\u2022\tDay-to-day management of portfolios, including rebalancing, trade execution, and tactical positioning (for non-passive models).\n\u2022\tTranslating capital market assumptions into risk-profiled investment solutions.\n\u2022\tWorking closely with the Manager Research, Operational Due Diligence, and Responsible Investment teams to ensure alignment between strategy and fund implementation.\nThe portfolio managers have discretion to build portfolios in line with internal constraints and objectives, subject to governance review.\n\nManager Research Hub\nQuilter operates a centralised Manager Research Hub that provides independent fund selection input. It consists of three teams:\n1.\tManager Research Team\no\tConducts deep quantitative and qualitative due diligence on fund managers.\no\tEvaluates alpha drivers, style consistency, fund structure, and risk metrics.\no\tMeets regularly with fund houses and continually monitors holdings to ensure the original rationale for selection remains valid.\n2.\tOperational Due Diligence Team\no\tReviews fund managers\u2019 operational infrastructure including:\n\uf0a7\tGovernance and compliance\n\uf0a7\tSystems and controls\n\uf0a7\tFinancial stability and resource sufficiency\no\tAims to mitigate non-investment risks before and after funds are added.\n3.\tResponsible Investment Team\no\tEnsures ESG integration across fund selection, monitoring, and stewardship.\no\tApplies a tiered framework for ESG assessment (e.g. Tier 1 basic ESG policies, Tier 2 active ESG integration).\no\tWorks in conjunction with the other two teams to ensure sustainability objectives are considered for applicable portfolios.",
         "strategic_aa": "\u2022\tDeveloped using capital market assumptions from WTW (Willis Towers Watson), which underpin a proprietary in-house model.\n\u2022\tSAA is designed to optimise long-term return potential across different risk profiles while maintaining suitability.\n\u2022\tReviewed quarterly with a full annual refresh based on updated WTW assumptions.",
@@ -2688,7 +2693,225 @@
         "aa_changes": "During the quarter, portfolio positioning remained broadly stable, with changes focused on incremental adjustments rather than wholesale shifts in risk.\n\nThe investment team made modest tilts within growth assets, reflecting evolving views on regional equity opportunities and valuation dispersion across markets. Exposure to defensive assets was maintained at appropriate levels for the strategy\u2019s risk profile, continuing to support portfolio resilience during periods of market volatility.\n\nOverall, asset allocation decisions during the quarter were evolutionary rather than directional, with the primary objective being to maintain consistency with the long-term strategic framework while allowing for selective tactical flexibility.",
         "fund_changes": "During the quarter, a small number of fund changes were implemented within the portfolio, driven by ongoing manager monitoring and conviction assessment rather than short-term market movements.\n\nWithin Global Equity, the JPM Global Focus Fund was reduced and ultimately removed, with capital reallocated to the iShares MSCI World ETF. This change reflected a reassessment of conviction following a period of sustained relative underperformance and increasing concentration risk within the portfolio. The replacement improved diversification across regions and sectors while reducing reliance on a narrower set of stock-specific outcomes.\n\nIn UK Equity, exposure to the Fidelity UK Opportunities Fund was increased at the expense of a passive UK equity holding. This reflected stronger conviction in the manager\u2019s stock selection capability and an improved outlook for active management within the UK market, where valuation dispersion remains elevated.\n\nWithin Fixed Income, the Invesco Sterling Bond Fund was replaced by the Royal London Short Duration Credit Fund. This adjustment reduced interest rate sensitivity while maintaining exposure to high-quality sterling credit, aligning the portfolio more closely with the team\u2019s cautious stance on duration risk.\n\nFrom a cost perspective, these changes resulted in only a marginal increase in the ongoing charges figure, which was considered proportionate given the expected improvement in diversification, risk control, and potential for active value add. Overall portfolio costs remain competitive relative to peer strategies within the same risk category.",
         "performance_review": "Portfolio performance over the quarter was influenced primarily by fund selection decisions, rather than asset allocation effects.\n\nAttribution analysis indicates that relative performance versus peers was driven by manager selection within key asset classes, with positive contributions coming from funds that demonstrated strong stock selection and effective risk management. Conversely, areas of relative underperformance were linked to specific managers where style headwinds or security selection detracted from returns.\n\nImportantly, this attribution analysis isolates fund selection effects only, stripping out the impact of asset allocation decisions. This allows advisers to clearly assess whether value added during the quarter was derived from manager choice rather than market positioning.\n\nFrom a governance perspective, this approach supports transparent assessment of the investment process, helping advisers evidence whether active fund selection continues to add value over time."
-      }
+      },
+      "risk_return_data": [
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 3",
+          "risk": 3.23,
+          "return": 6.91
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 4",
+          "risk": 3.74,
+          "return": 7.98
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 5",
+          "risk": 4.35,
+          "return": 9.05
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 6",
+          "risk": 5.04,
+          "return": 10.03
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 7",
+          "risk": 5.78,
+          "return": 10.99
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 8",
+          "risk": 6.56,
+          "return": 11.94
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 9",
+          "risk": 7.38,
+          "return": 12.13
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 10",
+          "risk": 8.24,
+          "return": 12.11
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Mixed Investment 0-35% Shares",
+          "risk": 4.1,
+          "return": 5.57
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Mixed Investment 20-60% Shares",
+          "risk": 4.87,
+          "return": 7.19
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Mixed Investment 40-85% Shares",
+          "risk": 6.3,
+          "return": 8.89
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Flexible Investment",
+          "risk": 6.5,
+          "return": 8.89
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 3",
+          "risk": 4.24,
+          "return": 4.0
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 4",
+          "risk": 4.75,
+          "return": 5.07
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 5",
+          "risk": 5.34,
+          "return": 6.12
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 6",
+          "risk": 5.94,
+          "return": 7.21
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 7",
+          "risk": 6.59,
+          "return": 8.26
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 8",
+          "risk": 7.32,
+          "return": 9.29
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 9",
+          "risk": 8.01,
+          "return": 9.83
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 10",
+          "risk": 8.69,
+          "return": 10.0
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Mixed Investment 0-35% Shares",
+          "risk": 5.14,
+          "return": 2.23
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Mixed Investment 20-60% Shares",
+          "risk": 6.0,
+          "return": 4.1
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Mixed Investment 40-85% Shares",
+          "risk": 7.47,
+          "return": 5.99
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Flexible Investment",
+          "risk": 7.4,
+          "return": 6.24
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 3",
+          "risk": 5.0,
+          "return": 3.99
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 4",
+          "risk": 5.44,
+          "return": 5.33
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 5",
+          "risk": 6.11,
+          "return": 6.41
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 6",
+          "risk": 6.84,
+          "return": 7.44
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 7",
+          "risk": 7.59,
+          "return": 8.44
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 8",
+          "risk": 8.44,
+          "return": 9.29
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 9",
+          "risk": 8.81,
+          "return": 10.27
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 10",
+          "risk": 9.18,
+          "return": 10.77
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Mixed Investment 0-35% Shares",
+          "risk": 5.52,
+          "return": 2.97
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Mixed Investment 20-60% Shares",
+          "risk": 6.31,
+          "return": 4.56
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Mixed Investment 40-85% Shares",
+          "risk": 7.63,
+          "return": 5.89
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Flexible Investment",
+          "risk": 7.51,
+          "return": 6.21
+        }
+      ]
     }
   },
   "platforms": [
@@ -4209,224 +4432,6 @@
       "portfolio_8": 0,
       "portfolio_9": 0,
       "portfolio_10": 0
-    }
-  ],
-  "risk_return": [
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 3",
-      "Risk (Annualised)": 3.23138175603829,
-      "Return (Annualised)": 6.90747260113633
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 4",
-      "Risk (Annualised)": 3.73718221716487,
-      "Return (Annualised)": 7.98160547206626
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 5",
-      "Risk (Annualised)": 4.35476819971287,
-      "Return (Annualised)": 9.05469530420371
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 6",
-      "Risk (Annualised)": 5.03802254333148,
-      "Return (Annualised)": 10.0341442867801
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 7",
-      "Risk (Annualised)": 5.7837622324175,
-      "Return (Annualised)": 10.9855768080524
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 8",
-      "Risk (Annualised)": 6.55518910658542,
-      "Return (Annualised)": 11.9427555617783
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 9",
-      "Risk (Annualised)": 7.37874644110153,
-      "Return (Annualised)": 12.1286589966883
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 10",
-      "Risk (Annualised)": 8.24064339111103,
-      "Return (Annualised)": 12.1055709458141
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "IA Mixed Investment 0-35% Shares",
-      "Risk (Annualised)": 4.09783767510095,
-      "Return (Annualised)": 5.57387299096472
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "IA Mixed Investment 20-60% Shares",
-      "Risk (Annualised)": 4.87083080076951,
-      "Return (Annualised)": 7.18704850651464
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "IA Mixed Investment 40-85% Shares",
-      "Risk (Annualised)": 6.29669228540381,
-      "Return (Annualised)": 8.8864595059519
-    },
-    {
-      "Time Period": "3 Year",
-      "Portfolio": "IA Flexible Investment",
-      "Risk (Annualised)": 6.49593685686824,
-      "Return (Annualised)": 8.88776545323193
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 3",
-      "Risk (Annualised)": 4.23678592716068,
-      "Return (Annualised)": 4.00264467846709
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 4",
-      "Risk (Annualised)": 4.74796568508297,
-      "Return (Annualised)": 5.06682214630108
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 5",
-      "Risk (Annualised)": 5.34447852538151,
-      "Return (Annualised)": 6.12005212832663
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 6",
-      "Risk (Annualised)": 5.93594053061087,
-      "Return (Annualised)": 7.20520884269458
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 7",
-      "Risk (Annualised)": 6.59232487693265,
-      "Return (Annualised)": 8.25943745090574
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 8",
-      "Risk (Annualised)": 7.32063871742283,
-      "Return (Annualised)": 9.28694867094062
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 9",
-      "Risk (Annualised)": 8.01371203069971,
-      "Return (Annualised)": 9.82862255340755
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "Quilter WealthSelect Active Managed 10",
-      "Risk (Annualised)": 8.68556859751699,
-      "Return (Annualised)": 9.99718879715406
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "IA Mixed Investment 0-35% Shares",
-      "Risk (Annualised)": 5.13528710097898,
-      "Return (Annualised)": 2.23430069299873
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "IA Mixed Investment 20-60% Shares",
-      "Risk (Annualised)": 5.99725361060213,
-      "Return (Annualised)": 4.10308184289918
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "IA Mixed Investment 40-85% Shares",
-      "Risk (Annualised)": 7.47439235962571,
-      "Return (Annualised)": 5.9929179306436
-    },
-    {
-      "Time Period": "5 Year",
-      "Portfolio": "IA Flexible Investment",
-      "Risk (Annualised)": 7.40248424261985,
-      "Return (Annualised)": 6.24131290815895
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "Quilter WealthSelect Active Managed 3",
-      "Risk (Annualised)": 4.99569196570492,
-      "Return (Annualised)": 3.99014394412096
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "Quilter WealthSelect Active Managed 4",
-      "Risk (Annualised)": 5.4357803332286,
-      "Return (Annualised)": 5.32779102622403
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "Quilter WealthSelect Active Managed 5",
-      "Risk (Annualised)": 6.11370982111616,
-      "Return (Annualised)": 6.41034263134508
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "Quilter WealthSelect Active Managed 6",
-      "Risk (Annualised)": 6.84233172888434,
-      "Return (Annualised)": 7.44027478853637
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "Quilter WealthSelect Active Managed 7",
-      "Risk (Annualised)": 7.58696203418439,
-      "Return (Annualised)": 8.44188585733572
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "Quilter WealthSelect Active Managed 8",
-      "Risk (Annualised)": 8.43663834749105,
-      "Return (Annualised)": 9.29471259874122
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "Quilter WealthSelect Active Managed 9",
-      "Risk (Annualised)": 8.8068796342113,
-      "Return (Annualised)": 10.2703937232214
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "Quilter WealthSelect Active Managed 10",
-      "Risk (Annualised)": 9.18065541082161,
-      "Return (Annualised)": 10.7727540304154
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "IA Mixed Investment 0-35% Shares",
-      "Risk (Annualised)": 5.51968085279104,
-      "Return (Annualised)": 2.96665238963403
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "IA Mixed Investment 20-60% Shares",
-      "Risk (Annualised)": 6.31412873726032,
-      "Return (Annualised)": 4.55740379205631
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "IA Mixed Investment 40-85% Shares",
-      "Risk (Annualised)": 7.63447577805965,
-      "Return (Annualised)": 5.89428860539161
-    },
-    {
-      "Time Period": "Since Inception",
-      "Portfolio": "IA Flexible Investment",
-      "Risk (Annualised)": 7.51311946728263,
-      "Return (Annualised)": 6.20521961801201
     }
   ]
 }
