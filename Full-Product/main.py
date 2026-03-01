@@ -24,7 +24,7 @@ from insights import (
     get_insight_categories, search_insights,
 )
 from auth import authenticate, create_session, get_session, destroy_session
-from messaging import send_message, get_messages, get_message_by_id
+from messaging import send_message, get_messages, get_message_by_id, reply_to_message
 from subscriptions import subscribe, unsubscribe, get_subscriptions, is_subscribed
 from preferences import get_preferences, update_preferences, set_subscription_alert
 
@@ -218,6 +218,52 @@ async def get_message_detail(message_id: str, user: dict = Depends(require_auth)
     if not msg:
         raise HTTPException(404, "Message not found")
     return {"message": msg}
+
+@app.post("/api/webhooks/inbound-email")
+async def inbound_email_webhook(request: Request):
+    """Handle inbound email replies from Resend webhook."""
+    import re
+    try:
+        payload = await request.json()
+        to_addr = payload.get("to", "")
+        text_body = payload.get("text", "") or payload.get("html", "")
+        subject = payload.get("subject", "")
+
+        msg_id = None
+        match = re.search(r'bridge-reply\+(msg-[a-f0-9]+)', to_addr)
+        if match:
+            msg_id = match.group(1)
+
+        if not msg_id:
+            match = re.search(r'(msg-[a-f0-9]+)', subject + text_body)
+            if match:
+                msg_id = match.group(1)
+
+        if not msg_id:
+            print(f"Webhook: Could not extract message ID from: {to_addr} / {subject}")
+            return {"status": "ok", "matched": False}
+
+        clean_body = text_body
+        for marker in ["\nOn ", "\n---", "\nFrom:", "\n>"]:
+            idx = clean_body.find(marker)
+            if idx > 0:
+                clean_body = clean_body[:idx]
+        clean_body = clean_body.strip()
+
+        if not clean_body:
+            clean_body = text_body.strip()
+
+        msg = reply_to_message(msg_id, clean_body)
+        if msg:
+            print(f"Webhook: Reply matched to {msg_id}")
+            return {"status": "ok", "matched": True, "message_id": msg_id}
+        else:
+            print(f"Webhook: Message {msg_id} not found")
+            return {"status": "ok", "matched": False}
+
+    except Exception as e:
+        print(f"Webhook error: {e}")
+        return {"status": "error", "detail": str(e)}
 
 
 # ─── Subscriptions ─────────────────────────────────────────────────────

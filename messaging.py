@@ -56,3 +56,26 @@ def get_message_by_id(message_id: str, user_id: str) -> Optional[dict]:
         (m for m in MESSAGES if m["id"] == message_id and m["user_id"] == user_id),
         None,
     )
+
+
+def reply_to_message(message_id: str, reply_body: str) -> Optional[dict]:
+    """Add a reply to a message (called from webhook)."""
+    msg = next((m for m in MESSAGES if m["id"] == message_id), None)
+    if not msg:
+        return None
+    if msg.get("replies") is None:
+        msg["replies"] = []
+    msg["replies"].append({
+        "body": reply_body,
+        "from": "Bridge Research",
+        "created_at": time.time(),
+    })
+    msg["status"] = "replied"
+    msg["reply"] = reply_body
+    msg["replied_at"] = time.time()
+    return msg
+
+
+def get_message_by_id_internal(message_id: str) -> Optional[dict]:
+    """Get a message by ID without user check (for webhooks)."""
+    return next((m for m in MESSAGES if m["id"] == message_id), None)
