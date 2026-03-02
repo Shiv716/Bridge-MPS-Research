@@ -691,6 +691,13 @@ document.querySelectorAll('.cd-editable').forEach(el=>{
 const card=el.closest('.card');
 const title=card?card.querySelector('.card-t')?.innerText.trim():'';
 sections.push({title,content:el.innerText.trim()})});
+const d=S._provData;if(d){const p=d.provider,pts=d.portfolios;
+const ip=p.investment_process||{};const as=p.adviser_support||{};
+sections.push({title:'Overview',content:`Provider: ${p.full_name||p.name}\nInvestment Style: ${p.investment_style||''}\nRisk Levels: ${pts.map(m=>m.risk_rating).join(', ')}\nPlatforms: ${pts[0]?.platforms?.join(', ')||''}\nRisk Rating Providers: ${(p.risk_rating_providers||[]).join(', ')}\nInception: ${pts[0]?.inception_date||''}`});
+sections.push({title:'Investment Process',content:[ip.investment_team,ip.strategic_aa,ip.tactical_aa,ip.fund_selection,ip.portfolio_construction,ip.rebalancing].filter(Boolean).join('\n\n')});
+sections.push({title:'Performance Summary',content:pts.map(m=>`${m.name}: 1Y ${m.return_1yr||'-'}% | 3Y ${m.return_3yr||'-'}% | 5Y ${m.return_5yr||'-'}%`).join('\n')});
+sections.push({title:'Cost Breakdown',content:pts.map(m=>`${m.name}: DFM ${m.cost_breakdown?.dfm}% + Underlying ${m.cost_breakdown?.underlying}% = All-in ${m.ocf}%`).join('\n')});
+sections.push({title:'Adviser Support',content:[as.onboarding,as.ongoing_communication,as.review_meetings,as.investment_commentary,as.digital_tools].filter(Boolean).join('\n\n')});}
 const res=await fetch('/api/export/consumer-duty',{method:'POST',headers:{'Content-Type':'application/json'},
 body:JSON.stringify({details,sections})});
 if(!res.ok)throw new Error('Export failed');
