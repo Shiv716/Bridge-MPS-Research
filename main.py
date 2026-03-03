@@ -130,7 +130,7 @@ async def demo_request(body: dict):
                     "https://api.resend.com/emails",
                     headers={"Authorization": f"Bearer {RESEND_API_KEY}"},
                     json={
-                        "from": "Bridge Demo <onboarding@resend.dev>",
+                        "from": "Bridge Demo <notifications@bridgeii.com>",
                         "to": [FEEDBACK_EMAIL],
                         "subject": email_subject,
                         "text": email_body,
@@ -188,7 +188,7 @@ async def create_message(body: dict, user: dict = Depends(require_auth)):
                     "https://api.resend.com/emails",
                     headers={"Authorization": f"Bearer {RESEND_API_KEY}"},
                     json={
-                        "from": "Bridge Messages <onboarding@resend.dev>",
+                        "from": "Bridge Messages <notifications@bridgeii.com>",
                         "to": [FEEDBACK_EMAIL],
                         "reply_to": f"bridge-reply+{msg['id']}@{MAIL_DOMAIN}",
                         "subject": email_subject,
