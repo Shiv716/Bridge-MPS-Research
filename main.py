@@ -601,7 +601,7 @@ async def submit_feedback(body: dict):
                     "https://api.resend.com/emails",
                     headers={"Authorization": f"Bearer {RESEND_API_KEY}"},
                     json={
-                        "from": "Bridge Feedback <onboarding@resend.dev>",
+                        "from": "Bridge Feedback <notifications@bridgeii.com>",
                         "to": [FEEDBACK_EMAIL],
                         "subject": f"[Bridge Feedback] {subject}",
                         "text": message,
