@@ -56,7 +56,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .pillar h3{font-size:15px;font-weight:600;margin-bottom:10px;letter-spacing:.2px}
 .pillar p{font-size:13.5px;color:var(--text-d);line-height:1.65;font-weight:300}
 
-/* ─── I Am Section ─── */
+/* I Am Section */
 .iam-section{padding:120px 40px;max-width:1000px;margin:0 auto}
 .iam-section h2{font-family:'Fraunces',serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.2;letter-spacing:-1px;margin-bottom:16px}
 .iam-section>p.iam-sub{font-size:16px;color:var(--text-d);margin-bottom:48px;font-weight:300}
@@ -77,7 +77,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .iam-card h4{font-size:14px;font-weight:600;margin-bottom:6px;letter-spacing:.1px;color:var(--text)}
 .iam-card p{font-size:13.5px;color:var(--text-d);line-height:1.6;font-weight:300}
 
-/* ─── Pricing Section ─── */
+/* Pricing Section */
 .pricing-section{padding:120px 40px;max-width:1000px;margin:0 auto}
 .pricing-section h2{font-family:'Fraunces',serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.2;letter-spacing:-1px;margin-bottom:16px}
 .pricing-section>p.pricing-sub{font-size:16px;color:var(--text-d);margin-bottom:48px;font-weight:300}
@@ -93,6 +93,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .pricing-reveal-details .pr-label{font-size:13px;color:var(--text-d);font-weight:300}
 .pricing-reveal-details .pr-logins{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:.2px}
 .pricing-note{font-size:13px;color:var(--text-d);margin-top:20px;font-weight:300;line-height:1.6}
+
+/* Team */
+.team-section{padding:120px 40px;max-width:1000px;margin:0 auto}
+.team-section h2{font-family:'Fraunces',serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.2;letter-spacing:-1px;margin-bottom:16px}
+.team-section>p.team-sub{font-size:16px;color:var(--text-d);margin-bottom:48px;font-weight:300;max-width:640px}
+.team-grid{display:flex;gap:24px}
+.team-card{flex:1;padding:32px;border:1px solid var(--border);border-radius:12px;background:var(--bg-s)}
+.team-card h3{font-size:17px;font-weight:600;margin-bottom:2px;letter-spacing:.1px}
+.team-card .team-role{font-size:13px;color:var(--accent);font-weight:500;margin-bottom:16px;letter-spacing:.2px}
+.team-card p{font-size:13.5px;color:var(--text-d);line-height:1.7;font-weight:300}
+.team-card .team-linkedin{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:500;color:var(--text-m);text-decoration:none;transition:color .2s}
+.team-card .team-linkedin:hover{color:var(--accent)}
+.team-vision{margin-top:48px;padding:32px;border:1px solid var(--border);border-radius:12px;background:var(--bg-s)}
+.team-vision h3{font-size:15px;font-weight:600;margin-bottom:12px;letter-spacing:.2px}
+.team-vision p{font-size:14px;color:var(--text-d);line-height:1.75;font-weight:300}
 
 /* CTA */
 .cta-section{padding:120px 40px;text-align:center;position:relative}
@@ -132,6 +147,8 @@ nav{padding:16px 24px}
 .iam-card{flex-direction:column;gap:12px}
 .pricing-section{padding:80px 24px}
 .pricing-reveal.show{flex-direction:column;align-items:flex-start;gap:16px}
+.team-grid{flex-direction:column}
+.team-section{padding:80px 24px}
 .cta-section{padding:80px 24px}
 footer{flex-direction:column;gap:12px;text-align:center;padding:32px 24px}
 }
@@ -147,6 +164,7 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:32px 24px}
 <a href="#about">About</a>
 <a href="#iam">For You</a>
 <a href="#pricing">Pricing</a>
+<a href="#team">Team</a>
 <a href="#" class="nav-cta" onclick="openDemo(event)">Request Demo</a>
 </div>
 </nav>
@@ -171,14 +189,14 @@ Request a Demo
 <h2>Built for advisers who want to understand, not just compare.</h2>
 <div class="about-text">
 <p>Performance tables tell you who won. They don't tell you <strong>why</strong>, or whether it will happen again.</p>
-<p style="margin-top:20px">Bridge provides <strong>structured, independent analysis</strong> of managed portfolio services — going beyond surface-level rankings to examine the decisions, allocations, and processes that drive client outcomes.</p>
+<p style="margin-top:20px">Bridge provides <strong>structured, independent analysis</strong> of managed portfolio services, going beyond surface-level rankings to examine the decisions, allocations, and processes that drive client outcomes.</p>
 <p style="margin-top:20px">Designed to support <strong>Consumer Duty obligations</strong> with ongoing oversight and evidence-ready reporting.</p>
 </div>
 <div class="pillars">
 <div class="pillar">
 <div class="pillar-num">01</div>
 <h3>Research</h3>
-<p>Deep analytical dashboards across investment process, exposure, performance, and cost — for every approved MPS range.</p>
+<p>Deep analytical dashboards across investment process, exposure, performance, and cost, for every approved MPS range.</p>
 </div>
 <div class="pillar">
 <div class="pillar-num">02</div>
@@ -238,8 +256,33 @@ Request a Demo
 <div class="pr-logins">Unlimited logins</div>
 </div>
 </div>
+</section>
 
-<p class="pricing-note">All plans include full platform access, structured reporting, and ongoing monitoring dashboards. No per-user fees — just one simple price for your firm.</p>
+<div class="divider"></div>
+
+<!-- Team -->
+<section class="team-section" id="team">
+<div class="section-label">Team</div>
+<h2>Who we are</h2>
+<p class="team-sub">Built by people who understand both the investment problem and the technology to solve it.</p>
+<div class="team-grid">
+<div class="team-card">
+<h3>Sam Buckingham</h3>
+<div class="team-role">Founder</div>
+<p>Sam built and managed multi-asset investment solutions at leading UK wealth firms, overseeing billions of pounds of client assets. Bridge was created to bring that same institutional-grade research and governance discipline to independent financial advisers.</p>
+<a href="https://www.linkedin.com/in/sam-buckingham-cfa-a4444b104/" target="_blank" rel="noopener" class="team-linkedin"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg> LinkedIn</a>
+</div>
+<div class="team-card">
+<h3>Shivang Chaudhary</h3>
+<div class="team-role">Co-Founder</div>
+<p>Shivang leads Bridge's product and technology, designing the platform architecture that delivers institutional-grade research at scale. His background in AI systems and intelligent automation drives Bridge's ability to transform complex provider data into structured, actionable oversight, making independent MPS governance practical for firms of any size.</p>
+<a href="https://www.linkedin.com/in/shivang-chaudhary-2235831b5/" target="_blank" rel="noopener" class="team-linkedin"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg> LinkedIn</a>
+</div>
+</div>
+<div class="team-vision">
+<h3>Our Vision</h3>
+<p>The UK MPS market manages over £150 billion of client assets, yet adviser oversight still relies on spreadsheets, provider-produced material, and manual processes. Bridge exists to change that, replacing fragmented, time-consuming oversight with independent, structured research infrastructure built for the demands of Consumer Duty and beyond. We're building the system of record for MPS governance.</p>
+</div>
 </section>
 
 <div class="divider"></div>
@@ -271,12 +314,12 @@ Request a Demo
 </div>
 
 <script>
-// ─── I Am Data ───
+// I Am Data
 const iamData = [
   [
-    {title:"Built-in CIP foundation", desc:"Start with a structured, research-backed shortlist of MPS, funds and solutions so you're not building your investment proposition from scratch."},
+    {title:"Built-in CIP foundation", desc:"Start with a structured, research-backed shortlist of MPS, funds and solutions so you\u2019re not building your investment proposition from scratch."},
     {title:"Instant governance framework", desc:"Access ready-made selection and monitoring reports that align to Consumer Duty and demonstrate clear oversight from day one."},
-    {title:"Credible investment capability", desc:"Present clients with institutional-quality analysis, dashboards and insights — without hiring a full-time investment analyst."}
+    {title:"Credible investment capability", desc:"Present clients with institutional-quality analysis, dashboards and insights \u2014 without hiring a full-time investment analyst."}
   ],
   [
     {title:"Outsourced investment research", desc:"Delegate the heavy lifting of researching, comparing and monitoring MPS and other solutions so you can focus on clients and growth."},
@@ -285,7 +328,7 @@ const iamData = [
   ],
   [
     {title:"Strengthen existing governance", desc:"Independent research and structured monitoring feed directly into your existing investment committee process."},
-    {title:"Save internal resource", desc:"Reduce your time spent gathering, formatting and reconciling data — freeing your team to focus on higher-value decisions."},
+    {title:"Save internal resource", desc:"Reduce your time spent gathering, formatting and reconciling data \u2014 freeing your team to focus on higher-value decisions."},
     {title:"Independent challenge and validation", desc:"Use Bridge as a second line of analytical support to test assumptions, compare providers and evidence value for money."}
   ],
   [
@@ -315,13 +358,13 @@ function selectIam(idx){
   result.classList.add('show');
 }
 
-// ─── Pricing ───
+// Pricing
 const priceData=[
-  {price:'£100',vat:'+ VAT /mo',label:'1 adviser'},
-  {price:'£200',vat:'+ VAT /mo',label:'2–5 advisers'},
-  {price:'£300',vat:'+ VAT /mo',label:'6–10 advisers'},
-  {price:'£400',vat:'+ VAT /mo',label:'11–25 advisers'},
-  {price:'£500',vat:'+ VAT /mo',label:'26–50 advisers'},
+  {price:'\u00a3100',vat:'+ VAT /mo',label:'1 adviser'},
+  {price:'\u00a3200',vat:'+ VAT /mo',label:'2\u20135 advisers'},
+  {price:'\u00a3300',vat:'+ VAT /mo',label:'6\u201310 advisers'},
+  {price:'\u00a3400',vat:'+ VAT /mo',label:'11\u201325 advisers'},
+  {price:'\u00a3500',vat:'+ VAT /mo',label:'26\u201350 advisers'},
   {price:'POA',vat:'',label:'50+ advisers'}
 ];
 function selectPrice(idx){
@@ -335,7 +378,7 @@ function selectPrice(idx){
   reveal.classList.add('show');
 }
 
-// ─── Demo Modal ───
+// Demo Modal
 function openDemo(e){ e.preventDefault(); document.getElementById('demoModal').classList.add('open') }
 function closeDemo(){ document.getElementById('demoModal').classList.remove('open'); document.getElementById('demoStatus').textContent='' }
 document.getElementById('demoModal').addEventListener('click', function(e){ if(e.target===this) closeDemo() });
@@ -361,7 +404,7 @@ async function submitDemo(){
   }catch(e){st.style.color='#ef4444';st.textContent='Connection error. Please try again.'}
 }
 
-// ─── Smooth Scroll ───
+// Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',function(e){
     const t=document.querySelector(this.getAttribute('href'));
