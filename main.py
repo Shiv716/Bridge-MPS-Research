@@ -919,7 +919,7 @@ async def logo_dark():
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
-    html_path = os.path.join(os.path.dirname(__file__), "index.html")
+    html_path = os.path.join(os.path.dirname(__file__), "frontend" , "index.html")
     if os.path.exists(html_path):
         with open(html_path, "r") as f:
             return f.read()

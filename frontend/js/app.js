@@ -11,12 +11,86 @@ try{const r=await fetch('/api/auth/me');const d=await r.json();
 if(d.authenticated){S.user=d.user;showApp();return true}}catch(e){}
 showLogin();return false}
 
-function showLogin(){$('loginOverlay').style.display='flex';$('appShell').style.display='none';$('loginEmail').value='';$('loginPass').value='';$('loginErr').textContent=''}
+function showLogin(){
+$('loginOverlay').style.display='flex';$('appShell').style.display='none';
+const params=new URLSearchParams(window.location.search);
+const inviteToken=params.get('invite');
+const resetToken=params.get('reset');
+const box=document.querySelector('.login-box');
+if(inviteToken){
+box.innerHTML=`<div class="logo"><img src="bridge-logo-nav.png" alt="Bridge" style="height:32px;width:auto"></div>
+<div class="login-sub">Set your password to get started</div>
+<input class="login-field" type="password" id="invPass" placeholder="Create password (min 8 chars)" autocomplete="new-password">
+<input class="login-field" type="password" id="invPass2" placeholder="Confirm password" autocomplete="new-password" onkeydown="if(event.key==='Enter')doAcceptInvite()">
+<button class="login-btn" onclick="doAcceptInvite()">Set Password & Sign In</button>
+<div class="login-err" id="loginErr"></div>`;
+S._inviteToken=inviteToken;
+}else if(resetToken){
+box.innerHTML=`<div class="logo"><img src="bridge-logo-nav.png" alt="Bridge" style="height:32px;width:auto"></div>
+<div class="login-sub">Enter your new password</div>
+<input class="login-field" type="password" id="rstPass" placeholder="New password (min 8 chars)" autocomplete="new-password">
+<input class="login-field" type="password" id="rstPass2" placeholder="Confirm new password" autocomplete="new-password" onkeydown="if(event.key==='Enter')doResetPassword()">
+<button class="login-btn" onclick="doResetPassword()">Reset Password & Sign In</button>
+<div class="login-err" id="loginErr"></div>`;
+S._resetToken=resetToken;
+}else{
+box.innerHTML=`<div class="logo"><img src="bridge-logo-nav.png" alt="Bridge" style="height:32px;width:auto"></div>
+<div class="login-sub">Independent MPS Research & Oversight</div>
+<input class="login-field" type="email" id="loginEmail" placeholder="Email address" autocomplete="email">
+<input class="login-field" type="password" id="loginPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+<button class="login-btn" onclick="doLogin()">Sign In</button>
+<div class="login-err" id="loginErr"></div>
+<div style="margin-top:16px"><a href="#" onclick="showForgotPassword(event)" style="font-size:12px;color:var(--text-m);text-decoration:none">Forgot password?</a></div>`;
+}}
 function showApp(){$('loginOverlay').style.display='none';$('appShell').style.display='flex';
+// Clear invite/reset params from URL
+if(window.location.search)window.history.replaceState({},'',window.location.pathname);
 $('userAvatar').textContent=S.user.name.split(' ').map(w=>w[0]).join('');
 $('userName').textContent=S.user.name;
+// Show/hide admin nav
+const adminNav=document.getElementById('adminNavItem');
+if(adminNav)adminNav.style.display=S.user.role==='admin'?'flex':'none';
 fetch('/api/preferences').then(r=>r.json()).then(d=>{if(d.preferences?.display?.dark_mode)savePrefApplyDark(true)}).catch(()=>{});
 render()}
+
+async function doAcceptInvite(){
+const pass=$('invPass').value,pass2=$('invPass2').value,err=$('loginErr');
+err.textContent='';
+if(!pass||pass.length<8){err.textContent='Password must be at least 8 characters';return}
+if(pass!==pass2){err.textContent='Passwords do not match';return}
+try{const r=await fetch('/api/auth/accept-invite',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:S._inviteToken,password:pass})});
+if(r.ok){const d=await r.json();S.user=d.user;showApp()}
+else{const d=await r.json();err.textContent=d.detail||'Failed'}}
+catch(e){err.textContent='Connection error'}}
+
+async function doResetPassword(){
+const pass=$('rstPass').value,pass2=$('rstPass2').value,err=$('loginErr');
+err.textContent='';
+if(!pass||pass.length<8){err.textContent='Password must be at least 8 characters';return}
+if(pass!==pass2){err.textContent='Passwords do not match';return}
+try{const r=await fetch('/api/auth/reset-password',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:S._resetToken,password:pass})});
+if(r.ok){const d=await r.json();S.user=d.user;showApp()}
+else{const d=await r.json();err.textContent=d.detail||'Invalid or expired reset link'}}
+catch(e){err.textContent='Connection error'}}
+
+function showForgotPassword(e){
+e.preventDefault();
+const box=document.querySelector('.login-box');
+box.innerHTML=`<div class="logo"><img src="bridge-logo-nav.png" alt="Bridge" style="height:32px;width:auto"></div>
+<div class="login-sub">Enter your email to receive a reset link</div>
+<input class="login-field" type="email" id="resetEmail" placeholder="Email address" autocomplete="email" onkeydown="if(event.key==='Enter')doRequestReset()">
+<button class="login-btn" onclick="doRequestReset()">Send Reset Link</button>
+<div class="login-err" id="loginErr"></div>
+<div style="margin-top:16px"><a href="#" onclick="showLogin();event.preventDefault()" style="font-size:12px;color:var(--text-m);text-decoration:none">← Back to sign in</a></div>`}
+
+async function doRequestReset(){
+const email=$('resetEmail').value.trim(),err=$('loginErr');
+err.textContent='';
+if(!email){err.textContent='Please enter your email';return}
+try{const r=await fetch('/api/auth/request-reset',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+const d=await r.json();
+err.style.color='var(--green)';err.textContent='If an account exists with that email, a reset link has been sent.'}
+catch(e){err.textContent='Connection error'}}
 
 async function doLogin(){
 const email=$('loginEmail').value.trim(),pass=$('loginPass').value;
@@ -67,6 +141,7 @@ case'insights':tt.textContent='Insights';await rIns(el);break;
 case'insight':tt.textContent='Insight';await rInsD(el);break;
 case'messages':tt.textContent='Messages';await rMsg(el);break;
 case'account':tt.textContent='Preferences';await rAcct(el);break;
+case'admin':tt.textContent='Admin';await rAdmin(el);break;
 default:tt.textContent='Homepage';await rDash(el);
 }}
 
