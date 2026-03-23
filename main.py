@@ -36,6 +36,8 @@ from messaging import send_message, get_messages, get_message_by_id, reply_to_me
 from subscriptions import subscribe, unsubscribe, get_subscriptions, is_subscribed
 from preferences import get_preferences, update_preferences, set_subscription_alert
 
+from demo_requests import create_demo_request, get_all_demo_requests, approve_demo_request, reject_demo_request, get_pending_count
+
 app = FastAPI(
     title="Bridge",
     description="Independent MPS research & oversight platform for UK financial advisers",
@@ -303,6 +305,9 @@ async def demo_request(body: dict):
     persona = body.get("persona", "Not selected")
     tier = body.get("tier", "Not selected")
 
+    # Store in DB
+    await create_demo_request(name=name, email=email, firm=firm, persona=persona, tier=tier)
+
     email_subject = f"[Bridge] Demo Request from {name}"
     email_body = (
         f"Name: {name}\n"
@@ -336,6 +341,47 @@ async def demo_request(body: dict):
         print(f"(Set RESEND_API_KEY to send via email)")
         print(f"--------------------\n")
 
+    return {"status": "ok"}
+
+@app.get("/api/admin/demo-requests")
+async def admin_list_demo_requests(user: dict = Depends(require_admin)):
+    requests = await get_all_demo_requests()
+    return {"requests": requests}
+
+
+@app.post("/api/admin/demo-requests/{req_id}/approve")
+async def admin_approve_demo(req_id: str, user: dict = Depends(require_admin)):
+    result = await approve_demo_request(req_id, user["id"])
+    if not result:
+        raise HTTPException(400, "Request not found or already reviewed")
+    # Send invite email
+    invite_url = result["invite"]["token"]
+    inv_user = result["invite"]["user"]
+    invite_url = f"{os.environ.get('APP_URL', 'https://bridgeii.com')}/?invite={result['invite']['token']}"
+    if RESEND_API_KEY:
+        import httpx
+        try:
+            async with httpx.AsyncClient() as client:
+                await client.post(
+                    "https://api.resend.com/emails",
+                    headers={"Authorization": f"Bearer {RESEND_API_KEY}"},
+                    json={
+                        "from": "Bridge <notifications@bridgeii.com>",
+                        "to": [inv_user["email"]],
+                        "subject": "Welcome to Bridge",
+                        "text": f"Hi {inv_user['name']},\n\nYour demo request has been approved.\n\nClick the link below to set your password and access Bridge:\n\n{invite_url}\n\nThis link expires in 72 hours.\n\nBridge",
+                    },
+                )
+        except Exception as e:
+            print(f"Invite email error: {e}")
+    return {"status": "ok", "invite_url": invite_url}
+
+
+@app.post("/api/admin/demo-requests/{req_id}/reject")
+async def admin_reject_demo(req_id: str, user: dict = Depends(require_admin)):
+    result = await reject_demo_request(req_id, user["id"])
+    if not result:
+        raise HTTPException(400, "Request not found or already reviewed")
     return {"status": "ok"}
 
 # ─── Messaging ─────────────────────────────────────────────────────────
