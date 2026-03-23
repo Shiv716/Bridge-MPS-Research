@@ -5,3 +5,6 @@ openpyxl
 python-docx
 python-dotenv
 httpx
+databases[asyncpg]
+asyncpg
+bcrypt

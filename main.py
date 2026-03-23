@@ -24,12 +24,16 @@ from insights import (
     get_all_insights, get_insight_by_id, get_insights_by_category,
     get_insight_categories, search_insights,
 )
-from auth import authenticate, create_session, get_session, destroy_session
+from db import database, init_db, close_db
+from auth import (
+    authenticate, create_session, get_session, destroy_session,
+    create_invite, accept_invite,
+    request_password_reset, complete_password_reset,
+    get_all_users, remove_user,
+)
 from messaging import send_message, get_messages, get_message_by_id, reply_to_message, get_message_by_id_internal
 from subscriptions import subscribe, unsubscribe, get_subscriptions, is_subscribed
 from preferences import get_preferences, update_preferences, set_subscription_alert
-from fastapi.staticfiles import StaticFiles
-
 
 app = FastAPI(
     title="Bridge",
@@ -44,23 +48,34 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.on_event("startup")
+async def startup():
+    await init_db()
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    await close_db()
+
+
 def safe_avg(values):
     """Average that handles None values."""
     clean = [v for v in values if v is not None]
     return round(sum(clean) / len(clean), 2) if clean else 0
 
 
-def get_current_user(request: Request) -> Optional[dict]:
+async def get_current_user(request: Request) -> Optional[dict]:
     """Extract user from session token in cookie or header."""
     token = request.cookies.get("bridge_session") or request.headers.get("X-Session-Token")
     if not token:
         return None
-    return get_session(token)
+    return await get_session(token)
 
 
-def require_auth(request: Request) -> dict:
+async def require_auth(request: Request) -> dict:
     """Dependency: require authenticated user."""
-    user = get_current_user(request)
+    user = await get_current_user(request)
     if not user:
         raise HTTPException(401, "Not authenticated")
     return user
@@ -74,10 +89,10 @@ async def login(body: dict):
     password = body.get("password", "")
     if not email or not password:
         raise HTTPException(400, "Email and password required")
-    user = authenticate(email, password)
+    user = await authenticate(email, password)
     if not user:
         raise HTTPException(401, "Invalid credentials")
-    token = create_session(user)
+    token = await create_session(user)
     from fastapi.responses import JSONResponse
     resp = JSONResponse({"status": "ok", "user": user})
     resp.set_cookie("bridge_session", token, httponly=True, samesite="lax", max_age=86400)
@@ -88,7 +103,7 @@ async def login(body: dict):
 async def logout(request: Request):
     token = request.cookies.get("bridge_session") or request.headers.get("X-Session-Token")
     if token:
-        destroy_session(token)
+        await destroy_session(token)
     from fastapi.responses import JSONResponse
     resp = JSONResponse({"status": "ok"})
     resp.delete_cookie("bridge_session")
@@ -97,11 +112,142 @@ async def logout(request: Request):
 
 @app.get("/api/auth/me")
 async def get_me(request: Request):
-    user = get_current_user(request)
+    user = await get_current_user(request)
     if not user:
         return {"authenticated": False}
     subs = get_subscriptions(user["id"])
     return {"authenticated": True, "user": user, "subscriptions": subs}
+
+
+# ─── Invite Accept ────────────────────────────────────────────────────
+
+@app.post("/api/auth/accept-invite")
+async def accept_invite_route(body: dict):
+    token = body.get("token", "").strip()
+    password = body.get("password", "").strip()
+    if not token or not password:
+        raise HTTPException(400, "Token and password required")
+    if len(password) < 8:
+        raise HTTPException(400, "Password must be at least 8 characters")
+    user = await accept_invite(token, password)
+    if not user:
+        raise HTTPException(400, "Invalid or expired invite link")
+    session_token = await create_session(user)
+    from fastapi.responses import JSONResponse
+    resp = JSONResponse({"status": "ok", "user": user})
+    resp.set_cookie("bridge_session", session_token, httponly=True, samesite="lax", max_age=86400)
+    return resp
+
+
+# ─── Password Reset ───────────────────────────────────────────────────
+
+@app.post("/api/auth/request-reset")
+async def request_reset_route(body: dict):
+    email = body.get("email", "").strip()
+    if not email:
+        raise HTTPException(400, "Email required")
+    token = await request_password_reset(email)
+    # Always return OK (don't reveal if email exists)
+    if token and RESEND_API_KEY:
+        import httpx
+        reset_url = f"{os.environ.get('APP_URL', 'https://bridgeii.com')}/?reset={token}"
+        try:
+            async with httpx.AsyncClient() as client:
+                await client.post(
+                    "https://api.resend.com/emails",
+                    headers={"Authorization": f"Bearer {RESEND_API_KEY}"},
+                    json={
+                        "from": "Bridge <notifications@bridgeii.com>",
+                        "to": [email],
+                        "subject": "Reset your Bridge password",
+                        "text": f"Click the link below to reset your password:\n\n{reset_url}\n\nThis link expires in 1 hour.\n\nIf you didn't request this, ignore this email.",
+                    },
+                )
+        except Exception as e:
+            print(f"Reset email error: {e}")
+    elif token:
+        print(f"\n--- PASSWORD RESET ---\nToken: {token}\n(Set RESEND_API_KEY to send via email)\n----------------------\n")
+    return {"status": "ok", "message": "If an account exists with that email, a reset link has been sent"}
+
+
+@app.post("/api/auth/reset-password")
+async def reset_password_route(body: dict):
+    token = body.get("token", "").strip()
+    password = body.get("password", "").strip()
+    if not token or not password:
+        raise HTTPException(400, "Token and password required")
+    if len(password) < 8:
+        raise HTTPException(400, "Password must be at least 8 characters")
+    user = await complete_password_reset(token, password)
+    if not user:
+        raise HTTPException(400, "Invalid or expired reset link")
+    session_token = await create_session(user)
+    from fastapi.responses import JSONResponse
+    resp = JSONResponse({"status": "ok", "user": user})
+    resp.set_cookie("bridge_session", session_token, httponly=True, samesite="lax", max_age=86400)
+    return resp
+
+
+# ─── Admin Routes ─────────────────────────────────────────────────────
+
+async def require_admin(request: Request) -> dict:
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(401, "Not authenticated")
+    if user.get("role") != "admin":
+        raise HTTPException(403, "Admin access required")
+    return user
+
+
+@app.get("/api/admin/users")
+async def admin_list_users(user: dict = Depends(require_admin)):
+    users = await get_all_users()
+    return {"users": users}
+
+
+@app.post("/api/admin/invite")
+async def admin_invite_user(body: dict, user: dict = Depends(require_admin)):
+    email = body.get("email", "").strip()
+    name = body.get("name", "").strip()
+    firm = body.get("firm", "").strip()
+    role = body.get("role", "adviser").strip()
+    if not email or not name or not firm:
+        raise HTTPException(400, "Email, name, and firm are required")
+    try:
+        result = await create_invite(email=email, name=name, firm=firm, role=role, invited_by=user["id"])
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
+    # Send invite email
+    invite_url = f"{os.environ.get('APP_URL', 'https://bridgeii.com')}/?invite={result['token']}"
+    if RESEND_API_KEY:
+        import httpx
+        try:
+            async with httpx.AsyncClient() as client:
+                await client.post(
+                    "https://api.resend.com/emails",
+                    headers={"Authorization": f"Bearer {RESEND_API_KEY}"},
+                    json={
+                        "from": "Bridge <notifications@bridgeii.com>",
+                        "to": [email],
+                        "subject": "You're invited to Bridge",
+                        "text": f"Hi {name},\n\nYou've been invited to Bridge – Independent MPS Research & Oversight.\n\nClick the link below to set your password and access the platform:\n\n{invite_url}\n\nThis link expires in 72 hours.\n\nBridge",
+                    },
+                )
+        except Exception as e:
+            print(f"Invite email error: {e}")
+    else:
+        print(f"\n--- INVITE ---\nEmail: {email}\nURL: {invite_url}\n(Set RESEND_API_KEY to send via email)\n--------------\n")
+
+    return {"status": "ok", "invite_url": invite_url, "user": result["user"]}
+
+
+@app.delete("/api/admin/users/{user_id}")
+async def admin_delete_user(user_id: str, user: dict = Depends(require_admin)):
+    if user_id == user["id"]:
+        raise HTTPException(400, "Cannot delete yourself")
+    await remove_user(user_id)
+    return {"status": "ok"}
 
 
 # ─── Demo Request ─────────────────────────────────────────────────────────
@@ -771,21 +917,15 @@ async def logo_dark():
         return FileResponse(path, media_type="image/png")
     raise HTTPException(404)
 
-# ─── Splitting the frontend ──────────────────────────────────────
-FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "frontend")
-app.mount("/css", StaticFiles(directory=os.path.join(FRONTEND_DIR, "css")), name="css")
-app.mount("/js", StaticFiles(directory=os.path.join(FRONTEND_DIR, "js")), name="js")
-
 @app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
-    html_path = os.path.join(os.path.dirname(__file__), "frontend", "index.html")
+    html_path = os.path.join(os.path.dirname(__file__), "index.html")
     if os.path.exists(html_path):
         with open(html_path, "r") as f:
             return f.read()
     return "<h1>Bridge</h1><p>Frontend not found. See <a href='/docs'>/docs</a></p>"
 
 
-# ─── Main Call ─────────────────────────────────────────────────────
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
