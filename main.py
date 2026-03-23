@@ -28,6 +28,8 @@ from auth import authenticate, create_session, get_session, destroy_session
 from messaging import send_message, get_messages, get_message_by_id, reply_to_message, get_message_by_id_internal
 from subscriptions import subscribe, unsubscribe, get_subscriptions, is_subscribed
 from preferences import get_preferences, update_preferences, set_subscription_alert
+from fastapi.staticfiles import StaticFiles
+
 
 app = FastAPI(
     title="Bridge",
@@ -41,7 +43,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 def safe_avg(values):
     """Average that handles None values."""
@@ -770,15 +771,21 @@ async def logo_dark():
         return FileResponse(path, media_type="image/png")
     raise HTTPException(404)
 
+# ─── Splitting the frontend ──────────────────────────────────────
+FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "frontend")
+app.mount("/css", StaticFiles(directory=os.path.join(FRONTEND_DIR, "css")), name="css")
+app.mount("/js", StaticFiles(directory=os.path.join(FRONTEND_DIR, "js")), name="js")
+
 @app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
-    html_path = os.path.join(os.path.dirname(__file__), "index.html")
+    html_path = os.path.join(os.path.dirname(__file__), "frontend", "index.html")
     if os.path.exists(html_path):
         with open(html_path, "r") as f:
             return f.read()
     return "<h1>Bridge</h1><p>Frontend not found. See <a href='/docs'>/docs</a></p>"
 
 
+# ─── Main Call ─────────────────────────────────────────────────────
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
