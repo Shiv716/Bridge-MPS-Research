@@ -12,7 +12,7 @@ CH.haa=new Chart($('haa'),{type:'line',data:{labels,datasets:[
 {label:'Fixed Income',data:aa.map(d=>d['Fixed Income']),backgroundColor:'rgba(139,92,246,.4)',borderColor:'rgba(139,92,246,.8)',fill:true,tension:.3,pointRadius:0},
 {label:'Alternative',data:aa.map(d=>d.Alternative),backgroundColor:'rgba(16,185,129,.4)',borderColor:'rgba(16,185,129,.8)',fill:true,tension:.3,pointRadius:0},
 {label:'Cash',data:aa.map(d=>d.Cash),backgroundColor:'rgba(245,158,11,.4)',borderColor:'rgba(245,158,11,.8)',fill:true,tension:.3,pointRadius:0}
-]},plugins:[hoverLine],options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:'#4b5563',font:{size:11}}},tooltip:ttOpts},scales:{x:{ticks:{color:'#6b7280',maxTicksLimit:12,font:{size:10}},grid:{display:false}},y:{stacked:true,max:100,ticks:{color:'#6b7280'},grid:{color:'#e5e7eb'}}}}})
+]},plugins:[hoverLine],options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:'#4b5563',font:{size:11}}},tooltip:ttOpts},scales:{x:{ticks:{color:'#6b7280',maxTicksLimit:12,font:{size:10}},grid:{display:false}},y:{stacked:true,min:0,max:100,ticks:{color:'#6b7280'},grid:{color:'#e5e7eb'}}}}})
 }
 if(h.equity_region){
 const eq=h.equity_region;const labels=eq.map(d=>d.Date);
