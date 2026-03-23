@@ -3,6 +3,7 @@
 
 const $=id=>document.getElementById(id);
 let S={p:'dashboard',c:{},pr:{},bvOpen:true,user:null},CH={};
+function isDarkMode(){return document.documentElement.style.getPropertyValue('--bg')==='#0f1117'}
 
 // ─── Auth ────────────────────────────────────────────────────────────
 
@@ -16,9 +17,10 @@ $('loginOverlay').style.display='flex';$('appShell').style.display='none';
 const params=new URLSearchParams(window.location.search);
 const inviteToken=params.get('invite');
 const resetToken=params.get('reset');
+const loginLogo=isDarkMode()?'bridge-logo-dark.png':'bridge-logo-nav.png';
 const box=document.querySelector('.login-box');
 if(inviteToken){
-box.innerHTML=`<div class="logo"><img src="bridge-logo-nav.png" alt="Bridge" style="height:32px;width:auto"></div>
+box.innerHTML=`<div class="logo"><img src="${loginLogo}" alt="Bridge" style="height:32px;width:auto"></div>
 <div class="login-sub">Set your password to get started</div>
 <input class="login-field" type="password" id="invPass" placeholder="Create password (min 8 chars)" autocomplete="new-password">
 <input class="login-field" type="password" id="invPass2" placeholder="Confirm password" autocomplete="new-password" onkeydown="if(event.key==='Enter')doAcceptInvite()">
@@ -26,7 +28,7 @@ box.innerHTML=`<div class="logo"><img src="bridge-logo-nav.png" alt="Bridge" sty
 <div class="login-err" id="loginErr"></div>`;
 S._inviteToken=inviteToken;
 }else if(resetToken){
-box.innerHTML=`<div class="logo"><img src="bridge-logo-nav.png" alt="Bridge" style="height:32px;width:auto"></div>
+box.innerHTML=`<div class="logo"><img src="${loginLogo}" alt="Bridge" style="height:32px;width:auto"></div>
 <div class="login-sub">Enter your new password</div>
 <input class="login-field" type="password" id="rstPass" placeholder="New password (min 8 chars)" autocomplete="new-password">
 <input class="login-field" type="password" id="rstPass2" placeholder="Confirm new password" autocomplete="new-password" onkeydown="if(event.key==='Enter')doResetPassword()">
@@ -34,7 +36,7 @@ box.innerHTML=`<div class="logo"><img src="bridge-logo-nav.png" alt="Bridge" sty
 <div class="login-err" id="loginErr"></div>`;
 S._resetToken=resetToken;
 }else{
-box.innerHTML=`<div class="logo"><img src="bridge-logo-nav.png" alt="Bridge" style="height:32px;width:auto"></div>
+box.innerHTML=`<div class="logo"><img src="${loginLogo}" alt="Bridge" style="height:32px;width:auto"></div>
 <div class="login-sub">Independent MPS Research & Oversight</div>
 <input class="login-field" type="email" id="loginEmail" placeholder="Email address" autocomplete="email">
 <input class="login-field" type="password" id="loginPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
@@ -51,6 +53,7 @@ $('userName').textContent=S.user.name;
 const adminNav=document.getElementById('adminNavItem');
 if(adminNav)adminNav.style.display=S.user.role==='admin'?'flex':'none';
 fetch('/api/preferences').then(r=>r.json()).then(d=>{if(d.preferences?.display?.dark_mode)savePrefApplyDark(true)}).catch(()=>{});
+startHeartbeat();
 render()}
 
 async function doAcceptInvite(){
@@ -75,8 +78,9 @@ catch(e){err.textContent='Connection error'}}
 
 function showForgotPassword(e){
 e.preventDefault();
+const loginLogo=isDarkMode()?'bridge-logo-dark.png':'bridge-logo-nav.png';
 const box=document.querySelector('.login-box');
-box.innerHTML=`<div class="logo"><img src="bridge-logo-nav.png" alt="Bridge" style="height:32px;width:auto"></div>
+box.innerHTML=`<div class="logo"><img src="${loginLogo}" alt="Bridge" style="height:32px;width:auto"></div>
 <div class="login-sub">Enter your email to receive a reset link</div>
 <input class="login-field" type="email" id="resetEmail" placeholder="Email address" autocomplete="email" onkeydown="if(event.key==='Enter')doRequestReset()">
 <button class="login-btn" onclick="doRequestReset()">Send Reset Link</button>
@@ -102,6 +106,7 @@ else{const d=await r.json();$('loginErr').textContent=d.detail||'Login failed'}}
 catch(e){$('loginErr').textContent='Connection error'}}
 
 async function doLogout(){
+stopHeartbeat();
 try{await fetch('/api/auth/logout',{method:'POST'})}catch(e){}
 S.user=null;S.c={};showLogin()}
 
@@ -128,7 +133,22 @@ else{root.style.setProperty('--bg','#ffffff');root.style.setProperty('--bg-card'
 
 // ─── Router ──────────────────────────────────────────────────────────
 
-function nav(p,pr={}){S.p=p;S.pr=pr;document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));const e=document.querySelector(`.nav-item[data-page="${p}"]`);if(e)e.classList.add('active');render()}
+function nav(p,pr={}){S.p=p;S.pr=pr;document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));const e=document.querySelector(`.nav-item[data-page="${p}"]`);if(e)e.classList.add('active');trackPage(p);render()}
+
+// ─── Activity Tracking ───────────────────────────────────────────────
+
+function trackPage(page){
+if(!S.user)return;
+fetch('/api/activity',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_type:'page_view',page:page})}).catch(()=>{})}
+
+function trackEvent(eventType,data){
+if(!S.user)return;
+fetch('/api/activity',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_type:eventType,event_data:data||{},page:S.p})}).catch(()=>{})}
+
+// Session heartbeat — every 5 minutes while active
+let _heartbeat;
+function startHeartbeat(){if(_heartbeat)clearInterval(_heartbeat);_heartbeat=setInterval(()=>{if(S.user)fetch('/api/activity',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_type:'session_heartbeat',page:S.p})}).catch(()=>{})},5*60*1000)}
+function stopHeartbeat(){if(_heartbeat){clearInterval(_heartbeat);_heartbeat=null}}
 
 async function render(){
 const el=$('app'),tt=$('tt');DC();removeBV();el.innerHTML='<div class="loading"><div class="spinner"></div>Loading...</div>';

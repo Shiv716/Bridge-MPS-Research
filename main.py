@@ -7,6 +7,7 @@ B2B SaaS platform for UK financial adviser firms
 from fastapi import FastAPI, HTTPException, Query, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from typing import Optional
 import os
 from dotenv import load_dotenv
@@ -24,7 +25,7 @@ from insights import (
     get_all_insights, get_insight_by_id, get_insights_by_category,
     get_insight_categories, search_insights,
 )
-from db import database, init_db, close_db
+from db import database, init_db, close_db, log_activity, get_recent_activity, get_activity_stats
 from auth import (
     authenticate, create_session, get_session, destroy_session,
     create_invite, accept_invite,
@@ -34,7 +35,6 @@ from auth import (
 from messaging import send_message, get_messages, get_message_by_id, reply_to_message, get_message_by_id_internal
 from subscriptions import subscribe, unsubscribe, get_subscriptions, is_subscribed
 from preferences import get_preferences, update_preferences, set_subscription_alert
-from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(
     title="Bridge",
@@ -94,6 +94,8 @@ async def login(body: dict):
     if not user:
         raise HTTPException(401, "Invalid credentials")
     token = await create_session(user)
+    import secrets as _s
+    await log_activity(activity_id=f"act-{_s.token_hex(6)}", user_id=user["id"], event_type="login", event_data={"method": "password"})
     from fastapi.responses import JSONResponse
     resp = JSONResponse({"status": "ok", "user": user})
     resp.set_cookie("bridge_session", token, httponly=True, samesite="lax", max_age=86400)
@@ -116,7 +118,7 @@ async def get_me(request: Request):
     user = await get_current_user(request)
     if not user:
         return {"authenticated": False}
-    subs = get_subscriptions(user["id"])
+    subs = await get_subscriptions(user["id"])
     return {"authenticated": True, "user": user, "subscriptions": subs}
 
 
@@ -251,6 +253,46 @@ async def admin_delete_user(user_id: str, user: dict = Depends(require_admin)):
     return {"status": "ok"}
 
 
+# ─── Activity Tracking ────────────────────────────────────────────────
+
+@app.post("/api/activity")
+async def track_activity(body: dict, user: dict = Depends(require_auth)):
+    """Frontend calls this to log page views, feature usage, heartbeats."""
+    import secrets as _s
+    event_type = body.get("event_type", "").strip()
+    if not event_type:
+        raise HTTPException(400, "event_type required")
+    allowed = {"page_view", "session_heartbeat", "export", "subscribe", "unsubscribe", "message_sent"}
+    if event_type not in allowed:
+        raise HTTPException(400, f"Invalid event_type")
+    await log_activity(
+        activity_id=f"act-{_s.token_hex(6)}",
+        user_id=user["id"],
+        event_type=event_type,
+        event_data=body.get("event_data", {}),
+        page=body.get("page"),
+    )
+    return {"status": "ok"}
+
+
+@app.get("/api/admin/activity")
+async def admin_get_activity(user: dict = Depends(require_admin)):
+    activity = await get_recent_activity(limit=200)
+    # Convert datetimes
+    from datetime import datetime
+    for a in activity:
+        for k, v in a.items():
+            if isinstance(v, datetime):
+                a[k] = v.isoformat()
+    return {"activity": activity}
+
+
+@app.get("/api/admin/activity/stats")
+async def admin_get_activity_stats(user: dict = Depends(require_admin)):
+    stats = await get_activity_stats()
+    return {"stats": stats}
+
+
 # ─── Demo Request ─────────────────────────────────────────────────────────
 
 @app.post("/api/demo-request")
@@ -306,7 +348,7 @@ async def create_message(body: dict, user: dict = Depends(require_auth)):
     provider_name = body.get("provider_name")
     if not subject or not message_body:
         raise HTTPException(400, "Subject and message are required")
-    msg = send_message(
+    msg = await send_message(
         user_id=user["id"],
         user_name=user["name"],
         user_firm=user["firm"],
@@ -357,18 +399,20 @@ async def create_message(body: dict, user: dict = Depends(require_auth)):
         print(f"(Set RESEND_API_KEY to send via email)")
         print(f"---------------\n")
 
+    import secrets as _s
+    await log_activity(activity_id=f"act-{_s.token_hex(6)}", user_id=user["id"], event_type="message_sent", event_data={"subject": subject, "provider": provider_name})
     return {"status": "ok", "message": msg}
 
 
 @app.get("/api/messages")
 async def list_messages(user: dict = Depends(require_auth)):
-    msgs = get_messages(user["id"])
+    msgs = await get_messages(user["id"])
     return {"count": len(msgs), "messages": msgs}
 
 
 @app.get("/api/messages/{message_id}")
 async def get_message_detail(message_id: str, user: dict = Depends(require_auth)):
-    msg = get_message_by_id(message_id, user["id"])
+    msg = await get_message_by_id(message_id, user["id"])
     if not msg:
         raise HTTPException(404, "Message not found")
     return {"message": msg}
@@ -408,7 +452,7 @@ async def inbound_email_webhook(request: Request):
         if not clean_body:
             clean_body = text_body.strip()
 
-        msg = reply_to_message(msg_id, clean_body)
+        msg = await reply_to_message(msg_id, clean_body)
         if msg:
             print(f"Webhook: Reply matched to {msg_id}")
             return {"status": "ok", "matched": True, "message_id": msg_id}
@@ -430,40 +474,44 @@ async def create_subscription(body: dict, user: dict = Depends(require_auth)):
     provider_name = body.get("provider_name", "").strip()
     if not provider_id:
         raise HTTPException(400, "Provider ID required")
-    sub = subscribe(user["id"], provider_id, provider_name, user_email=user.get("email", ""))
+    sub = await subscribe(user["id"], provider_id, provider_name, user_email=user.get("email", ""))
+    import secrets as _s
+    await log_activity(activity_id=f"act-{_s.token_hex(6)}", user_id=user["id"], event_type="subscribe", event_data={"provider_id": provider_id, "provider_name": provider_name})
     return {"status": "ok", "subscription": sub}
 
 
 @app.delete("/api/subscriptions/{provider_id}")
 async def remove_subscription(provider_id: str, user: dict = Depends(require_auth)):
-    success = unsubscribe(user["id"], provider_id)
+    success = await unsubscribe(user["id"], provider_id)
     if not success:
         raise HTTPException(404, "Subscription not found")
+    import secrets as _s
+    await log_activity(activity_id=f"act-{_s.token_hex(6)}", user_id=user["id"], event_type="unsubscribe", event_data={"provider_id": provider_id})
     return {"status": "ok"}
 
 
 @app.get("/api/subscriptions")
 async def list_subscriptions(user: dict = Depends(require_auth)):
-    subs = get_subscriptions(user["id"])
+    subs = await get_subscriptions(user["id"])
     return {"count": len(subs), "subscriptions": subs}
 
 
 @app.get("/api/subscriptions/check/{provider_id}")
 async def check_subscription(provider_id: str, user: dict = Depends(require_auth)):
-    return {"subscribed": is_subscribed(user["id"], provider_id)}
+    return {"subscribed": await is_subscribed(user["id"], provider_id)}
 
 
 # ─── Preferences ───────────────────────────────────────────────────────
 
 @app.get("/api/preferences")
 async def get_user_preferences(user: dict = Depends(require_auth)):
-    prefs = get_preferences(user["id"])
+    prefs = await get_preferences(user["id"])
     return {"preferences": prefs}
 
 
 @app.put("/api/preferences")
 async def update_user_preferences(body: dict, user: dict = Depends(require_auth)):
-    prefs = update_preferences(user["id"], body)
+    prefs = await update_preferences(user["id"], body)
     return {"status": "ok", "preferences": prefs}
 
 
@@ -473,7 +521,7 @@ async def toggle_subscription_alert(body: dict, user: dict = Depends(require_aut
     enabled = body.get("enabled", True)
     if not provider_id:
         raise HTTPException(400, "Provider ID required")
-    prefs = set_subscription_alert(user["id"], provider_id, enabled)
+    prefs = await set_subscription_alert(user["id"], provider_id, enabled)
     return {"status": "ok", "preferences": prefs}
 
 
@@ -775,8 +823,12 @@ async def submit_feedback(body: dict):
 # ─── Consumer Duty Export ────────────────────────────────────────────
 
 @app.post("/api/export/consumer-duty")
-async def export_consumer_duty(data: dict):
+async def export_consumer_duty(data: dict, request: Request):
     """Generate a formatted .docx Consumer Duty Oversight Report."""
+    user = await get_current_user(request)
+    if user:
+        import secrets as _s
+        await log_activity(activity_id=f"act-{_s.token_hex(6)}", user_id=user["id"], event_type="export", event_data={"type": "consumer_duty"})
     from docx import Document
     from docx.shared import Inches, Pt, Cm, RGBColor
     from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -918,13 +970,14 @@ async def logo_dark():
         return FileResponse(path, media_type="image/png")
     raise HTTPException(404)
 
+# ─── Static file mounts for frontend ─────────────────────────────────
 FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "frontend")
 app.mount("/css", StaticFiles(directory=os.path.join(FRONTEND_DIR, "css")), name="css")
 app.mount("/js", StaticFiles(directory=os.path.join(FRONTEND_DIR, "js")), name="js")
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
-    html_path = os.path.join(os.path.dirname(__file__), "frontend" , "index.html")
+    html_path = os.path.join(os.path.dirname(__file__), "frontend", "index.html")
     if os.path.exists(html_path):
         with open(html_path, "r") as f:
             return f.read()

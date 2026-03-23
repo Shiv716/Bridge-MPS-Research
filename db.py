@@ -61,6 +61,65 @@ CREATE INDEX IF NOT EXISTS idx_sessions_expires ON sessions(expires_at);
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_invite_tokens_email ON invite_tokens(email);
 CREATE INDEX IF NOT EXISTS idx_reset_tokens_user ON reset_tokens(user_id);
+
+CREATE TABLE IF NOT EXISTS user_activity (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    event_type TEXT NOT NULL,
+    event_data JSONB DEFAULT '{}',
+    page TEXT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_activity_user ON user_activity(user_id);
+CREATE INDEX IF NOT EXISTS idx_activity_type ON user_activity(event_type);
+CREATE INDEX IF NOT EXISTS idx_activity_created ON user_activity(created_at);
+
+CREATE TABLE IF NOT EXISTS user_preferences (
+    user_id TEXT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+    preferences JSONB NOT NULL DEFAULT '{}',
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS subscriptions (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    user_email TEXT NOT NULL DEFAULT '',
+    provider_id TEXT NOT NULL,
+    provider_name TEXT NOT NULL DEFAULT '',
+    active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_subs_user ON subscriptions(user_id);
+CREATE INDEX IF NOT EXISTS idx_subs_provider ON subscriptions(provider_id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_subs_user_provider ON subscriptions(user_id, provider_id) WHERE active = TRUE;
+
+CREATE TABLE IF NOT EXISTS messages (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    user_name TEXT NOT NULL DEFAULT '',
+    user_firm TEXT NOT NULL DEFAULT '',
+    subject TEXT NOT NULL,
+    body TEXT NOT NULL,
+    provider_id TEXT,
+    provider_name TEXT,
+    status TEXT NOT NULL DEFAULT 'sent',
+    reply TEXT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    replied_at TIMESTAMPTZ
+);
+
+CREATE TABLE IF NOT EXISTS message_replies (
+    id TEXT PRIMARY KEY,
+    message_id TEXT NOT NULL REFERENCES messages(id) ON DELETE CASCADE,
+    body TEXT NOT NULL,
+    from_name TEXT NOT NULL DEFAULT 'Bridge Research',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_messages_user ON messages(user_id);
+CREATE INDEX IF NOT EXISTS idx_replies_message ON message_replies(message_id);
 """
 
 
@@ -185,3 +244,213 @@ async def get_reset_token(token: str) -> dict | None:
 
 async def mark_reset_used(token: str):
     await database.execute("UPDATE reset_tokens SET used = TRUE WHERE token = :token", {"token": token})
+
+
+# ─── Activity Tracking Queries ────────────────────────────────────────
+
+async def log_activity(*, activity_id: str, user_id: str, event_type: str, event_data: dict = None, page: str = None):
+    import json
+    await database.execute(
+        "INSERT INTO user_activity (id, user_id, event_type, event_data, page) VALUES (:id, :uid, :type, :data, :page)",
+        {"id": activity_id, "uid": user_id, "type": event_type, "data": json.dumps(event_data or {}), "page": page},
+    )
+
+
+async def get_activity_for_user(user_id: str, limit: int = 50) -> list[dict]:
+    rows = await database.fetch_all(
+        "SELECT * FROM user_activity WHERE user_id = :uid ORDER BY created_at DESC LIMIT :lim",
+        {"uid": user_id, "lim": limit},
+    )
+    return [dict(r._mapping) for r in rows]
+
+
+async def get_recent_activity(limit: int = 100) -> list[dict]:
+    rows = await database.fetch_all(
+        "SELECT a.*, u.name, u.email, u.firm FROM user_activity a JOIN users u ON a.user_id = u.id ORDER BY a.created_at DESC LIMIT :lim",
+        {"lim": limit},
+    )
+    return [dict(r._mapping) for r in rows]
+
+
+async def get_activity_stats() -> dict:
+    """Get summary stats for the admin dashboard."""
+    # Active users (logged in within last 7 days)
+    active = await database.fetch_one(
+        "SELECT COUNT(DISTINCT user_id) as count FROM user_activity WHERE event_type = 'login' AND created_at > NOW() - INTERVAL '7 days'"
+    )
+    # Total logins last 30 days
+    logins = await database.fetch_one(
+        "SELECT COUNT(*) as count FROM user_activity WHERE event_type = 'login' AND created_at > NOW() - INTERVAL '30 days'"
+    )
+    # Total page views last 30 days
+    views = await database.fetch_one(
+        "SELECT COUNT(*) as count FROM user_activity WHERE event_type = 'page_view' AND created_at > NOW() - INTERVAL '30 days'"
+    )
+    # Most viewed pages
+    top_pages = await database.fetch_all(
+        "SELECT page, COUNT(*) as count FROM user_activity WHERE event_type = 'page_view' AND created_at > NOW() - INTERVAL '30 days' AND page IS NOT NULL GROUP BY page ORDER BY count DESC LIMIT 10"
+    )
+    # Feature usage
+    features = await database.fetch_all(
+        "SELECT event_type, COUNT(*) as count FROM user_activity WHERE event_type NOT IN ('login', 'page_view', 'session_heartbeat') AND created_at > NOW() - INTERVAL '30 days' GROUP BY event_type ORDER BY count DESC"
+    )
+    return {
+        "active_users_7d": active["count"] if active else 0,
+        "logins_30d": logins["count"] if logins else 0,
+        "page_views_30d": views["count"] if views else 0,
+        "top_pages": [dict(r._mapping) for r in top_pages],
+        "feature_usage": [dict(r._mapping) for r in features],
+    }
+
+# ─── Preferences Queries ──────────────────────────────────────────────
+
+async def db_get_preferences(user_id: str) -> dict | None:
+    row = await database.fetch_one("SELECT preferences FROM user_preferences WHERE user_id = :uid", {"uid": user_id})
+    if not row:
+        return None
+    val = row["preferences"]
+    if isinstance(val, str):
+        import json
+        return json.loads(val)
+    return val
+
+
+async def db_upsert_preferences(user_id: str, prefs: dict):
+    import json
+    prefs_json = json.dumps(prefs)
+    # Try update first, then insert
+    result = await database.execute(
+        "UPDATE user_preferences SET preferences = :prefs, updated_at = NOW() WHERE user_id = :uid",
+        {"prefs": prefs_json, "uid": user_id},
+    )
+    # Check if row existed
+    row = await database.fetch_one("SELECT 1 FROM user_preferences WHERE user_id = :uid", {"uid": user_id})
+    if not row:
+        await database.execute(
+            "INSERT INTO user_preferences (user_id, preferences) VALUES (:uid, :prefs)",
+            {"uid": user_id, "prefs": prefs_json},
+        )
+
+
+# ─── Subscription Queries ─────────────────────────────────────────────
+
+async def db_subscribe(*, sub_id: str, user_id: str, user_email: str, provider_id: str, provider_name: str) -> dict:
+    # Check existing active
+    row = await database.fetch_one(
+        "SELECT * FROM subscriptions WHERE user_id = :uid AND provider_id = :pid AND active = TRUE",
+        {"uid": user_id, "pid": provider_id},
+    )
+    if row:
+        return dict(row._mapping)
+    await database.execute(
+        "INSERT INTO subscriptions (id, user_id, user_email, provider_id, provider_name) VALUES (:id, :uid, :email, :pid, :pname)",
+        {"id": sub_id, "uid": user_id, "email": user_email, "pid": provider_id, "pname": provider_name},
+    )
+    row = await database.fetch_one("SELECT * FROM subscriptions WHERE id = :id", {"id": sub_id})
+    return dict(row._mapping)
+
+
+async def db_unsubscribe(user_id: str, provider_id: str) -> bool:
+    result = await database.execute(
+        "UPDATE subscriptions SET active = FALSE WHERE user_id = :uid AND provider_id = :pid AND active = TRUE",
+        {"uid": user_id, "pid": provider_id},
+    )
+    return True
+
+
+async def db_get_subscriptions(user_id: str) -> list[dict]:
+    rows = await database.fetch_all(
+        "SELECT * FROM subscriptions WHERE user_id = :uid AND active = TRUE ORDER BY created_at DESC",
+        {"uid": user_id},
+    )
+    return [dict(r._mapping) for r in rows]
+
+
+async def db_is_subscribed(user_id: str, provider_id: str) -> bool:
+    row = await database.fetch_one(
+        "SELECT 1 FROM subscriptions WHERE user_id = :uid AND provider_id = :pid AND active = TRUE",
+        {"uid": user_id, "pid": provider_id},
+    )
+    return row is not None
+
+
+async def db_notify_subscribers(provider_id: str) -> list[dict]:
+    rows = await database.fetch_all(
+        "SELECT * FROM subscriptions WHERE provider_id = :pid AND active = TRUE",
+        {"pid": provider_id},
+    )
+    return [dict(r._mapping) for r in rows]
+
+
+# ─── Message Queries ──────────────────────────────────────────────────
+
+async def db_send_message(*, msg_id: str, user_id: str, user_name: str, user_firm: str, subject: str, body: str, provider_id: str = None, provider_name: str = None) -> dict:
+    await database.execute(
+        """INSERT INTO messages (id, user_id, user_name, user_firm, subject, body, provider_id, provider_name)
+        VALUES (:id, :uid, :uname, :ufirm, :subj, :body, :pid, :pname)""",
+        {"id": msg_id, "uid": user_id, "uname": user_name, "ufirm": user_firm, "subj": subject, "body": body, "pid": provider_id, "pname": provider_name},
+    )
+    return await db_get_message_by_id_internal(msg_id)
+
+
+async def db_get_messages(user_id: str) -> list[dict]:
+    rows = await database.fetch_all(
+        "SELECT * FROM messages WHERE user_id = :uid ORDER BY created_at DESC",
+        {"uid": user_id},
+    )
+    msgs = []
+    for r in rows:
+        m = dict(r._mapping)
+        replies = await database.fetch_all(
+            "SELECT * FROM message_replies WHERE message_id = :mid ORDER BY created_at ASC",
+            {"mid": m["id"]},
+        )
+        m["replies"] = [dict(rep._mapping) for rep in replies]
+        msgs.append(m)
+    return msgs
+
+
+async def db_get_message_by_id(message_id: str, user_id: str) -> dict | None:
+    row = await database.fetch_one(
+        "SELECT * FROM messages WHERE id = :mid AND user_id = :uid",
+        {"mid": message_id, "uid": user_id},
+    )
+    if not row:
+        return None
+    m = dict(row._mapping)
+    replies = await database.fetch_all(
+        "SELECT * FROM message_replies WHERE message_id = :mid ORDER BY created_at ASC",
+        {"mid": m["id"]},
+    )
+    m["replies"] = [dict(rep._mapping) for rep in replies]
+    return m
+
+
+async def db_get_message_by_id_internal(message_id: str) -> dict | None:
+    row = await database.fetch_one("SELECT * FROM messages WHERE id = :mid", {"mid": message_id})
+    if not row:
+        return None
+    m = dict(row._mapping)
+    replies = await database.fetch_all(
+        "SELECT * FROM message_replies WHERE message_id = :mid ORDER BY created_at ASC",
+        {"mid": m["id"]},
+    )
+    m["replies"] = [dict(rep._mapping) for rep in replies]
+    return m
+
+
+async def db_reply_to_message(message_id: str, reply_body: str) -> dict | None:
+    msg = await db_get_message_by_id_internal(message_id)
+    if not msg:
+        return None
+    import secrets
+    reply_id = f"rep-{secrets.token_hex(6)}"
+    await database.execute(
+        "INSERT INTO message_replies (id, message_id, body) VALUES (:id, :mid, :body)",
+        {"id": reply_id, "mid": message_id, "body": reply_body},
+    )
+    await database.execute(
+        "UPDATE messages SET status = 'replied', reply = :reply, replied_at = NOW() WHERE id = :mid",
+        {"reply": reply_body, "mid": message_id},
+    )
+    return await db_get_message_by_id_internal(message_id)

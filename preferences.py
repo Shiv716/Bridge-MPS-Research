@@ -1,13 +1,10 @@
 from __future__ import annotations
 """
 Bridge – User Preferences Module
-Display settings, notification frequency, and per-subscription alert toggles.
-In-memory store for demo; replace with DB later.
+DB-backed. Stores as JSONB in user_preferences table.
 """
 
-from typing import Optional
-
-# ─── Defaults ─────────────────────────────────────────────────────────
+from db import db_get_preferences, db_upsert_preferences
 
 DEFAULT_PREFERENCES = {
     "display": {
@@ -15,19 +12,15 @@ DEFAULT_PREFERENCES = {
         "dark_mode": False,
     },
     "notifications": {
-        "frequency": "instant",  # instant | daily | weekly
+        "frequency": "instant",
     },
-    "subscription_alerts": {},  # provider_id -> True/False
+    "subscription_alerts": {},
 }
 
-# ─── Preferences Store (replace with DB later) ───────────────────────
 
-USER_PREFERENCES: dict[str, dict] = {}
-
-
-def get_preferences(user_id: str) -> dict:
-    """Get user preferences, returning defaults for any missing keys."""
-    prefs = USER_PREFERENCES.get(user_id, {})
+async def get_preferences(user_id: str) -> dict:
+    stored = await db_get_preferences(user_id)
+    prefs = stored or {}
     return {
         "display": {
             **DEFAULT_PREFERENCES["display"],
@@ -44,30 +37,25 @@ def get_preferences(user_id: str) -> dict:
     }
 
 
-def update_preferences(user_id: str, updates: dict) -> dict:
-    """Merge partial updates into user preferences."""
-    current = get_preferences(user_id)
-
+async def update_preferences(user_id: str, updates: dict) -> dict:
+    current = await get_preferences(user_id)
     if "display" in updates:
         current["display"].update(updates["display"])
     if "notifications" in updates:
         current["notifications"].update(updates["notifications"])
     if "subscription_alerts" in updates:
         current["subscription_alerts"].update(updates["subscription_alerts"])
-
-    USER_PREFERENCES[user_id] = current
+    await db_upsert_preferences(user_id, current)
     return current
 
 
-def set_subscription_alert(user_id: str, provider_id: str, enabled: bool) -> dict:
-    """Toggle email alerts for a specific subscription."""
-    prefs = get_preferences(user_id)
+async def set_subscription_alert(user_id: str, provider_id: str, enabled: bool) -> dict:
+    prefs = await get_preferences(user_id)
     prefs["subscription_alerts"][provider_id] = enabled
-    USER_PREFERENCES[user_id] = prefs
+    await db_upsert_preferences(user_id, prefs)
     return prefs
 
 
-def should_alert(user_id: str, provider_id: str) -> bool:
-    """Check if alerts are enabled for a subscription (default True)."""
-    prefs = get_preferences(user_id)
+async def should_alert(user_id: str, provider_id: str) -> bool:
+    prefs = await get_preferences(user_id)
     return prefs["subscription_alerts"].get(provider_id, True)

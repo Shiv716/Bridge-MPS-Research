@@ -1,19 +1,29 @@
 from __future__ import annotations
 """
 Bridge – Messaging Module
-Adviser-to-Bridge messaging. In-memory store for demo; replace with DB later.
+DB-backed. Stores in messages + message_replies tables.
 """
 
-import time
 import secrets
+from datetime import datetime
 from typing import Optional
-
-# ─── Message Store (replace with DB later) ────────────────────────────
-
-MESSAGES: list[dict] = []
+from db import db_send_message, db_get_messages, db_get_message_by_id, db_get_message_by_id_internal, db_reply_to_message
 
 
-def send_message(
+def _serialize_msg(msg: dict) -> dict:
+    """Convert datetime fields for JSON."""
+    out = {}
+    for k, v in msg.items():
+        if isinstance(v, datetime):
+            out[k] = v.timestamp()
+        elif k == "replies" and isinstance(v, list):
+            out[k] = [{kk: vv.timestamp() if isinstance(vv, datetime) else vv for kk, vv in rep.items()} for rep in v]
+        else:
+            out[k] = v
+    return out
+
+
+async def send_message(
     user_id: str,
     user_name: str,
     user_firm: str,
@@ -22,60 +32,29 @@ def send_message(
     provider_id: Optional[str] = None,
     provider_name: Optional[str] = None,
 ) -> dict:
-    """Send a message from adviser to Bridge."""
-    msg = {
-        "id": f"msg-{secrets.token_hex(6)}",
-        "user_id": user_id,
-        "user_name": user_name,
-        "user_firm": user_firm,
-        "subject": subject,
-        "body": body,
-        "provider_id": provider_id,
-        "provider_name": provider_name,
-        "status": "sent",
-        "reply": None,
-        "created_at": time.time(),
-        "replied_at": None,
-    }
-    MESSAGES.append(msg)
-    return msg
-
-
-def get_messages(user_id: str) -> list[dict]:
-    """Get all messages for a user, newest first."""
-    return sorted(
-        [m for m in MESSAGES if m["user_id"] == user_id],
-        key=lambda m: m["created_at"],
-        reverse=True,
+    msg_id = f"msg-{secrets.token_hex(6)}"
+    msg = await db_send_message(
+        msg_id=msg_id, user_id=user_id, user_name=user_name, user_firm=user_firm,
+        subject=subject, body=body, provider_id=provider_id, provider_name=provider_name,
     )
+    return _serialize_msg(msg)
 
 
-def get_message_by_id(message_id: str, user_id: str) -> Optional[dict]:
-    """Get a specific message (only if it belongs to the user)."""
-    return next(
-        (m for m in MESSAGES if m["id"] == message_id and m["user_id"] == user_id),
-        None,
-    )
+async def get_messages(user_id: str) -> list[dict]:
+    msgs = await db_get_messages(user_id)
+    return [_serialize_msg(m) for m in msgs]
 
 
-def reply_to_message(message_id: str, reply_body: str) -> Optional[dict]:
-    """Add a reply to a message (called from webhook)."""
-    msg = next((m for m in MESSAGES if m["id"] == message_id), None)
-    if not msg:
-        return None
-    if msg.get("replies") is None:
-        msg["replies"] = []
-    msg["replies"].append({
-        "body": reply_body,
-        "from": "Bridge Research",
-        "created_at": time.time(),
-    })
-    msg["status"] = "replied"
-    msg["reply"] = reply_body
-    msg["replied_at"] = time.time()
-    return msg
+async def get_message_by_id(message_id: str, user_id: str) -> Optional[dict]:
+    msg = await db_get_message_by_id(message_id, user_id)
+    return _serialize_msg(msg) if msg else None
 
 
-def get_message_by_id_internal(message_id: str) -> Optional[dict]:
-    """Get a message by ID without user check (for webhooks)."""
-    return next((m for m in MESSAGES if m["id"] == message_id), None)
+async def reply_to_message(message_id: str, reply_body: str) -> Optional[dict]:
+    msg = await db_reply_to_message(message_id, reply_body)
+    return _serialize_msg(msg) if msg else None
+
+
+async def get_message_by_id_internal(message_id: str) -> Optional[dict]:
+    msg = await db_get_message_by_id_internal(message_id)
+    return _serialize_msg(msg) if msg else None
