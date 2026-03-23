@@ -32,7 +32,7 @@ try{const r=await fetch('/api/admin/users');if(r.ok){const d=await r.json();user
 el.innerHTML=`<div class="card" style="margin-bottom:24px"><div class="card-h"><span class="card-t">Invite New User</span></div>
 <div class="card-b">
 <div style="display:flex;flex-direction:column;gap:12px;max-width:480px">
-<div class="fg"><span class="fl">Email</span><input type="email" id="invEmail" placeholder="adviser@firm.co.uk" style="width:100%"></div>
+<div class="fg"><span class="fl">Email</span><input type="text" id="invEmail" placeholder="adviser@firm.co.uk" style="width:100%"></div>
 <div class="fg"><span class="fl">Full Name</span><input type="text" id="invName" placeholder="Jane Smith" style="width:100%"></div>
 <div class="fg"><span class="fl">Firm</span><input type="text" id="invFirm" placeholder="Smith & Partners" style="width:100%"></div>
 <div class="fg"><span class="fl">Role</span><select id="invRole" style="min-width:160px"><option value="adviser">Adviser</option><option value="admin">Admin</option></select></div>
