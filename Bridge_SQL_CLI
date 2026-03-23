@@ -1,0 +1,24 @@
+INSERT INTO users (id, email, name, firm, role, password_hash, email_verified)
+VALUES (
+  'user-admin-001',
+  'shivangchaudhay@gmail.com',
+  'Shivang',
+  'Bridge Investment Intelligence',
+  'admin',
+  '$2b$12$p0pKdRHGpiZU0XYNh.dxMOS6YwO4b4E1hVmbWpGiHLn34iDaSWeSq',
+  TRUE
+);
+
+-----
+shivchaudhay ID
+Password: YourPasswordHere
+
+-------
+
+CLI
+
+Make password
+ python3 -c "import bcrypt; print(bcrypt.hashpw(b'YourPasswordHere', bcrypt.gensalt()).decode())"
+
+Read password
+ python3 -c "import bcrypt; print(bcrypt.hashpw(b'YourActualPassword', bcrypt.gensalt()).decode())"
