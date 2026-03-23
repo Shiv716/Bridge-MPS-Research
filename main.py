@@ -34,6 +34,7 @@ from auth import (
 from messaging import send_message, get_messages, get_message_by_id, reply_to_message, get_message_by_id_internal
 from subscriptions import subscribe, unsubscribe, get_subscriptions, is_subscribed
 from preferences import get_preferences, update_preferences, set_subscription_alert
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(
     title="Bridge",
