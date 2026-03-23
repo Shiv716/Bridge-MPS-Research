@@ -166,5 +166,14 @@ async def remove_user(user_id: str):
 # ─── Helpers ──────────────────────────────────────────────────────────
 
 def _safe_user(user: dict) -> dict:
-    """Strip sensitive fields."""
-    return {k: v for k, v in user.items() if k not in ("password_hash",)}
+    """Strip sensitive fields and convert datetimes to strings."""
+    from datetime import datetime
+    out = {}
+    for k, v in user.items():
+        if k == "password_hash":
+            continue
+        if isinstance(v, datetime):
+            out[k] = v.isoformat()
+        else:
+            out[k] = v
+    return out
