@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bridge × Verve Group – Exclusive MPS Research for Verve Members</title>
+<title>Bridge × Verve – Exclusive MPS Research for Verve Members</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -128,7 +128,8 @@ nav{padding:12px 16px}
 .nav-links a:not(.nav-cta){display:none}
 .nav-links{gap:0}
 .nav-cta{padding:7px 14px;font-size:11px}
-.nav-logo .partner-sep,.nav-logo .partner-text{display:none}
+.nav-logo .partner-sep{display:none}
+.nav-logo a:last-child img{height:18px!important}
 .hero{padding:100px 24px 60px}
 .about{padding:80px 24px}
 .pillars{grid-template-columns:1fr}
@@ -148,7 +149,7 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:32px 24px}
 <div class="nav-logo">
 <a href="https://www.bridgeii.com"><img src="bridge-logo-nav.png" alt="Bridge" style="height:32px;width:auto"></a>
 <span class="partner-sep"></span>
-<span class="partner-text">Verve Group Partner</span>
+<a href="https://www.weareverve.co.uk" target="_blank" rel="noopener"><img src="verve.png" alt="Verve" style="height:22px;width:auto"></a>
 </div>
 <div class="nav-links">
 <a href="#about">About</a>
@@ -160,9 +161,9 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:32px 24px}
 
 <!-- Hero -->
 <section class="hero">
-<div class="hero-badge"><span class="dot"></span> Verve Group × Bridge Partnership</div>
+<div class="hero-badge"><span class="dot"></span> Verve × Bridge Partnership</div>
 <h1>MPS research, built for <em>Verve</em> members</h1>
-<p class="hero-sub">Independent MPS research and oversight, available exclusively to Verve Group members at a preferential rate.</p>
+<p class="hero-sub">Independent MPS research and oversight, available exclusively to Verve members at a preferential rate.</p>
 <button class="hero-cta" onclick="openDemo(event)">
 Claim Your Verve Offer
 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -263,7 +264,7 @@ Claim Your Verve Offer
 <div class="pr-saving" id="pricingSaving"></div>
 </div>
 </div>
-<p class="pricing-note">Pricing is exclusive to Verve Group members. Includes full platform access, all MPS research dashboards, Consumer Duty export, and ongoing updates.</p>
+<p class="pricing-note">Pricing is exclusive to Verve members. Includes full platform access, all MPS research dashboards, Consumer Duty export, and ongoing updates.</p>
 </section>
 
 <div class="divider"></div>
@@ -284,7 +285,7 @@ Claim Your Verve Offer
 <div class="modal-overlay" id="demoModal">
 <div class="modal">
 <button class="modal-close" onclick="closeDemo()">&times;</button>
-<div class="modal-partner">Verve Group Offer</div>
+<div class="modal-partner">Verve Offer</div>
 <h3>Claim Your Access</h3>
 <p>We'll be in touch within one business day to get you set up.</p>
 <input class="modal-field" type="text" id="demoName" placeholder="Your name">
@@ -334,7 +335,7 @@ async function submitDemo(){
 
   st.style.color='#94a3b8';st.textContent='Submitting...';
   try{
-    const r=await fetch('https://bridge-mps-research.onrender.com/api/demo-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,firm,persona:'Verve Group Member',tier})});
+    const r=await fetch('https://bridge-mps-research.onrender.com/api/demo-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,firm,persona:'Verve Member',tier})});
     if(r.ok){st.style.color='var(--verve)';st.textContent='Thank you. We\'ll be in touch shortly.';document.getElementById('demoName').value='';document.getElementById('demoEmail').value='';document.getElementById('demoFirm').value=''}
     else{st.style.color='#ef4444';st.textContent='Something went wrong. Please try again.'}
   }catch(e){st.style.color='#ef4444';st.textContent='Connection error. Please try again.'}
