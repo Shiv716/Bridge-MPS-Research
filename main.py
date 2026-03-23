@@ -918,6 +918,10 @@ async def logo_dark():
         return FileResponse(path, media_type="image/png")
     raise HTTPException(404)
 
+FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "frontend")
+app.mount("/css", StaticFiles(directory=os.path.join(FRONTEND_DIR, "css")), name="css")
+app.mount("/js", StaticFiles(directory=os.path.join(FRONTEND_DIR, "js")), name="js")
+
 @app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
     html_path = os.path.join(os.path.dirname(__file__), "frontend" , "index.html")
