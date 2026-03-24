@@ -4,8 +4,7 @@
 
 /* ─── Reset & Base ─────────────────────────────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;overflow:hidden;overscroll-behavior:none}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text)}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none;-webkit-overflow-scrolling:auto;position:fixed;width:100%}
 
 /* ─── Layout ───────────────────────────────────────────────────────── */
 .app{display:flex;height:100vh;overflow:hidden}
