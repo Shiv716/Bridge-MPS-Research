@@ -4,11 +4,12 @@
 
 /* ─── Reset & Base ─────────────────────────────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+html{height:100%;overflow:hidden}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);height:100%;overflow:hidden}
 
 /* ─── Layout ───────────────────────────────────────────────────────── */
-.app{display:flex;min-height:100vh}
-.main{margin-left:var(--sw);flex:1;min-height:100vh}
+.app{display:flex;height:100vh;overflow:hidden}
+.main{margin-left:var(--sw);flex:1;height:100vh;overflow-y:auto}
 .content{padding:28px 32px;max-width:1400px}
 
 /* ─── Sidebar ──────────────────────────────────────────────────────── */
