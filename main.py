@@ -254,6 +254,37 @@ async def admin_delete_user(user_id: str, user: dict = Depends(require_admin)):
     await remove_user(user_id)
     return {"status": "ok"}
 
+@app.post("/api/admin/messages/{message_id}/reply")
+async def admin_reply_message(message_id: str, body: dict, user: dict = Depends(require_admin)):
+    reply_body = body.get("reply", "").strip()
+    if not reply_body:
+        raise HTTPException(400, "Reply text required")
+    from messaging import reply_to_message
+    msg = await reply_to_message(message_id, reply_body)
+    if not msg:
+        raise HTTPException(404, "Message not found")
+    return {"status": "ok", "message": msg}
+
+
+@app.get("/api/admin/messages")
+async def admin_list_all_messages(user: dict = Depends(require_admin)):
+    from db import database
+    rows = await database.fetch_all("SELECT m.*, u.name, u.email, u.firm FROM messages m JOIN users u ON m.user_id = u.id ORDER BY m.created_at DESC")
+    from datetime import datetime
+    msgs = []
+    for r in rows:
+        m = dict(r._mapping)
+        replies = await database.fetch_all("SELECT * FROM message_replies WHERE message_id = :mid ORDER BY created_at ASC", {"mid": m["id"]})
+        m["replies"] = [dict(rep._mapping) for rep in replies]
+        for k, v in m.items():
+            if isinstance(v, datetime):
+                m[k] = v.isoformat()
+        for rep in m["replies"]:
+            for k, v in rep.items():
+                if isinstance(v, datetime):
+                    rep[k] = v.isoformat()
+        msgs.append(m)
+    return {"messages": msgs}
 
 # ─── Activity Tracking ────────────────────────────────────────────────
 

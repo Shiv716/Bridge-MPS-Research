@@ -7,6 +7,7 @@ el.innerHTML=`<div class="fi"><div class="ph1"><h1>Admin</h1><p>Manage users, se
 <div class="tab active" onclick="adminTab('users')">Users</div>
 <div class="tab" onclick="adminTab('activity')">Activity</div>
 <div class="tab" onclick="adminTab('stats')">Stats</div>
+<div class="tab" onclick="adminTab('messages')">Messages</div>
 </div>
 <div id="adminContent"></div></div>`;
 adminTab('users')}
@@ -14,13 +15,14 @@ adminTab('users')}
 function adminTab(tab){
 document.querySelectorAll('#adminTabs .tab').forEach(t=>t.classList.remove('active'));
 const tabs=document.querySelectorAll('#adminTabs .tab');
-const map=['users','activity','stats'];
+const map=['users','activity','stats','messages'];
 const idx=map.indexOf(tab);if(idx>=0&&tabs[idx])tabs[idx].classList.add('active');
 const el=$('adminContent');if(!el)return;
 switch(tab){
 case'users':adminUsers(el);break;
 case'activity':adminActivity(el);break;
 case'stats':adminStats(el);break;
+case'messages':adminMessages(el);break;
 }}
 
 // ─── Users Tab ───────────────────────────────────────────────────────
@@ -145,3 +147,37 @@ ${stats.feature_usage&&stats.feature_usage.length?`<div class="card-b" style="pa
 :`<div class="card-b"><p style="color:var(--text-m);font-size:13px">No data yet</p></div>`}
 </div>
 </div>`}
+
+// ─── Messages Tab ────────────────────────────────────────────────────
+
+async function adminMessages(el){
+el.innerHTML='<div class="loading"><div class="spinner"></div>Loading...</div>';
+let msgs=[];
+try{const r=await fetch('/api/admin/messages');if(r.ok){const d=await r.json();msgs=d.messages}}catch(e){}
+el.innerHTML=`<div class="card"><div class="card-h"><span class="card-t">All Messages</span><span style="font-size:12px;color:var(--text-m)">${msgs.length} total</span></div>
+${msgs.length?msgs.map(m=>`<div style="padding:16px 22px;border-bottom:1px solid var(--border)">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+<div><span style="font-size:13px;font-weight:600">${m.subject}</span>
+${m.provider_name?` <span class="badge b-blue" style="font-size:10px">${m.provider_name}</span>`:''}</div>
+<span class="badge ${m.status==='replied'?'b-green':'b-amber'}" style="font-size:10px">${m.status==='replied'?'Replied':'Awaiting reply'}</span></div>
+<div style="font-size:12px;color:var(--text-m);margin-bottom:8px">From: <strong>${m.name||'–'}</strong> (${m.email||'–'}) · ${m.firm||'–'} · ${m.created_at?new Date(m.created_at).toLocaleDateString('en-GB'):''}</div>
+<div style="font-size:13px;color:var(--text-s);line-height:1.6;margin-bottom:10px;white-space:pre-wrap">${m.body}</div>
+${m.replies&&m.replies.length?m.replies.map(r=>`<div style="margin-left:20px;padding:10px 14px;background:var(--accent-g);border-radius:var(--rs);margin-bottom:6px">
+<div style="font-size:11px;color:var(--green);font-weight:600;margin-bottom:4px">Bridge Research · ${r.created_at?new Date(r.created_at).toLocaleDateString('en-GB'):''}</div>
+<div style="font-size:13px;color:var(--text-s);line-height:1.5;white-space:pre-wrap">${r.body}</div></div>`).join(''):''}
+<div style="margin-top:8px;display:flex;gap:8px;align-items:flex-start" id="reply-${m.id}">
+<textarea style="flex:1;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:8px 10px;font-size:12px;color:var(--text);font-family:inherit;outline:none;resize:vertical;min-height:36px" placeholder="Type your reply..." id="rt-${m.id}"></textarea>
+<button class="btn btn-p btn-sm" onclick="adminReply('${m.id}')">Reply</button>
+</div>
+</div>`).join(''):`<div class="card-b"><p style="color:var(--text-m);font-size:13px">No messages yet.</p></div>`}
+</div>`}
+
+async function adminReply(msgId){
+const textarea=$('rt-'+msgId);
+const reply=textarea.value.trim();
+if(!reply){return}
+textarea.disabled=true;
+try{const r=await fetch(`/api/admin/messages/${msgId}/reply`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({reply})});
+if(r.ok){adminTab('messages')}
+else{const d=await r.json();alert(d.detail||'Failed');textarea.disabled=false}}
+catch(e){alert('Connection error');textarea.disabled=false}}
