@@ -4,13 +4,15 @@
 
 /* ─── Reset & Base ─────────────────────────────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box}
-html{height:100%;overflow:hidden}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);height:100%;overflow:hidden}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text)}
 
 /* ─── Layout ───────────────────────────────────────────────────────── */
 .app{display:flex;height:100vh;overflow:hidden}
-.main{margin-left:var(--sw);flex:1;height:100vh;overflow-y:auto}
-.content{padding:28px 32px;max-width:1400px}
+.main{margin-left:var(--sw);flex:1;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.topbar{flex-shrink:0;position:sticky;top:0;z-index:50;background:var(--bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.topbar-title{font-size:14px;font-weight:500}
+.content{padding:28px 32px;max-width:1400px;flex:1;overflow-y:auto;overscroll-behavior:contain}
 
 /* ─── Sidebar ──────────────────────────────────────────────────────── */
 .sidebar{width:var(--sw);background:#0d1424;border-right:1px solid #1e293b;position:fixed;top:0;left:0;bottom:0;z-index:100;display:flex;flex-direction:column}
@@ -25,10 +27,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);heigh
 .nav-icon{width:18px;height:18px;opacity:.7;flex-shrink:0}
 .nav-item.active .nav-icon{opacity:1}
 .sidebar-footer{padding:16px 20px;border-top:1px solid #1e293b;font-size:11px;color:#64748b}
-
-/* ─── Topbar ───────────────────────────────────────────────────────── */
-.topbar{position:sticky;top:0;z-index:50;background:var(--bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.topbar-title{font-size:14px;font-weight:500}
 
 /* ─── Cards ────────────────────────────────────────────────────────── */
 .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .2s}
@@ -148,7 +146,7 @@ select:focus,input:focus{border-color:var(--accent)}select{cursor:pointer}
 .ms-opt input{accent-color:var(--accent);margin:0}
 
 /* ─── Login ────────────────────────────────────────────────────────── */
-.login-overlay{position:fixed;inset:0;background:var(--bg);z-index:200;display:flex;align-items:center;justify-content:center}
+.login-overlay{position:fixed;inset:0;background:var(--bg);z-index:200;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .login-box{width:380px;padding:40px;text-align:center}
 .login-box .logo{justify-content:center;font-size:28px;margin-bottom:8px;color:var(--text)}
 .login-box .logo .logo-mark{width:34px;height:28px}
