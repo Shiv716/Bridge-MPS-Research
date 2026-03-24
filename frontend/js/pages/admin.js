@@ -97,9 +97,11 @@ const time=a.created_at?new Date(a.created_at).toLocaleString('en-GB',{day:'2-di
 const label=typeLabel[a.event_type]||a.event_type;
 const badge=typeBadge[a.event_type]||'b-blue';
 let details='';
-if(a.event_data&&typeof a.event_data==='object'){
-const d=a.event_data;
-if(d.provider_name)details=d.provider_name;
+let ed=a.event_data;
+if(typeof ed==='string'){try{ed=JSON.parse(ed)}catch(e){ed={}}}
+if(ed&&typeof ed==='object'){
+const d=ed;
+if(d.provider_name)details=d.provider_name+(d.tab?' — '+d.tab:'');
 else if(d.subject)details=d.subject;
 else if(d.type)details=d.type;
 else if(d.method)details=d.method;
