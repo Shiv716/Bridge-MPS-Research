@@ -23,6 +23,7 @@ el.innerHTML=`<div class="fi"><div class="back" onclick="nav('analysis')">← Ba
 <div id="tc"></div></div>`;
 try{const sr=await fetch(`/api/subscriptions/check/${p.id}`);if(sr.ok){const sd=await sr.json();
 const btn=$('subBtn');if(btn&&sd.subscribed){btn.className='sub-btn subscribed';btn.innerHTML='✓ Subscribed'}}}catch(e){}
+trackEvent('page_view',{provider_name:p.full_name||p.name,provider_id:p.id,tab:'overview'});
 pTab('overview')}
 
 function pTab(tab){
@@ -32,6 +33,7 @@ const tabs=document.querySelectorAll('#ptabs .tab');
 const tabMap=['overview','investment','current','historical','performance','cost','adviser','quarterly','consumer_duty'];
 const idx=tabMap.indexOf(tab);if(idx>=0&&tabs[idx])tabs[idx].classList.add('active');
 const tc=$('tc'),d=S._provData;if(!tc||!d)return;
+const p2=d.provider;trackEvent('page_view',{provider_name:p2.full_name||p2.name,provider_id:p2.id,tab:tab});
 const p=d.provider,pts=d.portfolios;
 switch(tab){
 case'overview':tabOverview(tc,p,pts);break;
