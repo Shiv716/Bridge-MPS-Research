@@ -104,8 +104,10 @@ const btn=document.querySelector('.login-btn');
 const fields=document.querySelectorAll('.login-field');
 btn.textContent='Signing in...';btn.disabled=true;btn.style.opacity='0.7';
 fields.forEach(f=>{f.disabled=true;f.style.opacity='0.7'});
+const start=Date.now();
 try{const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})});
-if(r.ok){const d=await r.json();S.user=d.user;showApp()}
+const elapsed=Date.now()-start;const wait=Math.max(0,600-elapsed);
+if(r.ok){const d=await r.json();S.user=d.user;await new Promise(t=>setTimeout(t,wait));showApp()}
 else{const d=await r.json();$('loginErr').textContent=d.detail||'Login failed';btn.textContent='Sign In';btn.disabled=false;btn.style.opacity='1';fields.forEach(f=>{f.disabled=false;f.style.opacity='1'})}}
 catch(e){$('loginErr').textContent='Connection error';btn.textContent='Sign In';btn.disabled=false;btn.style.opacity='1';fields.forEach(f=>{f.disabled=false;f.style.opacity='1'})}}
 
