@@ -166,7 +166,7 @@ ${m.replies&&m.replies.length?m.replies.map(r=>`<div style="margin-left:20px;pad
 <div style="font-size:11px;color:var(--green);font-weight:600;margin-bottom:4px">Bridge Research · ${r.created_at?new Date(r.created_at).toLocaleDateString('en-GB'):''}</div>
 <div style="font-size:13px;color:var(--text-s);line-height:1.5;white-space:pre-wrap">${r.body}</div></div>`).join(''):''}
 <div style="margin-top:8px;display:flex;gap:8px;align-items:flex-start" id="reply-${m.id}">
-<textarea style="flex:1;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:8px 10px;font-size:12px;color:var(--text);font-family:inherit;outline:none;resize:vertical;min-height:36px" placeholder="Type your reply..." id="rt-${m.id}"></textarea>
+<textarea style="flex:1;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:8px 10px;font-size:12px;color:var(--text);font-family:inherit;outline:none;resize:vertical;min-height:36px;transition:border-color .15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'" placeholder="Type your reply..." id="rt-${m.id}"></textarea>
 <button class="btn btn-p btn-sm" onclick="adminReply('${m.id}')">Reply</button>
 </div>
 </div>`).join(''):`<div class="card-b"><p style="color:var(--text-m);font-size:13px">No messages yet.</p></div>`}
