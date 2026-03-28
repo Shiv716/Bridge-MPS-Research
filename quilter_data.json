@@ -34,16 +34,37 @@
         "underlying": 0.45,
         "all_in": 0.6
       },
-      "return_1yr": null,
-      "return_3yr": null,
-      "return_5yr": null,
-      "return_10yr": null,
-      "return_ytd": null,
-      "return_1m": null,
-      "return_3m": null,
-      "return_6m": null,
-      "calendar_returns": {},
-      "trailing_returns": {},
+      "return_1yr": 9.48,
+      "return_3yr": 7.46,
+      "return_5yr": 3.8,
+      "return_10yr": 4.39,
+      "return_ytd": 9.48,
+      "return_1m": 0.59,
+      "return_3m": 2.59,
+      "return_6m": 5.37,
+      "calendar_returns": {
+        "2016": 6.97,
+        "2017": 6.05,
+        "2018": -3.16,
+        "2019": 9.81,
+        "2020": 5.67,
+        "2021": 3.4,
+        "2022": -6.09,
+        "2023": 7.2,
+        "2024": 5.73,
+        "2025": 9.48,
+        "YTD": 9.48
+      },
+      "trailing_returns": {
+        "1M": 0.59,
+        "3M": 2.59,
+        "6M": 5.37,
+        "YTD": 9.48,
+        "1Y": 9.48,
+        "3Y": 7.46,
+        "5Y": 3.8,
+        "10Y": 4.39
+      },
       "rebalancing": "Quarterly",
       "min_investment": 0,
       "platforms": [
@@ -380,16 +401,37 @@
         "underlying": 0.52,
         "all_in": 0.67
       },
-      "return_1yr": null,
-      "return_3yr": null,
-      "return_5yr": null,
-      "return_10yr": null,
-      "return_ytd": null,
-      "return_1m": null,
-      "return_3m": null,
-      "return_6m": null,
-      "calendar_returns": {},
-      "trailing_returns": {},
+      "return_1yr": 11.42,
+      "return_3yr": 8.5,
+      "return_5yr": 4.82,
+      "return_10yr": 5.27,
+      "return_ytd": 11.42,
+      "return_1m": 0.76,
+      "return_3m": 3.13,
+      "return_6m": 6.98,
+      "calendar_returns": {
+        "2016": 8.54,
+        "2017": 7.18,
+        "2018": -3.71,
+        "2019": 11.27,
+        "2020": 5.93,
+        "2021": 4.95,
+        "2022": -5.62,
+        "2023": 7.61,
+        "2024": 6.54,
+        "2025": 11.42,
+        "YTD": 11.42
+      },
+      "trailing_returns": {
+        "1M": 0.76,
+        "3M": 3.13,
+        "6M": 6.98,
+        "YTD": 11.42,
+        "1Y": 11.42,
+        "3Y": 8.5,
+        "5Y": 4.82,
+        "10Y": 5.27
+      },
       "rebalancing": "Quarterly",
       "min_investment": 0,
       "platforms": [
@@ -726,16 +768,37 @@
         "underlying": 0.58,
         "all_in": 0.73
       },
-      "return_1yr": null,
-      "return_3yr": null,
-      "return_5yr": null,
-      "return_10yr": null,
-      "return_ytd": null,
-      "return_1m": null,
-      "return_3m": null,
-      "return_6m": null,
-      "calendar_returns": {},
-      "trailing_returns": {},
+      "return_1yr": 13.33,
+      "return_3yr": 9.55,
+      "return_5yr": 5.83,
+      "return_10yr": 6.11,
+      "return_ytd": 13.33,
+      "return_1m": 0.93,
+      "return_3m": 3.65,
+      "return_6m": 8.56,
+      "calendar_returns": {
+        "2016": 9.94,
+        "2017": 8.31,
+        "2018": -4.49,
+        "2019": 12.92,
+        "2020": 6.2,
+        "2021": 6.49,
+        "2022": -5.2,
+        "2023": 8.08,
+        "2024": 7.34,
+        "2025": 13.33,
+        "YTD": 13.33
+      },
+      "trailing_returns": {
+        "1M": 0.93,
+        "3M": 3.65,
+        "6M": 8.56,
+        "YTD": 13.33,
+        "1Y": 13.33,
+        "3Y": 9.55,
+        "5Y": 5.83,
+        "10Y": 6.11
+      },
       "rebalancing": "Quarterly",
       "min_investment": 0,
       "platforms": [
@@ -1071,16 +1134,37 @@
         "underlying": 0.63,
         "all_in": 0.78
       },
-      "return_1yr": null,
-      "return_3yr": null,
-      "return_5yr": null,
-      "return_10yr": null,
-      "return_ytd": null,
-      "return_1m": null,
-      "return_3m": null,
-      "return_6m": null,
-      "calendar_returns": {},
-      "trailing_returns": {},
+      "return_1yr": 15.1,
+      "return_3yr": 10.53,
+      "return_5yr": 6.88,
+      "return_10yr": 6.92,
+      "return_ytd": 15.1,
+      "return_1m": 1.08,
+      "return_3m": 4.12,
+      "return_6m": 10.01,
+      "calendar_returns": {
+        "2016": 11.4,
+        "2017": 9.3,
+        "2018": -4.99,
+        "2019": 13.97,
+        "2020": 6.19,
+        "2021": 7.98,
+        "2022": -4.38,
+        "2023": 8.52,
+        "2024": 8.11,
+        "2025": 15.1,
+        "YTD": 15.1
+      },
+      "trailing_returns": {
+        "1M": 1.08,
+        "3M": 4.12,
+        "6M": 10.01,
+        "YTD": 15.1,
+        "1Y": 15.1,
+        "3Y": 10.53,
+        "5Y": 6.88,
+        "10Y": 6.92
+      },
       "rebalancing": "Quarterly",
       "min_investment": 0,
       "platforms": [
@@ -1416,16 +1500,37 @@
         "underlying": 0.66,
         "all_in": 0.81
       },
-      "return_1yr": null,
-      "return_3yr": null,
-      "return_5yr": null,
-      "return_10yr": null,
-      "return_ytd": null,
-      "return_1m": null,
-      "return_3m": null,
-      "return_6m": null,
-      "calendar_returns": {},
-      "trailing_returns": {},
+      "return_1yr": 16.77,
+      "return_3yr": 11.5,
+      "return_5yr": 7.89,
+      "return_10yr": 7.75,
+      "return_ytd": 16.77,
+      "return_1m": 1.22,
+      "return_3m": 4.55,
+      "return_6m": 11.4,
+      "calendar_returns": {
+        "2016": 12.86,
+        "2017": 10.41,
+        "2018": -5.55,
+        "2019": 15.45,
+        "2020": 6.21,
+        "2021": 9.55,
+        "2022": -3.73,
+        "2023": 9.02,
+        "2024": 8.89,
+        "2025": 16.77,
+        "YTD": 16.77
+      },
+      "trailing_returns": {
+        "1M": 1.22,
+        "3M": 4.55,
+        "6M": 11.4,
+        "YTD": 16.77,
+        "1Y": 16.77,
+        "3Y": 11.5,
+        "5Y": 7.89,
+        "10Y": 7.75
+      },
       "rebalancing": "Quarterly",
       "min_investment": 0,
       "platforms": [
@@ -1749,16 +1854,37 @@
         "underlying": 0.68,
         "all_in": 0.83
       },
-      "return_1yr": null,
-      "return_3yr": null,
-      "return_5yr": null,
-      "return_10yr": null,
-      "return_ytd": null,
-      "return_1m": null,
-      "return_3m": null,
-      "return_6m": null,
-      "calendar_returns": {},
-      "trailing_returns": {},
+      "return_1yr": 18.38,
+      "return_3yr": 12.48,
+      "return_5yr": 8.88,
+      "return_10yr": 8.64,
+      "return_ytd": 18.38,
+      "return_1m": 1.33,
+      "return_3m": 4.97,
+      "return_6m": 12.78,
+      "calendar_returns": {
+        "2016": 14.23,
+        "2017": 11.63,
+        "2018": -6.37,
+        "2019": 17.55,
+        "2020": 6.66,
+        "2021": 11.01,
+        "2022": -3.16,
+        "2023": 9.51,
+        "2024": 9.77,
+        "2025": 18.38,
+        "YTD": 18.38
+      },
+      "trailing_returns": {
+        "1M": 1.33,
+        "3M": 4.97,
+        "6M": 12.78,
+        "YTD": 18.38,
+        "1Y": 18.38,
+        "3Y": 12.48,
+        "5Y": 8.88,
+        "10Y": 8.64
+      },
       "rebalancing": "Quarterly",
       "min_investment": 0,
       "platforms": [
@@ -2012,16 +2138,37 @@
         "underlying": 0.66,
         "all_in": 0.81
       },
-      "return_1yr": null,
-      "return_3yr": null,
-      "return_5yr": null,
-      "return_10yr": null,
-      "return_ytd": null,
-      "return_1m": null,
-      "return_3m": null,
-      "return_6m": null,
-      "calendar_returns": {},
-      "trailing_returns": {},
+      "return_1yr": 18.09,
+      "return_3yr": 12.74,
+      "return_5yr": 9.46,
+      "return_10yr": 9.89,
+      "return_ytd": 18.09,
+      "return_1m": 1.17,
+      "return_3m": 4.96,
+      "return_6m": 13.64,
+      "calendar_returns": {
+        "2016": 19.23,
+        "2017": 13.81,
+        "2018": -6.7,
+        "2019": 18.49,
+        "2020": 8.98,
+        "2021": 12.69,
+        "2022": -2.7,
+        "2023": 9.77,
+        "2024": 10.56,
+        "2025": 18.09,
+        "YTD": 18.09
+      },
+      "trailing_returns": {
+        "1M": 1.17,
+        "3M": 4.96,
+        "6M": 13.64,
+        "YTD": 18.09,
+        "1Y": 18.09,
+        "3Y": 12.74,
+        "5Y": 9.46,
+        "10Y": 9.89
+      },
       "rebalancing": "Quarterly",
       "min_investment": 0,
       "platforms": [
@@ -2273,16 +2420,37 @@
         "underlying": 0.64,
         "all_in": 0.79
       },
-      "return_1yr": null,
-      "return_3yr": null,
-      "return_5yr": null,
-      "return_10yr": null,
-      "return_ytd": null,
-      "return_1m": null,
-      "return_3m": null,
-      "return_6m": null,
-      "calendar_returns": {},
-      "trailing_returns": {},
+      "return_1yr": 17.2,
+      "return_3yr": 12.79,
+      "return_5yr": 9.67,
+      "return_10yr": 10.83,
+      "return_ytd": 17.2,
+      "return_1m": 0.96,
+      "return_3m": 4.86,
+      "return_6m": 14.33,
+      "calendar_returns": {
+        "2016": 24.45,
+        "2017": 15.14,
+        "2018": -6.89,
+        "2019": 19.45,
+        "2020": 10.62,
+        "2021": 13.33,
+        "2022": -2.42,
+        "2023": 10.11,
+        "2024": 11.19,
+        "2025": 17.2,
+        "YTD": 17.2
+      },
+      "trailing_returns": {
+        "1M": 0.96,
+        "3M": 4.86,
+        "6M": 14.33,
+        "YTD": 17.2,
+        "1Y": 17.2,
+        "3Y": 12.79,
+        "5Y": 9.67,
+        "10Y": 10.83
+      },
       "rebalancing": "Quarterly",
       "min_investment": 0,
       "platforms": [
@@ -2494,26 +2662,243 @@
         "Synaptic"
       ],
       "investment_process": {
-        "investment_team": "",
-        "strategic_aa": "",
-        "tactical_aa": "",
-        "fund_selection": "",
-        "portfolio_construction": "",
-        "rebalancing": ""
+        "investment_team": "The WealthSelect portfolios are managed by the Portfolio Management Team at Quilter Investors. This team is responsible for implementing strategic and tactical asset allocation, fund selection, and portfolio construction.\n\nCore Responsibilities:\n\u2022\tDay-to-day management of portfolios, including rebalancing, trade execution, and tactical positioning (for non-passive models).\n\u2022\tTranslating capital market assumptions into risk-profiled investment solutions.\n\u2022\tWorking closely with the Manager Research, Operational Due Diligence, and Responsible Investment teams to ensure alignment between strategy and fund implementation.\nThe portfolio managers have discretion to build portfolios in line with internal constraints and objectives, subject to governance review.\n\nManager Research Hub\nQuilter operates a centralised Manager Research Hub that provides independent fund selection input. It consists of three teams:\n1.\tManager Research Team\no\tConducts deep quantitative and qualitative due diligence on fund managers.\no\tEvaluates alpha drivers, style consistency, fund structure, and risk metrics.\no\tMeets regularly with fund houses and continually monitors holdings to ensure the original rationale for selection remains valid.\n2.\tOperational Due Diligence Team\no\tReviews fund managers\u2019 operational infrastructure including:\n\uf0a7\tGovernance and compliance\n\uf0a7\tSystems and controls\n\uf0a7\tFinancial stability and resource sufficiency\no\tAims to mitigate non-investment risks before and after funds are added.\n3.\tResponsible Investment Team\no\tEnsures ESG integration across fund selection, monitoring, and stewardship.\no\tApplies a tiered framework for ESG assessment (e.g. Tier 1 basic ESG policies, Tier 2 active ESG integration).\no\tWorks in conjunction with the other two teams to ensure sustainability objectives are considered for applicable portfolios.",
+        "strategic_aa": "\u2022\tDeveloped using capital market assumptions from WTW (Willis Towers Watson), which underpin a proprietary in-house model.\n\u2022\tSAA is designed to optimise long-term return potential across different risk profiles while maintaining suitability.\n\u2022\tReviewed quarterly with a full annual refresh based on updated WTW assumptions.",
+        "tactical_aa": "\u2022\tTAA allows deviations from SAA within the constraints of each portfolio\u2019s risk profile.\n\u2022\tAdjustments may include:\no\tRisk-on/risk-off tilts,\no\tRegional or sector rotations,\no\tFactor shifts (e.g. value vs growth).\n\u2022\tDecision-making considers:\no\tMarket valuations,\no\tTechnical signals,\no\tEconomic and geopolitical trends,\no\tESG risk and sustainable investment themes (where relevant).",
+        "fund_selection": "Fund selection is led by a three-team \u201cManager Research Hub\u201d:\n1.\tManager Research Team: Conducts quantitative and qualitative research, interviews managers, and screens funds for repeatability, alpha sources, liquidity, transparency, and cost.\n2.\tOperational Due Diligence Team: Assesses managers\u2019 operational robustness including governance, technology, compliance, HR, and ESG practices.\n3.\tResponsible Investment Team: Works across the above teams to integrate ESG and stewardship factors throughout the selection and monitoring process.\nKey features:\n\u2022\tSub-advised mandates: Where appropriate, Quilter creates UK-domiciled sub-advised funds managed by external managers (e.g. AllianceBernstein). This allows continuity even if the underlying manager changes, reduces capital gains in GIAs, and avoids disruption.",
+        "portfolio_construction": "\u2022\tBrings together SAA, TAA (if applicable), and selected managers.\n\u2022\tConstruction is carried out by the Portfolio Management Team, who have discretion but must adhere to:\no\tInternal risk constraints,\no\tClient objectives,\no\tPortfolio guidelines.\nRisk controls include:\n\u2022\tDiversification by asset class, geography, and manager.\n\u2022\tDrift tolerances and equity caps.\n\u2022\tStress testing to assess portfolio behaviour in different scenarios.\nPortfolio construction ensures:\n\u2022\tEach fund\u2019s interaction within the portfolio is assessed,\n\u2022\tPortfolios deliver risk-adjusted returns that are repeatable and robust, not just reliant on individual manager outperformance.",
+        "rebalancing": "\u2022\tRebalancing is generally quarterly, but may occur more frequently if market conditions require.\n\u2022\tExecution is overseen by the Implementation and Trading Team, ensuring timely and efficient portfolio changes across platforms."
       },
       "adviser_support": {
-        "onboarding": "",
-        "ongoing_communication": "",
-        "review_meetings": "",
-        "investment_commentary": "",
-        "digital_tools": ""
+        "onboarding": "Quilter offers tailored onboarding support for firms adopting the WealthSelect portfolios. This includes:\n\u2022\tInitial platform and proposition training, led by Business Development and Investment Specialists.\n\u2022\tGuidance on risk mapping, portfolio selection and documentation required to align portfolios with suitability assessments.\n\u2022\tTraining sessions for advisers, paraplanners, and support teams, available both virtually and in person.\n\u2022\tAssistance with back-book migration, with resources and processes to help transition legacy assets into the WealthSelect solution.\nThe Quilter team is also equipped to support bespoke training needs for larger firms and those using co-branded or white-labelled options.",
+        "ongoing_communication": "Quilter ensures a high degree of transparency through regular and structured communications around portfolio performance, positioning, and changes.\nPortfolio Updates & Rationale\n\u2022\tQuarterly portfolio rebalances are accompanied by detailed documentation outlining:\no\tThe rationale for asset allocation shifts\no\tFund additions/removals\no\tMacroeconomic views driving changes\n\u2022\tPost-rebalance summaries help advisers explain updates to clients and meet governance documentation requirements.\nFactsheets & Performance Materials\n\u2022\tMonthly and quarterly model portfolio factsheets are available for every risk level and strategy (Active, Blended, Passive, Responsible, Sustainable).\n\u2022\tEach factsheet includes:\no\tAsset allocation breakdowns\no\tPerformance (net of fund charges, gross of MPS fee)\no\tVolatility and benchmark comparisons\n\u2022\tAvailable via the Quilter platform and dedicated adviser portals.",
+        "review_meetings": "Quilter maintains a strong adviser-facing presence, offering:\n\u2022\tQuarterly client review support \u2013 providing materials and data for use in client meetings.\n\u2022\tPortfolio deep-dives \u2013 bespoke sessions with the investment team or specialists to support due diligence or client-facing queries.\n\u2022\tBusiness development partnership \u2013 strategic support to help adviser firms align investment strategies with their business objectives.",
+        "investment_commentary": "To keep advisers informed and equipped to have better conversations with clients, Quilter provides:\n\u2022\tRegular investment updates: CIO commentary, thought pieces, and response notes during periods of volatility.\n\u2022\tWebinars and events:\no\tQuarterly investment webinars to review performance and positioning.\no\tRegional adviser forums and training events.\n\u2022\tFund manager interviews and research insights curated by the Manager Research Hub.",
+        "digital_tools": "Advisers can access WealthSelect portfolios, performance data, and reporting tools via:\n\u2022\tThe Quilter platform\n\u2022\tMorningstar MPS Comparator (for comparative metrics)\n\u2022\tAdviser portals with custom branding (for larger firms)\nIn addition, the Quilter support team provides:\n\u2022\tTechnical support on platform and investment queries.\n\u2022\tEmail and phone-based adviser servicing, supported by Investment Specialists and Business Development Managers."
       },
       "quarterly_review": {
-        "aa_changes": "",
-        "fund_changes": "",
-        "performance_review": ""
+        "aa_changes": "During the quarter, portfolio positioning remained broadly stable, with changes focused on incremental adjustments rather than wholesale shifts in risk.\n\nThe investment team made modest tilts within growth assets, reflecting evolving views on regional equity opportunities and valuation dispersion across markets. Exposure to defensive assets was maintained at appropriate levels for the strategy\u2019s risk profile, continuing to support portfolio resilience during periods of market volatility.\n\nOverall, asset allocation decisions during the quarter were evolutionary rather than directional, with the primary objective being to maintain consistency with the long-term strategic framework while allowing for selective tactical flexibility.",
+        "fund_changes": "During the quarter, a small number of fund changes were implemented within the portfolio, driven by ongoing manager monitoring and conviction assessment rather than short-term market movements.\n\nWithin Global Equity, the JPM Global Focus Fund was reduced and ultimately removed, with capital reallocated to the iShares MSCI World ETF. This change reflected a reassessment of conviction following a period of sustained relative underperformance and increasing concentration risk within the portfolio. The replacement improved diversification across regions and sectors while reducing reliance on a narrower set of stock-specific outcomes.\n\nIn UK Equity, exposure to the Fidelity UK Opportunities Fund was increased at the expense of a passive UK equity holding. This reflected stronger conviction in the manager\u2019s stock selection capability and an improved outlook for active management within the UK market, where valuation dispersion remains elevated.\n\nWithin Fixed Income, the Invesco Sterling Bond Fund was replaced by the Royal London Short Duration Credit Fund. This adjustment reduced interest rate sensitivity while maintaining exposure to high-quality sterling credit, aligning the portfolio more closely with the team\u2019s cautious stance on duration risk.\n\nFrom a cost perspective, these changes resulted in only a marginal increase in the ongoing charges figure, which was considered proportionate given the expected improvement in diversification, risk control, and potential for active value add. Overall portfolio costs remain competitive relative to peer strategies within the same risk category.",
+        "performance_review": "Portfolio performance over the quarter was influenced primarily by fund selection decisions, rather than asset allocation effects.\n\nAttribution analysis indicates that relative performance versus peers was driven by manager selection within key asset classes, with positive contributions coming from funds that demonstrated strong stock selection and effective risk management. Conversely, areas of relative underperformance were linked to specific managers where style headwinds or security selection detracted from returns.\n\nImportantly, this attribution analysis isolates fund selection effects only, stripping out the impact of asset allocation decisions. This allows advisers to clearly assess whether value added during the quarter was derived from manager choice rather than market positioning.\n\nFrom a governance perspective, this approach supports transparent assessment of the investment process, helping advisers evidence whether active fund selection continues to add value over time."
       },
-      "risk_return_data": []
+      "risk_return_data": [
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 3",
+          "risk": 3.23,
+          "return": 6.91
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 4",
+          "risk": 3.74,
+          "return": 7.98
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 5",
+          "risk": 4.35,
+          "return": 9.05
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 6",
+          "risk": 5.04,
+          "return": 10.03
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 7",
+          "risk": 5.78,
+          "return": 10.99
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 8",
+          "risk": 6.56,
+          "return": 11.94
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 9",
+          "risk": 7.38,
+          "return": 12.13
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 10",
+          "risk": 8.24,
+          "return": 12.11
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Mixed Investment 0-35% Shares",
+          "risk": 4.1,
+          "return": 5.57
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Mixed Investment 20-60% Shares",
+          "risk": 4.87,
+          "return": 7.19
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Mixed Investment 40-85% Shares",
+          "risk": 6.3,
+          "return": 8.89
+        },
+        {
+          "period": "3 Year",
+          "portfolio": "IA Flexible Investment",
+          "risk": 6.5,
+          "return": 8.89
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 3",
+          "risk": 4.24,
+          "return": 4.0
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 4",
+          "risk": 4.75,
+          "return": 5.07
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 5",
+          "risk": 5.34,
+          "return": 6.12
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 6",
+          "risk": 5.94,
+          "return": 7.21
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 7",
+          "risk": 6.59,
+          "return": 8.26
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 8",
+          "risk": 7.32,
+          "return": 9.29
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 9",
+          "risk": 8.01,
+          "return": 9.83
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "Quilter WealthSelect Active Managed 10",
+          "risk": 8.69,
+          "return": 10.0
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Mixed Investment 0-35% Shares",
+          "risk": 5.14,
+          "return": 2.23
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Mixed Investment 20-60% Shares",
+          "risk": 6.0,
+          "return": 4.1
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Mixed Investment 40-85% Shares",
+          "risk": 7.47,
+          "return": 5.99
+        },
+        {
+          "period": "5 Year",
+          "portfolio": "IA Flexible Investment",
+          "risk": 7.4,
+          "return": 6.24
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 3",
+          "risk": 5.0,
+          "return": 3.99
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 4",
+          "risk": 5.44,
+          "return": 5.33
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 5",
+          "risk": 6.11,
+          "return": 6.41
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 6",
+          "risk": 6.84,
+          "return": 7.44
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 7",
+          "risk": 7.59,
+          "return": 8.44
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 8",
+          "risk": 8.44,
+          "return": 9.29
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 9",
+          "risk": 8.81,
+          "return": 10.27
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "Quilter WealthSelect Active Managed 10",
+          "risk": 9.18,
+          "return": 10.77
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Mixed Investment 0-35% Shares",
+          "risk": 5.52,
+          "return": 2.97
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Mixed Investment 20-60% Shares",
+          "risk": 6.31,
+          "return": 4.56
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Mixed Investment 40-85% Shares",
+          "risk": 7.63,
+          "return": 5.89
+        },
+        {
+          "period": "Since Inception",
+          "portfolio": "IA Flexible Investment",
+          "risk": 7.51,
+          "return": 6.21
+        }
+      ]
     }
   },
   "platforms": [
@@ -12144,8 +12529,135 @@
     }
   },
   "benchmarks": {
-    "trailing": [],
-    "calendar": []
+    "trailing": [
+      {
+        "Model": "EAA Fund GBP Allocation 0-20 Equity",
+        "1M": 0.06,
+        "3M": 1.81,
+        "6M": 3.8,
+        "YTD": 6.78,
+        "1Y": 6.78,
+        "3Y": 5.84,
+        "5Y": 1.67,
+        "10Y": 2.97
+      },
+      {
+        "Model": "EAA Model GBP Allocation 20-40 Equity",
+        "1M": 0.31,
+        "3M": 2.23,
+        "6M": 5.12,
+        "YTD": 8.89,
+        "1Y": 8.43,
+        "3Y": 6.88,
+        "5Y": 2.77,
+        "10Y": 4.01
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 40-60 Equity",
+        "1M": 0.43,
+        "3M": 2.69,
+        "6M": 6.76,
+        "YTD": 10.29,
+        "1Y": 10.29,
+        "3Y": 8.14,
+        "5Y": 3.99,
+        "10Y": 4.7
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 60-80 Equity",
+        "1M": 0.47,
+        "3M": 3.36,
+        "6M": 8.65,
+        "YTD": 11.49,
+        "1Y": 11.49,
+        "3Y": 9.52,
+        "5Y": 5.54,
+        "10Y": 6.25
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 80+ Equity",
+        "1M": 0.49,
+        "3M": 3.59,
+        "6M": 10.28,
+        "YTD": 12.43,
+        "1Y": 12.43,
+        "3Y": 10.88,
+        "5Y": 6.86,
+        "10Y": 7.51
+      }
+    ],
+    "calendar": [
+      {
+        "Model": "EAA Fund GBP Allocation 0-20 Equity",
+        "2016": 7.41,
+        "2017": 4.74,
+        "2018": -2.76,
+        "2019": 8.38,
+        "2020": 4.04,
+        "2021": 2.34,
+        "2022": -10.49,
+        "2023": 7.08,
+        "2024": 3.7,
+        "2025": 6.78,
+        "YTD": 6.78
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 20-40 Equity",
+        "2016": 9.52,
+        "2017": 5.68,
+        "2018": -4.12,
+        "2019": 10.4,
+        "2020": 3.98,
+        "2021": 5.03,
+        "2022": -10.56,
+        "2023": 7.31,
+        "2024": 4.99,
+        "2025": 8.35,
+        "YTD": 8.35
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 40-60 Equity",
+        "2016": 10.56,
+        "2017": 7.08,
+        "2018": -5.5,
+        "2019": 12.39,
+        "2020": 3.54,
+        "2021": 7.56,
+        "2022": -10.62,
+        "2023": 7.52,
+        "2024": 6.65,
+        "2025": 10.29,
+        "YTD": 10.29
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 60-80 Equity",
+        "2016": 12.41,
+        "2017": 9.94,
+        "2018": -6.47,
+        "2019": 15.58,
+        "2020": 4.86,
+        "2021": 11.08,
+        "2022": -10.28,
+        "2023": 8.28,
+        "2024": 8.83,
+        "2025": 11.49,
+        "YTD": 11.49
+      },
+      {
+        "Model": "EAA Fund GBP Allocation 80+ Equity",
+        "2016": 14.16,
+        "2017": 12.07,
+        "2018": -7.51,
+        "2019": 17.69,
+        "2020": 6.26,
+        "2021": 13.37,
+        "2022": -9.83,
+        "2023": 9.3,
+        "2024": 10.93,
+        "2025": 12.43,
+        "YTD": 12.43
+      }
+    ]
   },
   "cost_table": [
     {
