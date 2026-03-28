@@ -192,7 +192,7 @@ S._histRL=defaultRL;
 const h=await F(`/api/historical/portfolio_${defaultRL}`);
 tc.innerHTML=`
 <div style="margin-bottom:16px;display:flex;align-items:center;gap:12px">
-<div style="padding:12px 16px;background:var(--accent-g);border-radius:var(--rs);font-size:13px;color:var(--accent);font-weight:500;flex:1">📊 Showing historical data for <strong>Risk Level <span id="histRLLabel">${defaultRL}</span></strong></div>
+<div style="padding:12px 16px;background:var(--accent-g);border-radius:var(--rs);font-size:13px;color:var(--accent);font-weight:500;flex:1">Showing historical data for <strong>Risk Level <span id="histRLLabel">${defaultRL}</span></strong></div>
 <div class="fg"><span class="fl">Risk Level</span><select id="histRL" onchange="changeHistRL()" style="min-width:100px">${riskLevels.map(r=>`<option value="${r}" ${r===defaultRL?'selected':''}>${r}</option>`).join('')}</select></div>
 </div>
 <div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Asset Allocation – Risk Level <span class="histRLTitle">${defaultRL}</span></span></div>

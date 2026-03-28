@@ -7,6 +7,7 @@ function isDarkMode(){return document.documentElement.style.getPropertyValue('--
 
 // ─── Auth ────────────────────────────────────────────────────────────
 
+if(localStorage.getItem('bridge_dark')==='1')savePrefApplyDark(true);
 async function checkAuth(){
 try{const r=await fetch('/api/auth/me');const d=await r.json();
 if(d.authenticated){S.user=d.user;showApp();return true}}catch(e){}
@@ -132,6 +133,7 @@ setTimeout(()=>{const close=e=>{if(!menu.contains(e.target)&&!pill.contains(e.ta
 // ─── Dark Mode ───────────────────────────────────────────────────────
 
 function savePrefApplyDark(dark){
+localStorage.setItem('bridge_dark',dark?'1':'0');
 const root=document.documentElement;
 const loginLogo=document.querySelector('.login-box .logo img');
 if(dark){root.style.setProperty('--bg','#0f1117');root.style.setProperty('--bg-card','#1a1d2e');root.style.setProperty('--bg-hover','#242736');root.style.setProperty('--bg-surface','#1a1d2e');root.style.setProperty('--border','#2a2d3e');root.style.setProperty('--border-a','#3a3d4e');root.style.setProperty('--text','#e2e8f0');root.style.setProperty('--text-s','#94a3b8');root.style.setProperty('--text-m','#64748b');if(loginLogo)loginLogo.src='bridge-logo-dark.png'}
