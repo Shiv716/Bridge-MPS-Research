@@ -65,16 +65,27 @@ def build_quilter(input_dir):
             return []
         return read_sheet(path, sheet)
 
-    # Load all files
+    # ─── Load template-based data ─────────────────────────────────────
+    # The main template file contains Historical Holdings + other tabs
+    template_file = None
+    for f in os.listdir(input_dir):
+        if 'Historical_Holdings' in f and f.endswith('.xlsx'):
+            template_file = f
+            break
+        if 'Template' in f and f.endswith('.xlsx'):
+            template_file = f
+            break
+
+    if template_file:
+        print(f"  ✓ Using template: {template_file}")
+        hist_holdings = load(template_file, "Historical Holdings")
+    else:
+        print(f"  ⚠ No template file found, trying individual files")
+        hist_holdings = []
+
+    # Load other data sources
     cal_all = load("Quilter_WS_Active_-_Calendar_Returns.xlsx")
     trail_all = load("Quilter_WS_Active_-_Trailing_Returns.xlsx")
-    hist_aa = load("Quilter_WS_Active_7_Historical_Asset_Allocation.xlsx")
-    hist_eq = load("Quilter_WS_Active_7_Historical_Equity_Region.xlsx")
-    hist_fi = load("Quilter_WS_Active_7_Historical_Fixed_Income.xlsx")
-    holdings = load("Quilter_WS_Active_Current_Holdings.xlsx")
-    eq_exp = load("Quilter_WS_Active_Current_Equity___Fixed_Income_Exposure.xlsx", "Equity")
-    fi_exp = load("Quilter_WS_Active_Current_Equity___Fixed_Income_Exposure.xlsx", "Fixed Income")
-    current_aa = load("Quilter_WealthSelect_Active_-_Current_Asset_Allocation.xlsx")
     additional = load("Additional_Content_for_Bridge.xlsx", "Text")
     risk_return = load("Additional_Content_for_Bridge.xlsx", "Risk Return")
 
@@ -108,24 +119,103 @@ def build_quilter(input_dir):
             })
 
     # Separate Quilter rows from EAA benchmarks
-    cal = [r for r in cal_all if r["Model"].startswith("Quilter")]
-    trail = [r for r in trail_all if r["Model"].startswith("Quilter")]
-    benchmarks_trail = [r for r in trail_all if r["Model"].startswith("EAA")]
-    benchmarks_cal = [r for r in cal_all if r["Model"].startswith("EAA")]
+    cal = [r for r in cal_all if r.get("Model", "").startswith("Quilter")]
+    trail = [r for r in trail_all if r.get("Model", "").startswith("Quilter")]
+    benchmarks_trail = [r for r in trail_all if r.get("Model", "").startswith("EAA")]
+    benchmarks_cal = [r for r in cal_all if r.get("Model", "").startswith("EAA")]
 
-    eq_abs = [r for r in eq_exp if r.get("Type") == "Absolute"]
-    fi_abs = [r for r in fi_exp if r.get("Type") == "Absolute"]
+    # ─── Process Historical Holdings ──────────────────────────────────
+    # Parse dates and extract risk levels
+    from collections import defaultdict
 
-    # Cost data (from the Cost tab in the product)
+    def parse_date(d):
+        if isinstance(d, datetime):
+            return d
+        if isinstance(d, str):
+            for fmt in ('%Y-%m-%d %H:%M:%S', '%Y-%m-%d', '%m/%d/%Y', '%d/%m/%Y'):
+                try:
+                    return datetime.strptime(d.split(' ')[0], fmt)
+                except ValueError:
+                    continue
+        return None
+
+    def extract_risk_level(portfolio_name):
+        if not portfolio_name:
+            return None
+        parts = portfolio_name.strip().split()
+        try:
+            return int(parts[-1])
+        except (ValueError, IndexError):
+            return None
+
+    # Group holdings by date and risk level
+    holdings_by_date_risk = defaultdict(lambda: defaultdict(list))
+    all_dates = set()
+
+    for h in hist_holdings:
+        dt = parse_date(h.get("Date"))
+        portfolio = h.get("Portfolio", "")
+        risk_level = extract_risk_level(portfolio)
+        if dt is None or risk_level is None:
+            continue
+        all_dates.add(dt)
+        holdings_by_date_risk[dt][risk_level].append({
+            "name": h.get("Fund Name", ""),
+            "isin": h.get("ISIN", ""),
+            "weight": round(float(h.get("Weight (%)", 0) or 0), 4),
+            "type": h.get("Asset Class", ""),
+            "sub_type": h.get("Sub Asset Class", ""),
+        })
+
+    sorted_dates = sorted(all_dates)
+    latest_date = sorted_dates[-1] if sorted_dates else None
+    risk_levels_found = sorted(set(rl for d in holdings_by_date_risk for rl in holdings_by_date_risk[d]))
+
+    print(f"  Historical Holdings: {len(hist_holdings)} rows")
+    print(f"  Dates: {len(sorted_dates)} ({sorted_dates[0].strftime('%d/%m/%Y') if sorted_dates else 'none'} to {sorted_dates[-1].strftime('%d/%m/%Y') if sorted_dates else 'none'})")
+    print(f"  Risk levels: {risk_levels_found}")
+    print(f"  Latest date: {latest_date.strftime('%d/%m/%Y') if latest_date else 'none'}")
+
+    # ─── Current exposure (from latest date) ──────────────────────────
+    def compute_exposure(holdings_list):
+        """Compute asset allocation, geo, FI breakdown from a list of holdings."""
+        aa = {"equity": 0, "bonds": 0, "alternatives": 0, "cash": 0}
+        geo = defaultdict(float)
+        fi_breakdown = defaultdict(float)
+
+        for h in holdings_list:
+            w = h["weight"]
+            ac = h["type"]
+            sc = h["sub_type"]
+
+            if ac == "Equity":
+                aa["equity"] += w
+                if sc:
+                    geo[sc.lower().replace(" ", "_")] += w
+            elif ac == "Fixed Income":
+                aa["bonds"] += w
+                if sc:
+                    fi_breakdown[sc.lower().replace(" ", "_")] += w
+            elif ac == "Alternative":
+                aa["alternatives"] += w
+            elif ac == "Cash":
+                aa["cash"] += w
+
+        aa = {k: round(v, 2) for k, v in aa.items()}
+        geo = {k: round(v, 4) for k, v in geo.items()}
+        fi_breakdown = {k: round(v, 4) for k, v in fi_breakdown.items()}
+        return aa, geo, fi_breakdown
+
+    # Cost data
     cost_data = {
-        "3":  {"dfm": 0.15, "underlying": 0.45, "all_in": 0.60},
-        "4":  {"dfm": 0.15, "underlying": 0.52, "all_in": 0.67},
-        "5":  {"dfm": 0.15, "underlying": 0.58, "all_in": 0.73},
-        "6":  {"dfm": 0.15, "underlying": 0.63, "all_in": 0.78},
-        "7":  {"dfm": 0.15, "underlying": 0.66, "all_in": 0.81},
-        "8":  {"dfm": 0.15, "underlying": 0.68, "all_in": 0.83},
-        "9":  {"dfm": 0.15, "underlying": 0.66, "all_in": 0.81},
-        "10": {"dfm": 0.15, "underlying": 0.64, "all_in": 0.79},
+        3:  {"dfm": 0.15, "underlying": 0.45, "all_in": 0.60},
+        4:  {"dfm": 0.15, "underlying": 0.52, "all_in": 0.67},
+        5:  {"dfm": 0.15, "underlying": 0.58, "all_in": 0.73},
+        6:  {"dfm": 0.15, "underlying": 0.63, "all_in": 0.78},
+        7:  {"dfm": 0.15, "underlying": 0.66, "all_in": 0.81},
+        8:  {"dfm": 0.15, "underlying": 0.68, "all_in": 0.83},
+        9:  {"dfm": 0.15, "underlying": 0.66, "all_in": 0.81},
+        10: {"dfm": 0.15, "underlying": 0.64, "all_in": 0.79},
     }
 
     platforms = [
@@ -133,7 +223,7 @@ def build_quilter(input_dir):
         "Morningstar Wealth", "Parmenion", "Quilter", "Transact"
     ]
 
-    # Provider metadata (only data-derived fields)
+    # Provider metadata
     provider = {
         "id": "quilter",
         "name": "Quilter Investors",
@@ -172,71 +262,36 @@ def build_quilter(input_dir):
         "risk_return_data": rr_data,
     }
 
-    # Build MPS models
+    # ─── Build MPS models ─────────────────────────────────────────────
     models = []
-    for t in trail:
-        name = t["Model"]
-        num = name.replace("Quilter WealthSelect Active Managed ", "")
+    for rl in risk_levels_found:
+        # Find trailing returns row
+        trail_name = f"Quilter WealthSelect Active Managed {rl}"
+        t = next((r for r in trail if r.get("Model") == trail_name), {})
 
-        # Asset allocation from exposure sheets
-        eq_total = sum((r.get(f"Portfolio {num}") or 0) for r in eq_abs)
-        fi_total = sum((r.get(f"Portfolio {num}") or 0) for r in fi_abs)
+        # Current holdings from latest date
+        current_holdings = holdings_by_date_risk.get(latest_date, {}).get(rl, [])
+        aa, geo, fi_breakdown = compute_exposure(current_holdings)
 
-        # Alt + cash from holdings
-        port_holdings = [h for h in holdings if h["Model"] == f"Managed Active Portfolio {num}"]
-        alt_total = sum((h.get("Portfolio Weighting (%)") or 0) for h in port_holdings if h.get("Asset Class") == "Alternative")
-        cash_total = sum((h.get("Portfolio Weighting (%)") or 0) for h in port_holdings if h.get("Asset Class") == "Cash")
-
-        # Calendar returns for this model
-        cal_row = next((c for c in cal if c["Model"] == name), {})
-        costs = cost_data.get(num, {"dfm": 0.15, "underlying": 0.60, "all_in": 0.75})
-
-        # Geographic allocation from equity exposure
-        geo = {}
-        for r in eq_abs:
-            region = r.get("Sub Asset Class", "")
-            val = r.get(f"Portfolio {num}") or 0
-            if val > 0:
-                geo[region.lower().replace(" ", "_")] = round(val, 2)
-
-        # Fixed income breakdown
-        fi_breakdown = {}
-        for r in fi_abs:
-            sub = r.get("Sub Asset Class", "")
-            val = r.get(f"Portfolio {num}") or 0
-            if val > 0:
-                fi_breakdown[sub.lower().replace(" ", "_")] = round(val, 2)
-
-        # Underlying fund holdings
-        uf = []
-        for h in sorted(port_holdings, key=lambda x: x.get("Portfolio Weighting (%)") or 0, reverse=True):
-            uf.append({
-                "name": h.get("Name", ""),
-                "isin": h.get("ISIN", ""),
-                "weight": round(h.get("Portfolio Weighting (%)") or 0, 2),
-                "type": h.get("Asset Class", ""),
-                "sub_type": h.get("Sub Asset Class", "")
-            })
-
-        # Calendar returns dict
+        # Calendar returns
+        cal_row = next((c for c in cal if c.get("Model") == trail_name), {})
         calendar = {}
         for k, v in cal_row.items():
             if k != "Model" and v is not None:
                 calendar[str(k)] = v
 
-        risk = int(num)
+        costs = cost_data.get(rl, {"dfm": 0.15, "underlying": 0.60, "all_in": 0.75})
+
+        # Sort holdings by weight descending
+        uf = sorted(current_holdings, key=lambda x: x.get("weight", 0), reverse=True)
+
         model = {
-            "id": f"quilter-ws-active-{num}",
-            "name": name,
+            "id": f"quilter-ws-active-{rl}",
+            "name": trail_name if t else f"Quilter WealthSelect Active Managed {rl}",
             "provider": "Quilter Investors",
-            "risk_rating": risk,
-            "risk_label": f"Risk {num}",
-            "asset_allocation": {
-                "equity": round(eq_total, 1),
-                "bonds": round(fi_total, 1),
-                "alternatives": round(alt_total, 1),
-                "cash": round(cash_total, 1)
-            },
+            "risk_rating": rl,
+            "risk_label": f"Risk {rl}",
+            "asset_allocation": aa,
             "geographic_allocation": geo,
             "fixed_income_breakdown": fi_breakdown,
             "ocf": costs["all_in"],
@@ -255,10 +310,10 @@ def build_quilter(input_dir):
             "min_investment": 0,
             "platforms": platforms,
             "ethical": False,
-            "decumulation_suitable": risk <= 5,
+            "decumulation_suitable": rl <= 5,
             "time_horizons": (
-                ["short", "medium", "long"] if risk <= 4
-                else ["medium", "long"] if risk <= 6
+                ["short", "medium", "long"] if rl <= 4
+                else ["medium", "long"] if rl <= 6
                 else ["long"]
             ),
             "underlying_funds": uf,
@@ -266,20 +321,44 @@ def build_quilter(input_dir):
         }
         models.append(model)
 
-    # Assemble final output
-    # Build current asset allocation cross-portfolio table
-    aa_classes = ["Equity", "Fixed Income", "Alternative", "Cash"]
-    current_aa_table = []
-    for ac in aa_classes:
-        row = {"asset_class": ac}
-        for t in trail:
-            name = t["Model"]
-            num = name.replace("Quilter WealthSelect Active Managed ", "")
-            port_aa = [h for h in current_aa if h.get("Model") == f"Managed Active Portfolio {num}"]
-            total = sum((h.get("Portfolio Weighting (%)") or 0) for h in port_aa if h.get("Asset Class") == ac)
-            row[f"portfolio_{num}"] = round(total, 2)
-        current_aa_table.append(row)
+    # ─── Build historical data for ALL risk levels ────────────────────
+    historical = {}
+    for rl in risk_levels_found:
+        hist_aa = []  # asset allocation over time
+        hist_eq = []  # equity region over time
+        hist_fi = []  # fixed income over time
 
+        for dt in sorted_dates:
+            holdings = holdings_by_date_risk.get(dt, {}).get(rl, [])
+            if not holdings:
+                continue
+
+            date_str = dt.strftime("%Y-%m-%d")
+            aa, geo, fi_breakdown = compute_exposure(holdings)
+
+            # Asset allocation row
+            aa_row = {"Date": date_str}
+            aa_row.update(aa)
+            hist_aa.append(aa_row)
+
+            # Equity region row
+            eq_row = {"Date": date_str}
+            eq_row.update(geo)
+            hist_eq.append(eq_row)
+
+            # Fixed income row
+            fi_row = {"Date": date_str}
+            fi_row.update(fi_breakdown)
+            hist_fi.append(fi_row)
+
+        historical[f"portfolio_{rl}"] = {
+            "asset_allocation": hist_aa,
+            "equity_region": hist_eq,
+            "fixed_income": hist_fi,
+        }
+        print(f"  Historical portfolio_{rl}: {len(hist_aa)} dates")
+
+    # ─── Assemble output ──────────────────────────────────────────────
     output = {
         "mps": models,
         "providers": {"Quilter Investors": provider},
@@ -287,19 +366,12 @@ def build_quilter(input_dir):
         "styles": ["Active"],
         "insights": [],
         "performance": {},
-        "historical": {
-            "portfolio_7": {
-                "asset_allocation": clean(hist_aa),
-                "equity_region": clean(hist_eq),
-                "fixed_income": clean(hist_fi),
-            }
-        },
+        "historical": historical,
         "benchmarks": {
             "trailing": clean(benchmarks_trail),
             "calendar": clean(benchmarks_cal),
         },
         "cost_table": [{"model": m["name"], **m["cost_breakdown"]} for m in models],
-        "current_asset_allocation": current_aa_table,
     }
 
     return output, models
@@ -378,10 +450,10 @@ def main():
         print(f"  {m['name']}")
         print(f"    Eq {aa['equity']}% | FI {aa['bonds']}% | Alt {aa['alternatives']}% | Cash {aa['cash']}%")
         print(f"    OCF {m['ocf']}% | 1Y {m['return_1yr']}% | 3Y {m['return_3yr']}% | 5Y {m['return_5yr']}%")
-    hist = data.get("historical", {}).get("portfolio_7", {})
-    print(f"Historical AA points: {len(hist.get('asset_allocation', []))}")
-    print(f"Historical Equity points: {len(hist.get('equity_region', []))}")
-    print(f"Historical FI points: {len(hist.get('fixed_income', []))}")
+    hist = data.get("historical", {})
+    for key in sorted(hist.keys()):
+        h = hist[key]
+        print(f"Historical {key}: AA={len(h.get('asset_allocation', []))} Eq={len(h.get('equity_region', []))} FI={len(h.get('fixed_income', []))}")
     print(f"Total fund holdings: {sum(len(m['underlying_funds']) for m in models)}")
     print(f"Benchmark rows: {len(data.get('benchmarks', {}).get('trailing', []))}")
 
