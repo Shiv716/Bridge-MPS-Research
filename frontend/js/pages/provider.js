@@ -168,19 +168,52 @@ return`<tr><td class="nc"><span class="badge ${colors[ac]||'b-blue'}">${ac}</spa
 
 // ─── Historical Exposure Tab ─────────────────────────────────────────
 
+//async function tabHistorical(tc){
+//const h=await F('/api/historical/portfolio_7');
+//tc.innerHTML=`
+//<div style="margin-bottom:16px;padding:12px 16px;background:var(--accent-g);border-radius:var(--rs);font-size:13px;color:var(--accent);font-weight:500">📊 Showing historical data for <strong>Risk Level 7</strong> (Balanced)</div>
+//<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Asset Allocation – Risk Level 7</span></div>
+//<div class="card-b"><div class="cc" style="height:320px"><canvas id="haa"></canvas></div></div></div>
+//<div class="grid g2">
+//<div class="card"><div class="card-h"><span class="card-t">Equity Exposure – Risk Level 7</span></div>
+//<div class="card-b"><div class="cc" style="height:280px"><canvas id="heq"></canvas></div></div></div>
+//<div class="card"><div class="card-h"><span class="card-t">Fixed Income Exposure – Risk Level 7</span></div>
+//<div class="card-b"><div class="cc" style="height:280px"><canvas id="hfi"></canvas></div></div></div>
+//</div>`;
+//renderBV(`<p><strong>Bridge View: Historical Exposure</strong></p><p>Historical asset allocation data shows how the portfolio has evolved over time. Gradual shifts in equity/bond weighting reflect both strategic reviews and tactical positioning.</p><p>The equity regional breakdown shows any geographic rotation decisions, while the fixed income history highlights duration and credit quality positioning through different rate environments.</p><p>Look for consistency between the stated investment approach and the actual changes observed — significant deviations may warrant further investigation.</p>`);
+//if(!h)return;
+//setTimeout(()=>{renderHistoricalCharts(h)},100)}
+
 async function tabHistorical(tc){
-const h=await F('/api/historical/portfolio_7');
+const pts=S._provData.portfolios;
+const riskLevels=pts.map(m=>m.risk_rating).sort((a,b)=>a-b);
+const defaultRL=riskLevels.includes(7)?7:riskLevels[0];
+S._histRL=defaultRL;
+const h=await F(`/api/historical/portfolio_${defaultRL}`);
 tc.innerHTML=`
-<div style="margin-bottom:16px;padding:12px 16px;background:var(--accent-g);border-radius:var(--rs);font-size:13px;color:var(--accent);font-weight:500">📊 Showing historical data for <strong>Risk Level 7</strong> (Balanced)</div>
-<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Asset Allocation – Risk Level 7</span></div>
+<div style="margin-bottom:16px;display:flex;align-items:center;gap:12px">
+<div style="padding:12px 16px;background:var(--accent-g);border-radius:var(--rs);font-size:13px;color:var(--accent);font-weight:500;flex:1">📊 Showing historical data for <strong>Risk Level <span id="histRLLabel">${defaultRL}</span></strong></div>
+<div class="fg"><span class="fl">Risk Level</span><select id="histRL" onchange="changeHistRL()" style="min-width:100px">${riskLevels.map(r=>`<option value="${r}" ${r===defaultRL?'selected':''}>${r}</option>`).join('')}</select></div>
+</div>
+<div class="card" style="margin-bottom:20px"><div class="card-h"><span class="card-t">Asset Allocation – Risk Level <span class="histRLTitle">${defaultRL}</span></span></div>
 <div class="card-b"><div class="cc" style="height:320px"><canvas id="haa"></canvas></div></div></div>
 <div class="grid g2">
-<div class="card"><div class="card-h"><span class="card-t">Equity Exposure – Risk Level 7</span></div>
+<div class="card"><div class="card-h"><span class="card-t">Equity Exposure – Risk Level <span class="histRLTitle">${defaultRL}</span></span></div>
 <div class="card-b"><div class="cc" style="height:280px"><canvas id="heq"></canvas></div></div></div>
-<div class="card"><div class="card-h"><span class="card-t">Fixed Income Exposure – Risk Level 7</span></div>
+<div class="card"><div class="card-h"><span class="card-t">Fixed Income Exposure – Risk Level <span class="histRLTitle">${defaultRL}</span></span></div>
 <div class="card-b"><div class="cc" style="height:280px"><canvas id="hfi"></canvas></div></div></div>
 </div>`;
 renderBV(`<p><strong>Bridge View: Historical Exposure</strong></p><p>Historical asset allocation data shows how the portfolio has evolved over time. Gradual shifts in equity/bond weighting reflect both strategic reviews and tactical positioning.</p><p>The equity regional breakdown shows any geographic rotation decisions, while the fixed income history highlights duration and credit quality positioning through different rate environments.</p><p>Look for consistency between the stated investment approach and the actual changes observed — significant deviations may warrant further investigation.</p>`);
+if(!h)return;
+setTimeout(()=>{renderHistoricalCharts(h)},100)}
+
+async function changeHistRL(){
+const rl=$('histRL').value;
+S._histRL=rl;
+$('histRLLabel').textContent=rl;
+document.querySelectorAll('.histRLTitle').forEach(el=>el.textContent=rl);
+DC();
+const h=await F(`/api/historical/portfolio_${rl}`);
 if(!h)return;
 setTimeout(()=>{renderHistoricalCharts(h)},100)}
 
